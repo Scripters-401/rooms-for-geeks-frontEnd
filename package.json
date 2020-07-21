@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/Scripters-401/rooms-for-geeks-frontEnd/issues"
   },
-  "homepage": "",
+  "homepage": "https://rooms-for-geeks.netlify.app",
   "dependencies": {
     "bootstrap": "^4.5.0",
     "build": "^0.1.4",
