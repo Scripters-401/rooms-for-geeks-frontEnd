@@ -17,6 +17,9 @@ const Header = () => {
           <li>
             <NavLink to="/interviewReview" /* activeClassName="interviewReview" */>Interview Review</NavLink>
           </li>
+          <li>
+            <NavLink to="/about-us" /* activeClassName="about-us" */>About Us</NavLink>
+          </li>
         </ul>
       </nav>
     </header>
