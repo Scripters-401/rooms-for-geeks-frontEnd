@@ -113,9 +113,9 @@ npm start
 
 ## Authors
 
-- Esra'a Abdelqader
+- Ruwaid Alsayyed Obeid
 - Balqees Mohammad
 - Obada Tumah
-- Ruwaid Alsayyed Obeid
+- Esra'a Abdelqader
 
 ------------------------------
