@@ -49,12 +49,6 @@ cd rooms-for-geeks-frontEnd
 `npm i`
 ```
 
-Install all dependencies needed for the project.
-
-```
-React
-```
-
 * explain how to use the react *
 
 ```
