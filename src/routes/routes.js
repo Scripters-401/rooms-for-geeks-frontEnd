@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 // import Home from '../home/home';
 // import Rooms from '../rooms/rooms';
 // import InterviewReview from '../interviewReview/interviewReview';
+// import AboutUs from '../aboutUs/about-us';
 
 const Routes = () => {
     return (
@@ -14,7 +15,10 @@ const Routes = () => {
                 {/* <Rooms /> */}
             </Route>
             <Route path="/interviewReview" exact>
-                {/* <interviewReview /> */}
+                {/* <InterviewReview /> */}
+            </Route>
+            <Route path="/about-us" exact>
+                {/* <AboutUs /> */}
             </Route>
         </main>
     )

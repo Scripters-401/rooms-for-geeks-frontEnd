@@ -16,6 +16,8 @@ class Signup extends React.Component {
       password: '',
       email: '',
       role: '',
+      name: '',
+      major: ''
     };
   }
 
@@ -25,7 +27,7 @@ class Signup extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.context.signup(this.state.username, this.state.password, this.state.email, this.state.role);
+    this.context.signup(this.state.username, this.state.password, this.state.email, this.state.role, this.state.name, this.state.major);
   }
 
   render() {
@@ -37,11 +39,11 @@ class Signup extends React.Component {
             <h3>Sign Up</h3>
 
             <div className="form-group">
-              <label>UserName</label>
+              <label>Username</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="UserName"
+                placeholder="Username"
                 name="username"
                 onChange={this.handleChange}
               />
@@ -78,7 +80,26 @@ class Signup extends React.Component {
                 name="role"
                 onChange={this.handleChange} />
             </div>
-
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Name"
+                name="name"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Major</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Major"
+                name="major"
+                onChange={this.handleChange}
+              />
+            </div>
             <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
           </form>
           </div>
