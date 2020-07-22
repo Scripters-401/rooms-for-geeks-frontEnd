@@ -2,9 +2,9 @@ import React from 'react';
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 
-// require('dotenv').config();
+require('dotenv').config();
 
-const API = '';
+const API = 'https://rooms-for-geeks.herokuapp.com';
 
 export const LoginContext = React.createContext();
 
@@ -42,7 +42,7 @@ class LoginProvider extends React.Component {
         }
     }
 
-    signup = async(username, password, email, role) => {
+    signup = async(username, password, email, role, name, major) => {
 
         try {
             const results = await fetch( `${API}/signup`, {
@@ -50,7 +50,7 @@ class LoginProvider extends React.Component {
                 mode: 'cors',
                 cache: 'no-cache',
                 headers: { 'Content-Type': 'application/json' },
-                body:JSON.stringify({ username, password, email, role })
+                body:JSON.stringify({ username, password, email, role, name, major })
             });
 
             let res = await results.json();
