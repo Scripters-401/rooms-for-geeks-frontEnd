@@ -2,7 +2,7 @@ import React from 'react';
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 
-// require('dotenv').config();
+require('dotenv').config();
 
 const API = '';
 
