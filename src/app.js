@@ -2,7 +2,7 @@ import React from 'react';
 
 import Header from './header/header.js';
 import Footer from './footer/footer.js';
-import Auth from './auth/auth.js';
+// import Auth from './auth/auth.js';
 import Login from './auth/login/login.js';
 import Signup from './auth/signup/signup.js';
 import LoginContext from './auth/context.js';
@@ -16,11 +16,11 @@ function App() {
       <hr />
       <Login />
       <Signup />
-      <Auth capability="read">
+      {/* <Auth capability="read"> */}
         <Header />
           <Initial />
         <Footer />
-      </Auth>
+      {/* </Auth> */}
     </LoginContext>
     </>
   );
