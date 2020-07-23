@@ -4,7 +4,11 @@ import jwt from 'jsonwebtoken';
 
 require('dotenv').config();
 
+
 const API = 'https://rooms-for-geeks.herokuapp.com';
+// const API = 'http://localhost:4000';
+
+
 
 export const LoginContext = React.createContext();
 
@@ -20,45 +24,55 @@ class LoginProvider extends React.Component {
         }
     }
 
-    login = async(username, password) => {
-
+    login = async (username, password) => {
+console.log(username,password);
         try {
-            const results = await fetch( `${API}/signin`, {
+            const results = await fetch(`${API}/signin`, {
                 method: 'POST',
                 mode: 'cors',
-                cache: 'no-cache',
+                // credentials: 'include',
+                // mode: 'same-origin',
+                // cache: 'no-cache',
+                // mode: 'same-origin',
+                // redirect: 'follow',
+                // credentials: 'include', 
+                // withCredentials: true,
                 headers: new Headers({
-                    'Authorization': `Basic ${btoa(`${username}:${password}`)}`
-                })
+                    'Authorization': `Basic ${btoa(`${username}:${password}`)}`,
+                    // 'Content-Type': 'application/json',
+                    // 'Accept': 'application/json'
+                }),
+                // credentials: 'same-origin',
+                // body: JSON.stringify({}),
+                // credentials: 'include',
             });
 
             let res = await results.json();
-
+            // console.log(res,'rrrrrrrrrrrr');
             this.validateToken(res.token);
 
 
-        } catch(error) {
+        } catch (error) {
             console.error(`ERROR: SIGNIN`);
         }
     }
 
-    signup = async(username, password, email, role, name, major) => {
+    signup = async (username, password, email, role, name, major) => {
 
         try {
-            const results = await fetch( `${API}/signup`, {
+            const results = await fetch(`${API}/signup`, {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
                 headers: { 'Content-Type': 'application/json' },
-                body:JSON.stringify({ username, password, email, role, name, major })
+                body: JSON.stringify({ username, password, email, role, name, major })
             });
 
             let res = await results.json();
-
             this.validateToken(res.token);
 
 
-        } catch(error) {
+        } catch (error) {
             console.error(`ERROR: SIGNUP`);
         }
     }
@@ -68,23 +82,25 @@ class LoginProvider extends React.Component {
     }
 
     validateToken = token => {
-
+        // console.log(token);
         try {
-            let user = jwt.verify(token, process.env.REACT_APP_SECRET || 'supersecret');
+            let user = jwt.verify(token, process.env.REACT_APP_SECRET);
             this.setLoginState(true, token, user);
 
         } catch (ex) {
             this.logout();
         }
     }
-    
+
     setLoginState = (loggedIn, token, user) => {
         cookie.save('auth', token);
-        this.setState({token, loggedIn, user});
+        this.setState({ token, loggedIn, user });
     }
 
     componentDidMount() {
         const cookieToken = cookie.load('auth');
+        const hi = cookie.load('name');
+        console.log(hi,'pppppppppppppppppppppppppppppppp');
         const token = cookieToken || null;
         this.validateToken(token);
     }
