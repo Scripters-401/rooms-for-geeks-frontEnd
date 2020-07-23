@@ -1,0 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+.header {
+    display: flex;
+    background-color: #f7f0f130;
+    max-height: 103px;
+    flex-direction: row-reverse;
+}
+
+h1 {
+    margin: auto;
+} 
+h1.H1 {
+    margin: auto;
+    font-family: 'Caveat', cursive;
+}
+img.logo {
+    height: 150px;
+    margin-top: -15px;
+}
+
