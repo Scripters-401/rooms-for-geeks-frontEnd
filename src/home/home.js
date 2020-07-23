@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import img from '../assest/Clock.jpg';
 import timer1 from '../assest/a8rab2M.png';
 import timer2 from '../assest/a8rab2.png';
@@ -6,29 +6,50 @@ import man from '../assest/ManAtTheMiddle.png';
 import './home.scss';
 
 const Home = () => {
-    setInterval(setClock, 1000)
+    let [clock, setClock] = useState(1);
 
-    const hourHand = document.querySelector('[data-hour-hand]')
-    const minuteHand = document.querySelector('[data-minute-hand]')
-    const secondHand = document.querySelector('[data-sec-hand]')
 
-    function setClock() {
-        console.log('hourHand:::', hourHand);
-        const currentDate = new Date()
-        const secondsRatio = currentDate.getSeconds() / 60
-        const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60
-        const hoursRatio = (minutesRatio + currentDate.getHours()) / 12
-        setRotation(secondHand, secondsRatio)
-        setRotation(minuteHand, minutesRatio)
-        setRotation(hourHand, hoursRatio)
+    const secClock = () => {
+        if (clock !== 12) {
+            setClock(clock + 1);
+        } else {
+            setClock(1);
+        }
     }
 
-    function setRotation(element, rotationRatio) {
-        console.log('element:::', element);
-        element.style.setProperty('--rotation', rotationRatio * 360)
-    }
 
-    setClock()
+    // setInterval(secClock, 5000)
+
+    // const hourHand = document.getElementById('hour');
+    // const minuteHand = document.getElementById('minute')
+    // const secondHand = document.getElementsByClassName('secend')
+    // let docE = document.images;
+
+    // let img0 = docE.item(0);
+    // // let img1 = docE[1];     
+
+    // function setClock() {
+    //     // console.log('hourHand:::', hourHand);
+    //     console.log('minuteHand:::', minuteHand);
+    //     console.log('docE:::', docE);
+    //     console.log('img0::', img0);
+    //     // console.log('img1:::', img1);
+    //     const currentDate = new Date()
+    //     const secondsRatio = currentDate.getSeconds() / 60
+    //     const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60
+    //     const hoursRatio = (minutesRatio + currentDate.getHours()) / 12
+    //     setRotation(secondHand, secondsRatio)
+    //     setRotation(minuteHand, minutesRatio)
+    //     setRotation(hourHand, hoursRatio)
+    // }
+
+    // function setRotation(element, rotationRatio) {
+    //     console.log('element:::', element);
+
+    //     // element.style.setProperty('--rotation', rotationRatio * 360)
+    // }
+
+    // setClock()
     return (
         <>
 
@@ -52,18 +73,18 @@ const Home = () => {
                 <div className="text">
                     <h1 className='title'>Rooms For Geeks</h1>
                 </div>
-                <div className="hand sec" data-sec-hand>
-                    <img className='secend' src={timer2} alt='timer1' />
-                </div>
+                {/* <div className="hand sec" data-sec-hand> */}
+                    <img className={`secend number2`} src={timer2} alt='timer1' />
+                {/* </div> */}
             </div>
 
 
-            <div className="hand minute" data-minute-hand>
+            <div id="minute">
                 <img className='min' src={timer1} alt='timer2' />
             </div>
-            <div className="hand hours">
-                <img className='hour' src={timer2} alt='timer2' />
-            </div>
+            {/* <div className="hand hours"> */}
+                <img id='hour' src={timer2} alt='timer2' />
+            {/* </div> */}
 
             <img className='man' src={man} alt='man' />
 

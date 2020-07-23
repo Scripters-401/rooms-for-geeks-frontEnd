@@ -36,7 +36,8 @@ img.secend {
     padding: 0;
     right: 179px;
     width: 79%;
-    // animation: rotation 60s infinite linear;
+    // transform: rotate(var(--rotation));
+    animation: rotation 60s infinite linear;
 }
 
 
@@ -48,7 +49,7 @@ img.min {
     padding: 0;
     right: 179px;
     width: 79%;
-    // animation: rotation 3600s infinite linear;
+    animation: rotation 3600s infinite linear;
 }
 
 img.hour {
@@ -59,7 +60,7 @@ img.hour {
     padding: 0;
     right: 179px;
     width: 79%;
-    // animation: rotation 216000s infinite linear;
+    animation: rotation 216000s infinite linear;
 }
    .man {
     position: absolute;
@@ -71,16 +72,16 @@ img.hour {
     width: 81%;
 }
 
-.number {
-    --rotation: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transform: rotate(var(--rotation));
-    font-size: 1.5rem;
-    top: 0px;
-}
+// .number {
+//     // --rotation: 0;
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     text-align: center;
+//     // transform: rotate(var(--rotation));
+//     font-size: 1.5rem;
+//     top: 0px;
+// }
 .hand {
     --rotation: 0;
     // position: absolute;
@@ -93,18 +94,18 @@ img.hour {
     // z-index: 10;
     transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
 }
-.number1 { --rotation: 30deg; }
-.number2 { --rotation: 60deg; }
-.number3 { --rotation: 90deg; }
-.number4 { --rotation: 120deg; }
-.number5 { --rotation: 150deg; }
-.number6 { --rotation: 180deg; }
-.number7 { --rotation: 210deg; }
-.number8 { --rotation: 240deg; }
-.number9 { --rotation: 270deg; }
-.number10 { --rotation: 300deg; }
-.number11 { --rotation: 330deg; }
-
+.number1 { --rotation: 119deg; }
+.number2 { --rotation: 144deg; }
+.number3 { --rotation: 172deg; }
+.number4 { --rotation: 200deg; }
+.number5 { --rotation: 225deg; }
+.number6 { --rotation: 255deg; }
+.number7 { --rotation: 285deg; }
+.number8 { --rotation: 315deg; }
+.number9 { --rotation: 345deg; }
+.number10 { --rotation: 379deg; }
+.number11 { --rotation: 410deg; }
+.number12 { --rotation: 443deg; }
 
 
 @keyframes moving {
@@ -116,20 +117,11 @@ img.hour {
     to {top: 250px;}
 }
 
-// @keyframes rotation {
-//     from {
-//         -webkit-transform: rotate(0deg);
-// }
+@keyframes rotation {
+    from {
+        -webkit-transform: rotate(-345deg);
+}
 // to {
-//         -webkit-transform: rotate(360deg);
+//     -webkit-transform: rotate();
 // }
-// }
-
-// @-webkit-keyframes rotation {
-//     from {
-//             -webkit-transform: rotate(0deg);
-//     }
-//     to {
-//             -webkit-transform: rotate(360deg);
-//     }
-// }
+}
