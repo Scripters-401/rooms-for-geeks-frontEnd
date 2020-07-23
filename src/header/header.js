@@ -1,11 +1,19 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import Auth from '../auth/auth';
+import '../reset.css';
+
 import './header.scss';
+import logo from '../assest/roomforGeeks22.png';
 
 const Header = () => {
   return (
     <header>
-      <h1>Rooms For Geeks</h1>
+      <div className="header">
+      <h1 className="H1">Rooms For Geeks</h1>
+      <img className="logo" src={logo} alt='LOGO' />
+      </div>
+      <Auth capability="read">
       <nav>
         <ul>
           <li>
@@ -22,6 +30,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+      </Auth>
     </header>
   );
 }
