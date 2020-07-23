@@ -17,15 +17,15 @@ function App() {
     <>
         {/* <Header /> */}
         <Homemain/>
-    {/* <LoginContext> */}
+    <LoginContext>
       {/* <hr /> */}
-      {/* <Login /> */}
-      {/* <Signup /> */}
+      <Login />
+      <Signup />
       {/* <Auth capability="read"> */}
           {/* <Initial /> */}
         <Footer />
       {/* </Auth> */}
-    {/* </LoginContext> */}
+    </LoginContext>
     </>
   );
 }

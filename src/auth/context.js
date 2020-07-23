@@ -5,8 +5,8 @@ import jwt from 'jsonwebtoken';
 require('dotenv').config();
 
 
-// const API = 'https://rooms-for-geeks.herokuapp.com';
-const API = 'http://localhost:4000';
+const API = 'https://rooms-for-geeks.herokuapp.com';
+// const API = 'http://localhost:4000';
 
 
 
@@ -25,7 +25,7 @@ class LoginProvider extends React.Component {
     }
 
     login = async (username, password) => {
-console.log(document.cookies);
+console.log(username,password);
         try {
             const results = await fetch(`${API}/signin`, {
                 method: 'POST',
@@ -34,7 +34,7 @@ console.log(document.cookies);
                 // mode: 'same-origin',
                 // cache: 'no-cache',
                 // mode: 'same-origin',
-                redirect: 'follow',
+                // redirect: 'follow',
                 // credentials: 'include', 
                 // withCredentials: true,
                 headers: new Headers({
@@ -48,7 +48,7 @@ console.log(document.cookies);
             });
 
             let res = await results.json();
-
+            // console.log(res,'rrrrrrrrrrrr');
             this.validateToken(res.token);
 
 
@@ -82,6 +82,7 @@ console.log(document.cookies);
     }
 
     validateToken = token => {
+        // console.log(token);
         try {
             let user = jwt.verify(token, process.env.REACT_APP_SECRET);
             this.setLoginState(true, token, user);
