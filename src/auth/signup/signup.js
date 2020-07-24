@@ -1,41 +1,32 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
+import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import * as actions from '../../store/signINUPReducer.js'
 
-import { LoginContext } from '../context.js';
 import Show from '../show.js';
 import './signup.scss';
 
-class Signup extends React.Component {
+const Signup = props => {
 
-  static contextType = LoginContext;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      email: '',
-      role: '',
-      name: '',
-      major: ''
-    };
-  }
-
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  handleSubmit = e => {
+  const handleSubmitFun = e => {
     e.preventDefault();
-    this.context.signup(this.state.username, this.state.password, this.state.email, this.state.role, this.state.name, this.state.major);
+
+    props.signup(
+      props.sign.username,
+      props.sign.password,
+      props.sign.email,
+      props.sign.role,
+      props.sign.name,
+      props.sign.major);
   }
 
-  render() {
-    return (
-      <>
-        <Show condition={!this.context.loggedIn}>
-          <div className="signupF">
-          <form onSubmit={this.handleSubmit}>
+  return (
+    <>
+      <Show condition={!props.sign.loggedIn}>
+        <div className="signupF">
+          <form onSubmit={(e) => handleSubmitFun(e)}>
             <h3>Sign Up</h3>
 
             <div className="form-group">
@@ -45,7 +36,7 @@ class Signup extends React.Component {
                 className="form-control"
                 placeholder="Username"
                 name="username"
-                onChange={this.handleChange}
+                onChange={(e) => props.handleChange(e)}
               />
             </div>
 
@@ -56,7 +47,7 @@ class Signup extends React.Component {
                 className="form-control"
                 placeholder="Email"
                 name="email"
-                onChange={this.handleChange}
+                onChange={(e) => props.handleChange(e)}
               />
             </div>
 
@@ -67,7 +58,7 @@ class Signup extends React.Component {
                 className="form-control"
                 placeholder="Password"
                 name="password"
-                onChange={this.handleChange}
+                onChange={(e) => props.handleChange(e)}
               />
             </div>
 
@@ -78,7 +69,8 @@ class Signup extends React.Component {
                 className="form-control"
                 placeholder="Role"
                 name="role"
-                onChange={this.handleChange} />
+                onChange={(e) => props.handleChange(e)}
+              />
             </div>
             <div className="form-group">
               <label>Name</label>
@@ -87,7 +79,7 @@ class Signup extends React.Component {
                 className="form-control"
                 placeholder="Name"
                 name="name"
-                onChange={this.handleChange}
+                onChange={(e) => props.handleChange(e)}
               />
             </div>
             <div className="form-group">
@@ -97,17 +89,26 @@ class Signup extends React.Component {
                 className="form-control"
                 placeholder="Major"
                 name="major"
-                onChange={this.handleChange}
+                onChange={(e) => props.handleChange(e)}
               />
             </div>
             <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
           </form>
-          </div>
-        </Show>
-      </>
-    )
-  }
+        </div>
+      </Show>
+    </>
+  )
 
 }
 
-export default Signup;
+const mapStateToProps = state => ({
+  sign: state.sign
+});
+
+const mapDispatchToProps = (dispatch, getState) => ({
+  handleChange: (e) => dispatch(actions.handleChange(e)),
+  signup: (username, password, email, role, name, major) =>
+    dispatch(actions.signup(username, password, email, role, name, major)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

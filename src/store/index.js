@@ -2,12 +2,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducer from './reducers';
-
-import thunk from './middleware/thunk';
+import sign from './signINUPReducer';
+import thunk from 'redux-thunk';
 
 
 let reducers = combineReducers({
-    data: reducer
+    data: reducer,
+    sign,
 });
 
 const store = () => {
