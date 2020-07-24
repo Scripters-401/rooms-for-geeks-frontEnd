@@ -10,6 +10,7 @@ import Signup from './auth/signup/signup.js';
 import Initial from './initial.js';
 import Homemain from './home/home';
 import Auth from './auth/auth.js';
+import Oauth from './oauth.js';
 
 
 const Routes = () => {
@@ -21,10 +22,10 @@ const Routes = () => {
             <Route path="/rooms" exact>
                 <Auth capability="read">
                     <Initial />
-                </Auth> 
+                </Auth>
                 {/* <Rooms /> */}
             </Route>
-            <Route path="/interviewReview" exact> 
+            <Route path="/interviewReview" exact>
                 {/* <InterviewReview /> */}
             </Route>
             <Route path="/about-us" exact>
@@ -38,6 +39,12 @@ const Routes = () => {
                 </Auth>
                 <Login />
                 <Signup />
+            </Route>
+            <Route path="/mm" exact>
+                <Oauth />
+                <Auth capability="read">
+                    <Redirect to="/rooms" />
+                </Auth>
             </Route>
 
         </>
