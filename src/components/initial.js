@@ -1,33 +1,33 @@
 import React from 'react';
 
-import { connect, dispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
 import * as actions from '../store/actions.js'
 
 
 const Initial = props => {
 
-    const fetchData = (e) => {
-        props.get();
-    }
 
     return (
         <>
-            <button onClick={fetchData}>Get data</button>
-            {props.data.results.map((record, idx) => {
-                return (
-                    <div key={idx}>
-                        {record.username}
-                    </div>
-                )
-            })}
+        {/* {console.log(props)} */}
+            <div>
+                hiiiiiiiiiii
+            </div>
+            {/* <button onClick={fetchData}>Get data</button> */}
+            <div>
+            {props.sign.user.role} <br/>
+            {props.sign.user.id}
+
+            </div>
         </>
     )
 }
 
 
 const mapStateToProps = state => ({
-    data: state.data
+    data: state.data,
+    sign: state.sign
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({

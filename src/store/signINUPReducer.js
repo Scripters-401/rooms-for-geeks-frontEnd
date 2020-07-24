@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 
 require('dotenv').config();
 
-const API = 'https://rooms-for-geeks.herokuapp.com';
-// const API = 'http://localhost:4000';
+// const API = 'https://rooms-for-geeks.herokuapp.com';
+const API = 'http://localhost:4000';
 
 
 let initialState = {
@@ -101,6 +101,7 @@ export const login = (username, password) => async dispatch => {
     }
     console.log(headers);
     let res = await results.json();
+    console.log(res);
     dispatch(validateToken(res.token))
   } catch (error) {
     console.error(`ERROR: SIGNIN`);
