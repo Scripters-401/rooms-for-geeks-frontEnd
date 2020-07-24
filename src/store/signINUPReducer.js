@@ -12,7 +12,8 @@ let initialState = {
   login: '',
   logout: '',
   signup: '',
-  user: {}
+  user: {},
+  authURL: '',
 };
 
 // reducer : switch case
@@ -32,16 +33,27 @@ export default (state = initialState, action) => {
       state[payload.name] = payload.value
       return { ...state };
 
+    case 'oath':
+      state.authURL = payload
+      return { ...state };
+
     default:
       return state;
   }
 }
 
-/*************************************************** actions ****************************************************** */  
+/*************************************************** actions ****************************************************** */
 export const handleChange = e => {
   return {
     type: 'handleChange',
     payload: { name: [e.target.name], value: e.target.value },
+  }
+}
+
+export const oathfun = e => {
+  return {
+    type: 'oath',
+    payload: e,
   }
 }
 
@@ -62,7 +74,7 @@ const logout = (loggedIn = false, token = null, user = {}) => {
 
 
 
-/*************************************************** functions ****************************************************** */  
+/*************************************************** functions ****************************************************** */
 
 export const signup = (username, password, email, role, name, major) => async dispatch => {
 
@@ -99,9 +111,8 @@ export const login = (username, password) => async dispatch => {
     for (let [key, value] of results.headers) {
       headers[key] = value;
     }
-    console.log(headers);
+    // console.log(headers);
     let res = await results.json();
-    console.log(res);
     dispatch(validateToken(res.token))
   } catch (error) {
     console.error(`ERROR: SIGNIN`);
@@ -126,5 +137,22 @@ export const validateToken = token => dispatch => {
     dispatch(setLoginState(true, token, user))
   } catch (ex) {
     logout();
+  }
+}
+
+
+
+export const getOauth = () => async dispatch => {
+  try {
+    let results = await fetch(`${API}/nn`, {
+      method: 'GET',
+      mode: 'cors',
+    });
+
+    let res = await results.json();
+    console.log(res);
+    dispatch(validateToken(res.token))  
+  } catch (error) {
+    console.error(`ERROR: SIGNOUT`);
   }
 }

@@ -12,25 +12,44 @@ import './login.scss';
 
 const Login = props => {
 
+    // let authURL =''
 
+    const googleOuthFun = e => {
+        let URL = 'https://accounts.google.com/o/oauth2/v2/auth';
 
-    // googleOuthFun = e => {
-    //     let URL = 'https://accounts.google.com/o/oauth2/v2/auth';
+        let options = {
+            scope: 'email profile',
+            response_type: 'code',
+            redirect_uri: 'https://rooms-for-geeks.herokuapp.com/oauth',
+            client_id: '676776904076-qucvccg4ccfa0bqbbn06ooer1cegib5a.apps.googleusercontent.com',
+        };
 
-    //     let options = {
-    //         scope: 'email profile',
-    //         response_type: 'code',
-    //         redirect_uri: 'https://rooms-for-geeks.herokuapp.com/oauth',
-    //         client_id: '676776904076-qucvccg4ccfa0bqbbn06ooer1cegib5a.apps.googleusercontent.com',
-    //     };
+        let QueryString = Object.keys(options).map((key) => {
+            return `${key}=` + encodeURIComponent(options[key]);
+        }).join('&');
 
-    //     let QueryString = Object.keys(options).map((key) => {
-    //         return `${key}=` + encodeURIComponent(options[key]);
-    //     }).join('&');
+        let authURL = `${URL}?${QueryString}`;
+        props.oathfun(authURL);
+    }
 
-    //     let authURL = `${URL}?${QueryString}`;
-    //     this.setState({ googleOuth: authURL })
-    // }
+    const facebookOuthFun = e => {
+        let URL2 = 'https://www.facebook.com/v7.0/dialog/oauth';
+
+        let options2 = {
+            client_id: '715443139210826',
+            redirect_uri: 'https://rooms-for-geeks.herokuapp.com/oauth2',
+            state: 'scripters',
+            scope: 'public_profile,email',
+        };
+
+        let QueryString2 = Object.keys(options2).map((key) => {
+            return `${key}=` + encodeURIComponent(options2[key]);
+        }).join('&');
+
+        let authURL2 = `${URL2}?${QueryString2}`;
+        props.oathfun(authURL2);
+    }
+
     const handleSubmitFun = e => {
         e.preventDefault();
         props.login(props.sign.username, props.sign.password)
@@ -44,7 +63,8 @@ const Login = props => {
     }, [])
     return (
         <>
-            {/* <a href={this.state.googleOuth} onClick={this.googleOuthFun}> goooooogle</a> */}
+            <a href={props.sign.authURL} onClick={googleOuthFun}> goooooogle</a>
+            <a href={props.sign.authURL} onClick={facebookOuthFun}> facebook</a>
             {/* <Show condition={props.sign.loggedIn}>
                 <button className="signout" onClick={props.logout}>Logout</button>
             </Show> */}
@@ -90,7 +110,8 @@ const mapDispatchToProps = (dispatch, getState) => ({
     handleChange: (e) => dispatch(actions.handleChange(e)),
     login: (username, password) => dispatch(actions.login(username, password)),
     // logout: () => dispatch(actions.logoutFun()),
-    validateToken: token => dispatch(actions.validateToken(token))
+    validateToken: token => dispatch(actions.validateToken(token)),
+    oathfun: (e) => dispatch(actions.oathfun(e)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
