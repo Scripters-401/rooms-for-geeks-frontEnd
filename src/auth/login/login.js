@@ -1,70 +1,95 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../store/signINUPReducer.js'
 
-import { LoginContext } from '../context.js';
+import cookie from 'react-cookies';
 import Show from '../show.js';
 import { Form, Button, Navbar, InputGroup, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './login.scss';
 
-class Login extends React.Component {
+const Login = props => {
 
-    static contextType = LoginContext;
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            password: ''
-        };
-    }
 
-    handleChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
-    }
+    // googleOuthFun = e => {
+    //     let URL = 'https://accounts.google.com/o/oauth2/v2/auth';
 
-    handleSubmit = e => {
+    //     let options = {
+    //         scope: 'email profile',
+    //         response_type: 'code',
+    //         redirect_uri: 'https://rooms-for-geeks.herokuapp.com/oauth',
+    //         client_id: '676776904076-qucvccg4ccfa0bqbbn06ooer1cegib5a.apps.googleusercontent.com',
+    //     };
+
+    //     let QueryString = Object.keys(options).map((key) => {
+    //         return `${key}=` + encodeURIComponent(options[key]);
+    //     }).join('&');
+
+    //     let authURL = `${URL}?${QueryString}`;
+    //     this.setState({ googleOuth: authURL })
+    // }
+    const handleSubmitFun = e => {
         e.preventDefault();
-        this.context.login(this.state.username, this.state.password);
+        props.login(props.sign.username, props.sign.password)
+
     }
 
-    render() {
-        return (
-            <>
-                <Show condition={this.context.loggedIn}>
-                    <button className="signout" onClick={this.context.logout}>Logout</button>
-                </Show>
-                <Show condition={!this.context.loggedIn}>
+    useEffect(() => {
+        const cookieToken = cookie.load('auth');
+        const token = cookieToken || null;
+        props.validateToken(token);
+    }, [])
+    return (
+        <>
+            {/* <a href={this.state.googleOuth} onClick={this.googleOuthFun}> goooooogle</a> */}
+            <Show condition={props.sign.loggedIn}>
+                <button className="signout" onClick={props.logout}>Logout</button>
+            </Show>
+            <Show condition={!props.sign.loggedIn}>
 
-                    <Navbar className="swish-justify-content-between justify-content-between">
-                        <Form inline onSubmit={this.handleSubmit}>
-                            <InputGroup>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <FormControl
-                                    placeholder="Username"
-                                    aria-label="Username"
-                                    aria-describedby="basic-addon1"
-                                    name="username"
-                                    onChange={this.handleChange}
-                                    className="signinI"
-                                />
-                                <FormControl
-                                    type="password"
-                                    placeholder="Password"
-                                    className=" mr-sm-2"
-                                    name="password"
-                                    onChange={this.handleChange}
-                                />
-                                <Button type="submit">Login</Button>
-                            </InputGroup>
-                        </Form>
-                    </Navbar>
-                </Show>
-            </>
-        )
-    }
+                <Navbar className="swish-justify-content-between justify-content-between">
+                    <Form inline onSubmit={(e) => handleSubmitFun(e)}>
+                        <InputGroup>
+                            <InputGroup.Prepend>
+                                <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                            </InputGroup.Prepend>
+                            <FormControl
+                                placeholder="Username"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                name="username"
+                                onChange={(e) => props.handleChange(e)}
+
+                                className="signinI"
+                            />
+                            <FormControl
+                                type="password"
+                                placeholder="Password"
+                                className=" mr-sm-2"
+                                name="password"
+                                onChange={(e) => props.handleChange(e)}
+                            />
+                            <Button type="submit">Login</Button>
+                        </InputGroup>
+                    </Form>
+                </Navbar>
+            </Show>
+        </>
+    )
 
 }
 
-export default Login;
+const mapStateToProps = state => ({
+    sign: state.sign
+});
+
+const mapDispatchToProps = (dispatch, getState) => ({
+    handleChange: (e) => dispatch(actions.handleChange(e)),
+    login: (username, password) => dispatch(actions.login(username, password)),
+    logout: () => dispatch(actions.logoutFun()),
+    validateToken: token => dispatch(actions.validateToken(token))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
