@@ -2,20 +2,25 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Auth from '../auth/auth';
 import { connect } from 'react-redux';
-import * as actions from '../store/signINUPReducer.js'
-import Show from '../auth/show';
+import * as actions from '../../store/signINUPReducer.js'
+// import Show from '../auth/show';
 
-import '../reset.css';
+import '../../reset.css';
 
 import './header.scss';
-import logo from '../assest/roomforGeeks22.png';
+import logo from '../../assest/roomforGeeks22.png';
 
 const Header = props => {
   return (
     <header>
-      <Show condition={props.sign.loggedIn}>
-        <button className="signout" onClick={props.logout}>Logout</button>
-      </Show>
+      <Auth capability="read">
+        {/* <Show condition={props.sign.loggedIn}> */}
+          <NavLink to="/" >
+            <button className="signout" onClick={props.logout}>Logout</button>
+          </NavLink>
+        {/* </Show> */}
+      </Auth>
+
       <div className="header">
         <h1 className="H1">Rooms For Geeks</h1>
         <img className="logo" src={logo} alt='LOGO' />

@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { connect } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import * as actions from '../../store/signINUPReducer.js'
+import * as actions from '../../../store/signINUPReducer.js'
 
 import Show from '../show.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './signup.scss';
 
 const Signup = props => {

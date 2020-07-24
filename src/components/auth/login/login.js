@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/signINUPReducer.js'
+
+import * as actions from '../../../store/signINUPReducer.js'
 
 import cookie from 'react-cookies';
 import Show from '../show.js';
@@ -88,7 +89,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, getState) => ({
     handleChange: (e) => dispatch(actions.handleChange(e)),
     login: (username, password) => dispatch(actions.login(username, password)),
-    logout: () => dispatch(actions.logoutFun()),
+    // logout: () => dispatch(actions.logoutFun()),
     validateToken: token => dispatch(actions.validateToken(token))
 });
 
