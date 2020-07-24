@@ -6,7 +6,6 @@ import store from './store';
 
 import App from './app.js';
 
-// import store from './store';
 
 function Main() {
     return (

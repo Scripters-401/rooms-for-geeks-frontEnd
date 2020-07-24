@@ -6,7 +6,6 @@ import Homemain from './home/home';
 // import Auth from './auth/auth.js';
 import Login from './auth/login/login.js';
 import Signup from './auth/signup/signup.js';
-import LoginContext from './auth/context.js';
 import Initial from './components/initial.js';
 
 import './app.scss';
@@ -17,7 +16,6 @@ function App() {
     <>
         {/* <Header /> */}
         <Homemain/>
-    <LoginContext>
       {/* <hr /> */}
       <Login />
       <Signup />
@@ -25,7 +23,6 @@ function App() {
           {/* <Initial /> */}
         <Footer />
       {/* </Auth> */}
-    </LoginContext>
     </>
   );
 }

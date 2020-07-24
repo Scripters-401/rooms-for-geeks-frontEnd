@@ -1,30 +1,35 @@
 import React from 'react';
-import { LoginContext } from './context.js';
+import { connect } from 'react-redux';
 import Show from './show.js';
 
-class Auth extends React.Component {
 
-    static contextType = LoginContext;
-
-    render() {
-        let okToRender = false;
-
-        try {
-            okToRender = this.context.loggedIn && (
-                this.props.capability ? 
-                    this.context.user.capabilities.includes(this.props.capability)
-                    : true
-            )
-        } catch (e) {
-            console.warn('Not Authorized!');
-        }
-
-        return (
-            <Show condition={okToRender}>
-                {this.props.children}
-            </Show>
+const Auth = props => {
+    let okToRender = false;
+    let roles = {
+        user: ['read', 'master-QA'],
+        developer: ['read', 'master-QA', 'read-API'],
+        admin: ['read', 'master-QA', 'master-room'],
+        sudo: ['read', 'master-QA', 'read-API', 'master-room', 'API-sudo'],
+    };
+    try {
+        okToRender = props.sign.loggedIn && (
+            props.capability ?
+                roles[props.sign.user.role].includes(props.capability)
+                : true
         )
+    } catch (e) {
+        console.warn('Not Authorized!');
     }
+
+    return (
+        <Show condition={okToRender}>
+            {props.children}
+        </Show>
+    )
 }
 
-export default Auth;
+const mapStateToProps = state => ({
+    sign: state.sign
+});
+
+export default connect(mapStateToProps)(Auth);
