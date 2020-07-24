@@ -40,6 +40,9 @@ const Header = props => {
           <li>
             <NavLink to="/about-us" /* activeClassName="about-us" */>About Us</NavLink>
           </li>
+          <li>
+            <NavLink to="/user-page" /* activeClassName="about-us" */>User Page</NavLink>
+          </li>
         </ul>
       </nav>
       {/* </Auth> */}

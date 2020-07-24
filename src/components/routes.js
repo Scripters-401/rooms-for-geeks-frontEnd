@@ -10,7 +10,7 @@ import Signup from './auth/signup/signup.js';
 import Initial from './initial.js';
 import Homemain from './home/home';
 import Auth from './auth/auth.js';
-
+import User from './userPage/userPage';
 
 const Routes = () => {
     return (
@@ -26,6 +26,9 @@ const Routes = () => {
             </Route>
             <Route path="/interviewReview" exact> 
                 {/* <InterviewReview /> */}
+            </Route>
+            <Route path="/user-page" exact>
+                <User />
             </Route>
             <Route path="/about-us" exact>
                 {/* <AboutUs /> */}
