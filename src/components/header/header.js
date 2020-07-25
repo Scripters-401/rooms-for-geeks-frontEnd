@@ -32,7 +32,7 @@ const Header = props => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <NavLink to="/rooms" /* activeClassName="rooms" */>Rooms</NavLink>
+            <NavLink to="/rooms" className='hi'/* activeClassName="rooms" */>Rooms</NavLink>
           </li>
           <li>
             <NavLink to="/interviewReview" /* activeClassName="interviewReview" */>Interview Review</NavLink>
