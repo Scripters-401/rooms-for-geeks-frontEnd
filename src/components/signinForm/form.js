@@ -124,7 +124,7 @@ function SigninForm(props) {
                         <h1 className="panel__heading">Log in</h1>
                         <form id="login" onSubmit={(e) => handleSubmitFun(e)}>
                             <input type="text" placeholder="Username" name='username' className="input input--email" onChange={(e) => props.handleChange(e)} required />
-                            <input type="text" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
+                            <input type="password" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
                             <button type='submit' className="btn btn--primary">Log in</button>
                             <a href="/">Forgot password?</a>
                             <div>
