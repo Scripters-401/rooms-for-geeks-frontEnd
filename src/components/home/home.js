@@ -18,7 +18,7 @@ const Home = () => {
             <NavLink to="/sign">signnnnnn</NavLink>
             {/* <br/>
               <NavLink to="/about-us">about-us</NavLink> */}
-            {console.log('minClock', theMin)}
+            {/* {console.log('minClock', theMin)} */}
             <div className='homeClock'>
 
                 <div className="box">
@@ -33,10 +33,15 @@ const Home = () => {
 
 
                 </div>
-
-                <img className={`secend number${theSec}`} src={timer2} alt='timer1' />
-                <img className={`min number${theMin}`} src={timer1} alt='timer2' />
-                <img className={`hour numberH${theHour}`} src={timer2} alt='timer2' />
+                <div className='secendDiv'>
+                    <img className={`secend number${theSec}`} src={timer2} alt='timer1' />
+                </div>
+                <div className='minDiV'>
+                    <img className={`min number${theMin}`} src={timer1} alt='timer2' />
+                </div>
+                <div className='hourDiv'>
+                    <img className={`hour numberH${theHour}`} src={timer2} alt='timer2' />
+                </div>
                 <img className='man' src={man} alt='man' />
             </div>
 

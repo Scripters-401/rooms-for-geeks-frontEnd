@@ -12,7 +12,6 @@ import './login.scss';
 
 const Login = props => {
 
-    // let authURL =''
 
     const googleOuthFun = e => {
         let URL = 'https://accounts.google.com/o/oauth2/v2/auth';
@@ -109,7 +108,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, getState) => ({
     handleChange: (e) => dispatch(actions.handleChange(e)),
     login: (username, password) => dispatch(actions.login(username, password)),
-    // logout: () => dispatch(actions.logoutFun()),
     validateToken: token => dispatch(actions.validateToken(token)),
     oathfun: (e) => dispatch(actions.oathfun(e)),
 });
