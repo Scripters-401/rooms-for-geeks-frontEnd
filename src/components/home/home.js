@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 import img from '../../assest/Clock1.jpg';
 import timer1 from '../../assest/a8rab2.png';

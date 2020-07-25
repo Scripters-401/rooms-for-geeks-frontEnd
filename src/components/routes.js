@@ -5,12 +5,12 @@ import { Route, Redirect } from 'react-router-dom';
 // import InterviewReview from '../interviewReview/interviewReview';
 // import AboutUs from '../aboutUs/about-us';
 
-import Login from './auth/login/login.js';
-import Signup from './auth/signup/signup.js';
 import Room from './room.js';
 import Homemain from './home/home';
 import Auth from './auth/auth.js';
 import Oauth from './oauth.js';
+import LoginForm from './signinForm/form'
+import OverView from './overView/overView'
 
 
 const Routes = () => {
@@ -18,6 +18,11 @@ const Routes = () => {
         <>
             <Route path="/" exact>
                 <Homemain />
+                <OverView />
+                <Auth capability="read">
+                    <Redirect to="/rooms" />
+                </Auth>
+                <LoginForm />
             </Route>
             <Route path="/rooms" exact>
                 <Auth capability="read">
@@ -37,8 +42,7 @@ const Routes = () => {
                 <Auth capability="read">
                     <Redirect to="/rooms" />
                 </Auth>
-                <Login />
-                <Signup />
+                
             </Route>
             <Route path="/mm" exact>
                 <Oauth />
