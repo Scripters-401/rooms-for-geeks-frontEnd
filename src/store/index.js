@@ -3,12 +3,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducer from './reducers';
 import sign from './signINUPReducer';
+import room from './roomReducer';
 import thunk from 'redux-thunk';
 
 
 let reducers = combineReducers({
     data: reducer,
     sign,
+    room,
 });
 
 const store = () => {

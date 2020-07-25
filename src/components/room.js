@@ -1,24 +1,30 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import * as io from 'socket.io-client';
 
-// import * as actions from '../store/actions.js'
+import * as actions from '../store/roomReducer';
 
 import './initial.scss'
 // import { handleChange } from '../store/signINUPReducer.js';
 const ENDPOINT = "http://localhost:4000/";
+// const ENDPOINT =  process.env.REACT_APP_API;
+
 
 
 const Initial = props => {
-
+    useEffect(() => {
+        props.getRoom(props.sign.token, '5ef1f1407964642caa3a0188')
+    }, [])
     // var ourCookeis = document.cookie.split(';');
     // for (var i = 0; i < ourCookeis.length; i++) {
     //     if (ourCookeis[i].indexOf('roomNameChat') === 0) {
     //         var roomName = ourCookeis[i].split('=')[1];
     //     }
     // }
-    let roomName = 'tt'
+    // 5ef1f1407964642caa3a0188
+    let roomName = props.room.roomData.RData.roomName
     let userName = 'geeku'
     let message = {}
     let typingstate = '';
@@ -26,8 +32,8 @@ const Initial = props => {
     let counter = 0;
 
 
-    let socket = io.connect(`${ENDPOINT}tt`);
-    console.log(socket);
+    let socket = io.connect(`${ENDPOINT}${roomName}`);
+    // console.log(socket);
 
     // var message = document.getElementById('message');
     // var userName = document.getElementById('userName');
@@ -51,7 +57,6 @@ const Initial = props => {
     const handleChange = e => {
         message = { [e.target.name]: e.target.value }
         socket.emit('xx', 'v');
-
     }
 
 
@@ -113,12 +118,13 @@ const Initial = props => {
                 <div>
                     hiiiiiiiiiii
                 </div>
-                {/* <button onClick={fetchData}>Get data</button> */}
-                {/* {console.log(props)} */}
                 <div>
                     {props.sign.user.role} <br />
                     {props.sign.user.id}
 
+                </div>
+                <div>
+                    {props.room.roomData.RData.roomName}
                 </div>
             </div>
 
@@ -134,7 +140,14 @@ const Initial = props => {
                     <div id="typing">{typingstate}</div>
                 </div>
                 <p id="userName">{userName}</p>
-                <input id="message" type="text" placeholder="Message" onKeyPress={typing} onChange={handleChange} />
+                <input
+                    id="message"
+                    name='message'
+                    type="text"
+                    placeholder="Message"
+                    onKeyPress={typing}
+                    onChange={handleChange}
+                />
                 <button id="send" onClick={onlineFun}>Send</button>
             </div>
 
@@ -145,11 +158,12 @@ const Initial = props => {
 
 const mapStateToProps = state => ({
     // data: state.data,
-    sign: state.sign
+    sign: state.sign,
+    room: state.room,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
-    // get: () => dispatch(actions.getRemoteData()),
+    getRoom: (token, id) => dispatch(actions.getRoom(token, id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Initial);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Show from './show.js';
+import cookie from 'react-cookies';
 
 
 const Auth = props => {
@@ -19,6 +20,8 @@ const Auth = props => {
         )
     } catch (e) {
         console.warn('Not Authorized!');
+        cookie.remove('auth');
+        props.sign.loggedIn = false;
     }
 
     return (

@@ -7,7 +7,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import Login from './auth/login/login.js';
 import Signup from './auth/signup/signup.js';
-import Initial from './initial.js';
+import Room from './room.js';
 import Homemain from './home/home';
 import Auth from './auth/auth.js';
 import Oauth from './oauth.js';
@@ -21,7 +21,7 @@ const Routes = () => {
             </Route>
             <Route path="/rooms" exact>
                 <Auth capability="read">
-                    <Initial />
+                    <Room />
                 </Auth>
                 {/* <Rooms /> */}
             </Route>
