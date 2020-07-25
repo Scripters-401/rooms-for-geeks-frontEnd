@@ -1,26 +1,64 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
 
 .header {
     display: flex;
     background-color: #f7f0f130;
-    max-height: 103px;
+    max-height: 110px;
     flex-direction: row-reverse;
+    background-image: url("../../assest/Header.jpg");
+    position:sticky;
+    z-index: 999999;
+    top: 0;
+    box-shadow: 0px 5px 6px rgba(59, 56, 56, 0.699);
 }
+
 
 h1 {
     margin: auto;
 } 
+
 h1.H1 {
-    margin: auto;
+    margin: auto 0;
     font-family: 'Caveat', cursive;
+    color: #4a9998;
+    font-size: 198%;
+    display: flex;
+    justify-content: left;
+    flex: 1;
 }
 img.logo {
     height: 150px;
     margin-top: -15px;
 }
 
-.hi{
-    // background-color: green;
-    color: #4A9998;
+ul.ulHeader {
+    display: flex;
+    flex: 1;
 }
+
+.navHeader {
+    color: #4a9998;
+    font-size: 146%;
+    padding: 13px;
+    font-family: 'Caveat', cursive;
+    margin: auto;
+    &:hover{
+        color: white;
+        text-decoration: none;
+        // background-color: black;
+        border-radius: 15px;
+        background-image: url('https://data.whicdn.com/images/298919914/original.gif') ;
+        opacity: 0.5;
+    }
+}
+
+
+nav.allNavHeader {
+    margin: auto 37px auto auto;
+}
+
+li.liHeader {
+  
+    margin-top: 2%;
+}
+

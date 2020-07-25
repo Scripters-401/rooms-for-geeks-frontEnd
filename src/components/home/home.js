@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
-import img from '../../assest/Clock.jpg';
-import timer1 from '../../assest/a8rab2M.png';
+import img from '../../assest/Clock1.jpg';
+import timer1 from '../../assest/a8rab2.png';
 import timer2 from '../../assest/a8rab2.png';
-import man from '../../assest/ManAtTheMiddle.png';
+import man from '../../assest/ManAtTheMiddle1.png';
 import './home.scss';
 
 const Home = () => {
@@ -15,36 +15,33 @@ const Home = () => {
 
     return (
         <>
-            <NavLink to="/sign">signnnnnn</NavLink>
+
             {/* <br/>
               <NavLink to="/about-us">about-us</NavLink> */}
             {/* {console.log('minClock', theMin)} */}
-            <div className='homeClock'>
+         
+                <div className='homeClock'>
+                    <div className="box">
+                        <div>
+                            <img className='homeImg' src={img} alt='homeImg' />
 
-                <div className="box">
-
-                    <div>
-                        <img className='homeImg' src={img} alt='homeImg' />
-
+                        </div>
+                        <div className="text">
+                            {/* <h1 className='title'>Rooms For Geeks</h1> */}
+                        </div>
                     </div>
-                    <div className="text">
-                        <h1 className='title'>Rooms For Geeks</h1>
+                    <div className='secendDiv'>
+                        <img className={`secend number${theSec}`} src={timer2} alt='timer1' />
                     </div>
-
-
+                    <div className='minDiV'>
+                        <img className={`min number${theMin}`} src={timer1} alt='timer2' />
+                    </div>
+                    <div className='hourDiv'>
+                        <img className={`hour numberH${theHour}`} src={timer2} alt='timer2' />
+                    </div>
+                    <img className='man' src={man} alt='man' />
                 </div>
-                <div className='secendDiv'>
-                    <img className={`secend number${theSec}`} src={timer2} alt='timer1' />
-                </div>
-                <div className='minDiV'>
-                    <img className={`min number${theMin}`} src={timer1} alt='timer2' />
-                </div>
-                <div className='hourDiv'>
-                    <img className={`hour numberH${theHour}`} src={timer2} alt='timer2' />
-                </div>
-                <img className='man' src={man} alt='man' />
-            </div>
-
+            
         </>
     )
 };
