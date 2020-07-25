@@ -1,7 +1,7 @@
 let API = `http://localhost:4000`;
 
 let initialState = {
-    user: {},
+    user: [],
 };
 
 
@@ -11,30 +11,25 @@ export default (state = initialState, action) => {
 
     switch (type) {
 
-        case 'USER_DATA':
-            state.user = payload;
+        case 'GET_INTERVIEW_REVIEW':
+            state.user = payload.result;
             return { ...state };
-
-            case 'UPDATE_DATA':
-                state[payload.name] = payload.value
-                return { ...state };          
-
         default:
             return state;
     }
 }
 
-export const userAction = payloadData => {
+export const actionInterviewreview = payloadData => {
     return {
-        type: 'USER_DATA',
+        type: 'GET_INTERVIEW_REVIEW',
         payload: payloadData
     }
 }
 
 
-export const getInfoUser = (token, id) => async dispatch => {
+export const getInterviewreview = (token) => async dispatch => {
     try {
-        let theApi = `${API}/user/${id}`;
+        let theApi = `${API}/interviewReview`;
         let results = await fetch(theApi, {
             method: 'GET',
             mode: 'cors',
@@ -45,8 +40,8 @@ export const getInfoUser = (token, id) => async dispatch => {
             }),
         })
         let res = await results.json();
-        dispatch(userAction(res))
+        dispatch(actionInterviewreview(res))
     } catch (error) {
-        console.error(`ERROR: GET_USER`);
+        console.error(`ERROR: GET_INTERVIEW_REVIEW`);
     }
 }

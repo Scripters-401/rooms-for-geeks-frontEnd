@@ -35,13 +35,19 @@ const Header = props => {
             <NavLink to="/rooms" /* activeClassName="rooms" */>Rooms</NavLink>
           </li>
           <li>
-            <NavLink to="/interviewReview" /* activeClassName="interviewReview" */>Interview Review</NavLink>
+            <NavLink to="/interview" /* activeClassName="interviewReview" */>Interview Review</NavLink>
           </li>
           <li>
             <NavLink to="/about-us" /* activeClassName="about-us" */>About Us</NavLink>
           </li>
           <li>
             <NavLink to="/user-page" /* activeClassName="about-us" */>User Page</NavLink>
+          </li>
+          <li>
+            <NavLink to="/QA" /* activeClassName="about-us" */>Q/A</NavLink>
+          </li>
+          <li>
+            <NavLink to="/users" /* activeClassName="about-us" */>Users</NavLink>
           </li>
         </ul>
       </nav>
