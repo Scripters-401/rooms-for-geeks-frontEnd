@@ -2,15 +2,22 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 // import Home from '../home/home';
 // import Rooms from '../rooms/rooms';
-// import InterviewReview from '../interviewReview/interviewReview';
 // import AboutUs from '../aboutUs/about-us';
 
 import Room from './room.js';
 import Homemain from './home/home';
 import Auth from './auth/auth.js';
+import User from './userPage/userPage';
 import Oauth from './oauth.js';
-import LoginForm from './signinForm/form'
-import OverView from './overView/overView'
+import AllUsers from './allUsers/users';
+import InterviewReviewForm from './interviewReview/interviewReview';
+import AllInterviewR from './interviewReview/getInterview';
+import QAForm from './QA/postQA';
+// import UserForm from './userPage/userForm';
+import LoginForm from './signinForm/form';
+import OverView from './overView/overView';
+import RoomForm from './rooms/postRoom';
+import CorseForm from './course/postCourse';
 
 
 const Routes = () => {
@@ -33,6 +40,10 @@ const Routes = () => {
             <Route path="/interviewReview" exact>
                 {/* <InterviewReview /> */}
             </Route>
+            <Route path="/user-page" exact>
+                <User />
+                {/* <UserForm /> */}
+            </Route>
             <Route path="/about-us" exact>
                 {/* <AboutUs /> */}
                 <div>abouuuuuuut us</div>
@@ -50,7 +61,22 @@ const Routes = () => {
                     <Redirect to="/rooms" />
                 </Auth>
             </Route>
-
+            <Route path="/users" exact>
+                <AllUsers />
+            </Route>
+            <Route path="/interview" exact>
+                <AllInterviewR />
+                <InterviewReviewForm />
+            </Route>
+            <Route path="/QA" exact>
+                <QAForm />
+            </Route>
+            <Route path="/room" exact>
+                <RoomForm />
+            </Route>
+            <Route path="/course" exact>
+                <CorseForm />
+            </Route>
         </>
     )
 }
