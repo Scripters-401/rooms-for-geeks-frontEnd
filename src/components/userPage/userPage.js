@@ -12,21 +12,6 @@ const User = props => {
         props.getInfoUser(props.sign.token, props.sign.user.id)
     }, [props.sign.token, props.sign.user.id])
 
-    useEffect(() => {
-<<<<<<< HEAD
-        console.log('nmnmnmnmnmnmn');
-        
-        // props.getInfoUser(props.sign.token, props.sign.user.id)
-    }, [
-        props.userInfo.user.name,
-        props.userInfo.user.major,
-        props.userInfo.user.university
-    ])
-=======
-
-    }, [props.userInfo.user.major])
->>>>>>> a8ce3c000ec14859f57c19a2a90471c134abb4c9
-
     const handleSubmitFun = event => {
         event.preventDefault();
         if (event.target.imagesUpload.value) {
@@ -105,14 +90,10 @@ const User = props => {
                 <img src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img>
 
 
-<<<<<<< HEAD
-                <form onSubmit={(e) => { handleSubmitFun(e); }}>
-=======
                 <form onSubmit={(e) => {
                     handleSubmitFun(e);
                     // window.location.reload()
                 }}>
->>>>>>> a8ce3c000ec14859f57c19a2a90471c134abb4c9
                     <h3>Update</h3>
 
                     <div>
