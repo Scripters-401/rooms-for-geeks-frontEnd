@@ -26,19 +26,19 @@ const Header = props => {
 
             <Show condition={props.sign.loggedIn}>
               <li className='liHeader'>
-                <NavLink to="/interviewReview" className="navHeader">Interview Review</NavLink>
+                <NavLink to="/interview" className="navHeader">Interview-Review</NavLink>
               </li>
             </Show>
 
             <Show condition={!props.sign.loggedIn}>
               <li className='liHeader'>
-                <Link2 smooth to="/#aboutus" className="navHeader">About Us</Link2>
+                <Link2 smooth to="/#aboutus" className="navHeader">About-Us</Link2>
               </li>
             </Show>
 
             <Show condition={props.sign.loggedIn}>
               <li className='liHeader'>
-                <NavLink to="/user-page" className="navHeader">User Page</NavLink>
+                <NavLink to="/user-page" className="navHeader">User-Page</NavLink>
               </li>
             </Show>
 

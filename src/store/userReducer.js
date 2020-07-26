@@ -1,4 +1,5 @@
-let API = `http://localhost:4000`;
+// localhost or deployed
+const API = process.env.REACT_APP_API;
 
 let initialState = {
     user: {},

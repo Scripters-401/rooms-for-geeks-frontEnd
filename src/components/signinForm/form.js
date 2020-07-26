@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/signINUPReducer'
 import cookie from 'react-cookies';
+import { storage } from "../firebase";
+
+import * as actions2 from '../../store/uploadImageReducer'
+
+
 // import Show from '../auth/show';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -61,6 +66,12 @@ function SigninForm(props) {
         props.oathfun(authURL2);
     }
 
+    const handleChangePic = e => {
+        if (e.target.files[0]) {
+            props.setImage(e.target.files[0]);
+        }
+    };
+
     const handleSubmitFun = e => {
         e.preventDefault();
         props.login(props.sign.username, props.sign.password)
@@ -68,13 +79,23 @@ function SigninForm(props) {
 
     const handleSubmitFunSignup = e => {
         e.preventDefault();
-
-        props.signup(
-            props.sign.username,
-            props.sign.password,
-            props.sign.email,
-            props.sign.name,
-            props.sign.major);
+        const uploadTask = storage.ref(`images/${props.upload.image.name}`).put(props.upload.image);
+        uploadTask.on("state_changed", () => {
+            storage
+                .ref("images")
+                .child(props.upload.image.name)
+                .getDownloadURL()
+                .then(url => {
+                    props.signup(
+                        props.sign.username,
+                        props.sign.password,
+                        props.sign.email,
+                        props.sign.name,
+                        props.sign.major,
+                        url,
+                    );
+                });
+        });
     }
 
     useEffect(() => {
@@ -85,60 +106,60 @@ function SigninForm(props) {
 
     return (
         <>
-        <div className='general' id='sign'>
-            <div className="panel panel--static">
-                <div className="panel__content left">
-                    <h1 className="panel__heading">Don't have an account?</h1>
-                    <p className="panel__copy">Ethical celiac hashtag taxidermy squid. Wayfarers distillery narwhal, kombucha jean shorts selvage meggings.</p>
-                    <button type="button" className="btn btn--secondary signup" onClick={signupFun} >Sign up</button>
-                </div>
-                <div className="panel__content right">
-                    <h1 className="panel__heading">Have an account?</h1>
-                    <p className="panel__copy">Ethical celiac hashtag taxidermy squid. Wayfarers distillery narwhal, kombucha jean shorts selvage meggings.</p>
-                    <button type="button" className="btn btn--secondary login" onClick={loginFun}>Log in</button>
-                </div>
-
-                <div className={`panel panel--sliding an${animate}`}>
-                    <div className={`panel__content signup${!hide}`}>
-
-                        <h1 className="panel__heading">Sign up</h1>
-                        <form id="signup" onSubmit={(e) => handleSubmitFunSignup(e)}>
-                            <input type="text" placeholder="Username" name="username" onChange={(e) => props.handleChange(e)} className="input input--name" required />
-                            <input type="text" className="input input--name" placeholder="Name" name="name" onChange={(e) => props.handleChange(e)} required />
-                            <input type="email" placeholder="Email" name="email" onChange={(e) => props.handleChange(e)} className="input input--email" required />
-                            <input type="password" placeholder="Password" name="password" onChange={(e) => props.handleChange(e)} className="input input--password" required />
-                            <input type="text" className="input input--name" placeholder="Major" name="major" onChange={(e) => props.handleChange(e)} required />
-
-                            <button className="btn btn--primary" >Sign up</button>
-                            <div>
-                                <a href={props.sign.authURL} onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
-                                <a href={props.sign.authURL} onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
-                            </div>
-                        </form>
+            <div className='general' id='sign'>
+                <div className="panel panel--static">
+                    <div className="panel__content left">
+                        <h1 className="panel__heading">Don't have an account?</h1>
+                        <p className="panel__copy">Ethical celiac hashtag taxidermy squid. Wayfarers distillery narwhal, kombucha jean shorts selvage meggings.</p>
+                        <button type="button" className="btn btn--secondary signup" onClick={signupFun} >Sign up</button>
+                    </div>
+                    <div className="panel__content right">
+                        <h1 className="panel__heading">Have an account?</h1>
+                        <p className="panel__copy">Ethical celiac hashtag taxidermy squid. Wayfarers distillery narwhal, kombucha jean shorts selvage meggings.</p>
+                        <button type="button" className="btn btn--secondary login" onClick={loginFun}>Log in</button>
                     </div>
 
-                    <div className={`panel__content login${hide}`}>
-                        <h1 className="panel__heading">Log in</h1>
-                        <form id="login" onSubmit={(e) => handleSubmitFun(e)}>
-                            <input type="text" placeholder="Username" name='username' className="input input--email" onChange={(e) => props.handleChange(e)} required />
-                            <input type="password" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
-                            <button type='submit' className="btn btn--primary">Log in</button>
-                     
+                    <div className={`panel panel--sliding an${animate}`}>
+                        <div className={`panel__content signup${!hide}`}>
+
+                            <h1 className="panel__heading">Sign up</h1>
+                            <form id="signup" onSubmit={(e) => handleSubmitFunSignup(e)}>
+                                <input type="text" placeholder="Username" name="username" onChange={(e) => props.handleChange(e)} className="input input--name" required />
+                                <input type="text" className="input input--name" placeholder="Name" name="name" onChange={(e) => props.handleChange(e)} required />
+                                <input type="email" placeholder="Email" name="email" onChange={(e) => props.handleChange(e)} className="input input--email" required />
+                                <input type="password" placeholder="Password" name="password" onChange={(e) => props.handleChange(e)} className="input input--password" required />
+                                <input type="text" className="input input--name" placeholder="Major" name="major" onChange={(e) => props.handleChange(e)} required />
+                                <input className='ChooseImage' type="file" onChange={handleChangePic} />
+                                <button className="btn btn--primary" >Sign up</button>
+                                <div>
+                                    <a href={props.sign.authURL} onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
+                                    <a href={props.sign.authURL} onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div className={`panel__content login${hide}`}>
+                            <h1 className="panel__heading">Log in</h1>
+                            <form id="login" onSubmit={(e) => handleSubmitFun(e)}>
+                                <input type="text" placeholder="Username" name='username' className="input input--email" onChange={(e) => props.handleChange(e)} required />
+                                <input type="password" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
+                                <button type='submit' className="btn btn--primary">Log in</button>
+
                                 <a href={props.sign.authURL} className='icons' onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
                                 <a href={props.sign.authURL} className='icons' onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
-        
-                            <a href="/">Forgot password?</a>
-                        </form>
+                                <a href="/">Forgot password?</a>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </>
     );
 }
 
 const mapStateToProps = state => ({
-    sign: state.sign
+    sign: state.sign,
+    upload: state.upload,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
@@ -146,8 +167,9 @@ const mapDispatchToProps = (dispatch, getState) => ({
     login: (username, password) => dispatch(actions.login(username, password)),
     validateToken: token => dispatch(actions.validateToken(token)),
     oathfun: (e) => dispatch(actions.oathfun(e)),
-    signup: (username, password, email, role, name, major) =>
-        dispatch(actions.signup(username, password, email, name, major))
+    signup: (username, password, email, name, major, url) =>
+        dispatch(actions.signup(username, password, email, name, major, url)),
+    setImage: (image) => dispatch(actions2.setImage(image)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);

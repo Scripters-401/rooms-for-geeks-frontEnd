@@ -1,10 +1,7 @@
-// import cookie from 'react-cookies';
-// import jwt from 'jsonwebtoken';
 
 require('dotenv').config();
 
-// const API = 'https://rooms-for-geeks.herokuapp.com';
-// const API = 'http://localhost:4000';
+// localhost or deployed
 const API = process.env.REACT_APP_API;
 
 
@@ -19,17 +16,9 @@ export default (state = initialState, action) => {
   switch (type) {
 
     case 'roomDataAction':
-      console.log(payload,'ppppppppppppppp');   
+      // console.log(payload,'ppppppppppppppp');   
       state.roomData = payload
       return { ...state };
-
-    // case 'handleChange':
-    //   state[payload.name] = payload.value
-    //   return { ...state };
-
-    // case 'oath':
-    //   state.authURL = payload
-    //   return { ...state };
 
     default:
       return state;
