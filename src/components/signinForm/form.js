@@ -10,19 +10,17 @@ import './form.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function SigninForm(props) {
 
-    const [hide, setHide] = useState(true);
-    const [animate, setAnimate] = useState('');
+    const [hide, setHide] = useState(false);
+    const [animate, setAnimate] = useState('true');
 
     function signupFun(e) {
         e.preventDefault();
-        console.log('hellllo');
         setAnimate('false');
         setHide(true);
     }
 
     function loginFun(e) {
         e.preventDefault();
-        console.log('loggggin');
         setAnimate('true');
         setHide(false);
     }
@@ -87,7 +85,7 @@ function SigninForm(props) {
 
     return (
         <>
-        <div className='general'>
+        <div className='general' id='sign'>
             <div className="panel panel--static">
                 <div className="panel__content left">
                     <h1 className="panel__heading">Don't have an account?</h1>
@@ -101,7 +99,6 @@ function SigninForm(props) {
                 </div>
 
                 <div className={`panel panel--sliding an${animate}`}>
-                    {console.log(hide)}
                     <div className={`panel__content signup${!hide}`}>
 
                         <h1 className="panel__heading">Sign up</h1>
@@ -126,11 +123,11 @@ function SigninForm(props) {
                             <input type="text" placeholder="Username" name='username' className="input input--email" onChange={(e) => props.handleChange(e)} required />
                             <input type="password" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
                             <button type='submit' className="btn btn--primary">Log in</button>
+                     
+                                <a href={props.sign.authURL} className='icons' onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
+                                <a href={props.sign.authURL} className='icons' onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
+        
                             <a href="/">Forgot password?</a>
-                            <div>
-                                <a href={props.sign.authURL} onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
-                                <a href={props.sign.authURL} onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
-                            </div>
                         </form>
                     </div>
                 </div>

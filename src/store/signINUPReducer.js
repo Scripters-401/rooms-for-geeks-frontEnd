@@ -61,7 +61,6 @@ export const oathfun = e => {
 
 
 const setLoginState = (loggedIn, token, user) => {
-  console.log('loggedIn',loggedIn,'token',token,'user',user)
   return {
     type: 'setLoginState',
     payload: { loggedIn, token, user },
@@ -99,8 +98,6 @@ export const signup = (username, password, email, name, major) => async dispatch
 }
 
 export const login = (username, password) => async dispatch => {
-  console.log('username',username);
-  console.log('API',API)
   try {
     const results = await fetch(`${API}/signin`, {
       method: 'POST',
@@ -116,9 +113,7 @@ export const login = (username, password) => async dispatch => {
     for (let [key, value] of results.headers) {
       headers[key] = value;
     }
-    // console.log(headers);
     let res = await results.json();
-    console.log('response',res)
     dispatch(validateToken(res.token))
   } catch (error) {
     console.error(`ERROR: SIGNIN`);
@@ -138,11 +133,8 @@ export const logoutFun = () => async dispatch => {
 }
 
 export const validateToken = token => dispatch => {
-  console.log('token',token);
-  console.log('process.env.REACT_APP_SECRET',process.env.REACT_APP_SECRET)
   try {
     let user = jwt.verify(token, process.env.REACT_APP_SECRET);
-    console.log('user',user);
     dispatch(setLoginState(true, token, user))
   } catch (ex) {
     logout();
@@ -159,7 +151,6 @@ export const getOauth = () => async dispatch => {
     });
 
     let res = await results.json();
-    console.log('res',res)
     dispatch(validateToken(res.token))  
   } catch (error) {
     console.error(`ERROR: SIGNOUT`);

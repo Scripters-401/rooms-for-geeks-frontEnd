@@ -53,8 +53,8 @@ const Routes = () => {
                 <Auth capability="read">
                     <Redirect to="/rooms" />
                 </Auth>
-                
             </Route>
+
             <Route path="/mm" exact>
                 <Oauth />
                 <Auth capability="read">
