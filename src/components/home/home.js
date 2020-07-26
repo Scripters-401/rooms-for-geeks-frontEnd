@@ -1,7 +1,8 @@
 import React from 'react';
 // import { NavLink } from 'react-router-dom';
 
-import img from '../../assest/Clock1.jpg';
+//Clock1.jpg
+import img from '../../assest/HomeCover.jpg';
 import timer1 from '../../assest/a8rab2.png';
 import timer2 from '../../assest/a8rab2.png';
 import man from '../../assest/ManAtTheMiddle1.png';
@@ -31,15 +32,15 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='secendDiv'>
-                        <img className={`secend number${theSec}`} src={timer2} alt='timer1' />
+                        {/* <img className={`secend number${theSec}`} src={timer2} alt='timer1' /> */}
                     </div>
                     <div className='minDiV'>
-                        <img className={`min number${theMin}`} src={timer1} alt='timer2' />
+                        {/* <img className={`min number${theMin}`} src={timer1} alt='timer2' /> */}
                     </div>
                     <div className='hourDiv'>
-                        <img className={`hour numberH${theHour}`} src={timer2} alt='timer2' />
+                        {/* <img className={`hour numberH${theHour}`} src={timer2} alt='timer2' /> */}
                     </div>
-                    <img className='man' src={man} alt='man' />
+                    {/* <img className='man' src={man} alt='man' /> */}
                 </div>
             
         </>

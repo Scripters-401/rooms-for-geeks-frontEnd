@@ -8,7 +8,7 @@ import * as actions from '../../store/signINUPReducer.js'
 import '../../reset.css';
 
 import './header.scss';
-import logo from '../../assest/Room-forGeeksLogonew7.png';
+import logo from '../../assest/roomforGeeks22.png';
 
 const Header = props => {
   return (
