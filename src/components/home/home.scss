@@ -12,6 +12,8 @@
             background-size: cover;
             width: 100%;
             max-height: 80%;
+           
+            box-shadow: 0px 15px 24px rgba(104, 103, 103, 0.699);
         }
         .text {
             color: antiquewhite;
@@ -21,36 +23,15 @@
             margin: 0 auto;
             left: 0;    
             right: 0;
-            // top: 40%;
             text-align: center;
-            // width: 60%;
             animation: moving 3s forwards ease-in-out;
             .title {
                 font-size: 503%;
-                // color: antiquewhite;
-                // font-family: "Caveat", cursive;
-                // position: absolute;
-                // z-index: 999;
-                // margin: 0 auto;
-                // left: 0;
-                // right: 0;
-                // // top: 40%;
-                // text-align: center;
-                // // width: 60%;
-                // animation: moving 3s forwards ease-in-out;
-            }
+                        }
         }
     }
    
     .man {
-        // position: absolute;
-        // top: 64px;
-        // right: 0;
-        // margin: 0;
-        // padding: 0;
-        // right: 140px;
-        // width: 81%;
-
         position: absolute;
         margin: 0;
         padding: 0;
@@ -62,39 +43,22 @@
         margin: 0 auto;
         padding: 0;
         left: 0;
-        /* right: 127px; */
         width: 74%;
         img.secend {
-            // position: absolute;
-            // // top: 112px;
-            // right: 0;
-            // margin: 0;
-            // padding: 0;
-            // right: 127px;
             width: 100%;
-            // transform: rotate(var(--rotation));
             animation: rotation 60s infinite linear;
         }
     }
     .minDiV {
         position: absolute;
-        // top: 112px;
         right: 0;
-        // margin: 0;
         padding: 0;
-        // right: 127px;
         margin: 0 auto;
         padding: 0;
         left: 0;
         width: 79%;
 
         img.min {
-            // position: absolute;
-            // // top: 112px;
-            // right: 0;
-            // margin: 0;
-            // padding: 0;
-            // right: 127px;
             width: 100%;
             animation: rotation 3600s infinite linear;
         }
@@ -105,33 +69,9 @@
         margin: 0 auto;
         padding: 0;
         left: 0;
-        /* right: 127px; */
         width: 74%;
-        /* font-size: medium; */
-        /* height: 128%; */
-        /* overflow: hidden; */
-        /* animation: rotation 216000s infinite linear;*/
-
         img.hour {
-            // position: absolute;
-            // // top: 112px;
-            // right: 0;
-            // margin: 0;
-            // padding: 0;
-            // right: 127px;
-            // width: 79%;
-            // animation: rotation 216000s infinite linear;
-
-            // position: absolute;
-            // right: 0;
-            // margin: 0 auto;
-            // padding: 0;
-            // left: 0;
-            /* right: 127px; */
             width: 100%;
-            /* font-size: medium; */
-            /* height: 128%; */
-            // overflow: hidden;
             animation: rotation 216000s infinite linear;
         }
     }

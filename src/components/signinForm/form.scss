@@ -7,7 +7,7 @@ $width-panel-static: 80%;
 $height-panel-static: 60%;
 $background-panel-static: rgba(0, 0, 0, 0.6);
 $color-panel-static: #ddd;
-$color-panel-heading: #e26a6a;
+$color-panel-heading: #9dbfb5;
 
 $width-panel-sliding: 50%;
 $height-panel-sliding: 160%;
@@ -23,7 +23,7 @@ $margin-button: 1rem 0;
 $padding-button: 0.5rem 1.5rem;
 $color-button-primary: #fefefe;
 $color-button-secondary: #ccc;
-$background-button-primary: #E26A6A;
+$background-button-primary: #9dbfb5;
 $background-button-secondary: transparent;
 $border-button-secondary: 2px solid #ccc;
 
@@ -56,7 +56,7 @@ html {
 .panel {
     font-family: 'Montserrat';
     border-radius: 3px;
-    
+   
     
     &--static {
         @include center;
@@ -189,5 +189,17 @@ html {
 .general{
     height: 500px;
     position: relative;
-    
+    background-image: url('../../assest/retrosupply-jLwVAUtLOAQ-unsplash.jpg');
+    opacity: .7;
+    background-size: cover;
+    margin-bottom:1%;
+}
+
+a.icons {
+    display: inline-block;
+    margin: 2px;
+}
+span {
+    display: inline-flex;
+    justify-items: left;
 }
