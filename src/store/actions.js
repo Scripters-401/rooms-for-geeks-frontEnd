@@ -1,12 +1,13 @@
 import superagent from 'superagent';
 
+require('dotenv').config();
 
-let api = 'https://rooms-for-geeks.herokuapp.com/users'; 
+const API = process.env.REACT_APP_API;
 
 export const getRemoteData =() => dispatch => {
 
     // call my data 
-    return superagent.get(api)
+    return superagent.get(`${API}/users`)
         .then(data => {
             dispatch(getAction(data.body))
         });
