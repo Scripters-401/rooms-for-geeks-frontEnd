@@ -25,12 +25,12 @@ const Home = () => {
                         <h1 className='animateText'>Welcome to Rooms For Geeks Website</h1>
                     </div>
 
-                    {/* <div class="typewriter1">
-                        <h1>we hope that you will enjoy your time and</h1>
-                    </div> */}
+                    {/* { <div class="typewriter1">
+                        <h1>We hope that you will enjoy your time here!</h1>
+                    </div> } */}
 
                     {/* <div class="typewriter2">
-                        learn new thing whith us !
+                        Lets learn new thing whith us !
                     </div> */}
 
                 </div>
