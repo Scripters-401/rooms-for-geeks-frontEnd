@@ -1,4 +1,5 @@
-let API = `http://localhost:4000`;
+// localhost or deployed
+const API = process.env.REACT_APP_API;
 
 let initialState = {
     user: {},
@@ -14,11 +15,6 @@ export default (state = initialState, action) => {
         case 'USER_DATA':
             state.user = payload;
             return { ...state };
-
-            case 'UPDATE_DATA':
-                state[payload.name] = payload.value
-                return { ...state };          
-
         default:
             return state;
     }

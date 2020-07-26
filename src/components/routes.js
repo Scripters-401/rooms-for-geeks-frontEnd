@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 // import Home from '../home/home';
 // import Rooms from '../rooms/rooms';
-// import AboutUs from '../aboutUs/about-us';
+import AboutUs from './aboutUs/about-us';
 
 import Room from './room.js';
 import Homemain from './home/home';
@@ -13,7 +13,6 @@ import AllUsers from './allUsers/users';
 import InterviewReviewForm from './interviewReview/interviewReview';
 import AllInterviewR from './interviewReview/getInterview';
 import QAForm from './QA/postQA';
-// import UserForm from './userPage/userForm';
 import LoginForm from './signinForm/form';
 import OverView from './overView/overView';
 import RoomForm from './rooms/postRoom';
@@ -27,9 +26,10 @@ const Routes = () => {
                 <Homemain />
                 <OverView />
                 <Auth capability="read">
-                    <Redirect to="/rooms" />
+                    <Redirect to="/user-page" />
                 </Auth>
                 <LoginForm />
+                <AboutUs />
             </Route>
             <Route path="/rooms" exact>
                 <Auth capability="read">
@@ -37,12 +37,9 @@ const Routes = () => {
                 </Auth>
                 {/* <Rooms /> */}
             </Route>
-            <Route path="/interviewReview" exact>
-                {/* <InterviewReview /> */}
-            </Route>
+
             <Route path="/user-page" exact>
                 <User />
-                {/* <UserForm /> */}
             </Route>
             <Route path="/about-us" exact>
                 {/* <AboutUs /> */}
@@ -51,14 +48,14 @@ const Routes = () => {
 
             <Route path="/sign" exact>
                 <Auth capability="read">
-                    <Redirect to="/rooms" />
+                    <Redirect to="/user-page" />
                 </Auth>
             </Route>
 
             <Route path="/mm" exact>
                 <Oauth />
                 <Auth capability="read">
-                    <Redirect to="/rooms" />
+                    <Redirect to="/user-page" />
                 </Auth>
             </Route>
             <Route path="/users" exact>

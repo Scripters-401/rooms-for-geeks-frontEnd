@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&display=swap');
+
+.aboutUsDiv{
+    max-width: 940px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.ourTeamHeader {
+    font-size: 30px;
+    display: flex;
+    font-weight: bold;
+    color: #416760;
+    margin-top: 3%;
+    margin-bottom: 2%; 
+    justify-content: center;
+}
+
+.profileMemberPhoto
+{
+    height: 120px;
+    width:120px;
+    align-items:left ;
+    width:120px;
+    align-items:left; 
+    border: 3px solid #416760;
+    border-radius: 85px;
+    margin-left: 3%;
+}
+.major{
+    margin: 3% -12% 1% 11%;
+    font-weight: bold;
+}
+.author{
+    margin: 0% -17% 0% 5%;
+    font-weight: bold;
+}
+
+.contaner {
+    margin: 3% 4% 1% 0%;
+}
+
+.mySlides {
+    padding: 80px;
+    text-align: center;
+    padding-top: 5px;
+    color:#416760 ;
+}
+
+polygon {
+    fill: #416760;
+}
+

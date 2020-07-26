@@ -8,14 +8,14 @@ import allUsers from './allUseres';
 import interviewR from './interviewReviewReducer';
 import allInterview from './getInterviewReducer';
 import theQA from './QAReducer';
-// import editUserInfo from './putUserInfo';
+import editUserInfo from './putUserInfo';
 import room from './roomReducer';
 import thePostRoom from './postRoomReduser';
 import thePostCourse from './postCourseReducer';
 import thunk from 'redux-thunk';
 import userHome from './userHome'
 
-
+import upload from './uploadImageReducer'
 let reducers = combineReducers({
     data: reducer,
     sign,
@@ -24,11 +24,12 @@ let reducers = combineReducers({
     interviewR,
     allInterview,
     theQA,
-    // editUserInfo
+    editUserInfo,
     room,
     thePostRoom,
     thePostCourse,
     userHome,
+    upload,
 });
 
 const store = () => {
