@@ -12,10 +12,6 @@ const User = props => {
         props.getInfoUser(props.sign.token, props.sign.user.id)
     }, [props.sign.token, props.sign.user.id])
 
-    useEffect(() => {
-
-    }, [props.userInfo.user.major])
-
     const handleSubmitFun = event => {
         event.preventDefault();
         if (event.target.imagesUpload.value) {
@@ -91,7 +87,7 @@ const User = props => {
                 <p>Username: {props.userInfo.user.username}</p>
                 <p>Email: {props.userInfo.user.email}</p>
                 <p>Over joined: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
-                <img src={`${props.userInfo.user.profileIMG}`}></img>
+                <img src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img>
 
 
                 <form onSubmit={(e) => {

@@ -53,6 +53,12 @@ const Header = props => {
                 <Link2 smooth to="/#sign" className="navHeader">signIn</Link2>
               </Show>
 
+              <Show condition={props.sign.loggedIn}>
+              <li className='liHeader'>
+                <Link to="/userHome" className="navHeader">User Home</Link>
+              </li>
+            </Show>
+
             </li>
           </ul>
         </nav>

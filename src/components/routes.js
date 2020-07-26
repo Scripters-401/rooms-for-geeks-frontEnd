@@ -17,7 +17,7 @@ import LoginForm from './signinForm/form';
 import OverView from './overView/overView';
 import RoomForm from './rooms/postRoom';
 import CorseForm from './course/postCourse';
-
+import UserHome from './userHome/userHome'
 
 const Routes = () => {
     return (
@@ -74,6 +74,10 @@ const Routes = () => {
             <Route path="/course" exact>
                 <CorseForm />
             </Route>
+            <Route path="/userHome" exact>
+                <UserHome />
+            </Route>
+
         </>
     )
 }
