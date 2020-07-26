@@ -36,9 +36,8 @@ const RoomForm = props => {
                     <div>
                         <label>public</label>
                         <input
-                            type='switch'
+                            type='text'
                             name="publicc"
-                            label={props.thePostRoom.publicc ? 'Public' : 'Private'}
                             onChange={(e) => props.handleChangeRoom(e)}
                         />
                     </div>
