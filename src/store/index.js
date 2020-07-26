@@ -8,7 +8,7 @@ import allUsers from './allUseres';
 import interviewR from './interviewReviewReducer';
 import allInterview from './getInterviewReducer';
 import theQA from './QAReducer';
-// import editUserInfo from './putUserInfo';
+import editUserInfo from './putUserInfo';
 import room from './roomReducer';
 import thePostRoom from './postRoomReduser';
 import thePostCourse from './postCourseReducer';
@@ -23,7 +23,7 @@ let reducers = combineReducers({
     interviewR,
     allInterview,
     theQA,
-    // editUserInfo
+    editUserInfo,
     room,
     thePostRoom,
     thePostCourse,

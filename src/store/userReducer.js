@@ -15,11 +15,6 @@ export default (state = initialState, action) => {
         case 'USER_DATA':
             state.user = payload;
             return { ...state };
-
-            case 'UPDATE_DATA':
-                state[payload.name] = payload.value
-                return { ...state };          
-
         default:
             return state;
     }
