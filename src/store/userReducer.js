@@ -1,4 +1,5 @@
 // localhost or deployed
+require('dotenv').config();
 const API = process.env.REACT_APP_API;
 
 let initialState = {
