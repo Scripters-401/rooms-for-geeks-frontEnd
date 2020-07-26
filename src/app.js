@@ -2,35 +2,36 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
+import { HashLink as Link2 } from 'react-router-hash-link';
 
 import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import Routes from './components/routes';
 
-// import Homemain from './home/home';
-// import Auth from './components/auth/auth.js';
-// import Login from './auth/login/login.js';
-// import Signup from './auth/signup/signup.js';
-// import Initial from './components/initial.js';
 import * as actions from './store/signINUPReducer.js'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleUp as upIcon } from '@fortawesome/free-solid-svg-icons';
 import './reset.css';
 import './app.scss';
 
 
 function App(props) {
-  useEffect(()=>{
+
+  useEffect(() => {
     const cookieToken = cookie.load('auth');
-        const token = cookieToken || null;
-        props.validateToken(token);
-  },[])
+    const token = cookieToken || null;
+    props.validateToken(token);
+  }, [])
+
   return (
     <>
-      {/* <Auth capability="read"> */}
-        <Header />
-      {/* </Auth> */}
+      <Header />
       <Routes />
       <Footer />
+      <Link2 smooth to="/#AppHeader" className="up">
+        <FontAwesomeIcon icon={upIcon} size='1x' color="#4a9998" />
+      </Link2>
     </>
   );
 }
@@ -39,12 +40,7 @@ const mapStateToProps = state => ({
   sign: state.sign
 });
 const mapDispatchToProps = (dispatch, getState) => ({
-  // handleChange: (e) => dispatch(actions.handleChange(e)),
-  // login: (username, password) => dispatch(actions.login(username, password)),
-  // logout: () => dispatch(actions.logoutFun()),
   validateToken: token => dispatch(actions.validateToken(token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// export default App;
