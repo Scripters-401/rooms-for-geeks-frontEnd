@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     .box {
         position: relative;
         display: inline-block;
@@ -18,7 +19,7 @@
             position: absolute;
             z-index: 999;
             margin: 0 auto;
-            left: 0;
+            left: 0;    
             right: 0;
             // top: 40%;
             text-align: center;
@@ -40,6 +41,7 @@
             }
         }
     }
+   
     .man {
         // position: absolute;
         // top: 64px;
@@ -54,47 +56,86 @@
         padding: 0;
         width: 81%;
     }
+    .secendDiv {
+        position: absolute;
+        right: 0;
+        margin: 0 auto;
+        padding: 0;
+        left: 0;
+        /* right: 127px; */
+        width: 74%;
+        img.secend {
+            // position: absolute;
+            // // top: 112px;
+            // right: 0;
+            // margin: 0;
+            // padding: 0;
+            // right: 127px;
+            width: 100%;
+            // transform: rotate(var(--rotation));
+            animation: rotation 60s infinite linear;
+        }
+    }
+    .minDiV {
+        position: absolute;
+        // top: 112px;
+        right: 0;
+        // margin: 0;
+        padding: 0;
+        // right: 127px;
+        margin: 0 auto;
+        padding: 0;
+        left: 0;
+        width: 79%;
 
+        img.min {
+            // position: absolute;
+            // // top: 112px;
+            // right: 0;
+            // margin: 0;
+            // padding: 0;
+            // right: 127px;
+            width: 100%;
+            animation: rotation 3600s infinite linear;
+        }
+    }
+    .hourDiv {
+        position: absolute;
+        right: 0;
+        margin: 0 auto;
+        padding: 0;
+        left: 0;
+        /* right: 127px; */
+        width: 74%;
+        /* font-size: medium; */
+        /* height: 128%; */
+        /* overflow: hidden; */
+        /* animation: rotation 216000s infinite linear;*/
 
-    img.secend {
-        position: absolute;
-        // top: 112px;
-        right: 0;
-        margin: 0;
-        padding: 0;
-        right: 127px;
-        width: 79%;
-        // transform: rotate(var(--rotation));
-        animation: rotation 60s infinite linear;
+        img.hour {
+            // position: absolute;
+            // // top: 112px;
+            // right: 0;
+            // margin: 0;
+            // padding: 0;
+            // right: 127px;
+            // width: 79%;
+            // animation: rotation 216000s infinite linear;
+
+            // position: absolute;
+            // right: 0;
+            // margin: 0 auto;
+            // padding: 0;
+            // left: 0;
+            /* right: 127px; */
+            width: 100%;
+            /* font-size: medium; */
+            /* height: 128%; */
+            // overflow: hidden;
+            animation: rotation 216000s infinite linear;
+        }
     }
-    
-    img.min {
-        position: absolute;
-        // top: 112px;
-        right: 0;
-        margin: 0;
-        padding: 0;
-        right: 127px;
-        width: 79%;
-        animation: rotation 3600s infinite linear;
-    }
-    
-    img.hour {
-        position: absolute;
-        // top: 112px;
-        right: 0;
-        margin: 0;
-        padding: 0;
-        right: 127px;
-        width: 79%;
-        animation: rotation 216000s infinite linear;
-    }
-    
 }
-
-
-
-
 
 .numberH1,
 .numberH13 {

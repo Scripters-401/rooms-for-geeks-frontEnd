@@ -4,9 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 // import Rooms from '../rooms/rooms';
 // import AboutUs from '../aboutUs/about-us';
 
-import Login from './auth/login/login.js';
-import Signup from './auth/signup/signup.js';
-import Initial from './initial.js';
+import Room from './room.js';
 import Homemain from './home/home';
 import Auth from './auth/auth.js';
 import User from './userPage/userPage';
@@ -16,16 +14,24 @@ import InterviewReviewForm from './interviewReview/interviewReview';
 import AllInterviewR from './interviewReview/getInterview';
 import QAForm from './QA/postQA';
 // import UserForm from './userPage/userForm';
+import LoginForm from './signinForm/form'
+import OverView from './overView/overView'
+
 
 const Routes = () => {
     return (
         <>
             <Route path="/" exact>
                 <Homemain />
+                <OverView />
+                <Auth capability="read">
+                    <Redirect to="/rooms" />
+                </Auth>
+                <LoginForm />
             </Route>
             <Route path="/rooms" exact>
                 <Auth capability="read">
-                    <Initial />
+                    <Room />
                 </Auth>
                 {/* <Rooms /> */}
             </Route>
@@ -45,8 +51,7 @@ const Routes = () => {
                 <Auth capability="read">
                     <Redirect to="/rooms" />
                 </Auth>
-                <Login />
-                <Signup />
+                
             </Route>
             <Route path="/mm" exact>
                 <Oauth />

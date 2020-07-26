@@ -9,6 +9,7 @@ import interviewR from './interviewReviewReducer';
 import allInterview from './getInterviewReducer';
 import theQA from './QAReducer';
 // import editUserInfo from './putUserInfo';
+import room from './roomReducer';
 import thunk from 'redux-thunk';
 
 
@@ -21,6 +22,7 @@ let reducers = combineReducers({
     allInterview,
     theQA,
     // editUserInfo
+    room,
 });
 
 const store = () => {

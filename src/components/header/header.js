@@ -4,11 +4,11 @@ import Auth from '../auth/auth';
 import { connect } from 'react-redux';
 import * as actions from '../../store/signINUPReducer.js'
 // import Show from '../auth/show';
-
+//#4a9998
 import '../../reset.css';
 
 import './header.scss';
-import logo from '../../assest/roomforGeeks22.png';
+import logo from '../../assest/Room-forGeeksLogonew7.png';
 
 const Header = props => {
   return (
@@ -22,23 +22,21 @@ const Header = props => {
       </Auth>
 
       <div className="header">
-        <h1 className="H1">Rooms For Geeks</h1>
-        <img className="logo" src={logo} alt='LOGO' />
-      </div>
-      {/* <Auth capability="read"> */}
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+
+      <nav className='allNavHeader'>
+        <ul className='ulHeader'>
+          <li className='liHeader'>
+            <Link to="/" className="navHeader">Home</Link>
           </li>
-          <li>
-            <NavLink to="/rooms" /* activeClassName="rooms" */>Rooms</NavLink>
+          <li className='liHeader'>
+            <NavLink to="/rooms"  className="navHeader">Rooms</NavLink>
           </li>
-          <li>
-            <NavLink to="/interview" /* activeClassName="interviewReview" */>Interview Review</NavLink>
+
+          <li className='liHeader'>
+            <NavLink to="/interview" className="navHeader">Interview Review</NavLink>
           </li>
-          <li>
-            <NavLink to="/about-us" /* activeClassName="about-us" */>About Us</NavLink>
+          <li className='liHeader'>
+            <NavLink to="/about-us" className="navHeader">About Us</NavLink>
           </li>
           <li>
             <NavLink to="/user-page" /* activeClassName="about-us" */>User Page</NavLink>
@@ -49,8 +47,18 @@ const Header = props => {
           <li>
             <NavLink to="/users" /* activeClassName="about-us" */>Users</NavLink>
           </li>
+            <li className='liHeader'>
+          <NavLink to="/sign" className="navHeader" >signIn</NavLink>
+            </li>
         </ul>
       </nav>
+
+        <h1 className="H1">Rooms For Geeks</h1>
+        <img className="logo" src={logo} alt='LOGO' />
+     
+      {/* <Auth capability="read"> */}
+     
+      </div>
       {/* </Auth> */}
     </header>
   );
