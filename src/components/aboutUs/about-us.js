@@ -2,6 +2,9 @@ import React from 'react';
 import './about-us.scss';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
+import  balqees from '../../assest/WhatsApp Image 2020-04-23 at 02.01.13.jpeg';
+import  esraa from '../../assest/IMGG.jpeg';
+import  obada from '../../assest/Obada.jpg';
 const AboutAs = () => {
     // const currentDate = new Date();
     // let theSec = currentDate.getSeconds();
@@ -43,7 +46,7 @@ const AboutAs = () => {
                     <q className='teamParagr'>  ” My name is Esra'a Mamoun, I am a software developer with a physics background, I always had a passion for problem-solving, which is why I loved programming. When I entered an intensive programming course from Issac for 6 months, it was so full of challenges and difficulties which makes many of my colleagues left it, but for me, as far as the difficulties I faced, it was also fun. There was a project after each level of building an Integrated website within 3-4 days to sharpen what we learned during the level. We used JavaScript, CSS, HTML, JQuery, servers, databases, and an open API, we learned and accomplished a lot in a short time, I loved this stage of my life very much ” </q>
 
                     <div className="row empRow">
-                        <img className='profileMemberPhoto' src="https://files.slack.com/files-pri/TNGRRLUMA-F01840EEDL1/imgg.jpeg" alt='Eseaa'/>
+                        <img className='profileMemberPhoto' src={esraa} alt='Eseaa'/>
                         <div className='contaner'>
                         <p className='author'> Esra'a Mamoun </p>
                         <p className='major'>  Software Engineer </p>
@@ -55,7 +58,7 @@ const AboutAs = () => {
                     <q className='teamParagr'>  ” My name is Obada Hussein i'm 24 years old .. i graduated from Yarmouk University with a major of computer science .. currently i graduated from ASAC that i took a course in software engineering and right now i'm a full stack web developer Specializes in nodeJS with a material from CodeFellows ,in this course i learned the meaning of time pressure and teamwork before learning the technical stuff . i believe that the perfect work comes from experiences more than knowledge that's why my main goal is to collect experiences as much as possible and moving from levels to higher levels ” </q>
 
                     <div className="row empRow">
-                        <img className='profileMemberPhoto' src="https://files.slack.com/files-pri/TNGRRLUMA-F018F6SELM6/obada.jpg" alt='obada' />
+                        <img className='profileMemberPhoto' src={obada} alt='obada' />
                         <div className='contaner'>
                         <p className='author'> Obada Hussein </p>
                         <p className='major'>  Software Engineer </p>
@@ -74,7 +77,7 @@ const AboutAs = () => {
                     I dealt with the online process for both working and learning and I have worked in teams and we create really good projects together ” </q>
 
                     <div className="row empRow">
-                        <img className='profileMemberPhoto' src='https://ca.slack-edge.com/TNGRRLUMA-UT41WJQ8Z-81879c928b16-512' alt='balqees'/>
+                        <img className='profileMemberPhoto' src={balqees} alt='balqees'/>
                         <div className='contaner'>
                         <p className='author' > Balqees Mohammad </p>
                         <p className='major' >  Software Engineer </p>
