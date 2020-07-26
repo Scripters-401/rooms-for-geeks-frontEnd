@@ -1,4 +1,6 @@
-let API = `http://localhost:4000`;
+require('dotenv').config();
+
+const API = process.env.REACT_APP_API;
 
 let initialState = {
     user: [],

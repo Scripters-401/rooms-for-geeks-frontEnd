@@ -19,7 +19,7 @@ const AboutAs = () => {
             <h3 className='ourTeamHeader'> Meet Our Team </h3>
 
             <div className="slideshow-container"  id='aboutus'>
-            <Slider duration-2s >
+            <Slider >
                 <div className="mySlides" >
                     <q className='teamParagr'>  ” My name is Ruwaid Al Sayyed
                     i am a software developer and Mechatronics engineer
