@@ -3,8 +3,8 @@ import myRooms from '../components/userHome/myRooms';
 require('dotenv').config();
 
 // const API = 'https://rooms-for-geeks.herokuapp.com';
-const API = 'http://localhost:4000';
-// const API = process.env.REACT_APP_API;
+// const API = 'http://localhost:4000';
+const API = process.env.REACT_APP_API;
 
 
 
@@ -81,6 +81,7 @@ export default (state = initialState, action) => {
 
 export const favRoom = (token, id) => async dispatch => {
     try {
+        console.log('API',API);
         let results = await fetch(`${API}/favourite/${id}`, {
             method: 'GET',
             mode: 'cors',

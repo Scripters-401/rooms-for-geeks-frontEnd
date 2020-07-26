@@ -44,7 +44,9 @@ const MyRooms = props => {
             <Button>Show More</Button>
             </div>
             </Show>
+            {console.log(props.userHome.checkMyRooms)}
             <Show condition={!props.userHome.checkMyRooms}>
+                
                 <div>
                     No Favorite Rooms Yet.
                 </div>
