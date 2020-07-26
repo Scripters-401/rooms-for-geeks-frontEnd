@@ -38,15 +38,21 @@ const Header = props => {
           <li className='liHeader'>
             <NavLink to="/about-us" className="navHeader">About Us</NavLink>
           </li>
-          <li>
-            <NavLink to="/user-page" /* activeClassName="about-us" */>User Page</NavLink>
+          <li className='liHeader'>
+            <NavLink to="/user-page" className="navHeader">User Page</NavLink>
           </li>
-          <li>
-            <NavLink to="/QA" /* activeClassName="about-us" */>Q/A</NavLink>
+          <li className='liHeader'>
+            <NavLink to="/QA" className="navHeader">Q/A</NavLink>
           </li>
-          <li>
-            <NavLink to="/users" /* activeClassName="about-us" */>Users</NavLink>
+          <li className='liHeader'>
+            <NavLink to="/users" className="navHeader">Users</NavLink>
           </li>
+          <li className='liHeader'>
+          <NavLink to="/room" className="navHeader" >Add Room</NavLink>
+            </li>
+            <li className='liHeader'>
+          <NavLink to="/course" className="navHeader" >Add Course</NavLink>
+            </li>
             <li className='liHeader'>
           <NavLink to="/sign" className="navHeader" >signIn</NavLink>
             </li>

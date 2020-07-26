@@ -4,13 +4,14 @@ let initialState = {
     course: '',
 };
 
+
 export default (state = initialState, action) => {
 
     let { type, payload } = action;
 
     switch (type) {
 
-        case 'HANDLE_CHANGE_ROOM':
+        case 'HANDLE_CHANGE_COURSE':
             state[payload.name] = payload.value
             return { ...state };
 
@@ -19,18 +20,18 @@ export default (state = initialState, action) => {
     }
 }
 
-export const handleChangeRoom = e => {
+export const handleChangeCourse = e => {
     return {
-        type: 'HANDLE_CHANGE_ROOM',
+        type: 'HANDLE_CHANGE_COURSE',
         payload: { name: [e.target.name], value: e.target.value },
     }
 }
 
 
-export const roomPost = (token, roomName, publicc, password, members) => async dispatch => {
+export const coursePost = (token, courseName, topic, discription, tutorial) => async dispatch => {
 
     try {
-        const results = await fetch(`${API}/room`, {
+        const results = await fetch(`${API}/course`, {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -39,10 +40,11 @@ export const roomPost = (token, roomName, publicc, password, members) => async d
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }),
-            body: JSON.stringify({ roomName, publicc, password, members })
+            body: JSON.stringify({ courseName, topic, discription, tutorial })
         });
         await results.json();
+
     } catch (error) {
-        console.error(`ERROR: ROOMS`);
+        console.error(`ERROR: COURSE`);
     }
 }

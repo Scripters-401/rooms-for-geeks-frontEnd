@@ -10,6 +10,8 @@ import allInterview from './getInterviewReducer';
 import theQA from './QAReducer';
 // import editUserInfo from './putUserInfo';
 import room from './roomReducer';
+import thePostRoom from './postRoomReduser';
+import thePostCourse from './postCourseReducer';
 import thunk from 'redux-thunk';
 
 
@@ -23,6 +25,8 @@ let reducers = combineReducers({
     theQA,
     // editUserInfo
     room,
+    thePostRoom,
+    thePostCourse,
 });
 
 const store = () => {

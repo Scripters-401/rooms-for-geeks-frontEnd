@@ -14,8 +14,10 @@ import InterviewReviewForm from './interviewReview/interviewReview';
 import AllInterviewR from './interviewReview/getInterview';
 import QAForm from './QA/postQA';
 // import UserForm from './userPage/userForm';
-import LoginForm from './signinForm/form'
-import OverView from './overView/overView'
+import LoginForm from './signinForm/form';
+import OverView from './overView/overView';
+import RoomForm from './rooms/postRoom';
+import CorseForm from './course/postCourse';
 
 
 const Routes = () => {
@@ -69,7 +71,12 @@ const Routes = () => {
             <Route path="/QA" exact>
                 <QAForm />
             </Route>
-
+            <Route path="/room" exact>
+                <RoomForm />
+            </Route>
+            <Route path="/course" exact>
+                <CorseForm />
+            </Route>
         </>
     )
 }
