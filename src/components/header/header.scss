@@ -2,14 +2,14 @@
 
 .header {
     display: flex;
-    background-color: #f7f0f130;
-    max-height: 110px;
+    background-color: #7da09a;
+    max-height: 66px;
     flex-direction: row-reverse;
-    background-image: url("../../assest/Header.jpg");
+    // background-image: url("../../assest/Header.jpg");
     position:sticky;
     z-index: 999999;
     top: 0;
-    box-shadow: 0px 5px 6px rgba(59, 56, 56, 0.699);
+    box-shadow: 0px 5px 6px rgba(206, 205, 205, 0.699);
 }
 
 
@@ -20,36 +20,41 @@ h1 {
 h1.H1 {
     margin: auto 0;
     font-family: 'Caveat', cursive;
-    color: #4a9998;
+    color: white;
     font-size: 198%;
     display: flex;
     justify-content: left;
     flex: 1;
+    z-index: 999999;
 }
 img.logo {
-    height: 150px;
+    height: 110px;
     margin-top: -15px;
 }
 
 ul.ulHeader {
     display: flex;
     flex: 1;
+    margin: auto;
 }
 
 .navHeader {
-    color: #4a9998;
+    color: white;
     font-size: 146%;
     padding: 13px;
     font-family: 'Caveat', cursive;
     margin: auto;
+    position: relative;
+    
     &:hover{
         color: white;
         text-decoration: none;
-        // background-color: black;
         border-radius: 15px;
         background-image: url('https://data.whicdn.com/images/298919914/original.gif') ;
-        opacity: 0.5;
+        opacity: 0.25;
+        
     }
+   
 }
 
 
@@ -57,8 +62,5 @@ nav.allNavHeader {
     margin: auto 37px auto auto;
 }
 
-li.liHeader {
-  
-    margin-top: 2%;
-}
+
 

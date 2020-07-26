@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-// import Auth from '../auth/auth';
 import { connect } from 'react-redux';
 import * as actions from '../../store/signINUPReducer.js'
 import Show from '../auth/show';
-//#4a9998
 import '../../reset.css';
 
 import './header.scss';
-import logo from '../../assest/Room-forGeeksLogonew7.png';
 import { HashLink as Link2 } from 'react-router-hash-link';
+import logo from '../../assest/roomforGeeks22.png';
+
 const Header = props => {
   return (
     <header id='AppHeader'>
@@ -63,11 +62,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  // handleChange: (e) => dispatch(actions.handleChange(e)),
-  // login: (username, password) => dispatch(actions.login(username, password)),
   logout: () => dispatch(actions.logoutFun()),
-  // validateToken: token => dispatch(actions.validateToken(token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
-// export default Header;

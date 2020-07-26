@@ -8,18 +8,18 @@ function OverView(props) {
 
   return (
     <>
-      <div className='generalOver' id='aboutus'>
-        <svg id="svg4136" xmlns="http://www.w3.org/2000/svg" version="1.1" height="670" xmlnsXlink="http://www.w3.org/1999/xlink" >
+      <div className='generalOver'  id='aboutus'>
+        <svg id="svg4136" xmlns="http://www.w3.org/2000/svg" version="1.1" height="613" xmlnsXlink="http://www.w3.org/1999/xlink" >
           <g id="layer1">
 
-            <path className="st0" id="path4806" d="m0.83398 57.5v315h261.4l-0.15234-0.11914 245.41-314.88h-506.66z" fill="#cacaca" />
+            <path className= 'firstCha' class="st0" id="path4806" d="m0.83398 57.5v315h261.4l-0.15234-0.11914 245.41-314.88h-506.66z" fill="#b6bbab" />
             <text x="15" y="110"> Mission </text>
             <text x="15" y="140" className="sub-text">Lorem ipsum dolor sit amet.  Integer malesuada eu eros et condimentum. </text>
             <text x="15" y="155" className="sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
             <text x="15" y="185" className="sub-mission">Pellentesque vel justo a lacus sodales maximus.</text>
           </g>
           <g id="layer2">
-            <path className="st0" id="path4804" d="m514.89 57.5-108.17 138.79 254.83 365.38h138.45v-504.17h-285.11z" fill="#cacaca" />
+            <path class="st0" id="path4804" d="m514.89 57.5-108.17 138.79 254.83 365.38h138.45v-504.17h-285.11z" fill="#b6bbab" />
             <text x="520" y="110">Vision</text>
             <text x="470" y="140" className="sub-text">Lorem ipsum dolor sit amet. </text>
             <text x="480" y="160" className="sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
@@ -29,7 +29,7 @@ function OverView(props) {
           <path id="path4802" fill="none" d="m402.97 201.1-133.59 171.4h253.13l-119.54-171.4z" />
 
           <g id="layer3">
-            <path className="st0" id="rect4715" d="m0.83398 378.33v183.33h653.61l-127.86-183.33h-525.74z" fill="#cacaca" />
+            <path class="st0" id="rect4715" d="m0.83398 378.33v183.33h653.61l-127.86-183.33h-525.74z" fill="#b6bbab" />
             <text x="15" y="430"> Values </text>
             <text x="15" y="480" className="sub-text">Lorem ipsum dolor sit amet. </text>
             <text x="15" y="500" className="sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
