@@ -13,7 +13,6 @@ import AllUsers from './allUsers/users';
 import InterviewReviewForm from './interviewReview/interviewReview';
 import AllInterviewR from './interviewReview/getInterview';
 import QAForm from './QA/postQA';
-// import UserForm from './userPage/userForm';
 import LoginForm from './signinForm/form';
 import OverView from './overView/overView';
 import RoomForm from './rooms/postRoom';
@@ -43,7 +42,6 @@ const Routes = () => {
             </Route>
             <Route path="/user-page" exact>
                 <User />
-                {/* <UserForm /> */}
             </Route>
             <Route path="/about-us" exact>
                 {/* <AboutUs /> */}
