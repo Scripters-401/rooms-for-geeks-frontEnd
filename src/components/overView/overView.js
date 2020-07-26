@@ -8,7 +8,7 @@ function OverView(props) {
 
   return (
     <>
-      <div className='generalOver'  id='aboutus'>
+      <div className='generalOver' >
         <svg id="svg4136" xmlns="http://www.w3.org/2000/svg" version="1.1" height="613" xmlnsXlink="http://www.w3.org/1999/xlink" >
           <g id="layer1">
 

@@ -26,7 +26,7 @@ const Routes = () => {
                 <Homemain />
                 <OverView />
                 <Auth capability="read">
-                    <Redirect to="/rooms" />
+                    <Redirect to="/user-page" />
                 </Auth>
                 <LoginForm />
                 <AboutUs />
@@ -37,9 +37,7 @@ const Routes = () => {
                 </Auth>
                 {/* <Rooms /> */}
             </Route>
-            <Route path="/interviewReview" exact>
-                {/* <InterviewReview /> */}
-            </Route>
+
             <Route path="/user-page" exact>
                 <User />
             </Route>
@@ -50,14 +48,14 @@ const Routes = () => {
 
             <Route path="/sign" exact>
                 <Auth capability="read">
-                    <Redirect to="/rooms" />
+                    <Redirect to="/user-page" />
                 </Auth>
             </Route>
 
             <Route path="/mm" exact>
                 <Oauth />
                 <Auth capability="read">
-                    <Redirect to="/rooms" />
+                    <Redirect to="/user-page" />
                 </Auth>
             </Route>
             <Route path="/users" exact>
