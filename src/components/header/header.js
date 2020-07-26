@@ -7,7 +7,7 @@ import '../../reset.css';
 
 import './header.scss';
 import { HashLink as Link2 } from 'react-router-hash-link';
-import logo from '../../assest/roomforGeeks22.png';
+import logo from '../../assest/LOGOC.png';
 
 const Header = props => {
   return (

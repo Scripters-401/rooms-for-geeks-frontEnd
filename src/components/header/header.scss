@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 .header {
     display: flex;
-    background-color: #7da09a;
+    background-color: white;
     max-height: 66px;
     flex-direction: row-reverse;
-    // background-image: url("../../assest/Header.jpg");
-    position:sticky;
+    position: sticky;
     z-index: 999999;
     top: 0;
-    box-shadow: 0px 5px 6px rgba(206, 205, 205, 0.699);
+    border-bottom: 4px solid #7da09a;
+    box-shadow: 0px 7px 24px rgba(206, 205, 205, 0.699);
 }
-
 
 h1 {
     margin: auto;
@@ -19,8 +18,8 @@ h1 {
 
 h1.H1 {
     margin: auto 0;
-    font-family: 'Caveat', cursive;
-    color: white;
+    font-family: 'Amiri', serif;
+    color: #7da09a;
     font-size: 198%;
     display: flex;
     justify-content: left;
@@ -28,8 +27,8 @@ h1.H1 {
     z-index: 999999;
 }
 img.logo {
-    height: 110px;
-    margin-top: -15px;
+    height: 61px;
+    margin: .5% 0% 0% 1%;
 }
 
 ul.ulHeader {
@@ -39,15 +38,15 @@ ul.ulHeader {
 }
 
 .navHeader {
-    color: white;
-    font-size: 146%;
+    color: #7da09a;
+    font-size: 129%;
     padding: 13px;
-    font-family: 'Caveat', cursive;
+    font-family: 'Amiri', serif;
     margin: auto;
     position: relative;
     
     &:hover{
-        color: white;
+        color: #7da09a;
         text-decoration: none;
         border-radius: 15px;
         background-image: url('https://data.whicdn.com/images/298919914/original.gif') ;
