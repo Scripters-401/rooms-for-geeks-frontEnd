@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 
 require('dotenv').config();
 
-const API = 'https://rooms-for-geeks.herokuapp.com';
-// const API = 'http://localhost:4000';
+// const API = 'https://rooms-for-geeks.herokuapp.com';
+const API = 'http://localhost:4000';
 // const API = process.env.REACT_APP_API;
 
 
