@@ -1,55 +1,58 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import Auth from '../auth/auth';
 import { connect } from 'react-redux';
 import * as actions from '../../store/signINUPReducer.js'
-// import Show from '../auth/show';
-//#4a9998
+import Show from '../auth/show';
 import '../../reset.css';
 
 import './header.scss';
+import { HashLink as Link2 } from 'react-router-hash-link';
 import logo from '../../assest/roomforGeeks22.png';
 
 const Header = props => {
   return (
-    <header>
-      <Auth capability="read">
-        {/* <Show condition={props.sign.loggedIn}> */}
-          <NavLink to="/" >
-            <button className="signout" onClick={props.logout}>Logout</button>
-          </NavLink>
-        {/* </Show> */}
-      </Auth>
-
+    <header id='AppHeader'>
       <div className="header">
-
-      <nav className='allNavHeader'>
-        <ul className='ulHeader'>
-          <li className='liHeader'>
-            <Link to="/" className="navHeader">Home</Link>
-          </li>
-          <li className='liHeader'>
-            <NavLink to="/rooms"  className="navHeader">Rooms</NavLink>
-          </li>
-          <li className='liHeader'>
-            <NavLink to="/interviewReview" className="navHeader">Interview Review</NavLink>
-          </li>
-          <li className='liHeader'>
-            <NavLink to="/about-us" className="navHeader">About Us</NavLink>
-          </li>
+        <nav className='allNavHeader'>
+          <ul className='ulHeader'>
             <li className='liHeader'>
-          <NavLink to="/sign" className="navHeader" >signIn</NavLink>
+              <Link to="/" className="navHeader">Home</Link>
             </li>
-        </ul>
-      </nav>
+            <Show condition={props.sign.loggedIn}>
+              <li className='liHeader'>
+                <NavLink to="/rooms" className="navHeader">Rooms</NavLink>
+              </li>
+            </Show>
 
+            <Show condition={props.sign.loggedIn}>
+              <li className='liHeader'>
+                <NavLink to="/interviewReview" className="navHeader">Interview Review</NavLink>
+              </li>
+            </Show>
+
+            <Show condition={!props.sign.loggedIn}>
+              <li className='liHeader'>
+                <Link2 smooth to="/#aboutus" className="navHeader">About Us</Link2>
+              </li>
+            </Show>
+
+            <li className='liHeader'>
+              <Show condition={props.sign.loggedIn}>
+                <NavLink to="/" className="navHeader" onClick={props.logout}>
+                  Logout
+                </NavLink>
+              </Show>
+
+              <Show condition={!props.sign.loggedIn}>
+                <Link2 smooth to="/#sign" className="navHeader">signIn</Link2>
+              </Show>
+
+            </li>
+          </ul>
+        </nav>
         <h1 className="H1">Rooms For Geeks</h1>
         <img className="logo" src={logo} alt='LOGO' />
-     
-      {/* <Auth capability="read"> */}
-     
       </div>
-      {/* </Auth> */}
     </header>
   );
 }
@@ -59,11 +62,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  // handleChange: (e) => dispatch(actions.handleChange(e)),
-  // login: (username, password) => dispatch(actions.login(username, password)),
   logout: () => dispatch(actions.logoutFun()),
-  // validateToken: token => dispatch(actions.validateToken(token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
-// export default Header;

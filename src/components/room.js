@@ -15,6 +15,7 @@ const ENDPOINT = "http://localhost:4000/";
 
 const Initial = props => {
     useEffect(() => {
+        console.log(props.sign.user.id);
         props.getRoom(props.sign.token, '5ef1f1407964642caa3a0188')
     }, [])
     // var ourCookeis = document.cookie.split(';');

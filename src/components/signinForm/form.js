@@ -15,14 +15,12 @@ function SigninForm(props) {
 
     function signupFun(e) {
         e.preventDefault();
-        console.log('hellllo');
         setAnimate('false');
         setHide(true);
     }
 
     function loginFun(e) {
         e.preventDefault();
-        console.log('loggggin');
         setAnimate('true');
         setHide(false);
     }
@@ -87,7 +85,7 @@ function SigninForm(props) {
 
     return (
         <>
-        <div className='general'>
+        <div className='general' id='sign'>
             <div className="panel panel--static">
                 <div className="panel__content left">
                     <h1 className="panel__heading">Don't have an account?</h1>
@@ -101,7 +99,6 @@ function SigninForm(props) {
                 </div>
 
                 <div className={`panel panel--sliding an${animate}`}>
-                    {console.log(hide)}
                     <div className={`panel__content signup${!hide}`}>
 
                         <h1 className="panel__heading">Sign up</h1>
