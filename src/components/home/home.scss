@@ -7,28 +7,72 @@
     position: relative;
     .box {
         position: relative;
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+       
         img.homeImg {
             background-size: cover;
             width: 100%;
-            max-height: 80%;
-           
+            max-height: 80%;        
             box-shadow: 0px 15px 24px rgba(104, 103, 103, 0.699);
         }
-        .text {
-            color: antiquewhite;
-            font-family: "Caveat", cursive;
+        .typewriter {
             position: absolute;
-            z-index: 999;
-            margin: 0 auto;
-            left: 0;    
-            right: 0;
-            text-align: center;
-            animation: moving 3s forwards ease-in-out;
-            .title {
-                font-size: 503%;
-                        }
+            z-index: 999999;
+            height: 30px;
+            right: 48px;
+            top: 50%;
+            color: #fff;
+            font-family: monospace;
+            overflow: hidden;
+            border-right: .15em solid #7da09a;
+            white-space: nowrap;
+            margin: 1% 1% 1% 1%;
+            letter-spacing: .15em;
+            background-color:rgba(79, 133, 146, 0.5);
+            animation:  typing 3.5s steps(30, end) infinite,
+                        blink-caret .5s step-end infinite,
+                        reverse-typing 3.5s 4s steps(30, end) infinite       
         }
+        h1.animateText {
+            padding: 1%;
+            font-size: 50%;
+            margin: auto;
+        }
+        .typewriter1 {
+            position: absolute;
+            z-index: 999999;
+            right: 48px;
+            top: 50%;
+            color: #fff;
+            font-family: monospace;
+            overflow: hidden;
+            border-right: .15em solid #7da09a;
+            white-space: nowrap;
+            width: 0;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            background-color:rgba(79, 133, 146, 0.5);
+            animation:  typing 3.5s 8s steps(30, end),
+                        blink-caret .5s step-end infinite,
+                        reverse-typing 3.5s 12s steps(30, end) forwards
+        }
+        // .typewriter2 {
+        //     position: absolute;
+        //     z-index: 999999;
+        //     right: 48px;
+        //     top: 50%;
+        //     color: #fff;
+        //     font-family: monospace;
+        //     overflow: hidden;
+        //     border-right: .15em solid #7da09a;
+        //     white-space: nowrap;
+        //     margin: 0 auto;
+        //     letter-spacing: .15em;
+        //     background-color:rgba(79, 133, 146, 0.5);
+        //     animation:  typing 3.5s 10s steps(30, end),
+        //                 blink-caret .5s step-end infinite;
+        // }
     }
    
     .man {
@@ -76,6 +120,77 @@
         }
     }
 }
+ 
+ 
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 50% }
+  }
+  @keyframes reverse-typing {
+    from { width: 50% }
+    to { width:0 ; padding: 0%;}
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from ,to { border-color: transparent }
+    50% { border-color: #7da09a }
+  }
+  
+  
+
+// @keyframes moving {
+//     from {
+//         top: 0px;
+//     }
+//     to {
+//         top: 250px;
+//     }
+// }
+// @-webkit-keyframes moving {
+//     from {
+//         top: 0px;
+//     }
+//     to {
+//         top: 250px;
+//     }
+// }
+
+// @keyframes rotation {
+//     from {
+//         -webkit-transform: rotate(var(--rotation));
+//     }
+//     to {
+//         -webkit-transform: rotate(calc(var(--rotation) + 360deg));
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------
 
 .numberH1,
 .numberH13 {
@@ -306,30 +421,4 @@
 }
 .number0 {
     --rotation: 439deg;
-}
-
-@keyframes moving {
-    from {
-        top: 0px;
-    }
-    to {
-        top: 250px;
-    }
-}
-@-webkit-keyframes moving {
-    from {
-        top: 0px;
-    }
-    to {
-        top: 250px;
-    }
-}
-
-@keyframes rotation {
-    from {
-        -webkit-transform: rotate(var(--rotation));
-    }
-    to {
-        -webkit-transform: rotate(calc(var(--rotation) + 360deg));
-    }
 }
