@@ -10,6 +10,16 @@ const User = props => {
         props.getInfoUser(props.sign.token, props.sign.user.id)
     }, [props.sign.token, props.sign.user.id])
 
+    useEffect(() => {
+        console.log('nmnmnmnmnmnmn');
+        
+        // props.getInfoUser(props.sign.token, props.sign.user.id)
+    }, [
+        props.userInfo.user.name,
+        props.userInfo.user.major,
+        props.userInfo.user.university
+    ])
+
     const handleSubmitFun = event => {
         event.preventDefault();
         props.putInfoUser(
@@ -35,7 +45,7 @@ const User = props => {
     let createdTimeDay = newDatecreatedTime.getDay();
 
     let getExactYear = fullYear - createdTimeFullYear;
-    let  getExactMonth;
+    let getExactMonth;
     let getExactDay
 
     if (createdTimeDay > day) {
@@ -45,9 +55,9 @@ const User = props => {
     }
 
     if (month > createdTimeMonth) {
-        getExactMonth =  month - createdTimeMonth;
+        getExactMonth = month - createdTimeMonth;
     } else {
-        getExactMonth =  createdTimeMonth - month;
+        getExactMonth = createdTimeMonth - month;
     }
 
     return (
@@ -56,13 +66,10 @@ const User = props => {
                 <p>Username: {props.userInfo.user.username}</p>
                 <p>Email: {props.userInfo.user.email}</p>
                 <p>Over joined: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
-                <img src={`${props.userInfo.user.profileIMG}`}></img>
+                <img src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img>
 
 
-                <form onSubmit={(e) => {
-                    handleSubmitFun(e);
-                    window.location.reload()
-                }}>
+                <form onSubmit={(e) => { handleSubmitFun(e); }}>
                     <h3>Update</h3>
 
                     <div>

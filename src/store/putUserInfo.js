@@ -43,7 +43,15 @@ export const putInfoUser = (token, id, password, name, major, university, profil
             body: JSON.stringify({ password, name, major, university, profileIMG })
         })
         let res = await results.json();
+        dispatch(userAction(res))
     } catch (error) {
         console.error(`ERROR: PUT_USER`);
+    }
+}
+
+const userAction = payloadData => {
+    return {
+        type: 'USER_DATA',
+        payload: payloadData
     }
 }
