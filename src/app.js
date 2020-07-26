@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleUp as upIcon } from '@fortawesome/free-solid-svg-icons';
 import './reset.css';
 import './app.scss';
+require('dotenv').config();
 
 
 function App(props) {

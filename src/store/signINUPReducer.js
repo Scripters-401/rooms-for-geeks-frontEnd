@@ -3,9 +3,8 @@ import jwt from 'jsonwebtoken';
 
 require('dotenv').config();
 
-const API = 'https://rooms-for-geeks.herokuapp.com';
-// const API = 'http://localhost:4000';
-// const API = process.env.REACT_APP_API;
+// localhost or deployed
+const API = process.env.REACT_APP_API;
 
 
 
@@ -78,15 +77,15 @@ const logout = (loggedIn = false, token = null, user = {}) => {
 
 /*************************************************** functions ****************************************************** */
 
-export const signup = (username, password, email, name, major) => async dispatch => {
-
+export const signup = (username, password, email, name, major, profileIMG) => async dispatch => {
+  console.log('jiiiiii', username, profileIMG);
   try {
     const results = await fetch(`${API}/signup`, {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password, email, name, major })
+      body: JSON.stringify({ username, password, email, name, major, profileIMG })
     });
 
     let res = await results.json();
@@ -151,7 +150,7 @@ export const getOauth = () => async dispatch => {
     });
 
     let res = await results.json();
-    dispatch(validateToken(res.token))  
+    dispatch(validateToken(res.token))
   } catch (error) {
     console.error(`ERROR: SIGNOUT`);
   }

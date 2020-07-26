@@ -24,11 +24,11 @@ export default (state = initialState, action) => {
       return { ...state };
 
     case 'setProgress':
-      state.image = payload
+      state.progress = payload
       return { ...state };
 
     case 'setUrl':
-      state.image = payload
+      state.url = payload
       return { ...state };
 
     default:

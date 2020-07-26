@@ -2,9 +2,9 @@ import firebase from "firebase/app";
 import "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCEoNFsbGibVXd5fEwrYGSKvtJxmv3ft0s",
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
   authDomain: "scripters401.firebaseapp.com",
-  databaseURL: "https://scripters401.firebaseio.com",
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
   projectId: "scripters401",
   storageBucket: "scripters401.appspot.com",
   messagingSenderId: "986956607072",
