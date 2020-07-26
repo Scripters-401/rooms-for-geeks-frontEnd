@@ -13,6 +13,7 @@ import room from './roomReducer';
 import thePostRoom from './postRoomReduser';
 import thePostCourse from './postCourseReducer';
 import thunk from 'redux-thunk';
+import userHome from './userHome'
 
 
 let reducers = combineReducers({
@@ -27,6 +28,7 @@ let reducers = combineReducers({
     room,
     thePostRoom,
     thePostCourse,
+    userHome,
 });
 
 const store = () => {
