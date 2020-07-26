@@ -2,8 +2,10 @@
 import React, { useEffect } from 'react';
 import './userPage.scss';
 import { connect } from 'react-redux';
+import { storage } from "../firebase";
 import * as actions from '../../store/userReducer';
 import * as actions2 from '../../store/putUserInfo';
+import * as actions3 from '../../store/uploadImageReducer'
 
 const User = props => {
     useEffect(() => {
@@ -11,6 +13,7 @@ const User = props => {
     }, [props.sign.token, props.sign.user.id])
 
     useEffect(() => {
+<<<<<<< HEAD
         console.log('nmnmnmnmnmnmn');
         
         // props.getInfoUser(props.sign.token, props.sign.user.id)
@@ -19,19 +22,52 @@ const User = props => {
         props.userInfo.user.major,
         props.userInfo.user.university
     ])
+=======
+
+    }, [props.userInfo.user.major])
+>>>>>>> a8ce3c000ec14859f57c19a2a90471c134abb4c9
 
     const handleSubmitFun = event => {
         event.preventDefault();
-        props.putInfoUser(
-            props.sign.token,
-            props.sign.user.id,
-            props.editUserInfo.password,
-            props.editUserInfo.name,
-            props.editUserInfo.major,
-            props.editUserInfo.university,
-            props.editUserInfo.profileIMG
-        );
+        if (event.target.imagesUpload.value) {
+            const uploadTask = storage.ref(`images/${props.upload.image.name}`).put(props.upload.image);
+            uploadTask.on("state_changed", () => {
+                storage
+                    .ref("images")
+                    .child(props.upload.image.name)
+                    .getDownloadURL()
+                    .then(url => {
+                        props.putInfoUser(
+                            props.sign.token,
+                            props.sign.user.id,
+                            props.editUserInfo.password,
+                            props.editUserInfo.name,
+                            props.editUserInfo.major,
+                            props.editUserInfo.university,
+                            url
+                        );
+                        props.getInfoUser(props.sign.token, props.sign.user.id)
+                    });
+            });
+        } else {
+            props.putInfoUser(
+                props.sign.token,
+                props.sign.user.id,
+                props.editUserInfo.password,
+                props.editUserInfo.name,
+                props.editUserInfo.major,
+                props.editUserInfo.university,
+                props.editUserInfo.profileIMG,
+            );
+            props.getInfoUser(props.sign.token, props.sign.user.id)
+        }
     }
+
+    const handleChangePic = e => {
+        if (e.target.files[0]) {
+            props.setImage(e.target.files[0]);
+        }
+    };
 
     const currentDate = new Date();
     let fullYear = currentDate.getFullYear();
@@ -69,7 +105,14 @@ const User = props => {
                 <img src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img>
 
 
+<<<<<<< HEAD
                 <form onSubmit={(e) => { handleSubmitFun(e); }}>
+=======
+                <form onSubmit={(e) => {
+                    handleSubmitFun(e);
+                    // window.location.reload()
+                }}>
+>>>>>>> a8ce3c000ec14859f57c19a2a90471c134abb4c9
                     <h3>Update</h3>
 
                     <div>
@@ -106,11 +149,7 @@ const User = props => {
                     </div>
                     <div>
                         <label>profileIMG</label>
-                        <input
-                            type="text"
-                            name="profileIMG"
-                            onChange={(e) => props.updateData(e)}
-                        />
+                        <input className='ChooseImage' name="imagesUpload" type="file" onChange={handleChangePic} />
                     </div>
 
                     <button type="submit">Submit</button>
@@ -126,12 +165,14 @@ const mapStateToProps = (state) => {
         userInfo: state.userInfo,
         sign: state.sign,
         editUserInfo: state.editUserInfo,
+        upload: state.upload,
     };
 };
 
 const mapDispatchToProps = (dispatch, getState) => ({
     getInfoUser: (token, id) => dispatch(actions.getInfoUser(token, id)),
     updateData: (event) => dispatch(actions2.updateData(event)),
+    setImage: (image) => dispatch(actions3.setImage(image)),
     putInfoUser: (token, id, password, name, major, university, profileIMG) =>
         dispatch(actions2.putInfoUser(token, id, password, name, major, university, profileIMG)),
 });

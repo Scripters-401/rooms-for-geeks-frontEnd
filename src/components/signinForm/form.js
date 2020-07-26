@@ -4,15 +4,16 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/signINUPReducer'
 import cookie from 'react-cookies';
 import { storage } from "../firebase";
-
 import * as actions2 from '../../store/uploadImageReducer'
-
-
-// import Show from '../auth/show';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import './form.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+require('dotenv').config();
+
+// import Show from '../auth/show';
+
 function SigninForm(props) {
 
     const [hide, setHide] = useState(false);
@@ -31,13 +32,14 @@ function SigninForm(props) {
     }
 
     const googleOuthFun = e => {
-        let URL = 'https://accounts.google.com/o/oauth2/v2/auth';
+        
+        let URL = process.env.REACT_APP_URL_GOOGLE;
 
         let options = {
             scope: 'email profile',
             response_type: 'code',
-            redirect_uri: 'https://rooms-for-geeks.herokuapp.com/oauth',
-            client_id: '676776904076-qucvccg4ccfa0bqbbn06ooer1cegib5a.apps.googleusercontent.com',
+            redirect_uri: process.env.REACT_APP_REDIRECT_URI_G,
+            client_id: process.env.REACT_APP_CLIENT_ID_G,
         };
 
         let QueryString = Object.keys(options).map((key) => {
@@ -49,11 +51,11 @@ function SigninForm(props) {
     }
 
     const facebookOuthFun = e => {
-        let URL2 = 'https://www.facebook.com/v7.0/dialog/oauth';
+        let URL2 = process.env.REACT_APP_URL_FACEBOOK;
 
         let options2 = {
-            client_id: '715443139210826',
-            redirect_uri: 'https://rooms-for-geeks.herokuapp.com/oauth2',
+            client_id: process.env.REACT_APP_CLIENT_ID_F,
+            redirect_uri: process.env.REACT_APP_REDIRECT_URI_F,
             state: 'scripters',
             scope: 'public_profile,email',
         };
