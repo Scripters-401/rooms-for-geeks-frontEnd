@@ -78,7 +78,6 @@ const logout = (loggedIn = false, token = null, user = {}) => {
 /*************************************************** functions ****************************************************** */
 
 export const signup = (username, password, email, name, major, profileIMG) => async dispatch => {
-  console.log('jiiiiii', username, profileIMG);
   try {
     const results = await fetch(`${API}/signup`, {
       method: 'POST',
@@ -108,6 +107,7 @@ export const login = (username, password) => async dispatch => {
         'Accept': 'application/json'
       }),
     });
+
     let headers = {};
     for (let [key, value] of results.headers) {
       headers[key] = value;

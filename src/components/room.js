@@ -8,14 +8,14 @@ import * as actions from '../store/roomReducer';
 
 import './initial.scss'
 // import { handleChange } from '../store/signINUPReducer.js';
-const ENDPOINT = "http://localhost:4000/";
-// const ENDPOINT =  process.env.REACT_APP_API;
+// const ENDPOINT = "http://localhost:4000/";
+const ENDPOINT =  process.env.REACT_APP_API;
 
 
 
 const Initial = props => {
     useEffect(() => {
-        console.log(props.sign.user.id);
+        // console.log(props.sign.user.id);
         props.getRoom(props.sign.token, '5ef1f1407964642caa3a0188')
     }, [])
     // var ourCookeis = document.cookie.split(';');

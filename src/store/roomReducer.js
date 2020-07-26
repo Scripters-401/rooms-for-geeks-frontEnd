@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
   switch (type) {
 
     case 'roomDataAction':
-      console.log(payload,'ppppppppppppppp');   
+      // console.log(payload,'ppppppppppppppp');   
       state.roomData = payload
       return { ...state };
 
