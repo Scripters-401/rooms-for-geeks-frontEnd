@@ -36,6 +36,12 @@ const Header = props => {
               </li>
             </Show>
 
+            <Show condition={props.sign.loggedIn}>
+              <li className='liHeader'>
+                <NavLink to="/user-page" className="navHeader">User Page</NavLink>
+              </li>
+            </Show>
+
             <li className='liHeader'>
               <Show condition={props.sign.loggedIn}>
                 <NavLink to="/" className="navHeader" onClick={props.logout}>
