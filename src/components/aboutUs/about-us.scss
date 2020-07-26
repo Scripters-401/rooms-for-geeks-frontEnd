@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@700&display=swap');
+
+.aboutUsDiv{
+    max-width: 940px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.ourTeamHeader {
+    font-size: 30px;
+    display: flex;
+    font-weight: bold;
+    color: #416760;
+    margin-top: 2%;
+    margin-bottom: 2%; 
+    justify-content: center;
+}
+
+.profileMemberPhoto
+{
+    height: 120px;
+    width:120px;
+    align-items:left ;
+    width:120px;
+    align-items:left; 
+    border: 3px solid #00a6b3;
+     border-radius: 85px;
+}
+.author{
+    margin: 5% 2% 1% 2%;
+}
+
+// p {
+//     font-size: 16px !important;
+//     line-height: 1.5 !important;
+//     text-align: justify !important;
+//     margin-bottom: 5px !important;
+//     color: #58595b !important;
+// }
+
+.mySlides {
+    padding: 80px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.blockquote {
+    font-family: 'PT Sans Caption', sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    width: 500px;
+    margin: 0.25em 0;
+    padding: 0.35em 40px;
+    line-height: 1.45;
+    position: relative;
+    color: #a55a96;
+}
+

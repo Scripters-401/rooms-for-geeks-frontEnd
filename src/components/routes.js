@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 // import Home from '../home/home';
 // import Rooms from '../rooms/rooms';
-// import AboutUs from '../aboutUs/about-us';
+import AboutUs from './aboutUs/about-us';
 
 import Room from './room.js';
 import Homemain from './home/home';
@@ -30,6 +30,7 @@ const Routes = () => {
                     <Redirect to="/rooms" />
                 </Auth>
                 <LoginForm />
+                <AboutUs />
             </Route>
             <Route path="/rooms" exact>
                 <Auth capability="read">
