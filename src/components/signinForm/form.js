@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/signINUPReducer'
 import cookie from 'react-cookies';
+
+
+import UploadImage from '../firebase/uplloadImage'
+
 // import Show from '../auth/show';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -108,6 +112,7 @@ function SigninForm(props) {
                             <input type="email" placeholder="Email" name="email" onChange={(e) => props.handleChange(e)} className="input input--email" required />
                             <input type="password" placeholder="Password" name="password" onChange={(e) => props.handleChange(e)} className="input input--password" required />
                             <input type="text" className="input input--name" placeholder="Major" name="major" onChange={(e) => props.handleChange(e)} required />
+                            <UploadImage/>
 
                             <button className="btn btn--primary" >Sign up</button>
                             <div>

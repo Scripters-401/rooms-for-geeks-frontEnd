@@ -14,7 +14,7 @@ import thePostRoom from './postRoomReduser';
 import thePostCourse from './postCourseReducer';
 import thunk from 'redux-thunk';
 
-
+import upload from './uploadImageReducer'
 let reducers = combineReducers({
     data: reducer,
     sign,
@@ -27,6 +27,7 @@ let reducers = combineReducers({
     room,
     thePostRoom,
     thePostCourse,
+    upload,
 });
 
 const store = () => {
