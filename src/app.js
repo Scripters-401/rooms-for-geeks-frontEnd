@@ -30,7 +30,7 @@ function App(props) {
       <Header />
       <Routes />
       <Footer />
-      <Link2 smooth to="/#AppHeader" className="up">
+      <Link2 smooth to="#AppHeader" className="up">
         <FontAwesomeIcon icon={upIcon} size='1x' color="#7DA09A" />
       </Link2>
     </>

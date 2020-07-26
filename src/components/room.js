@@ -158,7 +158,6 @@ const Initial = props => {
 
 
 const mapStateToProps = state => ({
-    // data: state.data,
     sign: state.sign,
     room: state.room,
 });
