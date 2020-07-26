@@ -21,9 +21,18 @@ const Home = () => {
                         <img className='homeImg' src={img} alt='homeImg' />
 
                     </div>
-                    <div className="text">
-                        {/* <h1 className='title'>Rooms For Geeks</h1> */}
+                    <div class="typewriter">
+                        <h1 className='animateText'>Welcome to Rooms For Geeks Website</h1>
                     </div>
+
+                    {/* <div class="typewriter1">
+                        <h1>we hope that you will enjoy your time and</h1>
+                    </div> */}
+
+                    {/* <div class="typewriter2">
+                        learn new thing whith us !
+                    </div> */}
+
                 </div>
                 <div className='secendDiv'>
                     {/* <img className={`secend number${theSec}`} src={timer2} alt='timer1' /> */}
