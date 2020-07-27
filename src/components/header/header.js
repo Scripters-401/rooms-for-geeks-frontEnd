@@ -58,6 +58,7 @@ const Header = props => {
                 <Link to="/userHome" className="navHeader">User Home</Link>
               </li>
             </Show>
+            <p>{props.userInfo.user.username}</p>
 
             </li>
           </ul>
@@ -70,7 +71,8 @@ const Header = props => {
 }
 
 const mapStateToProps = state => ({
-  sign: state.sign
+  sign: state.sign,
+  // userInfo: state.userInfo,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({

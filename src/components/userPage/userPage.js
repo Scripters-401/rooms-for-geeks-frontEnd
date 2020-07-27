@@ -81,6 +81,15 @@ const User = props => {
         getExactMonth = createdTimeMonth - month;
     }
 
+    const togglePass = () => {
+        let idInput = document.getElementById("passInput");
+        if (idInput.type === "password") {
+          idInput.type = "text";
+        } else {
+            idInput.type = "password";
+        }
+      }
+
     return (
         <div>
             <>
@@ -98,7 +107,8 @@ const User = props => {
 
                     <div>
                         <label>Password</label>
-                        <input type="password" name="password" onChange={(e) => props.updateData(e)}></input>
+                        <input type="password" value={props.editUserInfo.password} name="password" id="passInput" onChange={(e) => props.updateData(e)}></input>
+                        <input type="checkbox" onClick={togglePass}></input>Show Password
                     </div>
 
                     <div>
