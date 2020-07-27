@@ -72,7 +72,7 @@ const Header = props => {
 
 const mapStateToProps = state => ({
   sign: state.sign,
-  // userInfo: state.userInfo,
+  userInfo: state.userInfo,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({

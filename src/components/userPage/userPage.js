@@ -84,67 +84,77 @@ const User = props => {
     const togglePass = () => {
         let idInput = document.getElementById("passInput");
         if (idInput.type === "password") {
-          idInput.type = "text";
+            idInput.type = "text";
         } else {
             idInput.type = "password";
         }
-      }
+    }
 
     return (
-        <div>
+        <div className="mainDiv">
             <>
-                <p>Username: {props.userInfo.user.username}</p>
-                <p>Email: {props.userInfo.user.email}</p>
-                <p>Over joined: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
-                <img src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img>
+                <div className="withImage">
+                    <img className="image infoSec" src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img>
+                    <div className="withoutImage">
+                        <p className="username infoSec">Username: {props.userInfo.user.username}</p>
+                        <p className="email infoSec">Email: {props.userInfo.user.email}</p>
+                        <p className="name infoSec">Name: {props.userInfo.user.name}</p>
+                        <p className="majorr infoSec">Major: {props.userInfo.user.major}</p>
+                        <p className="university infoSec">University: {props.userInfo.user.university}</p>
+                        <p className="joined infoSec">Over joined: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
+                    </div>
+                </div>
+                <div className="divForm">
+                    <form className="formC" onSubmit={(e) => {
+                        handleSubmitFun(e);
+                        // window.location.reload()
+                    }}>
+                        <h3 className="subForm">Update</h3>
 
-
-                <form onSubmit={(e) => {
-                    handleSubmitFun(e);
-                    // window.location.reload()
-                }}>
-                    <h3>Update</h3>
-
-                    <div>
-                        <label>Password</label>
-                        <input type="password" value={props.editUserInfo.password} name="password" id="passInput" onChange={(e) => props.updateData(e)}></input>
-                        <input type="checkbox" onClick={togglePass}></input>Show Password
+                        <div className="form-group col-md-5">
+                            <label>Password</label>
+                            <input placeholder="password" className="form-control" type="password" value={props.editUserInfo.password} name="password" id="passInput" onChange={(e) => props.updateData(e)}></input>
+                            <input type="checkbox" onClick={togglePass}></input>Show Password
                     </div>
 
-                    <div>
-                        <label>Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            onChange={(e) => props.updateData(e)}
-                            placeholder={props.userInfo.user.name}
-                        ></input>
-                    </div>
-                    <div>
-                        <label>Major</label>
-                        <input
-                            type="text"
-                            name="major"
-                            onChange={(e) => props.updateData(e)}
-                            placeholder={props.userInfo.user.major}
-                        />
-                    </div>
-                    <div>
-                        <label>University</label>
-                        <input
-                            type="text"
-                            name="university"
-                            onChange={(e) => props.updateData(e)}
-                            placeholder={props.userInfo.user.university}
-                        />
-                    </div>
-                    <div>
-                        <label>profileIMG</label>
-                        <input className='ChooseImage' name="imagesUpload" type="file" onChange={handleChangePic} />
-                    </div>
-
-                    <button type="submit">Submit</button>
-                </form>
+                        <div className="form-group col-md-5">
+                            <label>Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                onChange={(e) => props.updateData(e)}
+                                placeholder={props.userInfo.user.name}
+                                className="form-control"
+                            ></input>
+                        </div>
+                        <div className="form-group col-md-5">
+                            <label>Major</label>
+                            <input
+                                type="text"
+                                name="major"
+                                onChange={(e) => props.updateData(e)}
+                                placeholder={props.userInfo.user.major}
+                                className="form-control"
+                            />
+                        </div>
+                        <div className="form-group col-md-5">
+                            <label>University</label>
+                            <input
+                                type="text"
+                                name="university"
+                                onChange={(e) => props.updateData(e)}
+                                placeholder={props.userInfo.user.university}
+                                className="form-control"
+                            />
+                        </div>
+                        <div className="form-group col-md-5">
+                            <label>profileIMG</label>
+                            <input id="imagesUploadId" className='form-control-file' name="imagesUpload" type="file" onChange={handleChangePic} className="form-control" />
+                        </div>
+                        <div className="form-group col-md-5">
+                            <button type="submit" className="btn">Submit</button></div>
+                    </form>
+                </div>
             </>
         </div>
     );
