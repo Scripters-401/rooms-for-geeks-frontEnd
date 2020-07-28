@@ -1,32 +1,26 @@
 footer.footer {
    border-top: 4px solid #416760;
+   background-color:#416760 ;
+   height: 168px;
 }
-
-a.linkedIn {
-    margin: 3% 1% 2% 7%;
-    &:hover path {
-        fill: #007bff;
-      }
-     g {
-        fill: #fff;
-      }
-}
-
-a:visited path{
-    fill: #FFFFFF;
-  }
-//   a:hover path {
-//     fill: #ffffff;
-//   }
-  a:active path {
-    fill: #fff;
-  }
-
-
 .div1 a.faceBook{
-color: red;
+color: #bebebe;
+padding: 1%;
 }  
 
 .div1 a.faceBook:hover{
-  color: salmon;
+  color: white;
+  transition: all 2s ease;
+-webkit-transition: all 2s ease;
+}
+
+.div1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+p.right {
+  text-align: center;
+  color: white;
 }

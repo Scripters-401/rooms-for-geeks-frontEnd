@@ -1,20 +1,27 @@
 import React from 'react';
 import './footer.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faFacebook,faInstagram,faGithub,faTwitter} from '@fortawesome/free-brands-svg-icons'
+import {faFacebook,faInstagram,faGithub,faTwitter,faLinkedin,faPhone} from '@fortawesome/free-brands-svg-icons'
 
 const Footer = () => {
     return (
         <footer className='footer'>
-           
-            <div className="div1 hover">
+            
+            {/* <div className='div'>
+                <h5> Connect Us :</h5>
+                
+            </div> */}
+            <div className="div1">
             <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faFacebook} size="2x"/></a>
-            <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faInstagram} size="2x"/></a>
-            <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faGithub} size="2x"/></a>
-            <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faTwitter} size="2x"/></a>
+            {/* <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faInstagram} size="2x"/></a> */}
+            <a herf="https://github.com/Scripters-401" className="faceBook">  <FontAwesomeIcon icon={faGithub} size="2x"/></a>
+            {/* <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faTwitter} size="2x"/></a> */}
+            <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faLinkedin} size="2x"/></a>
+            
+
             </div>
             
-            <p >&copy; 2020 Scripters Group</p>
+            <p className="right" >&copy; 2020 Scripters Group</p>
         </footer>
     )
 };
