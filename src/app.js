@@ -9,6 +9,7 @@ import Footer from './components/footer/footer.js';
 import Routes from './components/routes';
 
 import * as actions from './store/signINUPReducer.js'
+import * as actions2 from './store/userReducer.js'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleUp as upIcon } from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +24,11 @@ function App(props) {
     const cookieToken = cookie.load('auth');
     const token = cookieToken || null;
     props.validateToken(token);
+    console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',props);
+    props.getInfoUser(props.sign.token, props.sign.user.id)
+
   }, [])
+
 
   return (
     <>
@@ -41,7 +46,9 @@ const mapStateToProps = state => ({
   sign: state.sign
 });
 const mapDispatchToProps = (dispatch, getState) => ({
-  validateToken: token => dispatch(actions.validateToken(token))
+  validateToken: token => dispatch(actions.validateToken(token)),
+  getInfoUser: (token,id) => dispatch(actions2.getInfoUser(token,id))
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -13,6 +13,7 @@ export default (state = initialState, action) => {
     switch (type) {
 
         case 'USER_DATA':
+            console.log(payload,'payload');
             state.user = payload;
             return { ...state };
         default:

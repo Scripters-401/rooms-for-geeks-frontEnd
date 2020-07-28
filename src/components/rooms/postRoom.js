@@ -20,7 +20,7 @@ const RoomForm = props => {
 
     const handleSubmitFun = e => {
         e.preventDefault();
-
+        console.log(props);
         props.roomPost(
             props.sign.token,
             props.sign.user.id,
@@ -28,7 +28,8 @@ const RoomForm = props => {
             props.thePostRoom.publicc,
             props.thePostRoom.password,
 
-            props.thePostRoom.adminName,
+            // props.thePostRoom.adminName,
+            props.userInfo.user.username,
             props.thePostRoom.members,
 
         );
@@ -37,6 +38,7 @@ const RoomForm = props => {
 
     return (
         <>
+        {console.log('pppppppppppp',props)}
             <div>
                 <form onSubmit={(e) => handleSubmitFun(e)}>
                     <h3>Create Room</h3>
@@ -78,6 +80,7 @@ const RoomForm = props => {
 const mapStateToProps = state => ({
     sign: state.sign,
     thePostRoom: state.thePostRoom,
+    userInfo: state.userInfo,
 
 });
 
