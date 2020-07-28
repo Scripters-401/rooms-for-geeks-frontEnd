@@ -149,7 +149,7 @@ function SigninForm(props) {
 
                                 <a href={props.sign.authURL} className='icons' onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
                                 <a href={props.sign.authURL} className='icons' onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
-                                <a href="/">Forgot password?</a>
+                                <a href="/new-password">Forgot password?</a>
                             </form>
                         </div>
                     </div>

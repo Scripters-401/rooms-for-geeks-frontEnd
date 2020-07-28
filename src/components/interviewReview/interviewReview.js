@@ -1,14 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/interviewReviewReducer'
-import './interviewReview.scss';
+import * as actions from '../../store/getInterviewReducer';
+import * as actions2 from '../../store/interviewReviewReducer'
 
-const InterviewReviewForm = props => {
 
+const AllInterviewR = props => {
+    useEffect(() => {
+        props.getInterviewreview(props.sign.token)
+    }, [props.sign.token])
 
     const handleSubmitFun = e => {
-        e.preventDefault();
+        // e.preventDefault();
 
         props.interviewPost(
             props.sign.token,
@@ -19,20 +22,44 @@ const InterviewReviewForm = props => {
             props.interView.anonymous,
             props.interView.position
         );
+        props.getInterviewreview(props.sign.token)
     }
 
     return (
-        <>
+
+        <section>
+            {props.allInterview.user.map(data => {
+                let date = new Date(data.createdTime);
+                let formattedDate = date.toDateString() + " at " + date.toTimeString().split(/\s/)[0]
+                return (
+                    <div>
+                        <p>review: {data.review}</p>
+                        <p>createdTime: {formattedDate}</p>
+                        <p>anonymous: {data.anonymous.toString()}</p>
+                        <p>companyName: {data.companyName}</p>
+                        <p>date: {data.date}</p>
+                        <p>rate:
+                        <input
+                                type='range'
+                                defaultValue="0"
+                                min={0}
+                                max={5}
+                                value={data.rate}
+                                step={1}
+                                name="rate"
+                                onChange={(e) => props.handleChangeInterview(e)}
+                                disabled
+                            />
+                        </p>
+                        <p>position: {data.position}</p>
+                        <p>userName: {data.userName}</p>
+                        <p>===========================================================</p>
+                    </div>
+                )
+            })}
+
             <div>
-                <>
-                    <p>{props.interView.companyName}</p>
-                    <p>{props.interView.review}</p>
-                    <p>{props.interView.date}</p>
-                    <p>{props.interView.rate}</p>
-                    <p>{props.interView.anonymous}</p>
-                    <p>{props.interView.createdTime}</p>
-                    <p>{props.interView.position}</p>
-                </>
+
             </div>
             <div>
                 <form onSubmit={(e) => handleSubmitFun(e)}>
@@ -98,20 +125,26 @@ const InterviewReviewForm = props => {
                     <button type="submit">Submit</button>
                 </form>
             </div>
-        </>
-    )
+        </section>
+    );
 }
 
-const mapStateToProps = state => ({
-    sign: state.sign,
-    interView: state.interviewR
-});
+
+const mapStateToProps = (state) => {
+    return {
+        allInterview: state.allInterview,
+        sign: state.sign,
+        interView: state.interviewR,
+        userInfo: state.userInfo,
+    };
+};
 
 const mapDispatchToProps = (dispatch, getState) => ({
-    handleChangeInterview: (e) => dispatch(actions.handleChangeInterview(e)),
+    getInterviewreview: (token) => dispatch(actions.getInterviewreview(token)),
+    handleChangeInterview: (e) => dispatch(actions2.handleChangeInterview(e)),
 
     interviewPost: (token, companyName, review, date, rate, anonymous, position) =>
-        dispatch(actions.interviewPost(token, companyName, review, date, rate, anonymous, position)),
+        dispatch(actions2.interviewPost(token, companyName, review, date, rate, anonymous, position)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(InterviewReviewForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AllInterviewR);
