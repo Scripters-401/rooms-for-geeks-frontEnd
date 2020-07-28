@@ -12,9 +12,13 @@ export default (state = initialState, action) => {
     let { type, payload } = action;
 
     switch (type) {
-
         case 'USER_DATA':
             state.user = payload;
+            return { ...state };
+        case 'USER_ROLE':
+            state.user.role = payload;
+            console.log('state.user.role',state.user.role);
+            console.log('payload',payload);
             return { ...state };
         default:
             return state;
@@ -27,6 +31,8 @@ export const userAction = payloadData => {
         payload: payloadData
     }
 }
+
+
 
 
 export const getInfoUser = (token, id) => async dispatch => {

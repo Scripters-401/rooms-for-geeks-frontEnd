@@ -32,7 +32,7 @@ function SigninForm(props) {
     }
 
     const googleOuthFun = e => {
-        
+
         let URL = process.env.REACT_APP_URL_GOOGLE;
 
         let options = {
@@ -132,40 +132,42 @@ function SigninForm(props) {
                                 <input type="password" placeholder="Password" name="password" onChange={(e) => props.handleChange(e)} className="input input--password" required />
                                 <input type="text" className="input input--name" placeholder="Major" name="major" onChange={(e) => props.handleChange(e)} required />
                                 <input className='ChooseImage' type="file" onChange={handleChangePic} />
-                                <button className="btn btn--primary" >Sign up</button>
-                                <div>
-                                    <a href={props.sign.authURL} onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
-                                    <a href={props.sign.authURL} onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
-                                </div>
+                                <div><input type="checkbox" name="terms" value="terms" id="bubble" required/>
+                                <label className="bubble" for='bubble'>   I agree to the <span><a href='#'>Terms of Service</a></span> and <span><a href='#'>Privacy Policy</a></span></label></div>
+                                    <button className="btn btn--primary" >Sign up</button>
+                                    <div>
+                                        <a href={props.sign.authURL} onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
+                                        <a href={props.sign.authURL} onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
+                                    </div>
                             </form>
                         </div>
 
-                        <div className={`panel__content login${hide}`}>
-                            <h1 className="panel__heading">Log in</h1>
-                            <form id="login" onSubmit={(e) => handleSubmitFun(e)}>
-                                <input type="text" placeholder="Username" name='username' className="input input--email" onChange={(e) => props.handleChange(e)} required />
-                                <input type="password" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
-                                <button type='submit' className="btn btn--primary">Log in</button>
+                            <div className={`panel__content login${hide}`}>
+                                <h1 className="panel__heading">Log in</h1>
+                                <form id="login" onSubmit={(e) => handleSubmitFun(e)}>
+                                    <input type="text" placeholder="Username" name='username' className="input input--email" onChange={(e) => props.handleChange(e)} required />
+                                    <input type="password" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
+                                    <button type='submit' className="btn btn--primary">Log in</button>
 
-                                <a href={props.sign.authURL} className='icons' onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
-                                <a href={props.sign.authURL} className='icons' onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
-                                <a href="/">Forgot password?</a>
-                            </form>
+                                    <a href={props.sign.authURL} className='icons' onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
+                                    <a href={props.sign.authURL} className='icons' onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
+                                    <a href="/">Forgot password?</a>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </>
     );
 }
 
 const mapStateToProps = state => ({
-    sign: state.sign,
+                sign: state.sign,
     upload: state.upload,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
-    handleChange: (e) => dispatch(actions.handleChange(e)),
+                handleChange: (e) => dispatch(actions.handleChange(e)),
     login: (username, password) => dispatch(actions.login(username, password)),
     validateToken: token => dispatch(actions.validateToken(token)),
     oathfun: (e) => dispatch(actions.oathfun(e)),
