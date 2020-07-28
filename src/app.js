@@ -24,7 +24,6 @@ function App(props) {
     const cookieToken = cookie.load('auth');
     const token = cookieToken || null;
     props.validateToken(token);
-    console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',props);
     props.getInfoUser(props.sign.token, props.sign.user.id)
 
   }, [])
