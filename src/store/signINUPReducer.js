@@ -13,6 +13,8 @@ let initialState = {
   signup: '',
   user: {},
   authURL: '',
+
+  errorMsg: '',
 };
 
 // reducer : switch case
@@ -36,6 +38,9 @@ export default (state = initialState, action) => {
       state.authURL = payload
       return { ...state };
 
+    case 'ERROR':
+      state.errorMsg = payload;
+      return { ...state };
     default:
       return state;
   }
@@ -71,7 +76,12 @@ const logout = (loggedIn = false, token = null, user = {}) => {
   }
 }
 
-
+const errMsg = (payload) => {
+  return {
+    type: 'ERROR',
+    payload: payload
+  }
+}
 
 /*************************************************** functions ****************************************************** */
 
@@ -111,7 +121,12 @@ export const login = (username, password) => async dispatch => {
       headers[key] = value;
     }
     let res = await results.json();
-    dispatch(validateToken(res.token))
+    console.log('resssssssss', res);
+    if (res.err) {
+      dispatch(errMsg(res.err));
+    } else {
+      dispatch(validateToken(res.token))
+    }
   } catch (error) {
     console.error(`ERROR: SIGNIN`);
   }

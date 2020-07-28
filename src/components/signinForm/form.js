@@ -147,6 +147,7 @@ function SigninForm(props) {
                             <form id="login" onSubmit={(e) => handleSubmitFun(e)}>
                                 <input type="text" placeholder="Username" name='username' className="input input--email" onChange={(e) => props.handleChange(e)} required />
                                 <input type="password" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
+                                <p className="errorMsg">{props.sign.errorMsg}</p>
                                 <div className="oAut">
                                     <button type='submit' className="btn btn--primary">Log in</button>
                                     <p className="oauthIcon">Or you can signIn using</p>
