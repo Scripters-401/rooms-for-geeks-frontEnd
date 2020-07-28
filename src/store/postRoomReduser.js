@@ -3,7 +3,7 @@ require('dotenv').config();
 const API = process.env.REACT_APP_API;
 
 let initialState = {
-    course: '',
+    roomC: '',
 };
 
 export default (state = initialState, action) => {
@@ -15,7 +15,6 @@ export default (state = initialState, action) => {
         case 'HANDLE_CHANGE_ROOM':
             state[payload.name] = payload.value
             return { ...state };
-
         default:
             return state;
     }
@@ -29,10 +28,9 @@ export const handleChangeRoom = e => {
 }
 
 
-export const roomPost = (token, roomName, publicc, password, members) => async dispatch => {
-    console.log(token, roomName, publicc, password, members);
+export const roomPost = (token, id, roomName, publicc, password, adminName, members) => async dispatch => {
     try {
-        const results = await fetch(`${API}/room`, {
+        const results = await fetch(`${API}/room/${id}`, {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -41,10 +39,9 @@ export const roomPost = (token, roomName, publicc, password, members) => async d
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }),
-            body: JSON.stringify({ roomName, publicc, password, members })
+            body: JSON.stringify({ roomName, publicc, password, adminName, members })
         });
-        let res = await results.json();
-        console.log('mmmmmm', res);
+        await results.json();
     } catch (error) {
         console.error(`ERROR: ROOMS`);
     }

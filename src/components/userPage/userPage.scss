@@ -20,10 +20,6 @@ input.ChooseImage {
     color: aliceblue;
 }
 
-form.formC {
-    text-align: -webkit-center;
-}
-
 label {
     display: inline;
     margin-bottom: .5rem;
@@ -34,6 +30,13 @@ input#imagesUploadId {
     text-align-last: justify;
 }
 
-.withImage {
-    text-align-last: start;
+div#form {
+    text-align: -webkit-center;
+}
+
+span.toggleButton {
+    width: 65px;
+    position: relative;
+    left: 215px;
+    top: -41px;
 }
