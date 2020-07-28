@@ -45,7 +45,7 @@ export const putInfoUser = (token, id, password, name, major, university, profil
             body: JSON.stringify({ password, name, major, university, profileIMG })
         })
         let res = await results.json();
-        dispatch(userAction(res))
+        dispatch(userAction(res.RData))
     } catch (error) {
         console.error(`ERROR: PUT_USER`);
     }
