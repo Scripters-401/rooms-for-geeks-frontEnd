@@ -27,9 +27,12 @@ const RoomForm = props => {
             props.thePostRoom.roomName,
             props.thePostRoom.publicc,
             props.thePostRoom.password,
+
             props.thePostRoom.adminName,
             props.thePostRoom.members,
+
         );
+        
     }
 
     return (
@@ -74,14 +77,17 @@ const RoomForm = props => {
 
 const mapStateToProps = state => ({
     sign: state.sign,
-    thePostRoom: state.thePostRoom
+    thePostRoom: state.thePostRoom,
+
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
     handleChangeRoom: (e) => dispatch(actions.handleChangeRoom(e)),
 
+
     roomPost: (token, id, roomName, publicc, password, adminName, members) =>
         dispatch(actions.roomPost(token, id, roomName, publicc, password, adminName, members)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomForm);

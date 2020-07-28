@@ -6,7 +6,6 @@ let initialState = {
     user: {},
 };
 
-
 export default (state = initialState, action) => {
 
     let { type, payload } = action;

@@ -28,7 +28,9 @@ export const handleChangeRoom = e => {
 }
 
 
+
 export const roomPost = (token, id, roomName, publicc, password, adminName, members) => async dispatch => {
+
     try {
         const results = await fetch(`${API}/room/${id}`, {
             method: 'POST',
@@ -39,9 +41,12 @@ export const roomPost = (token, id, roomName, publicc, password, adminName, memb
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }),
+
             body: JSON.stringify({ roomName, publicc, password, adminName, members })
+
         });
-        await results.json();
+      let res = await results.json();
+      console.log('jjjj',res);
     } catch (error) {
         console.error(`ERROR: ROOMS`);
     }
