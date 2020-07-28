@@ -1,6 +1,9 @@
-import myRooms from '../components/userHome/myRooms';
-
+// import myRooms from '../components/userHome/myRooms';
+import * as roleData from './signINUPReducer'
+import cookie from 'react-cookies';
 require('dotenv').config();
+
+
 
 // const API = 'https://rooms-for-geeks.herokuapp.com';
 // const API = 'http://localhost:4000';
@@ -71,6 +74,7 @@ export default (state = initialState, action) => {
         case 'check':
             state.checkMyRooms = payload;
             return { ...state };
+            
 
         default:
             return state;
@@ -125,6 +129,39 @@ export const rooms = (token) => async dispatch => {
     }
 }
 
+export const upgrade = (token, id, role) => async dispatch => {
+    console.log('token',token);
+    console.log('id',id);
+    console.log('role',role);
+    try {
+        let theApi = `${API}/user/${id}`;
+        let results = await fetch(theApi, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: new Headers({
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }),
+            body: JSON.stringify({   role })
+        });
+        let res = await results.json();
+        dispatch(upgradeAction(res))
+        // cookie.remove('auth');
+        cookie.save('auth', res.newToken);
+        dispatch(userRole(role));
+        dispatch(roleData.validateToken(res.newToken));
+    } catch (error) {
+        console.error(`ERROR: PUT_USER`);
+    }
+}
+
+export const userRole = payloadData => {
+    return {
+        type: 'USER_ROLE',
+        payload: payloadData
+    }
+}
 
 export const favorite = res => {
     console.log('resFav', res);
@@ -145,6 +182,14 @@ export const getAllRooms = res => {
 export const check = res => {
     return {
         type: 'check',
+        payload: res,
+    }
+}
+
+
+export const upgradeAction = res => {
+    return {
+        type: 'upgrade',
         payload: res,
     }
 }

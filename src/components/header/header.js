@@ -23,7 +23,11 @@ const Header = props => {
                 <NavLink to="/rooms" className="navHeader">Rooms</NavLink>
               </li>
             </Show>
-
+            <Show condition={props.sign.loggedIn}>
+              <li className='liHeader'>
+                <NavLink to="/room" className="navHeader">/room</NavLink>
+              </li>
+            </Show>
             <Show condition={props.sign.loggedIn}>
               <li className='liHeader'>
                 <NavLink to="/interview" className="navHeader">Interview-Review</NavLink>

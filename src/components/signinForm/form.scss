@@ -209,6 +209,7 @@ span {
     text-decoration: none;
 }
 
+
 .oAut {
     display: flex;
     justify-content: left;
@@ -249,3 +250,13 @@ p.oauthIcon {
 a.oauthIcon {
     margin: auto auto auto 4%;
 }
+
+.checkBoxDiv{
+    display: block;
+    .bubble{
+            color: black;
+            font-size: small;
+            padding-top: 4%;
+        }
+}
+
