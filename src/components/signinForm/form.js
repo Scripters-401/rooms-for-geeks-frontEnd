@@ -6,7 +6,7 @@ import cookie from 'react-cookies';
 import { storage } from "../firebase";
 import * as actions2 from '../../store/uploadImageReducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import './form.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -112,12 +112,12 @@ function SigninForm(props) {
                 <div className="panel panel--static">
                     <div className="panel__content left">
                         <h1 className="panel__heading">Don't have an account?</h1>
-                        <p className="panel__copy">Ethical celiac hashtag taxidermy squid. Wayfarers distillery narwhal, kombucha jean shorts selvage meggings.</p>
+                        <p className="panel__copy">You can join us now by creating a new account on our website ! </p>
                         <button type="button" className="btn btn--secondary signup" onClick={signupFun} >Sign up</button>
                     </div>
                     <div className="panel__content right">
                         <h1 className="panel__heading">Have an account?</h1>
-                        <p className="panel__copy">Ethical celiac hashtag taxidermy squid. Wayfarers distillery narwhal, kombucha jean shorts selvage meggings.</p>
+                        <p className="panel__copy">Welcome back in Rooms For Geeks !</p>
                         <button type="button" className="btn btn--secondary login" onClick={loginFun}>Log in</button>
                     </div>
 
@@ -132,42 +132,48 @@ function SigninForm(props) {
                                 <input type="password" placeholder="Password" name="password" onChange={(e) => props.handleChange(e)} className="input input--password" required />
                                 <input type="text" className="input input--name" placeholder="Major" name="major" onChange={(e) => props.handleChange(e)} required />
                                 <input className='ChooseImage' type="file" onChange={handleChangePic} />
-                                <div><input type="checkbox" name="terms" value="terms" id="bubble" required/>
-                                <label className="bubble" for='bubble'>   I agree to the <span><a href='#'>Terms of Service</a></span> and <span><a href='#'>Privacy Policy</a></span></label></div>
+                                <div className="oAut">
+                                    <div><input type="checkbox" name="terms" value="terms" id="bubble" required />
+                                        <label className="bubble" for='bubble'>   I agree to the <span><a href='#'>Terms of Service</a></span> and <span><a href='#'>Privacy Policy</a></span></label></div>
                                     <button className="btn btn--primary" >Sign up</button>
-                                    <div>
-                                        <a href={props.sign.authURL} onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
-                                        <a href={props.sign.authURL} onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
-                                    </div>
+                                    <p className="oauthIcon">Or you can signUp using</p>
+                                    <a className="oauthIcon" href={props.sign.authURL} onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebookF} size='2x' color='blue' /></span></a>
+                                    <svg className="oauthIcon" onClick={googleOuthFun} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="25px" height="30px"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z" /><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z" /><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z" /><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z" /></svg>
+                                    {/* <a className="oauthIcon" href={props.sign.authURL} onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="red" /></span></a> */}
+                                </div>
                             </form>
                         </div>
 
-                            <div className={`panel__content login${hide}`}>
-                                <h1 className="panel__heading">Log in</h1>
-                                <form id="login" onSubmit={(e) => handleSubmitFun(e)}>
-                                    <input type="text" placeholder="Username" name='username' className="input input--email" onChange={(e) => props.handleChange(e)} required />
-                                    <input type="password" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
+                        <div className={`panel__content login${hide}`}>
+                            <h1 className="panel__heading">Log in</h1>
+                            <form id="login" onSubmit={(e) => handleSubmitFun(e)}>
+                                <input type="text" placeholder="Username" name='username' className="input input--email" onChange={(e) => props.handleChange(e)} required />
+                                <input type="password" placeholder="Password" name='password' className="input input--password" onChange={(e) => props.handleChange(e)} required />
+                                <div className="oAut">
                                     <button type='submit' className="btn btn--primary">Log in</button>
+                                    <p className="oauthIcon">Or you can signIn using</p>
 
-                                    <a href={props.sign.authURL} className='icons' onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebook} size='2x' color='blue' /></span></a>
-                                    <a href={props.sign.authURL} className='icons' onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="black" /></span></a>
-                                    <a href="/">Forgot password?</a>
-                                </form>
-                            </div>
+                                    <a href={props.sign.authURL} className="oauthIcon" onClick={facebookOuthFun}><span><FontAwesomeIcon icon={faFacebookF} size='2x' color='blue' /></span></a>
+                                    <a href={props.sign.authURL} className="oauthIcon" onClick={googleOuthFun}> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="25px" height="30px"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z" /><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z" /><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z" /><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z" /></svg></a>
+                                    {/* <a href={props.sign.authURL} className="oauthIcon" onClick={googleOuthFun}><span><FontAwesomeIcon icon={faGoogle} size='2x' color="red" /></span></a> */}
+                                </div>
+                                <a href="/new-password">Forgot password?</a>
+                            </form>
                         </div>
                     </div>
                 </div>
+            </div>
         </>
     );
 }
 
 const mapStateToProps = state => ({
-                sign: state.sign,
+    sign: state.sign,
     upload: state.upload,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
-                handleChange: (e) => dispatch(actions.handleChange(e)),
+    handleChange: (e) => dispatch(actions.handleChange(e)),
     login: (username, password) => dispatch(actions.login(username, password)),
     validateToken: token => dispatch(actions.validateToken(token)),
     oathfun: (e) => dispatch(actions.oathfun(e)),

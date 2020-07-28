@@ -6,7 +6,13 @@ const API = process.env.REACT_APP_API;
 
 
 let initialState = {
-  roomData:{RData:{roomName:''}},
+  roomData: { RData: { roomName: '' } },
+  message: {},
+  output: [],
+  checkconnection: false,
+  counter: 0,
+  typingstate: '',
+  notification: '',
 };
 
 // reducer : switch case
@@ -16,8 +22,27 @@ export default (state = initialState, action) => {
   switch (type) {
 
     case 'roomDataAction':
-      // console.log(payload,'ppppppppppppppp');   
       state.roomData = payload
+      return { ...state };
+
+    case 'message':
+      state[payload.name] = payload.value
+      return { ...state };
+
+    case 'updateOutput':
+      state.output = [...state.output, payload]
+      return { ...state };
+
+    case 'updateCounter':
+      state.counter = payload
+      return { ...state };
+
+    case 'updateTyping':
+      state.typingstate = payload
+      return { ...state };
+
+    case 'updateNotifications':
+      state.notification = payload
       return { ...state };
 
     default:
@@ -33,57 +58,44 @@ export const roomData = payload => {
   }
 }
 
-// export const post = e => {
-//   return {
-//     type: 'oath',
-//     payload: e,
-//   }
-// }
-
-
-// const setLoginState = (loggedIn, token, user) => {
-//   return {
-//     type: 'setLoginState',
-//     payload: { loggedIn, token, user },
-//   }
-// }
-
-// const logout = (loggedIn = false, token = null, user = {}) => {
-//   return {
-//     type: 'setLoginState',
-//     payload: { loggedIn, token, user, },
-//   }
-// }
-
-
-
-/*************************************************** functions ****************************************************** */
-
-export const createRoom = (username, password) => async dispatch => {
-  // try {
-  //   const results = await fetch(`${API}/signin`, {
-  //     method: 'POST',
-  //     mode: 'cors',
-  //     credentials: 'same-origin',
-  //     headers: new Headers({
-  //       'Authorization': `Basic ${btoa(`${username}:${password}`)}`,
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json'
-  //     }),
-  //   });
-  //   let headers = {};
-  //   for (let [key, value] of results.headers) {
-  //     headers[key] = value;
-  //   }
-  //   // console.log(headers);
-  //   let res = await results.json();
-  //   dispatch(validateToken(res.token))
-  // } catch (error) {
-  //   console.error(`ERROR: SIGNIN`);
-  // }
+export const message = e => {
+  return {
+    type: 'message',
+    payload: { name: [e.target.name], value: e.target.value },
+  }
 }
 
-export const getRoom = (token,id) => async dispatch => {
+
+export const updateOutput = e => {
+  return {
+    type: 'updateOutput',
+    payload: e,
+  }
+}
+
+export const updateCounter = e => {
+  return {
+    type: 'updateCounter',
+    payload: e,
+  }
+}
+
+export const updateTyping = e => {
+  return {
+    type: 'updateTyping',
+    payload: e,
+  }
+}
+
+export const updateNotifications = e => {
+  return {
+    type: 'updateNotifications',
+    payload: e,
+  }
+}
+
+/*************************************************** functions ****************************************************** */
+export const getRoom = (token, id) => async dispatch => {
   try {
     let results = await fetch(`${API}/room/${id}`, {
       method: 'GET',
@@ -101,12 +113,3 @@ export const getRoom = (token,id) => async dispatch => {
     console.error(`ERROR: SIGNOUT`);
   }
 }
-
-// export const validateToken = token => dispatch => {
-//   try {
-//     let user = jwt.verify(token, process.env.REACT_APP_SECRET);
-//     dispatch(setLoginState(true, token, user))
-//   } catch (ex) {
-//     logout();
-//   }
-// }

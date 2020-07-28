@@ -23,7 +23,11 @@ const Header = props => {
                 <NavLink to="/rooms" className="navHeader">Rooms</NavLink>
               </li>
             </Show>
-
+            <Show condition={props.sign.loggedIn}>
+              <li className='liHeader'>
+                <NavLink to="/room" className="navHeader">/room</NavLink>
+              </li>
+            </Show>
             <Show condition={props.sign.loggedIn}>
               <li className='liHeader'>
                 <NavLink to="/interview" className="navHeader">Interview-Review</NavLink>
@@ -58,6 +62,7 @@ const Header = props => {
                 <Link to="/userHome" className="navHeader">User Home</Link>
               </li>
             </Show>
+            <p>{props.userInfo.user.username}</p>
 
             </li>
           </ul>
@@ -70,7 +75,8 @@ const Header = props => {
 }
 
 const mapStateToProps = state => ({
-  sign: state.sign
+  sign: state.sign,
+  userInfo: state.userInfo,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({

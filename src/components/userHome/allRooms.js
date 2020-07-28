@@ -8,8 +8,11 @@ import * as actions from '../../store/userHome';
 const AllRooms = props => {
 
     useEffect(()=>{
-        console.log('token',props.sign.token)
-        props.rooms(props.sign.token);
+        setTimeout(() => {
+            console.log('token',props.sign.token)
+            props.rooms(props.sign.token);  
+        }, 2000);
+
     },[]);
      
     let max = props.userHome.allRooms.length-3;

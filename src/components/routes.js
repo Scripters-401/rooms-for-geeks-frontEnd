@@ -10,14 +10,14 @@ import Auth from './auth/auth.js';
 import User from './userPage/userPage';
 import Oauth from './oauth.js';
 import AllUsers from './allUsers/users';
-import InterviewReviewForm from './interviewReview/interviewReview';
-import AllInterviewR from './interviewReview/getInterview';
+import AllInterviewR from './interviewReview/interviewReview';
 import QAForm from './QA/postQA';
 import LoginForm from './signinForm/form';
 import OverView from './overView/overView';
 import RoomForm from './rooms/postRoom';
 import CorseForm from './course/postCourse';
-import UserHome from './userHome/userHome'
+import UserHome from './userHome/userHome';
+import ForgotPass from './forgotPass/forgotPass';
 
 const Routes = () => {
     return (
@@ -63,7 +63,6 @@ const Routes = () => {
             </Route>
             <Route path="/interview" exact>
                 <AllInterviewR />
-                <InterviewReviewForm />
             </Route>
             <Route path="/QA" exact>
                 <QAForm />
@@ -78,6 +77,9 @@ const Routes = () => {
                 <UserHome />
             </Route>
 
+            <Route path="/new-password" exact>
+                <ForgotPass />
+            </Route>
         </>
     )
 }

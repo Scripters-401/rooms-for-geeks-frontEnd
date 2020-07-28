@@ -13,7 +13,8 @@ import room from './roomReducer';
 import thePostRoom from './postRoomReduser';
 import thePostCourse from './postCourseReducer';
 import thunk from 'redux-thunk';
-import userHome from './userHome'
+import userHome from './userHome';
+import newPass from './forgotPassReducer';
 
 import upload from './uploadImageReducer'
 let reducers = combineReducers({
@@ -30,6 +31,7 @@ let reducers = combineReducers({
     thePostCourse,
     userHome,
     upload,
+    newPass,
 });
 
 const store = () => {
