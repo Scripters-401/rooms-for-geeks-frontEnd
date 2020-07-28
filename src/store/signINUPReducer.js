@@ -6,8 +6,6 @@ require('dotenv').config();
 // localhost or deployed
 const API = process.env.REACT_APP_API;
 
-
-
 let initialState = {
   loggedIn: false,
   login: '',

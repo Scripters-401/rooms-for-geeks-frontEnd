@@ -1,21 +1,38 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/postRoomReduser'
 import './room.scss';
 
 const RoomForm = props => {
 
+    // useEffect(() => {
+    //     props.roomPost(
+    //         props.sign.token,
+    //         props.sign.user.id,
+    //         props.thePostRoom.roomName,
+    //         props.thePostRoom.publicc,
+    //         props.thePostRoom.password,
+    //         props.thePostRoom.adminName,
+    //         props.thePostRoom.members,
+    //     )
+    // }, [props.sign.token, props.sign.user.id])
+
     const handleSubmitFun = e => {
         e.preventDefault();
 
         props.roomPost(
             props.sign.token,
+            props.sign.user.id,
             props.thePostRoom.roomName,
             props.thePostRoom.publicc,
             props.thePostRoom.password,
-            props.thePostRoom.members
+
+            props.thePostRoom.adminName,
+            props.thePostRoom.members,
+
         );
+        
     }
 
     return (
@@ -36,9 +53,8 @@ const RoomForm = props => {
                     <div>
                         <label>public</label>
                         <input
-                            type='switch'
+                            type='text'
                             name="publicc"
-                            label={props.thePostRoom.publicc ? 'Public' : 'Private'}
                             onChange={(e) => props.handleChangeRoom(e)}
                         />
                     </div>
@@ -61,14 +77,17 @@ const RoomForm = props => {
 
 const mapStateToProps = state => ({
     sign: state.sign,
-    thePostRoom: state.thePostRoom
+    thePostRoom: state.thePostRoom,
+
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
     handleChangeRoom: (e) => dispatch(actions.handleChangeRoom(e)),
 
-    roomPost: (token, roomName, publicc, password, members) =>
-        dispatch(actions.roomPost(token, roomName, publicc, password, members)),
+
+    roomPost: (token, id, roomName, publicc, password, adminName, members) =>
+        dispatch(actions.roomPost(token, id, roomName, publicc, password, adminName, members)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomForm);

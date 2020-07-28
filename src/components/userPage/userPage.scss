@@ -1,0 +1,42 @@
+img.image {
+    width: 288px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.mainDiv {
+    text-align-last: center;
+    margin-top: 10%;
+    margin-bottom: 14%;
+}
+
+input.ChooseImage {
+    margin-left: -10%;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    background: cadetblue;
+    color: aliceblue;
+}
+
+label {
+    display: inline;
+    margin-bottom: .5rem;
+}
+
+input#imagesUploadId {
+    padding-right: 76px;
+    text-align-last: justify;
+}
+
+div#form {
+    text-align: -webkit-center;
+}
+
+span.toggleButton {
+    width: 65px;
+    position: relative;
+    left: 215px;
+    top: -41px;
+}
