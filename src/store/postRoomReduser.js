@@ -30,9 +30,9 @@ export const handleChangeRoom = e => {
 
 
 export const roomPost = (token, id, roomName, publicc, password, adminName, members) => async dispatch => {
-
+    console.log(roomName, publicc, password, adminName, members);
     try {
-        const results = await fetch(`${API}/room/${id}`, {
+        const results = await fetch(`${API}/room`, {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
