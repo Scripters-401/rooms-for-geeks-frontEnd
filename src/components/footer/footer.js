@@ -1,14 +1,19 @@
 import React from 'react';
 import './footer.scss';
-import { SocialIcon } from 'react-social-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faFacebook,faInstagram,faGithub,faTwitter} from '@fortawesome/free-brands-svg-icons'
 
 const Footer = () => {
     return (
         <footer className='footer'>
-            <SocialIcon className='linkedIn' url="http://linkedin.com/in/jaketrent" bgColor="silver" fgColor="white"  />
-            <SocialIcon url="http://facebook.com/in/jaketrent" />
-            <SocialIcon url="http://github.com/in/jaketrent" />
-            <SocialIcon url="http://email.com/in/jaketrent" />
+           
+            <div className="div1 hover">
+            <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faFacebook} size="2x"/></a>
+            <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faInstagram} size="2x"/></a>
+            <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faGithub} size="2x"/></a>
+            <a herf="#" className="faceBook">  <FontAwesomeIcon icon={faTwitter} size="2x"/></a>
+            </div>
+            
             <p >&copy; 2020 Scripters Group</p>
         </footer>
     )
