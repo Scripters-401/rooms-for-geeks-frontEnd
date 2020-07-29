@@ -23,10 +23,15 @@ const Initial = props => {
     let adminName = props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName
     let userName = props.userInfo.user.username
     let roomID =  props.userHome.choosenRoomID
+    // props.getRoom(props.sign.token, roomID)
+
     // '5ef1f1407964642caa3a0188';
+    console.log('hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',roomID);
 
     useEffect(() => {
         // setTimeout(() => {
+    console.log('uuuuuuuuuuuu',roomID);
+
         props.getRoom(props.sign.token, roomID)
 
         // console.log('whyyyyyyyyyyyyyyyy');
@@ -129,7 +134,7 @@ const Initial = props => {
 
 
                     <div className='QAData'>
-                        {roomName ? props.room.roomData.QAData.map((element, idx) => {
+                        {props.room.roomData && props.room.roomData.QAData ? props.room.roomData.QAData.map((element, idx) => {
                             return (
                                 <div key={idx}>
                                     <p>
@@ -154,11 +159,11 @@ const Initial = props => {
                         }) : null}
                     </div>
 
-
+{console.log(props.room.roomData)}
 
                     <div className='renderedQuiz'>
-                        <h2>Quiz Name: {roomName ? props.room.roomData.renderedQuiz.quizName : null}</h2>
-                        {roomName ? props.room.roomData.renderedQuiz.questions.map((element, idx) => {
+                        <h2>Quiz Name: {props.room.roomData && props.room.roomData.renderedQuiz ? props.room.roomData.renderedQuiz.quizName : null}</h2>
+                        {props.room.roomData && props.room.roomData.renderedQuiz &&props.room.roomData.renderedQuiz.questions ? props.room.roomData.renderedQuiz.questions.map((element, idx) => {
                             return (
                                 <div key={idx}>
                                     <p>
