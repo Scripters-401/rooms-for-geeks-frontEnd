@@ -251,6 +251,12 @@ a.oauthIcon {
     margin: auto auto auto 4%;
 }
 
+.errorMsg {
+    color: red;
+    display: block;
+    font-size: 0.7rem;
+    text-decoration: none;
+}
 .checkBoxDiv{
     display: block;
     .bubble{
