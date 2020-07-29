@@ -112,11 +112,11 @@
 
             transition-duration: 0.25s;
             font-weight: 300;
-            &:hover {
-                background-color: #49756263;
-                transition-duration: 0.25s;
-                color: white;
-            }
+            // &:hover {
+            //     background-color: #49756263;
+            //     transition-duration: 0.25s;
+            //     color: white;
+            // }
 
             &:focus {
                 background-color: white;
@@ -145,11 +145,11 @@
 
             transition-duration: 0.25s;
             font-weight: 330;
-            &:hover {
-                background-color: #49756263;
-                transition-duration: 0.25s;
-                color: white;
-            }
+            // &:hover {
+            //     background-color: #49756263;
+            //     transition-duration: 0.25s;
+            //     color: white;
+            // }
 
             &:focus {
                 background-color: white;
@@ -199,11 +199,11 @@
             transition-duration: 0.25s;
             font-weight: 330;
             
-            &:hover {
-                background-color: #49756263;
-                transition-duration: 0.25s;
-                color: white;
-            }
+            // &:hover {
+            //     background-color: #49756263;
+            //     transition-duration: 0.25s;
+            //     color: white;
+            // }
 
             &:focus {
                 background-color: white;
@@ -257,9 +257,9 @@
             content: '';
             display: inline-block;
             visibility: visible;
-            border: 1px solid white;
-           
+            border: 1px solid white;           
         }
+
         .addQuiz{
             appearance: none;
             outline: 0;
