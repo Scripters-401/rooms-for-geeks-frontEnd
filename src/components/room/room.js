@@ -22,7 +22,8 @@ const Initial = props => {
     let roomName = props.room.roomData.RData.roomName
     let adminName = props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName
     let userName = props.userInfo.user.username
-    let roomID = '5ef1f1407964642caa3a0188';
+    let roomID =  props.userHome.choosenRoomID
+    // '5ef1f1407964642caa3a0188';
 
     useEffect(() => {
         // setTimeout(() => {
@@ -234,6 +235,7 @@ const mapStateToProps = state => ({
     sign: state.sign,
     room: state.room,
     userInfo: state.userInfo,
+    userHome: state.userHome,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
