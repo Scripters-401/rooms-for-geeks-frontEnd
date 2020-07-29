@@ -209,10 +209,7 @@ span {
     text-decoration: none;
 }
 
-.bubble{
-    color: black;
-    font-size: small;
-    padding-top: 4%;}
+
 .oAut {
     display: flex;
     justify-content: left;
@@ -260,3 +257,12 @@ a.oauthIcon {
     font-size: 0.7rem;
     text-decoration: none;
 }
+.checkBoxDiv{
+    display: block;
+    .bubble{
+            color: black;
+            font-size: small;
+            padding-top: 4%;
+        }
+}
+

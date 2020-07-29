@@ -14,33 +14,29 @@
     font-weight: bold;
     color: #416760;
     margin-top: 3%;
-    margin-bottom: 2%; 
     justify-content: center;
 }
 
-.profileMemberPhoto
-{
-    height: 120px;
-    width:120px;
-    align-items:left ;
-    width:120px;
-    align-items:left; 
+.profileMemberPhoto {
+    height: 188px;
+    width: 120px;
+    align-items: left;
+    width: 193px;
+    align-items: left;
     border: 3px solid #416760;
-    border-radius: 85px;
-    margin-left: 3%;
+    border-radius: 108px;
+    margin: 26% auto auto auto
 }
 .major{
-    margin: 3% -12% 1% 11%;
+    
     font-weight: bold;
 }
 .author{
-    margin: 0% -17% 0% 5%;
+   
     font-weight: bold;
 }
 
-.contaner {
-    margin: 3% 4% 1% 0%;
-}
+
 
 .mySlides {
     padding: 80px;
@@ -48,8 +44,36 @@
     padding-top: 5px;
     color:#416760 ;
 }
+q.teamParagr {
+    width: 893px;
+    margin: auto auto auto 3%;
+}
 
 polygon {
     fill: #416760;
 }
+p.author {
+    margin-bottom: 0%;
+    margin-top: 4%;
+}
 
+.slider {
+    position: relative;
+    width: 100%;
+    height: 431px;
+    overflow: hidden;
+}
+.alldiv {
+    display: flex;
+    
+}
+
+.two {
+    width: 189px;
+    height: 241px;
+    background: linear-gradient(-66deg, #a7585800 49%, #416760 50%, #fdfdfd00 51%);
+}
+
+.iconTeam {
+    display: flex;
+}
