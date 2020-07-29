@@ -55,6 +55,8 @@ let initialState = {
         oranaizationType: 'none', //defualt global room
     }],
     checkMyRooms: true,
+    choosenRoomID:'',
+    showAllRooms:false
 };
 
 // reducer : switch case
@@ -73,6 +75,14 @@ export default (state = initialState, action) => {
             return { ...state };
         case 'check':
             state.checkMyRooms = payload;
+            return { ...state };
+            
+        case 'roomIDAction':
+            console.log('payyyyyyy',payload);
+            state.choosenRoomID = payload;
+            return { ...state };
+        case 'show-ALL':
+            state.showAllRooms = !state.showAllRooms;
             return { ...state };
             
 
@@ -156,6 +166,19 @@ export const upgrade = (token, id, role) => async dispatch => {
     }
 }
 
+
+
+export const roomID = (id) => async dispatch => {
+    console.log('roomIDAction',id);
+    dispatch(roomIDAction(id))
+}
+
+export const showAllFun = () => {
+    return{
+        type: 'show-ALL',
+        payload:''
+    }
+}
 export const userRole = payloadData => {
     return {
         type: 'USER_ROLE',
@@ -193,6 +216,15 @@ export const upgradeAction = res => {
         payload: res,
     }
 }
+
+export const roomIDAction = res => {
+    return {
+        type: 'roomIDAction',
+        payload: res,
+    }
+}
+
+
 
 
 

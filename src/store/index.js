@@ -16,6 +16,7 @@ import thunk from 'redux-thunk';
 import userHome from './userHome';
 import newPass from './forgotPassReducer';
 
+
 import upload from './uploadImageReducer'
 let reducers = combineReducers({
     data: reducer,
@@ -32,6 +33,7 @@ let reducers = combineReducers({
     userHome,
     upload,
     newPass,
+    
 });
 
 const store = () => {

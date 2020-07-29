@@ -14,7 +14,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  width: 300px;
+  width: 600px;
   height: 100px;
   .search {
     position: absolute;
@@ -133,302 +133,383 @@
 
 .allRooms{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-evenly;
+    button{
+      width: 20%;
+      margin: 2%;
+    }
 }
-// /////////////////////////////////////////////////////////////////////////////////////////////////////
-// // Slider
-
-// @import url('https://fonts.googleapis.com/css?family=Playfair+Display:700|IBM+Plex+Sans:500&display=swap');
-
-// // :root {
-// //   --color-primary: #6B7A8F;
-// //   --color-secondary: #101118;
-// //   --color-accent: #1D1F2F;
-// //   --color-focus: #6D64F7;
-// //   --base-duration: 600ms;
-// //   --base-ease: cubic-bezier(0.25, 0.46, 0.45, 0.84);
-// // }
-
-// // =========================
-// // Global
-// // =========================
-
-// // *, *:before, *:after {
-// //   box-sizing: border-box;
-// // }
-
-// // html, body {
-// //   height: 100%;
-// // }
-
-// // body {
-// //   font-family: 'IBM Plex Sans', sans-serif;
-// //   background-color: var(--color-secondary);
-// // }
-
-// #app {
-//   align-items: center;
-//   display: flex;
-//   height: 100%;
-//   justify-content: center;
-//   overflow-x: hidden;
-//   width: 100%;
-// }
-
-// h1, h2, h3 {
-//   font-family: 'Playfair Display', serif;
-// }
-
-// .visuallyhidden { 
-//   clip: rect(1px, 1px, 1px, 1px);  
-//   height: 1px; 
-//   overflow: hidden;
-//   position: absolute !important;
-//   white-space: nowrap;
-//   width: 1px;
-// }
+//////////////////////////////////////////////////////////////////////////////
+/* CSS reset */
+.card-area-div{
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
 
 
-// // =========================
-// // Icons
-// // =========================
 
-// .icon {
-//   fill: var(--color-primary);
-//   width: 100%;
-// }
+/* Typography =======================*/
 
+/* Headings */
 
-// // =========================
-// // Buttons
-// // =========================
+/* Main heading for card's front cover */
+.card-front__heading {
+  font-size: 1.5rem;
+  margin-top: .25rem;
+}
 
-// .btn {
-//   background-color: var(--color-primary);
-//   border: none;
-//   border-radius: 0.125rem;
-//   color: white;
-//   cursor: pointer;
-//   font-family: inherit;
-//   font-size: inherit;
-//   padding: 1rem 2.5rem 1.125rem;
-  
-//   &:focus {
-//     outline-color: var(--color-focus);
-//     outline-offset: 2px;
-//     outline-style: solid;
-//     outline-width: 3px;
-//   }
-  
-//   &:active {
-//     transform: translateY(1px);
-//   }
-// }
+/* Main heading for inside page */
+.inside-page__heading { 
+  padding-bottom: 1rem; 
+  width: 100%;
+}
 
+/* Mixed */
 
-// // =========================
-// // Slider controls
-// // =========================
+/* For both inside page's main heading and 'view me' text on card front cover */
+.inside-page__heading,
+.card-front__text-view {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-top: .2rem;
+}
 
-// .slider__controls {
-//   display: flex;
-//   justify-content: center;
-//   position: absolute;
-//   top: calc(100% + 1rem);
-//   width: 100%;
-  
-//   .btn {
-//     --size: 3rem;
-    
-//     align-items: center;
-//     background-color: transparent;
-//     border: 3px solid transparent;
-//     border-radius: 100%;
-//     display: flex;
-//     height: var(--size);
-//     padding: 0;
-//     width: var(--size);
-    
-//     &:focus {
-//       border-color: var(--color-focus);
-//       outline: none;
-//     }
-        
-//     &--previous > * {
-//       transform: rotate(180deg);
-//     }
-//   }
-// }
+.inside-page__heading--city,
+.card-front__text-view--city { color: #ff62b2; }
 
+.inside-page__heading--ski,
+.card-front__text-view--ski { color: #2aaac1; }
 
-// // =========================
-// // Slider
-// // =========================
+.inside-page__heading--beach,
+.card-front__text-view--beach { color: #fa7f67; }
 
-// .slider {
-//   --slide-size: 70vmin;
-//   --slide-margin: 4vmin;
-  
-//   height: var(--slide-size);
-//   margin: 0 auto;
-//   position: relative;
-//   width: var(--slide-size);
-// }
+.inside-page__heading--camping,
+.card-front__text-view--camping { color: #00b97c; }
 
-// .slider__wrapper {
-//   display: flex;
-//   margin: 0 calc(var(--slide-margin) * -1);
-//   position: absolute;
-//   transition: transform var(--base-duration) cubic-bezier(0.25, 1, 0.35, 1);
-// }
+/* Front cover */
 
+.card-front__tp { color: #fafbfa; }
 
-// // =========================
-// // Slide
-// // =========================
+/* For pricing text on card front cover */
+.card-front__text-price {
+  font-size: 1.2rem;
+  margin-top: -.2rem;
+}
 
-// .slide {
-//   align-items: center;
-//   color: white;
-//   display: flex;
-//   flex: 1;
-//   flex-direction: column;
-//   height: var(--slide-size);
-//   justify-content: center;
-//   margin: 0 var(--slide-margin);
-//   opacity: 0.25;
-//   position: relative;
-//   text-align: center;
-//   transition: 
-//     opacity calc(var(--base-duration) / 2) var(--base-ease),
-//     transform calc(var(--base-duration) / 2) var(--base-ease);
-//   width: var(--slide-size);
-//   z-index: 1;
-  
-//   &--previous,
-//   &--next {    
-//     &:hover {
-//       opacity: 0.5;
-//     }
-//   }
-  
-//   &--previous {
-//     cursor: w-resize;
-    
-//     &:hover {
-//       transform: translateX(2%);
-//     }
-//   }
-  
-//   &--next {
-//     cursor: e-resize;
-    
-//     &:hover {
-//       transform: translateX(-2%);
-//     }
-//   }
-// }
+/* Back cover */
 
-// .slide--current {
-//   --x: 0;
-//   --y: 0;
-//   --d: 50;
+/* For inside page's body text */
+.inside-page__text {
+  color: #333;
+}
 
-//   opacity: 1;
-//   pointer-events: auto;
-//   user-select: auto;
-  
-//   @media (hover: hover) {
-//     &:hover .slide__image-wrapper {
-//       transform: 
-//         scale(1.025)
-//         translate(
-//           calc(var(--x) / var(--d) * 1px),
-//           calc(var(--y) / var(--d) * 1px)
-//         );
-//     }    
-//   }
-// }
+/* Icons ===========================================*/
 
-// .slide__image-wrapper {
-//   background-color: var(--color-accent);
-//   border-radius: 1%;
-//   height: 100%;
-//   left: 0%;
-//   overflow: hidden;
-//   position: absolute;
-//   top: 0%;  
-//   transition: transform calc(var(--base-duration) / 4) var(--base-ease);
-//   width: 100%;
-// }
+.card-front__icon {
+  fill: #fafbfa;
+  font-size: 3vw;
+  height: 3.25rem;
+  margin-top: -.5rem;
+  width: 3.25rem;
+}
 
-// .slide__image {
-//   --d: 20;
-  
-//   height: 110%;
-//   left: -5%;
-//   object-fit: cover;
-//   opacity: 0;
-//   pointer-events: none;
-//   position: absolute;
-//   top: -5%;
-//   transition:
-//     opacity var(--base-duration) var(--base-ease),
-//     transform var(--base-duration) var(--base-ease);
-//   user-select: none;
-//   width: 110%;
-  
-//   @media (hover: hover) {
-//     .slide--current & {      
-//       transform: 
-//         translate(
-//           calc(var(--x) / var(--d) * 1px),
-//           calc(var(--y) / var(--d) * 1px)
-//         ); 
-//     }
-//   }
-// }
+/* Buttons =================================================*/
 
-// .slide__headline {
-//   font-size: 8vmin;
-//   font-weight: 600;
-//   position: relative;
-// }
+.inside-page__btn {
+  background-color: transparent;
+  border: 3px solid;
+  border-radius: .5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  overflow: hidden;
+  padding: .7rem .75rem;
+  position: relative;
+  text-decoration: none;
+  transition: all .3s ease;
+  width: 90%;
+  z-index: 10;
+}
 
-// .slide__content {
-//   --d: 60;
-  
-//   opacity: 0;
-//   padding: 4vmin;
-//   position: relative;
-//   transition: transform var(--base-duration) var(--base-ease);
-//   visibility: hidden;
-  
-//   .slide--current & {
-//     animation: fade-in calc(var(--base-duration) / 2) var(--base-ease) forwards;
-//     visibility: visible;
-    
-//     @media (hover: hover) {
-//       transform: 
-//         translate(
-//           calc(var(--x) / var(--d) * -1px),
-//           calc(var(--y) / var(--d) * -1px)
-//         );
-//     }
-//   }
-  
-//   > * + * {
-//     margin-top: 2rem;
-//   }
-// }
+.inside-page__btn::before { 
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scaleY(0);
+  transition: all .3s ease;
+  width: 100%;
+  z-index: -1;
+}
 
+.inside-page__btn--city { 
+  border-color: #ff40a1;
+  color: #ff40a1;
+}
 
-// // =========================
-// // Animations
-// // =========================
+.inside-page__btn--city::before { 
+  background-color: #ff40a1;
+}
 
-// @keyframes fade-in {
-//   from { opacity: 0 }
-//   to   { opacity: 1 }
-// }
+.inside-page__btn--ski { 
+  border-color: #279eb2;
+  color: #279eb2;
+}
+
+.inside-page__btn--ski::before { 
+  background-color: #279eb2;
+}
+
+.inside-page__btn--beach { 
+  border-color: #fa7f67;
+  color: #fa7f67;
+}
+
+.inside-page__btn--beach::before { 
+  background-color: #fa7f67;
+}
+
+.inside-page__btn--camping { 
+  border-color: #00b97d;
+  color: #00b97d;
+}
+
+.inside-page__btn--camping::before { 
+  background-color: #00b97d;
+}
+
+.inside-page__btn:hover { 
+  color: #fafbfa;
+}
+
+.inside-page__btn:hover::before { 
+  transform: scaleY(1);
+}
+
+/* Layout Structure=========================================*/
+
+.main {
+  background: linear-gradient(
+    to bottom right,
+    #eee8dd,
+    #e3d9c6
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Container to hold all cards in one place */
+.card-area {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+/* Card ============================================*/
+
+/* Area to hold an individual card */
+.card-section {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+/* A container to hold the flip card and the inside page */
+.card {
+  background-color: rgba(0,0,0, .05);
+  box-shadow: -.1rem 1.7rem 6.6rem -3.2rem rgba(0,0,0,0.5);
+  height: 15rem;
+  position: relative;
+  transition: all 1s ease;
+  width: 15rem;
+}
+
+/* Flip card - covering both the front and inside front page */
+
+/* An outer container to hold the flip card. This excludes the inside page */
+.flip-card {
+  height: 15rem;
+  perspective: 100rem;
+  position: absolute;
+  right: 0;
+  transition: all 1s ease;
+  visibility: hidden;
+  width: 15rem;
+  z-index: 100;
+}
+
+/* The outer container's visibility is set to hidden. This is to make everything within the container NOT set to hidden  */
+/* This is done so content in the inside page can be selected */
+.flip-card > * {
+  visibility: visible;
+}
+
+/* An inner container to hold the flip card. This excludes the inside page */
+.flip-card__container {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: all 1s ease;
+  width: 100%;
+}
+
+.card-front,
+.card-back {
+  backface-visibility: hidden;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* Styling for the front side of the flip card */
+
+/* container for the front side */
+.card-front {
+  background-color: #fafbfa;
+  height: 15rem;
+  width: 15rem;
+}
+
+/* Front side's top section */
+.card-front__tp {
+  align-items: center;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
+  display: flex;
+  flex-direction: column;
+  height: 12rem;
+  justify-content: center;
+  padding: .75rem;
+}
+
+.card-front__tp--city {
+  background: linear-gradient(
+    to bottom,
+    #ff73b9,
+    #ff40a1
+  );
+}
+
+.card-front__tp--ski {
+  background: linear-gradient(
+    to bottom,
+    #47c2d7,
+    #279eb2
+  );
+}
+
+.card-front__tp--beach {
+  background: linear-gradient(
+    to bottom,
+    #fb9b88,
+    #f86647
+  );
+}
+
+.card-front__tp--camping {
+  background: linear-gradient(
+    to bottom,
+    #00db93,
+    #00b97d
+  );
+}
+
+/* Front card's bottom section */
+.card-front__bt {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for the back side of the flip card */
+
+.card-back {
+  background-color: #fafbfa;
+  transform: rotateY(180deg);
+}
+
+/* Specifically targeting the <video> element */
+.video__container {
+  clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%);
+  height: auto;
+  min-height: 69%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Inside page */
+
+.inside-page {
+  background-color: #fafbfa;
+  box-shadow: inset 20rem 0px 5rem -2.5rem rgba(0,0,0,0.25);
+  height: 100%;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  transition: all 1s ease;
+  width: 15rem;
+  z-index: 1;
+}
+
+.inside-page__container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center; 
+  width: 100%;
+}
+
+/* Functionality ====================================*/
+
+/* This is to keep the card centered (within its container) when opened */
+.card:hover {
+  box-shadow:
+  -.1rem 1.7rem 6.6rem -3.2rem rgba(0,0,0,0.75);
+  width: 30rem;
+}
+
+/* When the card is hovered, the flip card container will rotate */
+.card:hover .flip-card__container {
+  transform: rotateY(-180deg);
+}
+
+/* When the card is hovered, the shadow on the inside page will shrink to the left */
+.card:hover .inside-page {
+  box-shadow: inset 1rem 0px 5rem -2.5rem rgba(0,0,0,0.1);
+}
+
+a{
+  color: black;
+}
+
+}
+
+.topic{
+  text-align: center;
+}
+.logo{
+  text-align: center;
+}
+.show-more{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
