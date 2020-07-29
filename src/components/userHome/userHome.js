@@ -20,7 +20,7 @@ const UserHome = props =>{
         <Upgrade /></Show>
         
         <Auth capability="master-room">
-        <Link to="/room" className="createRoom"><Button >CREATE ROOM</Button></Link>
+        <Link to="/create-room" className="createRoom"><Button >CREATE ROOM</Button></Link>
                     {/* <Redirect to="/userHome" /> */}
                 </Auth>
         <MyRooms />

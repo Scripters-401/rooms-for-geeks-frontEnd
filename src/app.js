@@ -26,13 +26,17 @@ function App(props) {
     props.validateToken(token);
     props.getInfoUser(props.sign.token, props.sign.user.id)
 
+    //   if (socket) {
+    //     socket.disconnect();
+    // }
   }, [])
+
 
 
   return (
     <>
       <Header />
-      <Routes />
+      <Routes   />
       <Footer />
       <Link2 smooth to="#AppHeader" className="up">
         <FontAwesomeIcon icon={upIcon} size='1x' color="#7DA09A" />
@@ -46,8 +50,8 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = (dispatch, getState) => ({
   validateToken: token => dispatch(actions.validateToken(token)),
-  getInfoUser: (token,id) => dispatch(actions2.getInfoUser(token,id))
-  
+  getInfoUser: (token, id) => dispatch(actions2.getInfoUser(token, id))
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -13,7 +13,8 @@ let initialState = {
   counter: 0,
   typingstate: '',
   notification: '',
-  score:'',
+  score: '',
+  socket:null
 };
 
 // reducer : switch case
@@ -32,6 +33,10 @@ export default (state = initialState, action) => {
 
     case 'updateOutput':
       state.output = [...state.output, payload]
+      return { ...state };
+
+    case 'resetOutput':
+      state.output = []
       return { ...state };
 
     case 'updateCounter':
@@ -76,6 +81,14 @@ export const message = e => {
 export const updateOutput = e => {
   return {
     type: 'updateOutput',
+    payload: e,
+  }
+}
+
+
+export const resetOutput = e => {
+  return {
+    type: 'resetOutput',
     payload: e,
   }
 }

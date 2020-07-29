@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 // import Home from '../home/home';
 // import Rooms from '../rooms/rooms';
@@ -20,18 +20,21 @@ import UserHome from './userHome/userHome';
 import ForgotPass from './forgotPass/forgotPass';
 
 const Routes = () => {
+    // useEffect(()=>{
+    //     console.log('zzzzzzzzzzzzzzzzzznnnnnnnnnnnnnnnnnnnnnnnmmmmmmmmmmmmmmmmmmm');
+    // },[])
     return (
         <>
             <Route path="/" exact>
                 <Homemain />
                 <OverView />
                 <Auth capability="read">
-                    <Redirect to="/user-page" />
+                    <Redirect to="/user-Home" />
                 </Auth>
                 <LoginForm />
                 <AboutUs />
             </Route>
-            <Route path="/rooms" exact>
+            <Route path="/room" exact>
                 <Auth capability="read">
                     <Room />
                 </Auth>
@@ -41,21 +44,20 @@ const Routes = () => {
             <Route path="/user-page" exact>
                 <User />
             </Route>
-            <Route path="/about-us" exact>
-                {/* <AboutUs /> */}
+            {/* <Route path="/about-us" exact>
                 <div>abouuuuuuut us</div>
-            </Route>
+            </Route> */}
 
             <Route path="/sign" exact>
                 <Auth capability="read">
-                    <Redirect to="/user-page" />
+                    <Redirect to="/user-Home" />
                 </Auth>
             </Route>
 
             <Route path="/mm" exact>
                 <Oauth />
                 <Auth capability="read">
-                    <Redirect to="/user-page" />
+                    <Redirect to="/user-Home" />
                 </Auth>
             </Route>
             <Route path="/users" exact>
@@ -67,13 +69,13 @@ const Routes = () => {
             <Route path="/QA" exact>
                 <QAForm />
             </Route>
-            <Route path="/room" exact>
+            <Route path="/create-room" exact>
                 <RoomForm />
             </Route>
             <Route path="/course" exact>
                 <CorseForm />
             </Route>
-            <Route path="/userHome" exact>
+            <Route path="/user-Home" exact>
                 <UserHome />
             </Route>
 

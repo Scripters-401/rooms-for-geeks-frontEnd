@@ -18,7 +18,6 @@ const AllRooms = props => {
 
     function goToRoom(e, id) {
         // e.preventDefault();
-        console.log('props.userHome.choosenRoomID', id);
         props.choosenID(id);
     }
 
@@ -29,7 +28,6 @@ const AllRooms = props => {
                 <h3 className='topic'>All Rooms</h3>
             </div>
             <div className='allRooms'>
-                {console.log('rooms', props.userHome.allRooms)}
                 {props.userHome.allRooms.map((val, i) => {
                     return (
                         //     <button onClick={(e)=>goToRoom(e,val._id)}><Link to="/rooms" className="goToRoom" key={i}><div key={i}>
@@ -94,7 +92,7 @@ const AllRooms = props => {
                                             <p class="inside-page__text">
                                                 {val.createdTime}
                                             </p>
-                                            <a class="inside-page__btn inside-page__btn--camping btn-go" onClick={(e) => goToRoom(e, val._id)}><Link to="/rooms" className="goToRoom" key={i}>View Room</ Link></a>
+                                            <a class="inside-page__btn inside-page__btn--camping btn-go" onClick={(e) => goToRoom(e, val._id)}><Link to="/room" className="goToRoom" key={i}>View Room</ Link></a>
                                         </div>
                                     </div>
                                 </div>

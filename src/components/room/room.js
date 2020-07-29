@@ -10,55 +10,55 @@ import './room.scss'
 
 
 const ENDPOINT = process.env.REACT_APP_API;
-let socket
 
 
 const Initial = props => {
-    // useEffect(() => {
-    //     props.getRoom(props.sign.token, roomID)
-    // }, [])
 
-
-    let roomName = props.room.roomData.RData.roomName
-    let adminName = props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName
-    let userName = props.userInfo.user.username
-    let roomID =  props.userHome.choosenRoomID
-    // props.getRoom(props.sign.token, roomID)
-
-    // '5ef1f1407964642caa3a0188';
-    console.log('hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',roomID);
+    let roomName;
+    let adminName;
+    let roomID;
+ 
 
     useEffect(() => {
-        // setTimeout(() => {
-    console.log('uuuuuuuuuuuu',roomID);
-
+        roomName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.roomName : null;
+        adminName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName : null;
+        roomID = props.userHome.choosenRoomID
         props.getRoom(props.sign.token, roomID)
 
-        // console.log('whyyyyyyyyyyyyyyyy');
-        socket.on('chat', function (data) {
-            props.updateTyping('');
-            // console.log('props.output', props.room.output);
-            props.updateOutput({ userName: data.userName, message: data.message })
-        });
 
-        socket.on('counter', function (data) {
-            // console.log(data, 'countertertert');
-            props.updateCounter(data);
-        });
 
-        socket.on('typing', function (data) {
-            props.updateTyping(`${data} is typing a message...`);
-        });
-
-        // }, 2500);
 
     }, [])
 
     useEffect(() => {
+        if (props.room.socket) {
+            props.room.socket.disconnect();
+        }
+
+        props.room.socket = io.connect(`${ENDPOINT}/${props.userHome.choosenRoomID}`);
+        props.resetOutput();
+
+        props.room.socket.on('chat', function (data) {
+            props.updateTyping('');
+            props.updateOutput({ userName: data.userName, message: data.message })
+        });
+
+        props.room.socket.on('counter', function (data) {
+            props.updateCounter(data);
+        });
+
+        props.room.socket.on('typing', function (data) {
+            props.updateTyping(`${data} is typing a message...`);
+        });
+
+
+
+    }, [props.userHome.choosenRoomID])
+
+    useEffect(() => {
         setTimeout(() => {
-            socket.on('notif', function (data) {
-                if (userName === adminName) {
-                    // console.log('hi admin');
+            props.room.socket.on('notif', function (data) {
+                if (props.userInfo.user.username === adminName) {
                     props.updateNotifications(` Hey Admin ${adminName} New user joined the room ${roomName} ...`);
 
                     setTimeout(() => {
@@ -69,29 +69,21 @@ const Initial = props => {
         }, 2000);
 
 
-    }, [props.room.roomData.RData.roomName])
-
-
-
-    if (!props.room.checkconnection) {
-        socket = io.connect(`${ENDPOINT}/${roomID}`);
-        props.room.checkconnection = true;
-    }
+    }, [props.room.roomData.RData])
 
 
     const onlineFun = () => {
 
         // socket.emit('online', { online: navigator.onLine, name: userName });
-        // console.log('props.room.message', props.room.message);
-        socket.emit('chat', {
+        props.room.socket.emit('chat', {
             message: props.room.message,
-            userName: userName,
+            userName: props.userInfo.user.username,
         });
-        props.room.message = '';
+        document.getElementById('message').value = '';
     }
 
     const typing = e => {
-        socket.emit('typing', userName);
+        props.room.socket.emit('typing', props.userInfo.user.username);
     }
 
 
@@ -100,8 +92,7 @@ const Initial = props => {
         if (selectedAnswers.length !== props.room.roomData.renderedQuiz.questions.length) {
             alert('stiill some questions ')
         } else {
-            console.log(props.userInfo.user._id);
-            props.postAnswers(props.sign.token,selectedAnswers,quizID,props.userInfo.user._id)
+            props.postAnswers(props.sign.token, selectedAnswers, quizID, props.userInfo.user._id)
         }
     }
     const choseAnswer = (e, questionID) => {
@@ -117,10 +108,10 @@ const Initial = props => {
                         {adminName}
                     </p>
                     <p>
-                        {props.room.roomData.RData.createdTime}
+                        {props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.createdTime : null}
                     </p>
                     <p>
-                        Public: {`${props.room.roomData.RData.public || props.room.roomData.RData.publicc}`}
+                        Public: {props.room.roomData && props.room.roomData.RData ? `${props.room.roomData.RData.public || props.room.roomData.RData.publicc}` : null}
                     </p>
 
 
@@ -159,11 +150,10 @@ const Initial = props => {
                         }) : null}
                     </div>
 
-{console.log(props.room.roomData)}
 
                     <div className='renderedQuiz'>
                         <h2>Quiz Name: {props.room.roomData && props.room.roomData.renderedQuiz ? props.room.roomData.renderedQuiz.quizName : null}</h2>
-                        {props.room.roomData && props.room.roomData.renderedQuiz &&props.room.roomData.renderedQuiz.questions ? props.room.roomData.renderedQuiz.questions.map((element, idx) => {
+                        {props.room.roomData && props.room.roomData.renderedQuiz && props.room.roomData.renderedQuiz.questions ? props.room.roomData.renderedQuiz.questions.map((element, idx) => {
                             return (
                                 <div key={idx}>
                                     <p>
@@ -217,7 +207,7 @@ const Initial = props => {
                         </div>
                         <div id="typing">{props.room.typingstate}</div>
                     </div>
-                    <p id="userName">{userName}</p>
+                    <p id="userName">{props.userInfo.user.username}</p>
                     <input
                         id="message"
                         name='message'
@@ -251,6 +241,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
     updateTyping: (e) => dispatch(actions.updateTyping(e)),
     updateNotifications: (e) => dispatch(actions.updateNotifications(e)),
     postAnswers: (token, answers, quizID, userID) => dispatch(actions.postAnswers(token, answers, quizID, userID)),
+    resetOutput: () => dispatch(actions.resetOutput()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Initial);

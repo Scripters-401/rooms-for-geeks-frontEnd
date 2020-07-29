@@ -13,8 +13,8 @@ let initialState = {
   signup: '',
   user: {},
   authURL: '',
-
   errorMsg: '',
+  errorMsgSignUP:'',
 };
 
 // reducer : switch case
@@ -41,6 +41,11 @@ export default (state = initialState, action) => {
     case 'ERROR':
       state.errorMsg = payload;
       return { ...state };
+
+      case 'ERROR-SIGN-UP':
+        state.errorMsgSignUP = payload;
+        return { ...state };
+
     default:
       return state;
   }
@@ -83,6 +88,15 @@ const errMsg = (payload) => {
   }
 }
 
+const errMsgSignUp = (payload) => {
+  return {
+    type: 'ERROR-SIGN-UP',
+    payload: payload
+  }
+}
+
+
+
 /*************************************************** functions ****************************************************** */
 
 export const signup = (username, password, email, name, major, profileIMG) => async dispatch => {
@@ -96,7 +110,12 @@ export const signup = (username, password, email, name, major, profileIMG) => as
     });
 
     let res = await results.json();
-    dispatch(validateToken(res.token))
+    if (res.err) {
+      dispatch(errMsgSignUp(res.err));
+    } else {
+      dispatch(validateToken(res.token))
+    }
+    // dispatch(validateToken(res.token))
 
   } catch (error) {
     console.error(`ERROR: SIGNUP`);
@@ -121,7 +140,6 @@ export const login = (username, password) => async dispatch => {
       headers[key] = value;
     }
     let res = await results.json();
-    console.log('resssssssss', res);
     if (res.err) {
       dispatch(errMsg(res.err));
     } else {

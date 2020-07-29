@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './userPage.scss';
 import { connect } from 'react-redux';
 import { storage } from "../firebase";

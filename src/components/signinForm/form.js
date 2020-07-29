@@ -137,6 +137,8 @@ function SigninForm(props) {
                                         I agree to the <span><a href='#'>Terms of Service</a></span> and <span><a href='#'>Privacy Policy</a></span>
                                     </label>
                                 </div>
+                                <p className="errorMsg">{props.sign.errorMsgSignUP}</p>
+
                                 <div className="oAut">
 
                                     <button className="btn btn--primary" >Sign up</button>
