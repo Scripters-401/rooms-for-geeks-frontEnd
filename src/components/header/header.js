@@ -36,7 +36,7 @@ const Header = props => {
 
             <Show condition={!props.sign.loggedIn}>
               <li className='liHeader'>
-                <Link2 smooth to="/#aboutus" className="navHeader">About-Us</Link2>
+                <Link2 smooth to="/#aboutus" className="navHeader">About Us</Link2>
               </li>
             </Show>
 
