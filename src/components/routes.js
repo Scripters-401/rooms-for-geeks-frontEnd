@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 // import Rooms from '../rooms/rooms';
 import AboutUs from './aboutUs/about-us';
 
-import Room from './room.js';
+import Room from './room/room.js';
 import Homemain from './home/home';
 import Auth from './auth/auth.js';
 import User from './userPage/userPage';

@@ -107,7 +107,7 @@ const User = props => {
                             <p className="name infoSec">Name: {props.userInfo.user.name}</p>
                             <p className="majorr infoSec">Major: {props.userInfo.user.major}</p>
                             <p className="university infoSec">University: {props.userInfo.user.university}</p>
-                            <p className="joined infoSec">Over joined: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
+                            <p className="joined infoSec"> Member since: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
                         </div>
                     </div>
                 </div>
