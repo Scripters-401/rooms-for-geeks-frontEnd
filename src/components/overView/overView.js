@@ -1,59 +1,53 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import './overView.scss';
+import { connect } from 'react-redux';
+import * as actions from '../../store/signINUPReducer.js'
 
+import './overView.scss';
+let z;
+let i = 1;
 
 function OverView(props) {
 
   useEffect(() => {
-    let loopoverview;
-    if (document.getElementsByClassName('turn')) {
-
-
-      let z = document.getElementsByClassName('turn');
-      let i = 0;
-
-
-      loopoverview = setInterval(() => {
-        if (document.getElementsByClassName(`hi${i}`)) {
-
-
-          let t = document.getElementsByClassName(`hi${i}`)[0];
-          if (i !== 0) {
-            document.getElementsByClassName(`hi${i - 1}`)[0].classList.remove("hi");
-          }
-
-          if (i === 0) {
-            document.getElementsByClassName(`hi${2}`)[0].classList.remove("hi");
-          }
-          t.classList.add("hi");
-          if (i !== 0) z[i - 1].classList.remove("turn1");
-          if (i === 0) z[2].classList.remove("turn1");
-          z[i].classList.add("turn1");
-          i++
-          if (i === 3) i = 0;
-        }
-
-      }, 4000);
-    } else {
-      clearInterval(loopoverview)
-    }
+    z = setInterval(() => {
+      i++;
+      props.updateOverView(i)
+      if (i === 3) i = 0;
+    }, 2000);
   }, [])
 
+  const setIsShown = (bool,num) => {
+      if (!bool)
+      props.updateOverView(num)
+
+   if (bool) {
+      z = setInterval(() => {
+        props.updateOverView(i)
+        i++;
+        if (i === 4) i = 1;
+      }, 2000);
+
+    }
+
+    if (!bool)
+      clearInterval(z);
+  }
 
   return (
     <>
       <div className='generalOver' >
         <svg id="svg4136" xmlns="http://www.w3.org/2000/svg" version="1.1" height="613" xmlnsXlink="http://www.w3.org/1999/xlink" >
-          <g id="layer1 " className=' hi0'>
+          <g id="layer1 " className={`hi1${props.sign.overView}`}>
 
-            <path className='firstCha st0 turn ' id="path4806" d="m0.83398 57.5v315h261.4l-0.15234-0.11914 245.41-314.88h-506.66z" fill="#b6bbab" />
+            <path onMouseEnter={() => setIsShown(false,'1')} onMouseLeave={() => setIsShown(true,'1')} className={` firstCha st0 turn1-${props.sign.overView}`} id="path4806" d="m0.83398 57.5v315h261.4l-0.15234-0.11914 245.41-314.88h-506.66z" fill="#b6bbab" />
             <text x="15" y="140" className="t sub-text">Lorem ipsum dolor sit amet.  Integer malesuada eu eros et condimentum. </text>
             <text x="15" y="155" className="t sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
             <text x="15" y="185" className="sub-mission">Pellentesque vel justo a lacus sodales maximus.</text>
             <text x="15" y="110"> Mission </text>
           </g>
-          <g id="layer2" className=' hi1'>
-            <path className="st0 turn " id="path4804" d="m514.89 57.5-108.17 138.79 254.83 365.38h138.45v-504.17h-285.11z" fill="#b6bbab" />
+          <g id="layer2" className={`hi2${props.sign.overView}`}>
+            <path onMouseEnter={() => setIsShown(false,'2')} onMouseLeave={() => setIsShown(true,'2')} className={`st0 turn2-${props.sign.overView}`} id="path4804" d="m514.89 57.5-108.17 138.79 254.83 365.38h138.45v-504.17h-285.11z" fill="#b6bbab" />
             <text x="470" y="140" className="t sub-text">Lorem ipsum dolor sit amet. </text>
             <text x="480" y="160" className="sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
             <text x="480" y="200" className="sub-mission">Pellentesque vel justo a lacus sodales maximus.</text>
@@ -62,8 +56,8 @@ function OverView(props) {
 
           <path id="path4802" fill="none" d="m402.97 201.1-133.59 171.4h253.13l-119.54-171.4z" />
 
-          <g id="layer3" className=' hi2'>
-            <path className="st0 turn" id="rect4715" d="m0.83398 378.33v183.33h653.61l-127.86-183.33h-525.74z" fill="#b6bbab" />
+          <g id="layer3" className={`hi3${props.sign.overView}`}>
+            <path onMouseEnter={() => setIsShown(false,'3')} onMouseLeave={() => setIsShown(true,'3')} className={`st0 turn3-${props.sign.overView}`} id="rect4715" d="m0.83398 378.33v183.33h653.61l-127.86-183.33h-525.74z" fill="#b6bbab" />
             <text x="15" y="480" className="t sub-text">Lorem ipsum dolor sit amet. </text>
             <text x="15" y="500" className="sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
             <text x="15" y="520" className="sub-mission">Pellentesque vel justo a lacus sodales maximus.</text>
@@ -174,5 +168,14 @@ function OverView(props) {
   );
 }
 
+const mapStateToProps = state => ({
+  sign: state.sign,
+});
 
-export default OverView;
+const mapDispatchToProps = (dispatch, getState) => ({
+  updateOverView: (num) => dispatch(actions.updateOverView(num)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OverView);
+
+// export default OverView;

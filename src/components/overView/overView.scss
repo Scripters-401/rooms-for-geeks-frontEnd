@@ -3,38 +3,42 @@
   svg {
     width: 100%;
   }
-  // .layer1 path{
-  //   // transition-duration: 1.5s;
-  //   animation: hi 3.5s infinite ease-in-out;
-  // }
-  .turn1 {
+  .turn1-1 {
     fill: #4a9998;
   }
-  // .turn2  {
-  //   display: block;
-  //  }
-  .hi > text.sub-text {
+
+  .turn2-2 {
+    fill: #4a9998;
+  }
+
+  .turn3-3 {
+    fill: #4a9998;
+  }
+  .hi11 > text.sub-text {
     display: block;
   }
 
-  .hi > text.sub-mission {
+  .hi11 > text.sub-mission {
     display: block;
   }
 
-  //  text.sub-mission
-  // path#path4804 {
-  //   animation: hi 3s infinite ease-in-out;
-  // }
+  .hi22 > text.sub-text {
+    display: block;
+  }
 
-  // path#path4806 {
-  //   animation-delay: 3s;
-  //   animation: hi 3s 3s infinite ease-in-out;
-  // }
+  .hi22 > text.sub-mission {
+    display: block;
+  }
 
-  // path#rect4715 {
-  //   // animation-delay: 8s;
-  //   animation: hi 3s infinite ease-in-out;
-  // }
+  .hi33 > text.sub-text {
+    display: block;
+  }
+
+  .hi33 > text.sub-mission {
+    display: block;
+  }
+
+
   svg path:hover {
     transition-duration: 1.5s;
     fill: #4a9998;
@@ -49,8 +53,6 @@
   }
 
   text.sub-mission {
-    // visibility:hidden;
-
     display: none;
     fill: #fff;
     font-size: 0.9em;
@@ -59,7 +61,6 @@
   }
 
   text.sub-text {
-    // visibility:hidden;
     display: none;
     fill: #fff;
     font-size: 1.2em;
@@ -73,48 +74,5 @@
 
   g:hover > text {
     display: block;
-    // visibility: visible;
   }
-  // #layer1 > text.sub-text,#layer1>text.sub-mission  {
-  //   animation: showText 3s infinite ease-in-out;
-  // }
-
-  // #layer2 > text.sub-text,#layer2>text.sub-mission  {
-  //   animation-delay: 3s;
-  //   animation: showText 3s infinite ease-in-out;
-  // }
-
-  // #layer3> text.sub-text,#layer3>text.sub-mission  {
-  //   animation-delay: 8s;
-  //   animation: showText 3s infinite ease-in-out;
-  // }
 }
-
-// @keyframes hi {
-//   0% {
-//     fill: rgb(182, 187, 171);
-//   }
-//   25% {
-//     fill: #4a9998;
-//   }
-//   50% {
-//     fill: rgb(182, 187, 171);
-//   }
-//   100% {
-//     fill: rgb(182, 187, 171);
-//   }
-// }
-// @keyframes showText {
-//   0% {
-//     visibility:visible;
-//     }
-//   25% {
-//     visibility:visible;
-//   }
-//   50% {
-//     visibility:hidden;
-//   }
-//   100% {
-//     visibility:hidden;
-//   }
-// }

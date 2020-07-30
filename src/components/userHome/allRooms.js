@@ -10,9 +10,9 @@ const AllRooms = props => {
 
     useEffect(()=>{
         setTimeout(() => {
-            console.log('token',props.sign.token)
+            // console.log('token',props.sign.token)
             props.rooms(props.sign.token);  
-        }, 2000);
+        }, 2500);
 
     },[]);
 

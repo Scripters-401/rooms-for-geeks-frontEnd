@@ -14,7 +14,8 @@ let initialState = {
   user: {},
   authURL: '',
   errorMsg: '',
-  errorMsgSignUP:'',
+  errorMsgSignUP: '',
+  overView: 1,
 };
 
 // reducer : switch case
@@ -42,9 +43,13 @@ export default (state = initialState, action) => {
       state.errorMsg = payload;
       return { ...state };
 
-      case 'ERROR-SIGN-UP':
-        state.errorMsgSignUP = payload;
-        return { ...state };
+    case 'ERROR-SIGN-UP':
+      state.errorMsgSignUP = payload;
+      return { ...state };
+
+    case 'update-overView':
+      state.overView = payload;
+      return { ...state };
 
     default:
       return state;
@@ -52,6 +57,14 @@ export default (state = initialState, action) => {
 }
 
 /*************************************************** actions ****************************************************** */
+export const updateOverView = e => {
+  return {
+    type: 'update-overView',
+    payload: e,
+  }
+}
+
+
 export const handleChange = e => {
   return {
     type: 'handleChange',
@@ -65,6 +78,8 @@ export const oathfun = e => {
     payload: e,
   }
 }
+
+
 
 
 const setLoginState = (loggedIn, token, user) => {

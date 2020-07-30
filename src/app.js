@@ -25,10 +25,6 @@ function App(props) {
     const token = cookieToken || null;
     props.validateToken(token);
     props.getInfoUser(props.sign.token, props.sign.user.id)
-
-    //   if (socket) {
-    //     socket.disconnect();
-    // }
   }, [])
 
 
