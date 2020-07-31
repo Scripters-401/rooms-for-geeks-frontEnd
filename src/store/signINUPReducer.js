@@ -1,7 +1,7 @@
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 
-require('dotenv').config();
+// require('dotenv').config();
 
 // localhost or deployed
 const API = process.env.REACT_APP_API;
@@ -130,8 +130,6 @@ export const signup = (username, password, email, name, major, profileIMG) => as
     } else {
       dispatch(validateToken(res.token))
     }
-    // dispatch(validateToken(res.token))
-
   } catch (error) {
     console.error(`ERROR: SIGNUP`);
   }

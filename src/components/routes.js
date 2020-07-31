@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-// import Home from '../home/home';
-// import Rooms from '../rooms/rooms';
 import AboutUs from './aboutUs/about-us';
 
 import Room from './room/room.js';
@@ -20,9 +18,7 @@ import UserHome from './userHome/userHome';
 import ForgotPass from './forgotPass/forgotPass';
 
 const Routes = () => {
-    // useEffect(()=>{
-    //     console.log('zzzzzzzzzzzzzzzzzznnnnnnnnnnnnnnnnnnnnnnnmmmmmmmmmmmmmmmmmmm');
-    // },[])
+
     return (
         <>
             <Route path="/" exact>
@@ -38,15 +34,11 @@ const Routes = () => {
                 <Auth capability="read">
                     <Room />
                 </Auth>
-                {/* <Rooms /> */}
             </Route>
 
             <Route path="/user-page" exact>
                 <User />
             </Route>
-            {/* <Route path="/about-us" exact>
-                <div>abouuuuuuut us</div>
-            </Route> */}
 
             <Route path="/sign" exact>
                 <Auth capability="read">

@@ -24,15 +24,15 @@ function App(props) {
     const cookieToken = cookie.load('auth');
     const token = cookieToken || null;
     props.validateToken(token);
-    props.getInfoUser(props.sign.token, props.sign.user.id)
+    if (token !== 'null') {
+      props.getInfoUser(props.sign.token, props.sign.user.id);
+    }
   }, [])
-
-
 
   return (
     <>
       <Header />
-      <Routes   />
+      <Routes />
       <Footer />
       <Link2 smooth to="#AppHeader" className="up">
         <FontAwesomeIcon icon={upIcon} size='1x' color="#7DA09A" />
@@ -47,7 +47,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, getState) => ({
   validateToken: token => dispatch(actions.validateToken(token)),
   getInfoUser: (token, id) => dispatch(actions2.getInfoUser(token, id))
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

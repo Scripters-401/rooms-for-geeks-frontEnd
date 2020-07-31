@@ -131,9 +131,9 @@ function SigninForm(props) {
                                 <input type="text" className="input input--name" placeholder="Major" name="major" onChange={(e) => props.handleChange(e)} required />
                                 <input className='ChooseImage' type="file" onChange={handleChangePic} />
                                 <div className='checkBoxDiv'>
-                                    <label className="bubble" for='bubble'>
+                                    <label className="bubble" htmlFor='bubble'>
                                     <input type="checkbox" name="terms" value="terms" id="bubble" required />
-                                    Accept <span><a className="terms" href='#'>Terms of Service</a></span> and <span><a className="terms" href='#'>Privacy Policy</a></span>
+                                    Accept <span><a className="terms" href='/'>Terms of Service</a></span> and <span><a className="terms" href='/'>Privacy Policy</a></span>
                                     </label>
                                 </div>
                                 <p className="errorMsg">{props.sign.errorMsgSignUP}</p>

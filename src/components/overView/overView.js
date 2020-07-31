@@ -41,14 +41,14 @@ function OverView(props) {
           <g id="layer1 " className={`hi1${props.sign.overView}`}>
 
             <path onMouseEnter={() => setIsShown(false,'1')} onMouseLeave={() => setIsShown(true,'1')} className={` firstCha st0 turn1-${props.sign.overView}`} id="path4806" d="m0.83398 57.5v315h261.4l-0.15234-0.11914 245.41-314.88h-506.66z" fill="#b6bbab" />
-            <text x="15" y="140" className="t sub-text">Lorem ipsum dolor sit amet.  Integer malesuada eu eros et condimentum. </text>
-            <text x="15" y="155" className="t sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
+            <text x="15" y="140" className="sub-text">Lorem ipsum dolor sit amet.  Integer malesuada eu eros et condimentum. </text>
+            <text x="15" y="155" className="sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
             <text x="15" y="185" className="sub-mission">Pellentesque vel justo a lacus sodales maximus.</text>
             <text x="15" y="110"> Mission </text>
           </g>
           <g id="layer2" className={`hi2${props.sign.overView}`}>
             <path onMouseEnter={() => setIsShown(false,'2')} onMouseLeave={() => setIsShown(true,'2')} className={`st0 turn2-${props.sign.overView}`} id="path4804" d="m514.89 57.5-108.17 138.79 254.83 365.38h138.45v-504.17h-285.11z" fill="#b6bbab" />
-            <text x="470" y="140" className="t sub-text">Lorem ipsum dolor sit amet. </text>
+            <text x="470" y="140" className="sub-text">Lorem ipsum dolor sit amet. </text>
             <text x="480" y="160" className="sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
             <text x="480" y="200" className="sub-mission">Pellentesque vel justo a lacus sodales maximus.</text>
             <text x="520" y="110">Vision</text>
@@ -58,7 +58,7 @@ function OverView(props) {
 
           <g id="layer3" className={`hi3${props.sign.overView}`}>
             <path onMouseEnter={() => setIsShown(false,'3')} onMouseLeave={() => setIsShown(true,'3')} className={`st0 turn3-${props.sign.overView}`} id="rect4715" d="m0.83398 378.33v183.33h653.61l-127.86-183.33h-525.74z" fill="#b6bbab" />
-            <text x="15" y="480" className="t sub-text">Lorem ipsum dolor sit amet. </text>
+            <text x="15" y="480" className="sub-text">Lorem ipsum dolor sit amet. </text>
             <text x="15" y="500" className="sub-mission">consectetur adipiscing elit. Duis suscipit imperdiet leo quis.</text>
             <text x="15" y="520" className="sub-mission">Pellentesque vel justo a lacus sodales maximus.</text>
             <text x="15" y="430"> Values </text>

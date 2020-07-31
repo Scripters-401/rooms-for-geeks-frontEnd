@@ -1,23 +1,24 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { HashLink as Link2 } from 'react-router-hash-link';
+
 import * as actions from '../../store/signINUPReducer.js'
 import Show from '../auth/show';
-import '../../reset.css';
-
-import './header.scss';
-import { HashLink as Link2 } from 'react-router-hash-link';
 import logo from '../../assest/LOGOC.png';
 
+import '../../reset.css';
+import './header.scss';
+
 const Header = props => {
-  const hi = e => {
+  const disconnectSocket = e => {
     if (props.room.socket) {
       props.room.socket.disconnect();
   }
 
   }
   return (
-    <header onClick={(e) => hi(e)} id='AppHeader'>
+    <header onClick={(e) => disconnectSocket(e)} id='AppHeader'>
       <div className="header">
         <nav className='allNavHeader'>
           <ul className='ulHeader'>
