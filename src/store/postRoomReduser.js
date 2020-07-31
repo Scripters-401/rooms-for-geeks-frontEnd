@@ -4,6 +4,7 @@ const API = process.env.REACT_APP_API;
 
 let initialState = {
     roomC: '',
+    privetRoomPass: false
 };
 
 export default (state = initialState, action) => {
@@ -15,19 +16,28 @@ export default (state = initialState, action) => {
         case 'HANDLE_CHANGE_ROOM':
             state[payload.name] = payload.value
             return { ...state };
+        case 'HANDLE_PRIVET_PASS':
+            state.privetRoomPass= payload
+            return { ...state };
         default:
             return state;
     }
 }
 
 export const handleChangeRoom = e => {
+    console.log('JJJJJFFFFFF',e.target);
     return {
         type: 'HANDLE_CHANGE_ROOM',
         payload: { name: [e.target.name], value: e.target.value },
     }
 }
 
-
+export const handlePrivetPass = e => {
+    return{
+        type : 'HANDLE_PRIVET_PASS',
+        payload: e,
+    }
+}
 
 export const roomPost = (token, id, roomName, publicc, password, adminName, members) => async dispatch => {
     console.log(roomName, publicc, password, adminName, members);

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/postRoomReduser'
-import './room.scss';
+import './createquiz.scss';
 
 const RoomForm = props => {
 

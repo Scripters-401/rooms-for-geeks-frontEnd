@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './userPage.scss';
 import { connect } from 'react-redux';
 import { storage } from "../firebase";
 import * as actions from '../../store/userReducer';
 import * as actions2 from '../../store/putUserInfo';
 import * as actions3 from '../../store/uploadImageReducer';
-import $ from 'jquery';
 
 const User = props => {
+
     useEffect(() => {
         props.getInfoUser(props.sign.token, props.sign.user.id)
     }, [props.sign.token, props.sign.user.id])
@@ -55,29 +55,6 @@ const User = props => {
         }
     };
 
-    // $("#form").hide();
-    // $("#toggle-info").hide();
-    $("#toggle-form").click(function () {
-        $("#toggle-form").hide();
-        // $("#info").hide().attr("formnovalidate");
-        $("#info").hide();
-        $("#form").show();
-        $("#toggle-info").toggle();
-    });
-
-    $("#toggle-info").click(function () {
-        $("#toggle-info").hide();
-        // $("#form").hide().attr("formnovalidate");
-        $("#form").hide();
-        $("#info").show();
-        $("#toggle-form").toggle();
-    });
-
-    $("document").ready(function () {
-        $("#toggle-info").hide();
-        $("#info").hide();
-    });
-
     const currentDate = new Date();
     let fullYear = currentDate.getFullYear();
     let month = currentDate.getMonth();
@@ -117,11 +94,11 @@ const User = props => {
     return (
         <div className="mainDiv">
             <>
-                <div className="withImage">
-                    <div id="imgAndBtn">
+                <div id="imgAndBtn">
                     <div id="divJustImage"><img className="image infoSec" src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img></div>
-                        <span href="#" className="btn btn-default toggleButton" id="toggle-form">Edit</span>
-                        <span href="#" className="btn btn-default toggleButton" id="toggle-info">Back</span>
+                    <span href="#" className={`btn btn-default toggleButton make-${props.editUserInfo.hide}`} id="toggle-form" onClick={(payload) => props.hideFun(payload)}>Edit</span>
+                    <div className={`make-${props.editUserInfo.toggle}`}>
+
                     </div>
                     <div id="infoForm">
                         <div id='info' accept-charset='UTF-8'>
@@ -130,61 +107,66 @@ const User = props => {
                             <p className="name infoSec">Name: {props.userInfo.user.name}</p>
                             <p className="majorr infoSec">Major: {props.userInfo.user.major}</p>
                             <p className="university infoSec">University: {props.userInfo.user.university}</p>
-                            <p className="joined infoSec">Over joined: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
+                            <p className="joined infoSec"> Member since: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
                         </div>
                     </div>
                 </div>
-                <div id="formForm" id='form'>
-                    <form id="formI" onSubmit={(e) => {
-                        e.preventDefault();
-                        handleSubmitFun(e);
-                        // window.location.reload()
-                    }}>
-                        <h3 className="subForm">Update Profile</h3>
 
-                        <div className="form-group col-md-5">
-                            <label>Password</label>
-                            <input placeholder="password" className="form-control" type="password" value={props.editUserInfo.password} name="password" id="passInput" onChange={(e) => props.updateData(e)}></input>
-                            <input type="checkbox" onClick={togglePass}></input>Show Password
+
+                <div className={`do-${!props.editUserInfo.hide} do-${props.editUserInfo.toggle}`}>
+                    <span href="#" className="btn btn-default xx" id="toggle-info" onClick={(payload) => props.toggleFun(payload)}>X</span>
+                    <div id="formForm" id='form'>
+                        <form id="formI" onSubmit={(e) => {
+                            e.preventDefault();
+                            handleSubmitFun(e);
+                            // window.location.reload()
+                        }}>
+                            <h3 className="subForm">Update Profile</h3>
+
+                            <div className="form-group col-md-5">
+                                <label>Password</label>
+                                <input placeholder="password" className="form-control" type="password" value={props.editUserInfo.password} name="password" id="passInput" onChange={(e) => props.updateData(e)}></input>
+                                <input type="checkbox" onClick={togglePass}></input>Show Password
                     </div>
 
-                        <div className="form-group col-md-5">
-                            <label>Name</label>
-                            <input
-                                type="text"
-                                name="name"
-                                onChange={(e) => props.updateData(e)}
-                                placeholder={props.userInfo.user.name}
-                                className="form-control"
-                            ></input>
-                        </div>
-                        <div className="form-group col-md-5">
-                            <label>Major</label>
-                            <input
-                                type="text"
-                                name="major"
-                                onChange={(e) => props.updateData(e)}
-                                placeholder={props.userInfo.user.major}
-                                className="form-control"
-                            />
-                        </div>
-                        <div className="form-group col-md-5">
-                            <label>University</label>
-                            <input
-                                type="text"
-                                name="university"
-                                onChange={(e) => props.updateData(e)}
-                                placeholder={props.userInfo.user.university}
-                                className="form-control"
-                            />
-                        </div>
-                        <div className="form-group col-md-5">
-                            <label>Profile Image</label>
-                            <input id="imagesUploadId" className='form-control-file' name="imagesUpload" type="file" onChange={handleChangePic} className="form-control" />
-                        </div>
-                        <div className="form-group col-md-5">
-                            <button type="submit" className="btn">Submit</button></div>
-                    </form>
+                            <div className="form-group col-md-5">
+                                <label>Name</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    onChange={(e) => props.updateData(e)}
+                                    placeholder={props.userInfo.user.name}
+                                    className="form-control"
+                                ></input>
+                            </div>
+                            <div className="form-group col-md-5">
+                                <label>Major</label>
+                                <input
+                                    type="text"
+                                    name="major"
+                                    onChange={(e) => props.updateData(e)}
+                                    placeholder={props.userInfo.user.major}
+                                    className="form-control"
+                                />
+                            </div>
+                            <div className="form-group col-md-5">
+                                <label>University</label>
+                                <input
+                                    type="text"
+                                    name="university"
+                                    onChange={(e) => props.updateData(e)}
+                                    placeholder={props.userInfo.user.university}
+                                    className="form-control"
+                                />
+                            </div>
+                            <div className="form-group col-md-5">
+                                <label>Profile Image</label>
+                                <input id="imagesUploadId" className='form-control-file' name="imagesUpload" type="file" onChange={handleChangePic} className="form-control" />
+                            </div>
+                            <div className="form-group col-md-5">
+                                <button type="submit" className="btn">Submit</button></div>
+                        </form>
+                    </div>
                 </div>
             </>
         </div>
@@ -207,6 +189,8 @@ const mapDispatchToProps = (dispatch, getState) => ({
     setImage: (image) => dispatch(actions3.setImage(image)),
     putInfoUser: (token, id, password, name, major, university, profileIMG) =>
         dispatch(actions2.putInfoUser(token, id, password, name, major, university, profileIMG)),
+    hideFun: (paylod) => dispatch(actions2.hideFun(paylod)),
+    toggleFun: (paylod) => dispatch(actions2.toggleFun(paylod)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

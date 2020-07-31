@@ -4,6 +4,8 @@ const API = process.env.REACT_APP_API;
 
 let initialState = {
     putInfo: '',
+    hide: false,
+    toggle: true
 };
 
 
@@ -17,9 +19,27 @@ export default (state = initialState, action) => {
             state[payload.name] = payload.value
             return { ...state };
 
+        case 'HIDE_TOGGLE':
+            state.hide = payload;
+            state.toggle = payload;
+            return { ...state }
 
         default:
             return state;
+    }
+}
+
+export const hideFun = payload => {
+    return {
+        type: 'HIDE_TOGGLE',
+        payload: payload,
+    }
+}
+
+export const toggleFun = payload => {
+    return {
+        type: 'HIDE_TOGGLE',
+        payload: !payload,
     }
 }
 

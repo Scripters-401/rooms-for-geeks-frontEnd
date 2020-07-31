@@ -19,9 +19,12 @@ const MyRooms = props => {
         setIndex(selectedIndex);
     };
     useEffect(() => {
-        console.log('token', props.sign.token);
-        console.log('id', props.sign.user.id);
-        props.favRoom(props.sign.token, props.sign.user.id);
+        setTimeout(() => {
+            console.log('token', props.sign.token);
+            console.log('id', props.sign.user.id);
+            props.favRoom(props.sign.token, props.sign.user.id);
+        }, 2500);
+
     }, [])
     function goToRoom(e, id) {
         // e.preventDefault();
@@ -30,13 +33,7 @@ const MyRooms = props => {
     }
     return (
         <>
-            <div className='search-bar'>
-                <div class="search-container">
-                    <input type="text" placeholder="Search..." />
-                    <div class="search"></div>
-                </div>
-
-            </div>
+            
             <Show condition={props.userHome.checkMyRooms}>
                 <div>
 

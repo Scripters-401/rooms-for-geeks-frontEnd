@@ -13,6 +13,7 @@ let initialState = {
   counter: 0,
   typingstate: '',
   notification: '',
+  score:'',
 };
 
 // reducer : switch case
@@ -44,6 +45,12 @@ export default (state = initialState, action) => {
     case 'updateNotifications':
       state.notification = payload
       return { ...state };
+
+    case 'updateScore':
+      state.score = payload
+      return { ...state };
+
+
 
     default:
       return state;
@@ -94,6 +101,15 @@ export const updateNotifications = e => {
   }
 }
 
+export const updateScore = e => {
+  return {
+    type: 'updateScore',
+    payload: e.score,
+  }
+}
+
+
+
 /*************************************************** functions ****************************************************** */
 export const getRoom = (token, id) => async dispatch => {
   try {
@@ -109,6 +125,29 @@ export const getRoom = (token, id) => async dispatch => {
 
     let res = await results.json();
     dispatch(roomData(res))
+  } catch (error) {
+    console.error(`ERROR: SIGNOUT`);
+  }
+}
+
+
+export const postAnswers = (token, answers, quizID, userID) => async dispatch => {
+  try {
+    let results = await fetch(`${API}/score/${userID}`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: new Headers({
+        'Authorization': `Beare ${token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }),
+      body: JSON.stringify({ answers, quizID, userID })
+
+    });
+
+    let res = await results.json();
+    dispatch(updateScore(res))
+
   } catch (error) {
     console.error(`ERROR: SIGNOUT`);
   }

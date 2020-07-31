@@ -7,8 +7,8 @@ import '../../reset.css';
 
 import './header.scss';
 import { HashLink as Link2 } from 'react-router-hash-link';
-import logo from '../../assest/LOGOC.png';
-
+import logo from '../../assest/glassLogo.png';
+// LOGOC.png
 const Header = props => {
   return (
     <header id='AppHeader'>
@@ -36,7 +36,7 @@ const Header = props => {
 
             <Show condition={!props.sign.loggedIn}>
               <li className='liHeader'>
-                <Link2 smooth to="/#aboutus" className="navHeader">About-Us</Link2>
+                <Link2 smooth to="/#aboutus" className="navHeader">About Us</Link2>
               </li>
             </Show>
 
@@ -67,7 +67,7 @@ const Header = props => {
             </li>
           </ul>
         </nav>
-        <h1 className="H1">Rooms For Geeks</h1>
+        {/* <h1 className="H1">Rooms For Geeks</h1> */}
         <img className="logo" src={logo} alt='LOGO' />
       </div>
     </header>
