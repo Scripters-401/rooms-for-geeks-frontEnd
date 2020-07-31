@@ -46,6 +46,7 @@ const MyRooms = props => {
                     {console.log('myrooms', props.userHome.myRooms)}
                     <Carousel activeIndex={index} onSelect={handleSelect}>
                         {props.userHome.myRooms.map((val, i) => {
+                            let random = Math.floor(Math.random() * 10)
                             return (
                                 <Carousel.Item style={{ 'height': "300px" }}>
                                     <div class='card-area-div'>
@@ -68,6 +69,7 @@ const MyRooms = props => {
                                    S58.3,28,57.2,28z M30,45.9c-8.8,0-15.9-7.2-15.9-15.9c0-8.8,7.2-15.9,15.9-15.9c8.8,0,15.9,7.2,15.9,15.9
                                    C45.9,38.8,38.8,45.9,30,45.9z"/>
                                </svg>
+                               {/* <img class="ccontainer" src={`${ props.userHome.categoryImages.science[random] }`} alt='LOGO' /> */}
                                                                 <h2 class="card-front__heading">
                                                                     {val.roomName}
                                                                 </h2>
@@ -75,7 +77,7 @@ const MyRooms = props => {
 
                                                             <div class="card-front__bt">
                                                                 <p class="card-front__text-view card-front__text-view--ski">
-                                                                    View me
+                                                                {val.roomName}
                                         </p>
                                                             </div>
                                                         </div>
@@ -84,7 +86,7 @@ const MyRooms = props => {
                                                             {/* <video class="video__container" autoplay muted loop>
                                         <source class="video__media" src="https://player.vimeo.com/external/195913085.sd.mp4?s=7c12f7a83de62a8900fd2ae049297070b9bc8a54&profile_id=164&oauth2_token_id=574477611" type="video/mp4">
                                     </video> */}
-                                                            <img class="video__container" src={logo} alt='LOGO' />
+                                                            {/* <img class="video__container" src='https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80' alt='LOGO' /> */}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -96,7 +98,7 @@ const MyRooms = props => {
                                                             {val.cookieAdminName}
                                                         </h3>
                                                         <p class="inside-page__text">
-                                                            {val.createdTime}
+                                                        {val.createdTime.slice(0,10)}
                                                         </p>
                                                         <a class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}><Link to="/rooms" className="goToRoom" key={i}> View Room</ Link></a>
 

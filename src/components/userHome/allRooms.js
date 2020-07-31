@@ -33,6 +33,7 @@ const AllRooms = props => {
             <div className='allRooms'>
                 {console.log('rooms',props.userHome.allRooms)}
             {props.userHome.allRooms.slice(randomNumber,randomNumber+4).map((val,i) =>{
+                let random = Math.floor(Math.random() * 10)
                 return(
                     <div class='card-area-div'>
                 <section class="card-area">
@@ -44,7 +45,7 @@ const AllRooms = props => {
                             <div class="flip-card__container">
                                 <div class="card-front">
                                     <div class="card-front__tp card-front__tp--ski">
-                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        {/* <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 60 60" style={{enableBackground:'new 0 0 60 60'}} xmlSpace="preserve" class="card-front__icon">
                                    <g>
                                        <path d="M58.8,54.5L38.5,19.3c-0.4-0.6-1-1-1.7-1s-1.4,0.4-1.7,1L14.8,54.5c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.7,1h40.6
@@ -66,7 +67,8 @@ const AllRooms = props => {
                                            c0-0.8-0.7-1.5-1.5-1.5S46,3.2,46,4v3.1l-2.2-2.2c-0.6-0.6-1.5-0.6-2.1,0c-0.6,0.6-0.6,1.5,0,2.1l2.2,2.2h-3.1
                                            c-0.8,0-1.5,0.7-1.5,1.5S39.9,12.3,40.7,12.3z"/>
                                    </g>
-                                   </svg>
+                                   </svg> */}
+                                   <img class="ccontainer" src={`${ props.userHome.categoryImages['nutrition'][random] }`} alt='LOGO' />
                                                    <h2 class="card-front__heading">
                                                        {val.roomName}
                                                    </h2>
@@ -97,7 +99,7 @@ const AllRooms = props => {
                                     {val.cookieAdminName}
                                 </h3>
                                 <p class="inside-page__text">
-                                   {val.createdTime}
+                                   {val.createdTime.slice(0,10)}
                                 </p>
                                 <a class="inside-page__btn inside-page__btn--ski" onClick={(e)=>goToRoom(e,val._id)}><Link to="/rooms" className="goToRoom" key={i}> View Room</ Link></a>
                                 

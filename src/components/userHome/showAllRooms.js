@@ -31,21 +31,17 @@ const AllRooms = props => {
             <div className='allRooms'>
                 {console.log('rooms', props.userHome.allRooms)}
                 {props.userHome.allRooms.map((val, i) => {
+                    let random = Math.floor(Math.random() * 10)
                     return (
-                        //     <button onClick={(e)=>goToRoom(e,val._id)}><Link to="/rooms" className="goToRoom" key={i}><div key={i}>
-                        //     <h3>{val.roomName}</h3>
-                        //     <h4>Created By: {val.cookieAdminName}</h4>
-                        //     <h5>Created Time: {val.createdTime}</h5>
-                        // </div></Link></button>
                         <div class='card-area-div'>
                             <section class="card-area">
-                            <section class="card-section">
-                                <div class="card">
-                                    <div class="flip-card">
-                                        <div class="flip-card__container">
-                                            <div class="card-front">
-                                                <div class="card-front__tp card-front__tp--city">
-                                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                <section class="card-section">
+                                    <div class="card">
+                                        <div class="flip-card">
+                                            <div class="flip-card__container">
+                                                <div class="card-front">
+                                                    <div class="card-front__tp card-front__tp--city">
+                                                        {/* <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                         viewBox="0 0 60 60" style={{ enableBackground: 'new 0 0 60 60' }} xmlSpace="preserve" class="card-front__icon">
                                                         <g>
                                                             <path d="M49.7,22c-1.1,0-2,0.9-2,2v32.2c0,1.1,0.9,2,2,2s2-0.9,2-2V24C51.7,22.9,50.8,22,49.7,22z" />
@@ -65,46 +61,48 @@ const AllRooms = props => {
                                                             <path d="M28,36L28,36c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S29.1,36,28,36z" />
                                                             <path d="M33.5,36L33.5,36c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S34.6,36,33.5,36z" />
                                                         </g>
-                                                    </svg>
-                                                    <h2 class="card-front__heading">
-                                                        {val.roomName}
-                                                    </h2>
-                                                </div>
+                                                    </svg> */}
+                                                        <img class="ccontainer" src={`${props.userHome.categoryImages.nutrition[random]}`} alt='LOGO' />
 
-                                                <div class="card-front__bt">
-                                                    <p class="card-front__text-view card-front__text-view--camping">
-                                                        View me
+                                                        <h2 class="card-front__heading">
+                                                            {val.roomName}
+                                                        </h2>
+                                                    </div>
+
+                                                    <div class="card-front__bt">
+                                                        <p class="card-front__text-view card-front__text-view--camping">
+                                                            View me
                                     </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="card-back">
-                                                {/* <video class="video__container" autoplay muted loop>
+                                                <div class="card-back">
+                                                    {/* <video class="video__container" autoplay muted loop>
                                     <source class="video__media" src="https://player.vimeo.com/external/180185916.sd.mp4?s=c893e4770f87b00e0d6b5a1de138b01b02aaa085&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
                                 </video> */}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="inside-page">
+                                            <div class="inside-page__container">
+                                                <h3 class="inside-page__heading inside-page__heading--camping">
+                                                    <p>Created By:</p>
+                                                    {val.cookieAdminName}
+                                                </h3>
+                                                <p class="inside-page__text">
+                                                    {val.createdTime.slice(0, 10)}
+                                                </p>
+                                                <a class="inside-page__btn inside-page__btn--camping btn-go" onClick={(e) => goToRoom(e, val._id)}><Link to="/rooms" className="goToRoom" key={i}>View Room</ Link></a>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="inside-page">
-                                        <div class="inside-page__container">
-                                            <h3 class="inside-page__heading inside-page__heading--camping">
-                                                <p>Created By:</p>
-                                                {val.cookieAdminName}
-                                            </h3>
-                                            <p class="inside-page__text">
-                                                {val.createdTime}
-                                            </p>
-                                            <a class="inside-page__btn inside-page__btn--camping btn-go" onClick={(e) => goToRoom(e, val._id)}><Link to="/rooms" className="goToRoom" key={i}>View Room</ Link></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                </section>
                             </section>
-                        </section>
                         </div>
                     )
                 })}
 
-        </div>
+            </div>
 
         </>
     );
