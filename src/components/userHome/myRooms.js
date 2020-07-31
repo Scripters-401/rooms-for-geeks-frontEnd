@@ -33,13 +33,7 @@ const MyRooms = props => {
     }
     return (
         <>
-            <div className='search-bar'>
-                <div class="search-container">
-                    <input type="text" placeholder="Search..." />
-                    <div class="search"></div>
-                </div>
-
-            </div>
+            
             <Show condition={props.userHome.checkMyRooms}>
                 <div>
 
