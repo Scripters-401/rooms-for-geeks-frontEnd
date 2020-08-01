@@ -49,14 +49,14 @@ const AllRooms = props => {
                         }
                     }
                     // console.log('props.userHome.allRooms.length',props.userHome.allRooms.length)
-                    for (let i = 0; i < props.userHome.allRooms.length; i++) {
-                        if (props.userHome.allCourses[i].roomID === val._id) {
-                            topic = props.userHome.allCourses[i].topic;
-                            // console.log('topiccccccc',topic);
-                            break;
-                        }
+                    // for (let i = 0; i < props.userHome.allRooms.length; i++) {
+                    //     if (props.userHome.allCourses[i].roomID === val._id) {
+                    //         topic = props.userHome.allCourses[i].topic;
+                    //         // console.log('topiccccccc',topic);
+                    //         break;
+                    //     }
                         
-                    }
+                    // }
                     
                     // console.log('randommmmmm',random);
                     
@@ -91,7 +91,7 @@ const AllRooms = props => {
                                                         </g>
                                                     </svg> */}
                                     
-                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random]}`} alt='LOGO' />
+                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${'sport'}`][random]}`} alt='LOGO' />
 
                                                         {/* <h2 class="card-front__heading">
                                                             {val.roomName}
