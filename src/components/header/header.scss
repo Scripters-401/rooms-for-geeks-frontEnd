@@ -3,7 +3,7 @@
 .header {
     display: flex;
     background-color: white;
-    max-height: 66px;
+    max-height: 90px;
     flex-direction: row-reverse;
     position: sticky;
     z-index: 999999;
@@ -26,15 +26,22 @@ h1.H1 {
     flex: 1;
     z-index: 999999;
 }
-// img.logo {
-//     height: 61px;
-//     margin: .5% 0% 0% 1%;
-// }
 
-img.logo {
-    height: 40px;
-    margin: auto auto auto 0;
+
+// img.logo {
+//     height: 40px;
+//     margin: auto auto auto 0;
    
+// }
+img.logo {
+    /* margin: auto auto auto 0; */
+    width: 2;
+    height: 126px;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin-top: -1.2%;
 }
 
 ul.ulHeader {
