@@ -165,7 +165,7 @@
 
 /* Main heading for card's front cover */
 .card-front__heading {
-  font-size: 1.5rem;
+  // font-size: 1.5rem;
   margin-top: .25rem;
 }
 
@@ -180,16 +180,14 @@
 /* For both inside page's main heading and 'view me' text on card front cover */
 .inside-page__heading,
 .card-front__text-view {
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin-top: .2rem;
+  text-transform: uppercase;
 }
 
 .inside-page__heading--city,
 .card-front__text-view--city { color: #ff62b2; }
 
 .inside-page__heading--ski,
-.card-front__text-view--ski { color: #2aaac1; }
+.card-front__text-view--ski { color: #416760; }
 
 .inside-page__heading--beach,
 .card-front__text-view--beach { color: #fa7f67; }
@@ -422,11 +420,11 @@
 }
 
 .card-front__tp--beach {
-  background: linear-gradient(
-    to bottom,
-    #fb9b88,
-    #f86647
-  );
+  // background: linear-gradient(
+  //   to bottom,
+  //   #fb9b88,
+  //   #f86647
+  // );
 }
 
 .card-front__tp--camping {
@@ -483,6 +481,10 @@
   width: 100%;
 }
 
+.ccontainer{
+  height: 232px;
+}
+
 /* Functionality ====================================*/
 
 /* This is to keep the card centered (within its container) when opened */
@@ -519,3 +521,4 @@ a{
   justify-content: center;
   margin: 20px;
 }
+
