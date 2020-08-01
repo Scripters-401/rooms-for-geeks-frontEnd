@@ -10,6 +10,8 @@ import logo from '../../assest/LOGOC.png';
 import '../../reset.css';
 import './header.scss';
 
+// import { HashLink as Link2 } from 'react-router-hash-link';
+// import logo from '../../assest/LOGOC.png';
 const Header = props => {
   const disconnectSocket = e => {
     if (props.room.socket) {

@@ -19,11 +19,21 @@ const UserHome = props => {
         <>
             <Show condition={props.sign.user.role === 'user'}>
                 <Upgrade /></Show>
+            <div className="searchAndBut">
 
-            <Auth capability="master-room">
-                <Link to="/create-room" className="createRoom"><Button >CREATE ROOM</Button></Link>
-                {/* <Redirect to="/userHome" /> */}
-            </Auth>
+                <div className='search-bar'>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search..." />
+                        <div class="search"></div>
+                    </div>
+
+                </div>
+                <Auth capability="master-room">
+                    <Link to="/create-room" className="createRoom"><Button >CREATE ROOM</Button></Link>
+                    {/* <Redirect to="/userHome" /> */}
+                </Auth>
+            </div>
+
             <MyRooms />
             <Show condition={!props.userHome.showAllRooms}><AllRooms />
                 <div className='show-more'><Button onClick={props.showAllFun}>Show More</Button></div>
