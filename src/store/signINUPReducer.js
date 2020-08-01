@@ -1,7 +1,7 @@
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 
-require('dotenv').config();
+// require('dotenv').config();
 
 // localhost or deployed
 const API = process.env.REACT_APP_API;
@@ -13,8 +13,9 @@ let initialState = {
   signup: '',
   user: {},
   authURL: '',
-
   errorMsg: '',
+  errorMsgSignUP: '',
+  overView: 1,
 };
 
 // reducer : switch case
@@ -41,12 +42,29 @@ export default (state = initialState, action) => {
     case 'ERROR':
       state.errorMsg = payload;
       return { ...state };
+
+    case 'ERROR-SIGN-UP':
+      state.errorMsgSignUP = payload;
+      return { ...state };
+
+    case 'update-overView':
+      state.overView = payload;
+      return { ...state };
+
     default:
       return state;
   }
 }
 
 /*************************************************** actions ****************************************************** */
+export const updateOverView = e => {
+  return {
+    type: 'update-overView',
+    payload: e,
+  }
+}
+
+
 export const handleChange = e => {
   return {
     type: 'handleChange',
@@ -60,6 +78,8 @@ export const oathfun = e => {
     payload: e,
   }
 }
+
+
 
 
 const setLoginState = (loggedIn, token, user) => {
@@ -83,6 +103,15 @@ const errMsg = (payload) => {
   }
 }
 
+const errMsgSignUp = (payload) => {
+  return {
+    type: 'ERROR-SIGN-UP',
+    payload: payload
+  }
+}
+
+
+
 /*************************************************** functions ****************************************************** */
 
 export const signup = (username, password, email, name, major, profileIMG) => async dispatch => {
@@ -96,8 +125,11 @@ export const signup = (username, password, email, name, major, profileIMG) => as
     });
 
     let res = await results.json();
-    dispatch(validateToken(res.token))
-
+    if (res.err) {
+      dispatch(errMsgSignUp(res.err));
+    } else {
+      dispatch(validateToken(res.token))
+    }
   } catch (error) {
     console.error(`ERROR: SIGNUP`);
   }
@@ -121,7 +153,6 @@ export const login = (username, password) => async dispatch => {
       headers[key] = value;
     }
     let res = await results.json();
-    console.log('resssssssss', res);
     if (res.err) {
       dispatch(errMsg(res.err));
     } else {

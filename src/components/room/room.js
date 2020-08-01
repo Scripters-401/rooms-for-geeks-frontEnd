@@ -2,233 +2,161 @@
 import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import * as io from 'socket.io-client';
+import cookie from 'react-cookies';
 
 import * as actions from '../../store/roomReducer';
+// import * as actions2 from '../../store/userHome';
 
+import Show from '../auth/show'
+import Auth from '../auth/auth'
+import QA from './questions&answ'
+import Quiz from './answerQuiz'
+import Chat from './chat'
+import '../../reset.css';
 import './room.scss'
+import { Redirect } from 'react-router-dom';
+// import { login } from '../../store/signINUPReducer';
 
 
-const ENDPOINT = process.env.REACT_APP_API;
-let socket
 
 
-const Initial = props => {
-    // useEffect(() => {
-    //     props.getRoom(props.sign.token, roomID)
-    // }, [])
+const Room = props => {
 
+    // let roomName;
+    // let adminName;
+    // let roomID;
+    // let roomAdmin;
 
-    let roomName = props.room.roomData.RData.roomName
-    let adminName = props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName
-    let userName = props.userInfo.user.username
-    let roomID =  props.userHome.choosenRoomID
-    // props.getRoom(props.sign.token, roomID)
-
-    // '5ef1f1407964642caa3a0188';
-    console.log('hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',roomID);
-
-    useEffect(() => {
-        // setTimeout(() => {
-    console.log('uuuuuuuuuuuu',roomID);
-
-        props.getRoom(props.sign.token, roomID)
-
-        // console.log('whyyyyyyyyyyyyyyyy');
-        socket.on('chat', function (data) {
-            props.updateTyping('');
-            // console.log('props.output', props.room.output);
-            props.updateOutput({ userName: data.userName, message: data.message })
-        });
-
-        socket.on('counter', function (data) {
-            // console.log(data, 'countertertert');
-            props.updateCounter(data);
-        });
-
-        socket.on('typing', function (data) {
-            props.updateTyping(`${data} is typing a message...`);
-        });
-
-        // }, 2500);
-
-    }, [])
 
     useEffect(() => {
         setTimeout(() => {
-            socket.on('notif', function (data) {
-                if (userName === adminName) {
-                    // console.log('hi admin');
-                    props.updateNotifications(` Hey Admin ${adminName} New user joined the room ${roomName} ...`);
 
-                    setTimeout(() => {
-                        props.updateNotifications('');
-                    }, 5000);
-                }
-            });
-        }, 2000);
+            // roomID = props.userHome.choosenRoomID
+            const cookieroomID = cookie.load('roomID');
+            // console.log('aa', cookieroomID, props.userHome.choosenRoomID, props.room.choosenRoomIDSocket);
+            let x = props.userHome.choosenRoomID || cookieroomID;
+            props.updateChoosenRoomIDSocket(x)
+            // console.log('bb', cookieroomID, props.userHome.choosenRoomID, props.room.choosenRoomIDSocket, x);
+
+            // eslint-disable-next-line no-unused-expressions
+            // x ? cookie.save('roomID', props.userHome.choosenRoomIDSocket) : null;
+
+            // props.getRoom(props.sign.token, props.room.choosenRoomIDSocket);
+            // props.room.favOrNot = props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket);
+            window.scrollTo(0, 0)
+            // roomAdmin = (props.userInfo.user.username === props.room.adminName);
+            // props.updateRoomAdminBool(props.userInfo.user.username)
+            // props.room.adminName = props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName;
+            // props.room.roomAdmin = (props.userInfo.user.username === props.room.adminName);
+            // console.log(props.room.roomAdmin ,'.......................');
+            // roomName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.roomName : null;
+            // adminName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName : null;
+            // roomAdmin = (props.userInfo.user.username === adminName);
+            // console.log(props.userInfo.user.username, adminName, props.room.roomData.RData.cookieAdminName, props.room.roomData.RData.adminName, roomAdmin, 'nnnnnnnnnnnnnnnnnn');
+            // props.room.favOrNot = props.userInfo.user.favRooms.includes(props.userHome.choosenRoomID)
+        }, 500);
+
+    }, [])
 
 
-    }, [props.room.roomData.RData.roomName])
+    useEffect(() => {
+        setTimeout(() => {
 
+            // roomID = props.userHome.choosenRoomID
+            // const cookieroomID = cookie.load('roomID');
+            // console.log('aa', cookieroomID, props.userHome.choosenRoomID, props.room.choosenRoomIDSocket);
+            // props.room.choosenRoomIDSocket = props.userHome.choosenRoomID || cookieroomID;
+            // console.log('bb', cookieroomID, props.userHome.choosenRoomID, props.room.choosenRoomIDSocket);
 
+            // cookie.save('roomID', props.userHome.choosenRoomIDSocket);
+            cookie.save('roomID', props.room.choosenRoomIDSocket)
+            props.getRoom(props.sign.token, props.room.choosenRoomIDSocket);
+            props.room.favOrNot = props.userInfo.user && props.userInfo.user.favRooms ?  props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket):null;
+            // window.scrollTo(0, 0)
+            // roomAdmin = (props.userInfo.user.username === props.room.adminName);
+            // props.updateRoomAdminBool(props.userInfo.user.username)
+            // props.room.adminName = props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName;
+            // props.room.roomAdmin = (props.userInfo.user.username === props.room.adminName);
+            // console.log(props.room.roomAdmin ,'.......................');
+            // roomName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.roomName : null;
+            // adminName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName : null;
+            // roomAdmin = (props.userInfo.user.username === adminName);
+            // console.log(props.userInfo.user.username, adminName, props.room.roomData.RData.cookieAdminName, props.room.roomData.RData.adminName, roomAdmin, 'nnnnnnnnnnnnnnnnnn');
+            // props.room.favOrNot = props.userInfo.user.favRooms.includes(props.userHome.choosenRoomID)
+        }, 700);
 
-    if (!props.room.checkconnection) {
-        socket = io.connect(`${ENDPOINT}/${roomID}`);
-        props.room.checkconnection = true;
+    }, [props.room.choosenRoomIDSocket])
+    useEffect(() => {
+        props.updateRoomAdminBool(props.userInfo.user.username)
+
+    }, [props.room.adminName])
+
+    const addToFav = e => {
+        props.addToFav(props.sign.token, props.userInfo.user._id, props.userHome.choosenRoomID);
+        props.userInfo.user.favRooms.push(props.userHome.choosenRoomID)
+        props.room.favOrNot = true;
     }
 
-
-    const onlineFun = () => {
-
-        // socket.emit('online', { online: navigator.onLine, name: userName });
-        // console.log('props.room.message', props.room.message);
-        socket.emit('chat', {
-            message: props.room.message,
-            userName: userName,
-        });
-        props.room.message = '';
+    const removefromFav = e => {
+        props.userInfo.user.favRooms.splice(props.userInfo.user.favRooms.indexOf(props.userHome.choosenRoomID), 1)
+        props.removefromFav(props.sign.token, props.userInfo.user._id, props.userHome.choosenRoomID);
+        props.room.favOrNot = false;
     }
+    const deleteRoom = e => {
+        props.deleteRoom(props.sign.token,
+            props.userInfo.user.username,
+            props.userInfo.user._id,
+            props.userHome.choosenRoomID,
+            props.room.roomData.courseData._id);
+        props.room.redirectAfterDelete = true;
 
-    const typing = e => {
-        socket.emit('typing', userName);
     }
-
-
-    let selectedAnswers = [];
-    const submitQuiz = (e, quizID) => {
-        if (selectedAnswers.length !== props.room.roomData.renderedQuiz.questions.length) {
-            alert('stiill some questions ')
-        } else {
-            console.log(props.userInfo.user._id);
-            props.postAnswers(props.sign.token,selectedAnswers,quizID,props.userInfo.user._id)
-        }
-    }
-    const choseAnswer = (e, questionID) => {
-        selectedAnswers[questionID] = e.target.value
+    const takeQuiz = () =>{
+        console.log('ttttttttttttttttt');
+        props.room.redirectTakeQuiz = true;
     }
 
     return (
         <>
             <div className='roomData'>
+                {props.room.redirectAfterDelete ? (<Redirect to="/user-Home" />) : null}
+                {props.room.redirectTakeQuiz ? (<Redirect to="/take-quiz" />) : null}
                 <div id="room-data">
-                    <h2 id='roon-name'>{roomName}</h2>
+                    <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null}</h2>
+                    <Show condition={!props.room.favOrNot}>
+                        <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}> add to fav</span>
+                    </Show>
+                    <Show condition={props.room.favOrNot}>
+                        <span className={`addToFav-${props.room.favOrNot}`} onClick={e => removefromFav()}> remove from fav</span>
+                    </Show>
+                    <Show condition={props.room.roomAdmin}>
+                        <Auth capability="master-room">
+                            <button className='deleteRoom' onClick={e => deleteRoom()}> Delete Room</button>
+                        </Auth>
+                    </Show>
                     <p>
-                        {adminName}
+                        {props.room.adminName}
                     </p>
                     <p>
-                        {props.room.roomData.RData.createdTime}
+                        {props.room.roomData && props.room.roomData.RData && props.room.roomData.RData.createdTime ? props.room.roomData.RData.createdTime.slice(0,10) : null}
                     </p>
                     <p>
-                        Public: {`${props.room.roomData.RData.public || props.room.roomData.RData.publicc}`}
+                        Public: {props.room.roomData && props.room.roomData.RData ? `${props.room.roomData.RData.public || props.room.roomData.RData.publicc}` : null}
                     </p>
 
 
                     <div className='courseData'>
-                        <h2>Course Name: {roomName ? props.room.roomData.courseData.courseName : null}</h2>
-                        <p>Discription: {roomName ? props.room.roomData.courseData.discription : null}</p>
-                        <p>Topic: {roomName ? props.room.roomData.courseData.topic : null}</p>
+                        <h2>Course Name: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
+                        <p>Discription: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
+                        <p>Topic: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.topic : null}</p>
                     </div>
-
-
-
-
-                    <div className='QAData'>
-                        {props.room.roomData && props.room.roomData.QAData ? props.room.roomData.QAData.map((element, idx) => {
-                            return (
-                                <div key={idx}>
-                                    <p>
-                                        {element.question}
-                                    </p>
-                                    <span>Asked by: {element.virtualcreatedName}</span><br />
-                                    <span>Created time: {element.createdTime.slice(0, 10)}</span>
-                                    <ul>
-                                        {element.answers.map((e, i) => {
-                                            return (
-                                                <React.Fragment key={i}>
-                                                    <h4 > answer {i + 1}</h4>
-                                                    <li >{e}</li>
-                                                    <span>Answer From: {element.virtualAnswerName[i]}</span>
-                                                </React.Fragment>
-                                            )
-                                        })}
-                                    </ul>
-
-                                </div>
-                            )
-                        }) : null}
-                    </div>
-
-{console.log(props.room.roomData)}
-
-                    <div className='renderedQuiz'>
-                        <h2>Quiz Name: {props.room.roomData && props.room.roomData.renderedQuiz ? props.room.roomData.renderedQuiz.quizName : null}</h2>
-                        {props.room.roomData && props.room.roomData.renderedQuiz &&props.room.roomData.renderedQuiz.questions ? props.room.roomData.renderedQuiz.questions.map((element, idx) => {
-                            return (
-                                <div key={idx}>
-                                    <p>
-                                        Question{idx + 1}: {element}
-                                    </p>
-                                    <div>
-                                        {props.room.roomData.renderedQuiz.answers[idx].map((e, i) => {
-
-                                            return (
-                                                <React.Fragment key={i}>
-                                                    <label>
-                                                        <input
-                                                            type="radio"
-                                                            id={i}
-                                                            name={idx}
-                                                            value={e}
-                                                            onClick={e => choseAnswer(e, idx)}
-                                                        />
-                                                        {e}
-                                                    </label>
-                                                    <br />
-                                                </React.Fragment>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                            )
-                        }) : null}
-                        <button onClick={e => submitQuiz(e, props.room.roomData.renderedQuiz._id)}>Submit Quiz</button>
-                        {props.room.score}
-                    </div>
-
-
-                </div>
-
-                <div id="geeks-chat">
-                    <p>{props.room.notification}</p>
-                    <h2>Geeks Chat</h2>
-                    <span>Members: </span>
-                    <span id="members-counter">{props.room.counter}</span>
-                    {/* <h2 id='roon-name'>{roomName}</h2> */}
-                    <div id="chat-window">
-                        <div id="output">
-                            {props.room.output.map((element, idx) => {
-                                return (
-                                    <div key={idx}>
-                                        <p><strong>{element.userName}: </strong>{element.message} </p>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                        <div id="typing">{props.room.typingstate}</div>
-                    </div>
-                    <p id="userName">{userName}</p>
-                    <input
-                        id="message"
-                        name='message'
-                        type="text"
-                        placeholder="Message"
-                        onKeyPress={typing}
-                        onChange={(e) => props.message(e)}
-                    />
-                    <button id="send" onClick={onlineFun}>Send</button>
                 </div>
             </div>
+
+            <QA />
+            <button onClick={e => takeQuiz()}>Take Quiz</button>
+
+            <Chat />
 
 
         </>
@@ -244,13 +172,14 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
+    // rooms: (token) => dispatch(actions2.rooms(token)),
     getRoom: (token, id) => dispatch(actions.getRoom(token, id)),
-    message: (e) => dispatch(actions.message(e)),
-    updateOutput: (e) => dispatch(actions.updateOutput(e)),
-    updateCounter: (e) => dispatch(actions.updateCounter(e)),
-    updateTyping: (e) => dispatch(actions.updateTyping(e)),
-    updateNotifications: (e) => dispatch(actions.updateNotifications(e)),
-    postAnswers: (token, answers, quizID, userID) => dispatch(actions.postAnswers(token, answers, quizID, userID)),
+    addToFav: (token, userid, roomID) => dispatch(actions.addToFav(token, userid, roomID)),
+    removefromFav: (token, userid, roomID) => dispatch(actions.removefromFav(token, userid, roomID)),
+    deleteRoom: (token, name, userid, roomID, courseID) => dispatch(actions.deleteRoom(token, name, userid, roomID, courseID)),
+    updateRoomAdminBool: (userid) => dispatch(actions.updateRoomAdminBool(userid)),
+    updateChoosenRoomIDSocket: (userid) => dispatch(actions.updateChoosenRoomIDSocket(userid)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Initial);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Room);

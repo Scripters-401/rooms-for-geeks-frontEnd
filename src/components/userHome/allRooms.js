@@ -5,19 +5,14 @@ import './userHome.scss'
 import * as actions from '../../store/userHome';
 import { Link } from 'react-router-dom';
 // import { sign } from 'jsonwebtoken';
-
 const AllRooms = props => {
-   
-    
     useEffect(()=>{
         setTimeout(() => {
             console.log('token',props.sign.token)
             props.rooms(props.sign.token); 
             // allLength= props.userHome.roomsLength
         }, 2000);
-
     },[]);
-
     function goToRoom(e,id){
         // e.preventDefault();
         console.log('props.userHome.choosenRoomID',id);
@@ -39,11 +34,13 @@ const AllRooms = props => {
             <div className='allRooms'>
                 {console.log('rooms',props.userHome.allRooms)}
             {props.userHome.allRooms.slice(randomNumber,randomNumber+4).map((val,i) =>{
-                
+                // console.log('roomsssssssssssssssssss',val)
+
+                // console.log(randomNumber,'rrrrrrrrrrrrrrrrrrrr');
                 let random = Math.floor(Math.random() * 10)
+
                 let counter=0;
                 while(counter<10){
-                    
                     if(!randomArr.includes(random)){
                         randomArr.push(random);
                         break;
@@ -54,22 +51,20 @@ const AllRooms = props => {
                         if(counter===10){randomArr=[];counter=0;}
                     }
                 }
-                console.log('props.userHome.allCourses.roomID',props.userHome.allCourses)
+                // console.log('props.userHome.allCourses.roomID',props.userHome.allCourses)
                 for (let i = 0; i < props.userHome.allRooms.length; i++) {
-                    console.log('props.userHome.allCourses.roomID',props.userHome.allCourses[i],i)
-                    console.log('manualID',val._id,'courseID',props.userHome.allCourses[i].roomID);
+                    // console.log('props.userHome.allCourses.roomID',props.userHome.allCourses[i],i)
+                    // console.log('manualID',val._id,'courseID',props.userHome.allCourses[i].roomID);
                     if (props.userHome && props.userHome.allCourses && (props.userHome.allCourses[i].roomID === val._id)) {
-                        console.log('obadaaaaaaaaaaaaaaaaaaaa');
+                        // console.log('obadaaaaaaaaaaaaaaaaaaaa');
                         topic = props.userHome.allCourses[i].topic;
                         break;
                     }
-                    console.log('topiccccccc',topic);
+                    // console.log('topiccccccc',topic);
                 }
                 return(
                     <div class='card-area-div'>
                 <section class="card-area">
-    
-                
                 <section class="card-section">
                     <div class="card">
                         <div class="flip-card">
@@ -107,14 +102,13 @@ const AllRooms = props => {
                                                        From £199
                                                    </p> */}
                                     </div>
-    
                                     <div class="card-front__bt">
                                         <p class="card-front__text-view card-front__text-view--ski">
+                                            {console.log('cccccccccccccccccc',val)}
                                         {val.roomName}
                                         </p>
                                     </div>
                                 </div>
-    
                                 <div class="card-back">
                                     {/* <video class="video__container" autoplay muted loop>
                                         <source class="video__media" src="https://player.vimeo.com/external/195913085.sd.mp4?s=7c12f7a83de62a8900fd2ae049297070b9bc8a54&profile_id=164&oauth2_token_id=574477611" type="video/mp4">
@@ -122,7 +116,6 @@ const AllRooms = props => {
                                 </div>
                             </div>
                         </div>
-    
                         <div class="inside-page">
                             <div class="inside-page__container">
                                 <h3 class="inside-page__heading inside-page__heading--ski">
@@ -132,8 +125,7 @@ const AllRooms = props => {
                                 <p class="inside-page__text">
                                    {val.createdTime.slice(0,10)}
                                 </p>
-                                <a class="inside-page__btn inside-page__btn--ski" onClick={(e)=>goToRoom(e,val._id)}><Link to="/rooms" className="goToRoom" key={i}> View Room</ Link></a>
-                                
+                                <a class="inside-page__btn inside-page__btn--ski" onClick={(e)=>goToRoom(e,val._id)}><Link to="/room" className="goToRoom" key={i}> View Room</ Link></a>
                             </div>
                         </div>
                     </div>
@@ -142,28 +134,16 @@ const AllRooms = props => {
             </div>
                 )
             })}
-            
             </div>
-            
-        
-        
-   
-            
         </>
     );
 }
-
 const mapStateToProps = state => ({
     sign: state.sign,
     userHome: state.userHome
 });
-
 const mapDispatchToProps = (dispatch, getState) => ({
     rooms: (token) => dispatch(actions.rooms(token)),
     choosenID:(id) => dispatch(actions.roomID(id))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AllRooms);
-
-
-
-

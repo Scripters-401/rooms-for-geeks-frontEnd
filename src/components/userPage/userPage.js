@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './userPage.scss';
 import { connect } from 'react-redux';
 import { storage } from "../firebase";
@@ -9,9 +9,9 @@ import * as actions3 from '../../store/uploadImageReducer';
 
 const User = props => {
 
-    useEffect(() => {
-        props.getInfoUser(props.sign.token, props.sign.user.id)
-    }, [props.sign.token, props.sign.user.id])
+    // useEffect(() => {
+    //     props.getInfoUser(props.sign.token, props.sign.user.id)
+    // }, [props.sign.token, props.sign.user.id])
 
     const handleSubmitFun = event => {
         event.preventDefault();
@@ -101,7 +101,7 @@ const User = props => {
 
                     </div>
                     <div id="infoForm">
-                        <div id='info' accept-charset='UTF-8'>
+                        <div id='info' acceptCharset='UTF-8'>
                             <p className="username infoSec">Username: {props.userInfo.user.username}</p>
                             <p className="email infoSec">Email: {props.userInfo.user.email}</p>
                             <p className="name infoSec">Name: {props.userInfo.user.name}</p>

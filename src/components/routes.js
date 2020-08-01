@@ -1,7 +1,5 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-// import Home from '../home/home';
-// import Rooms from '../rooms/rooms';
 import AboutUs from './aboutUs/about-us';
 
 import Room from './room/room.js';
@@ -18,46 +16,43 @@ import RoomForm from './rooms/postRoom';
 import CorseForm from './course/postCourse';
 import UserHome from './userHome/userHome';
 import ForgotPass from './forgotPass/forgotPass';
+import Quiz from './room/answerQuiz'
 import ConfirmEmail from './forgotPass/confirmEmail';
 import PostQuiz from './createquiz/postQuiz'
 
 const Routes = () => {
+
     return (
         <>
             <Route path="/" exact>
                 <Homemain />
                 <OverView />
                 <Auth capability="read">
-                    <Redirect to="/user-page" />
+                    <Redirect to="/user-Home" />
                 </Auth>
                 <LoginForm />
                 <AboutUs />
             </Route>
-            <Route path="/rooms" exact>
+            <Route path="/room" exact>
                 <Auth capability="read">
                     <Room />
                 </Auth>
-                {/* <Rooms /> */}
             </Route>
 
             <Route path="/user-page" exact>
                 <User />
             </Route>
-            <Route path="/about-us" exact>
-                {/* <AboutUs /> */}
-                <div>abouuuuuuut us</div>
-            </Route>
 
             <Route path="/sign" exact>
                 <Auth capability="read">
-                    <Redirect to="/user-page" />
+                    <Redirect to="/user-Home" />
                 </Auth>
             </Route>
 
             <Route path="/mm" exact>
                 <Oauth />
                 <Auth capability="read">
-                    <Redirect to="/user-page" />
+                    <Redirect to="/user-Home" />
                 </Auth>
             </Route>
             <Route path="/users" exact>
@@ -69,19 +64,23 @@ const Routes = () => {
             <Route path="/QA" exact>
                 <QAForm />
             </Route>
-            <Route path="/room" exact>
+            <Route path="/create-room" exact>
                 <RoomForm />
             </Route>
             <Route path="/course" exact>
                 <CorseForm />
             </Route>
-            <Route path="/userHome" exact>
+            <Route path="/user-Home" exact>
                 <UserHome />
             </Route>
 
             <Route path="/new-password" exact>
                 <ForgotPass />
             </Route>
+            <Route path="/take-quiz" exact>
+                <Quiz />
+            </Route>
+
 
             <Route path="/request-password" exact>
                 <ConfirmEmail />

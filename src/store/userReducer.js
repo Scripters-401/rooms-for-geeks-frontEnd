@@ -12,13 +12,10 @@ export default (state = initialState, action) => {
 
     switch (type) {
         case 'USER_DATA':
-            console.log(payload,'payload');
             state.user = payload;
             return { ...state };
         case 'USER_ROLE':
             state.user.role = payload;
-            console.log('state.user.role',state.user.role);
-            console.log('payload',payload);
             return { ...state };
         default:
             return state;

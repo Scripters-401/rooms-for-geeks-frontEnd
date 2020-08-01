@@ -22,7 +22,6 @@ const AllRooms = props => {
 
     function goToRoom(e, id) {
         // e.preventDefault();
-        console.log('props.userHome.choosenRoomID', id);
         props.choosenID(id);
     }
 
@@ -33,7 +32,6 @@ const AllRooms = props => {
                 <h3 className='topic'>All Rooms</h3>
             </div>
             <div className='allRooms'>
-                {console.log('rooms', props.userHome.allRooms)}
                 {props.userHome.allRooms.map((val, i) => {
                     var topic = '';
                     let random = Math.floor(Math.random() * 10)
@@ -51,14 +49,14 @@ const AllRooms = props => {
                         }
                     }
                     // console.log('props.userHome.allRooms.length',props.userHome.allRooms.length)
-                    for (let i = 0; i < props.userHome.allRooms.length; i++) {
-                        if (props.userHome.allCourses[i].roomID === val._id) {
-                            topic = props.userHome.allCourses[i].topic;
-                            // console.log('topiccccccc',topic);
-                            break;
-                        }
+                    // for (let i = 0; i < props.userHome.allRooms.length; i++) {
+                    //     if (props.userHome.allCourses[i].roomID === val._id) {
+                    //         topic = props.userHome.allCourses[i].topic;
+                    //         // console.log('topiccccccc',topic);
+                    //         break;
+                    //     }
                         
-                    }
+                    // }
                     
                     // console.log('randommmmmm',random);
                     
@@ -93,7 +91,7 @@ const AllRooms = props => {
                                                         </g>
                                                     </svg> */}
                                     
-                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random]}`} alt='LOGO' />
+                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${'sport'}`][random]}`} alt='LOGO' />
 
                                                         {/* <h2 class="card-front__heading">
                                                             {val.roomName}
@@ -123,7 +121,7 @@ const AllRooms = props => {
                                                 <p class="inside-page__text">
                                                     {val.createdTime.slice(0, 10)}
                                                 </p>
-                                                <a class="inside-page__btn inside-page__btn--camping btn-go" onClick={(e) => goToRoom(e, val._id)}><Link to="/rooms" className="goToRoom" key={i}>View Room</ Link></a>
+                                                <a class="inside-page__btn inside-page__btn--camping btn-go" onClick={(e) => goToRoom(e, val._id)}><Link to="/room" className="goToRoom" key={i}>View Room</ Link></a>
                                             </div>
                                         </div>
                                     </div>
