@@ -95,14 +95,14 @@ const AllRooms = props => {
                                     
                                                         <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random]}`} alt='LOGO' />
 
-                                                        <h2 class="card-front__heading">
+                                                        {/* <h2 class="card-front__heading">
                                                             {val.roomName}
-                                                        </h2>
+                                                        </h2> */}
                                                     </div>
 
                                                     <div class="card-front__bt">
                                                         <p class="card-front__text-view card-front__text-view--camping">
-                                                            View me
+                                                        {val.roomName}
                                     </p>
                                                     </div>
                                                 </div>

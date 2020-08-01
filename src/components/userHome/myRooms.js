@@ -45,7 +45,7 @@ const MyRooms = props => {
                         {props.userHome.myRooms.map((val, i) => {
                             let random = Math.floor(Math.random() * 10)
                             return (
-                                <Carousel.Item style={{ 'height': "300px" }}>
+                                <Carousel.Item style={{ 'height': "350px" }}>
                                     <div class='card-area-div'>
                                         <section class="card-area">
 
