@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as actions from '../../store/postRoomReduser'
-// import * as action from '../../store/postCourseReducer'
+import * as action from '../../store/postCourseReducer'
+import * as actionForQuiz from '../../store/postQuizReducer'
 import './room.scss';
 
 const RoomForm = props => {
@@ -18,16 +20,17 @@ const RoomForm = props => {
         }
         props.handleChangeRoom(e);
     }
-    const handleSubmitFun = e => {
+    const handleSubmitFun = async e => {
         e.preventDefault();
-        console.log('roooooo', props.thePostRoom);
-        console.log('hhh', props.thePostRoom.roomName,
-        props.thePostRoom.publicc,
-        props.thePostRoom.password,
-        props.userInfo.user.username,
-        props.thePostRoom.members);
-        props.roomPost(
+        // console.log('roooooo', props.thePostRoom);
+        // console.log('hhh', props.thePostRoom.roomName,
+        // props.thePostRoom.publicc,
+        // props.thePostRoom.password,
+        // props.userInfo.user.username,
+        // props.thePostRoom.members
+       await props.roomPost(
             props.sign.token,
+            props.sign.user.id,
             props.thePostRoom.roomName,
             props.thePostRoom.publicc,
             props.thePostRoom.password,
@@ -35,15 +38,25 @@ const RoomForm = props => {
             props.thePostRoom.members,
         );
         
-    //     props.coursePost(
-    //     props.sign.token,
-    //     props.thePostRoom.courseName,
-    //     props.thePostRoom.topic,
-    //     props.thePostRoom.discription,
-    //     props.thePostRoom.tutorial,
-    //     props.userInfo.user._id,
-    //     props.thePostRoom.newRoomId,
-    //    ) 
+        await props.coursePost(
+        props.sign.token,
+        props.thePostRoom.courseName,
+        props.thePostRoom.topic,
+        props.thePostRoom.discription,
+        props.thePostRoom.tutorial,
+        props.userInfo.user._id,
+        props.thePostRoom.newRoomId,
+       ) 
+    //    token, quizName, discription, questions, correctAnswer, wrongChoices,courseID
+       props.quizPost(
+        props.sign.token,
+        props.postNewQuiz.quizName,
+        props.postNewQuiz.discription,
+        props.postNewQuiz.questions,
+        props.postNewQuiz.correctAnswer,
+        props.postNewQuiz.wrongChoices,
+        props.postNewCourse.NewCourseId,
+       )
     }
 
     return (
@@ -69,7 +82,7 @@ const RoomForm = props => {
                             
                             <input className="input"
                                 type="text"
-                                name="Topic"
+                                name="topic"
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder="Topic"
                             />
@@ -85,7 +98,7 @@ const RoomForm = props => {
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder="Description"
                             />
-                            <button className="addQuiz">Add Quiz</button>
+                             <Link to="/create-quiz"><button className="addQuiz">Add Quiz</button></Link>
 
                             <div className="radioButton">
                                 <div className="radioPriv">
@@ -132,7 +145,8 @@ const mapStateToProps = state => ({
     sign: state.sign,
     thePostRoom: state.thePostRoom,
     userInfo: state.userInfo,
-  
+    postNewCourse: state.thePostCourse,
+    postNewQuiz : state.postNewQuiz,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
@@ -144,9 +158,12 @@ const mapDispatchToProps = (dispatch, getState) => ({
     
         handlePrivetPass : (value) => dispatch(actions.handlePrivetPass(value)),   
 
-    // coursePost: (token, courseName, topic, discription, tutorial, userid, roomID) =>
-    //   dispatch(action.coursePost(token, courseName, topic, discription, tutorial, userid, roomID)),   
-        
+    coursePost: (token, courseName, topic, discription, tutorial, userid, roomID) =>
+      dispatch(action.coursePost(token, courseName, topic, discription, tutorial, userid, roomID)),   
+
+
+    quizPost: (token, quizName, discription, questions, correctAnswer, wrongChoices,courseID) =>
+    dispatch(actionForQuiz.quizPost(token, quizName, discription, questions, correctAnswer, wrongChoices,courseID)), 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomForm);

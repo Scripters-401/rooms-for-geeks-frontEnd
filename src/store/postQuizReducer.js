@@ -24,6 +24,7 @@ export const handleAddQuiz = e => {
 }
 
 export const quizPost = (token, quizName, discription, questions, correctAnswer, wrongChoices,courseID) => async dispatch =>{
+    console.log(quizName, discription, questions, correctAnswer, wrongChoices,courseID);
     try {
         const results = await fetch(`${API}/quiz` ,{
             method: 'POST',

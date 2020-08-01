@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as actions from '../../store/postQuizReducer'
 import '../rooms/room.scss'
 
@@ -22,7 +23,7 @@ const QuizForm = props => {
 
     return (
         <>
-         <div className="allInall">
+            <div className="allInall">
                 <div className="wrapper ">
                     <div className="container">
                         <h1 className="nameOfForm">Create Quiz</h1>
@@ -40,7 +41,7 @@ const QuizForm = props => {
                                 onChange={(e) => props.handleAddQuiz(e)}
                                 placeholder="question"
                             />
-                            
+
                             <input className="input"
                                 type="text"
                                 name="correctAnswer"
@@ -53,13 +54,13 @@ const QuizForm = props => {
                                 onChange={(e) => props.handleAddQuiz(e)}
                                 placeholder="wrongChoices #1"
                             />
-                               <input className="input"
+                            <input className="input"
                                 type="text"
                                 name="wrongChoices"
                                 onChange={(e) => props.handleAddQuiz(e)}
                                 placeholder="wrongChoices #2"
                             />
-                               <input className="input"
+                            <input className="input"
                                 type="text"
                                 name="wrongChoices"
                                 onChange={(e) => props.handleAddQuiz(e)}
@@ -72,7 +73,7 @@ const QuizForm = props => {
                                 placeholder="discription"
                             />
 
-                            <button className="button" type="submit" id="login-button">CREATE Quiz!</button>
+                            <Link to="/room"><button className="button" type="submit" id="login-button">CREATE Quiz!</button></Link>
                         </form>
                     </div>
 
@@ -103,8 +104,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, getState) => ({
     handleAddQuiz: (e) => dispatch(actions.handleAddQuiz(e)),
-    quizPost: (token, quizName, discription, questions, correctAnswer, wrongChoices,courseID) =>
-        dispatch(actions.quizPost(token, quizName, discription, questions, correctAnswer, wrongChoices,courseID)),       
+    quizPost: (token, quizName, discription, questions, correctAnswer, wrongChoices, courseID) =>
+        dispatch(actions.quizPost(token, quizName, discription, questions, correctAnswer, wrongChoices, courseID)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizForm);
