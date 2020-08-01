@@ -23,7 +23,6 @@ const AllRooms = props => {
 
     function goToRoom(e, id) {
         // e.preventDefault();
-        console.log('props.userHome.choosenRoomID', id);
         props.choosenID(id);
     }
 
@@ -34,7 +33,6 @@ const AllRooms = props => {
                 <h3 className='topic'>All Rooms</h3>
             </div>
             <div className='allRooms'>
-                {console.log('rooms', props.userHome.allRooms)}
                 {props.userHome.allRooms.map((val, i) => {
                     var topic = '';
                     let random = Math.floor(Math.random() * 10)
@@ -129,7 +127,7 @@ const AllRooms = props => {
                                                 <p class="inside-page__text">
                                                     {val.createdTime.slice(0, 10)}
                                                 </p>
-                                                <Link to="/rooms" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
+                                                <Link to="/room" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
                                             </div>
                                         </div>
                                     </div>

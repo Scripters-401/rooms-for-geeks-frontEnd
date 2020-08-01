@@ -6,7 +6,6 @@ import * as actions from '../../store/userHome';
 import { Link } from 'react-router-dom';
 import Show from '../auth/show';
 // import { sign } from 'jsonwebtoken';
-
 const AllRooms = props => {
 
 
@@ -160,18 +159,12 @@ const AllRooms = props => {
         </>
     );
 }
-
 const mapStateToProps = state => ({
     sign: state.sign,
     userHome: state.userHome
 });
-
 const mapDispatchToProps = (dispatch, getState) => ({
     rooms: (token) => dispatch(actions.rooms(token)),
     choosenID: (id) => dispatch(actions.roomID(id))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AllRooms);
-
-
-
-

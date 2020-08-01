@@ -24,10 +24,10 @@ function App(props) {
     const cookieToken = cookie.load('auth');
     const token = cookieToken || null;
     props.validateToken(token);
-    props.getInfoUser(props.sign.token, props.sign.user.id)
-
+    if (token !== 'null') {
+      props.getInfoUser(props.sign.token, props.sign.user.id);
+    }
   }, [])
-
 
   return (
     <>
@@ -46,8 +46,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = (dispatch, getState) => ({
   validateToken: token => dispatch(actions.validateToken(token)),
-  getInfoUser: (token,id) => dispatch(actions2.getInfoUser(token,id))
-  
+  getInfoUser: (token, id) => dispatch(actions2.getInfoUser(token, id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

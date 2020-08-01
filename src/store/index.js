@@ -15,6 +15,7 @@ import thePostCourse from './postCourseReducer';
 import thunk from 'redux-thunk';
 import userHome from './userHome';
 import newPass from './forgotPassReducer';
+import chat from './chat'
 import upload from './uploadImageReducer';
 import addReview from './putReviewReducer';
 
@@ -35,6 +36,7 @@ let reducers = combineReducers({
     userHome,
     upload,
     newPass,
+    chat,
     addReview,
     postNewQuiz,
     

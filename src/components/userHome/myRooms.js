@@ -115,7 +115,7 @@ const MyRooms = props => {
                                                             <p class="inside-page__text">
                                                                 {val.createdTime.slice(0, 10)}
                                                             </p>
-                                                            <Link to="/rooms" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
+                                                            <Link to="/room" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
 
                                                         </div>
                                                     </div>

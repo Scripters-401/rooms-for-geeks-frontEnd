@@ -4,7 +4,7 @@ import AllRooms from './allRooms'
 import Upgrade from './upgradeAdmin'
 import Auth from '../auth/auth';
 import Show from '../auth/show';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import ShowAll from './showAllRooms'
 import Popup from './popup';
@@ -13,38 +13,38 @@ import * as actions from '../../store/userHome';
 import { Button } from 'react-bootstrap';
 
 
-const UserHome = props =>{
-    
-    return(
+const UserHome = props => {
+    props.room.redirectAfterDelete = false;
+
+    return (
         <>
-        
-        <Show condition={props.sign.user.role === 'user'}>
-        <Upgrade /></Show>
-        <div className="searchAndBut">
+            <Show condition={props.sign.user.role === 'user'}>
+                <Upgrade /></Show>
+            <div className="searchAndBut">
 
-        <div className='search-bar'>
-                <div class="search-container">
-                    <input type="text" placeholder="Search..." />
-                    <div class="search"></div>
+                <div className='search-bar'>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search..." />
+                        <div class="search"></div>
+                    </div>
+
                 </div>
-
-            </div>
-        <Auth capability="master-room">
-        <Link to="/room" className="createRoom"><Button className="createRoomButt" >CREATE ROOM</Button></Link>
+                <Auth capability="master-room">
+                    <Link to="/create-room" className="createRoom"><Button >CREATE ROOM</Button></Link>
                     {/* <Redirect to="/userHome" /> */}
                 </Auth>
-        </div>
-     
-        <MyRooms />
-        <Show condition={!props.userHome.showAllRooms}><AllRooms />
-        <div className='show-more'><Button onClick={props.showAllFun}>Show More</Button></div>
-        </Show>
-        
+            </div>
 
-        <Show condition={props.userHome.showAllRooms}>
-        
-            <ShowAll />
-            <div className='show-more'><Button onClick={props.showAllFun} >Show Less</Button></div>
+            <MyRooms />
+            <Show condition={!props.userHome.showAllRooms}><AllRooms />
+                <div className='show-more'><Button onClick={props.showAllFun}>Show More</Button></div>
+            </Show>
+
+
+            <Show condition={props.userHome.showAllRooms}>
+
+                <ShowAll />
+                <div className='show-more'><Button onClick={props.showAllFun} >Show Less</Button></div>
             </Show>
             <Popup></Popup>
 
@@ -55,12 +55,13 @@ const UserHome = props =>{
 
 const mapStateToProps = state => ({
     sign: state.sign,
-    userHome: state.userHome
+    userHome: state.userHome,
+    room: state.room
 });
 const mapDispatchToProps = (dispatch, getState) => ({
     showAllFun: () => dispatch(actions.showAllFun()),
-    
+
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(UserHome);
+export default connect(mapStateToProps, mapDispatchToProps)(UserHome);
 
