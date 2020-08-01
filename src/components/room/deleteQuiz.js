@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import * as actions from '../../store/roomReducer';
 import Show from '../auth/show'
@@ -13,7 +12,6 @@ const Quiz = props => {
   useEffect(() => {
     setTimeout(() => {
       props.updateScore({ score: null })
-      props.room.redirectTakeQuiz = false;
 
     }, 2000)
   }, [props.room.score])
@@ -25,8 +23,6 @@ const Quiz = props => {
     } else {
       props.postAnswers(props.sign.token, selectedAnswers, quizID, props.userInfo.user._id)
       selectedAnswers = [];
-      props.room.redirectTakeQuiz = false;
-
 
     }
   }
@@ -81,16 +77,6 @@ const Quiz = props => {
       </Show>
       <Show condition={props.room.score !== null}>
         {props.room.score}
-        {!props.room.redirectTakeQuiz ?
-          (<>
-            <div> SCoreeeeeeeeee</div>
-
-               (<Redirect to="/room" />)
-
-
-          </>)
-          : null}
-
       </Show>
     </div>
   )
@@ -107,14 +93,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  // getRoom: (token, id) => dispatch(actions.getRoom(token, id)),
-  // message: (e) => dispatch(actions.message(e)),
-  // updateOutput: (e) => dispatch(actions.updateOutput(e)),
-  // updateCounter: (e) => dispatch(actions.updateCounter(e)),
-  // updateTyping: (e) => dispatch(actions.updateTyping(e)),
-  // updateNotifications: (e) => dispatch(actions.updateNotifications(e)),
-  postAnswers: (token, answers, quizID, userID) => dispatch(actions.postAnswers(token, answers, quizID, userID)),
-  // resetOutput: () => dispatch(actions.resetOutput()),
   updateScore: (score) => dispatch(actions.updateScore(score)),
 });
 

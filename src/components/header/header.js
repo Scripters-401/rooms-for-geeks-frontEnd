@@ -55,9 +55,9 @@ const Header = props => {
 
             <li className='liHeader'>
               <Show condition={props.sign.loggedIn}>
-                <NavLink to="/" className="navHeader" onClick={props.logout}>
+                <a href="/" className="navHeader" onClick={props.logout}>
                   Logout
-                </NavLink>
+                </a>
               </Show>
 
               <Show condition={!props.sign.loggedIn}>

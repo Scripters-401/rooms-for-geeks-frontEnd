@@ -7,6 +7,9 @@ let initialState = {
   typingstate: '',
   notification: '',
   didLike: [],
+  didHaHa: [],
+  didLove:[],
+  open: true,
 };
 
 // reducer : switch case
@@ -43,6 +46,12 @@ export default (state = initialState, action) => {
       state.score = payload
       return { ...state };
 
+    case 'openCloseChat':
+      state.open = !state.open
+      return { ...state };
+
+
+
     default:
       return state;
   }
@@ -50,7 +59,12 @@ export default (state = initialState, action) => {
 
 
 
-
+export const openCloseChat = e => {
+  return {
+    type: 'openCloseChat',
+    payload: e,
+  }
+}
 
 
 export const message = e => {

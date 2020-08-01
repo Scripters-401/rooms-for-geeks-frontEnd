@@ -1,14 +1,76 @@
-
-#geeks-chat {
-  max-width: 600px;
-  margin: 30px auto;
+.chat-true{
+  max-width: 136px;
+  margin: 0px auto;
   border: 1px solid #ddd;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.05);
   border-radius: 2px;
-  h2 {
+  transition: all 5s linear;
+  position: fixed;
+  right: 0;
+  top: 92px;
+  z-index: 99999999;
+  // min-width: 300px;
+  .chatHeader {
     font-size: 18px;
     padding: 10px 20px;
-    color: #71d857;
+    color: #90afaa;
+    border-bottom: solid #7da09a;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  p{
+    display: none;
+
+  }
+  span {
+    display: none;
+
+  }
+  label {
+    display: none;
+
+  }
+
+  input {
+    display: none;
+  }
+
+  button {
+    display: none; 
+  }
+
+  #chat-window {
+    display: none;
+  }
+
+}
+
+
+
+
+.chat-false {
+  max-width: 600px;
+  margin: 0px auto;
+  border: 1px solid #ddd;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+  transition: all 5s linear;
+
+  position: fixed;
+  right: 0;
+  top: 92px;
+  z-index: 99999999;
+  min-width: 300px;
+
+  .chatHeader {
+    font-size: 18px;
+    padding: 10px 20px;
+    color: #90afaa;
+    border-bottom: solid #7da09a;
+    &:hover{
+      cursor: pointer;
+    }
   }
   span {
     max-width: 600px;
@@ -49,7 +111,8 @@
   }
 
   #chat-window {
-    height: 400px;
+    // height: 400px;
+    height: 325px;
     overflow: auto;
     background: #f9f9f9;
     #output p {

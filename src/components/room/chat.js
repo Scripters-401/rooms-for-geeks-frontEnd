@@ -16,21 +16,19 @@ const Chat = props => {
   let adminName;
 
   useEffect(() => {
+
     if (props.room.socket) {
       props.room.socket.disconnect();
     }
 
     roomName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.roomName : null;
     adminName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName : null;
-
-    props.room.socket = io.connect(`${ENDPOINT}/${props.userHome.choosenRoomID}`);
+    props.room.socket = io.connect(`${ENDPOINT}/${props.room.choosenRoomIDSocket}`);
     props.resetOutput();
 
     props.room.socket.on('chat', function (data) {
       props.updateTyping('');
-      console.log('out', data);
       props.updateOutput(data)
-      // props.updateOutput({ userName: data.userName, message: data.message, msgTime: data.msgTime, likes:data.likes})
     });
 
     props.room.socket.on('counter', function (data) {
@@ -49,25 +47,35 @@ const Chat = props => {
       props.updateOutput(data)
     });
 
+    props.room.socket.on('addHaHa', function (data) {
+      props.updateOutput(data)
+    });
 
+    props.room.socket.on('removeHaHa', function (data) {
+      props.updateOutput(data)
+    });
 
-  }, [props.userHome.choosenRoomID])
+    props.room.socket.on('addLove', function (data) {
+      props.updateOutput(data)
+    });
+
+    props.room.socket.on('removeLove', function (data) {
+      props.updateOutput(data)
+    });
+
+  }, [props.room.choosenRoomIDSocket])
 
 
   useEffect(() => {
-    setTimeout(() => {
-      props.room.socket.on('notif', function (data) {
-        if (props.userInfo.user.username === adminName) {
-          props.updateNotifications(`Hey Admin ${adminName} New user joined the room ${roomName} ...`);
+    props.room.socket.on('notif', function (data) {
+      if (props.userInfo.user.username === adminName) {
+        props.updateNotifications(`Hey Admin ${adminName} New user joined the room ${roomName} ...`);
 
-          setTimeout(() => {
-            props.updateNotifications('');
-          }, 5000);
-        }
-      });
-    }, 2000);
-
-
+        setTimeout(() => {
+          props.updateNotifications('');
+        }, 5000);
+      }
+    });
   }, [props.room.roomData.RData])
 
 
@@ -80,10 +88,10 @@ const Chat = props => {
   }
 
   const typing = e => {
+    props.room.socket.emit('typing', props.userInfo.user.username);
     if (e.key === 'Enter') {
       onlineFun()
     }
-    props.room.socket.emit('typing', props.userInfo.user.username);
   }
 
   const addLike = (id, name) => {
@@ -91,24 +99,50 @@ const Chat = props => {
     props.chat.didLike[id] = true;
 
   }
+
+  const addHaHa = (id, name) => {
+    props.room.socket.emit('addHaHa', id);
+    props.chat.didHaHa[id] = true;
+
+  }
+
   const removeLike = id => {
     props.room.socket.emit('removeLikes', id);
     props.chat.didLike[id] = false;
-  } 
+  }
+
+  const removeHaHa = id => {
+    props.room.socket.emit('removeHaHa', id);
+    props.chat.didHaHa[id] = false;
+  }
+
+  const addLove = id => {
+    props.room.socket.emit('addLove', id);
+    props.chat.didLove[id] = true;
+  }
+
+  const removeLove = id => {
+    props.room.socket.emit('removeLove', id);
+    props.chat.didLove[id] = false;
+  }
 
   return (
-    <div id="geeks-chat">
+    <div id="geeks-chat" className={`chat-${props.chat.open}`}>
       <p>{props.chat.notification}</p>
-      <h2>Geeks Chat</h2>
-      <span>Members: </span>
-      <span id="members-counter">{props.chat.counter}</span>
+      <div className='chatHeader' onClick={e => props.openCloseChat()}>
+        <h2 >Geeks Chat</h2>
+        <span>Online Members: {props.chat.counter} </span>
+        {/* <span id="members-counter"></span> */}
+      </div>
+
       {/* <h2 id='roon-name'>{roomName}</h2> */}
       <div id="chat-window">
         <div id="output">
           {props.chat.output.map((element, idx) => {
             return (
               <div key={idx}>
-                <p><strong>{element.userName}: </strong>{element.message}  :Likes -- {`${element.likes}`}
+                <p><strong>{element.userName}: </strong>
+                  {element.message}
                   <span className='msgTime'>
 
                     {element.msgTime.hours}:
@@ -121,18 +155,32 @@ const Chat = props => {
                   </span>
                 </p>
                 <span
-                  className={`like-${props.chat.didLike[idx] ? props.chat.didLike[idx]: false}`}
+                  className={`like-${props.chat.didLike[idx] ? props.chat.didLike[idx] : false}`}
                   role="img"
                   aria-label="likeEmoji"
                   onClick={e => props.chat.didLike[idx] ? removeLike(idx) : addLike(idx, element.userName)}
-                >👍</span>
+                >👍<span>likes{`${element.likes}`}</span></span>
+
+                <span
+                  className={`like-${props.chat.didHaHa[idx] ? props.chat.didHaHa[idx] : false}`}
+                  role="img"
+                  aria-label="likeEmoji"
+                  onClick={e => props.chat.didHaHa[idx] ? removeHaHa(idx) : addHaHa(idx, element.userName)}
+                >😂:{`${element.haha}`}</span>
+
+                <span
+                  className={`like-${props.chat.didLove[idx] ? props.chat.didLove[idx] : false}`}
+                  role="img"
+                  aria-label="likeEmoji"
+                  onClick={e => props.chat.didLove[idx] ? removeLove(idx) : addLove(idx, element.userName)}
+                >❤:{`${element.Love}`}</span>
               </div>
             )
           })}
         </div>
         <div id="typing">{props.chat.typingstate}</div>
       </div>
-      <p id="userName">{props.userInfo.user.username}</p>
+      {/* <p id="userName">{props.userInfo.user.username}</p> */}
       <input
         id="message"
         name='message'
@@ -160,6 +208,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
   updateTyping: (e) => dispatch(actions.updateTyping(e)),
   updateNotifications: (e) => dispatch(actions.updateNotifications(e)),
   resetOutput: () => dispatch(actions.resetOutput()),
+  openCloseChat: () => dispatch(actions.openCloseChat()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

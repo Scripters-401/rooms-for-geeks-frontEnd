@@ -16,6 +16,7 @@ import RoomForm from './rooms/postRoom';
 import CorseForm from './course/postCourse';
 import UserHome from './userHome/userHome';
 import ForgotPass from './forgotPass/forgotPass';
+import Quiz from './room/answerQuiz'
 
 const Routes = () => {
 
@@ -73,6 +74,10 @@ const Routes = () => {
 
             <Route path="/new-password" exact>
                 <ForgotPass />
+            </Route>
+            <Route path="/take-quiz" exact>
+                <Quiz />
+
             </Route>
         </>
     )
