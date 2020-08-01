@@ -216,7 +216,7 @@ const AllInterviewR = props => {
                 <div className="wrapper "> */}
                 <div className="containerI">
                     <h3 className="nameOfForm">Add Interview Review</h3>
-                    <form id="form" onSubmit={(e) => handleSubmitFun(e)}>
+                    <form id="formI" onSubmit={(e) => handleSubmitFun(e)}>
 
                         <div>
                             <label>Company Name</label>
