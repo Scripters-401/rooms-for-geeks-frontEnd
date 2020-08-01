@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-lone-blocks */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
@@ -7,11 +9,13 @@ import { Link } from 'react-router-dom';
 // import { sign } from 'jsonwebtoken';
 
 const AllRooms = props => {
+    let randomArr=[];
 
     useEffect(() => {
         setTimeout(() => {
             console.log('token', props.sign.token)
             props.rooms(props.sign.token);
+            // props.courses(props.sign.token)
         }, 2000);
 
     }, []);
@@ -31,7 +35,33 @@ const AllRooms = props => {
             <div className='allRooms'>
                 {console.log('rooms', props.userHome.allRooms)}
                 {props.userHome.allRooms.map((val, i) => {
+                    var topic = '';
                     let random = Math.floor(Math.random() * 10)
+                    let counter=0;
+                    while(counter<10){
+                        
+                        if(!randomArr.includes(random)){
+                            randomArr.push(random);
+                            break;
+                        }
+                        else{
+                            random = Math.floor(Math.random() * 10)
+                            counter++;
+                            if(counter===10){randomArr=[];counter=0;}
+                        }
+                    }
+                    // console.log('props.userHome.allRooms.length',props.userHome.allRooms.length)
+                    for (let i = 0; i < props.userHome.allRooms.length; i++) {
+                        if (props.userHome.allCourses[i].roomID === val._id) {
+                            topic = props.userHome.allCourses[i].topic;
+                            // console.log('topiccccccc',topic);
+                            break;
+                        }
+                        
+                    }
+                    
+                    // console.log('randommmmmm',random);
+                    
                     return (
                         <div class='card-area-div'>
                             <section class="card-area">
@@ -62,7 +92,8 @@ const AllRooms = props => {
                                                             <path d="M33.5,36L33.5,36c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S34.6,36,33.5,36z" />
                                                         </g>
                                                     </svg> */}
-                                                        <img class="ccontainer" src={`${props.userHome.categoryImages.nutrition[random]}`} alt='LOGO' />
+                                    
+                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random]}`} alt='LOGO' />
 
                                                         <h2 class="card-front__heading">
                                                             {val.roomName}
@@ -115,6 +146,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, getState) => ({
     rooms: (token) => dispatch(actions.rooms(token)),
-    choosenID: (id) => dispatch(actions.roomID(id))
+    choosenID: (id) => dispatch(actions.roomID(id)),
+    // courses:(token) => dispatch(actions.courses(token))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AllRooms);

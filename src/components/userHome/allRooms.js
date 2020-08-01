@@ -7,11 +7,13 @@ import { Link } from 'react-router-dom';
 // import { sign } from 'jsonwebtoken';
 
 const AllRooms = props => {
-
+   
+    
     useEffect(()=>{
         setTimeout(() => {
             console.log('token',props.sign.token)
-            props.rooms(props.sign.token);  
+            props.rooms(props.sign.token); 
+            // allLength= props.userHome.roomsLength
         }, 2000);
 
     },[]);
@@ -21,10 +23,14 @@ const AllRooms = props => {
         console.log('props.userHome.choosenRoomID',id);
         props.choosenID(id);
     }
-     
+    var allLength=props.userHome.roomsLength;
+    console.log('lengthhhhhhhh',props.userHome.roomsLength);
     let max = props.userHome.allRooms.length-3;
+    console.log('max',max);
     let randomNumber =  Math.floor((max) * Math.random());
-    console.log('random',randomNumber);
+    let randomArr=[];
+    var topic = '';
+    // console.log('random',randomNumber);
     return (
         <>
             <div>
@@ -33,7 +39,32 @@ const AllRooms = props => {
             <div className='allRooms'>
                 {console.log('rooms',props.userHome.allRooms)}
             {props.userHome.allRooms.slice(randomNumber,randomNumber+4).map((val,i) =>{
+                
                 let random = Math.floor(Math.random() * 10)
+                let counter=0;
+                while(counter<10){
+                    
+                    if(!randomArr.includes(random)){
+                        randomArr.push(random);
+                        break;
+                    }
+                    else{
+                        random = Math.floor(Math.random() * 10)
+                        counter++;
+                        if(counter===10){randomArr=[];counter=0;}
+                    }
+                }
+                console.log('props.userHome.allCourses.roomID',props.userHome.allCourses)
+                for (let i = 0; i < props.userHome.allRooms.length; i++) {
+                    console.log('props.userHome.allCourses.roomID',props.userHome.allCourses[i],i)
+                    console.log('manualID',val._id,'courseID',props.userHome.allCourses[i].roomID);
+                    if (props.userHome && props.userHome.allCourses && (props.userHome.allCourses[i].roomID === val._id)) {
+                        console.log('obadaaaaaaaaaaaaaaaaaaaa');
+                        topic = props.userHome.allCourses[i].topic;
+                        break;
+                    }
+                    console.log('topiccccccc',topic);
+                }
                 return(
                     <div class='card-area-div'>
                 <section class="card-area">
@@ -68,10 +99,10 @@ const AllRooms = props => {
                                            c-0.8,0-1.5,0.7-1.5,1.5S39.9,12.3,40.7,12.3z"/>
                                    </g>
                                    </svg> */}
-                                   <img class="ccontainer" src={`${ props.userHome.categoryImages['nutrition'][random] }`} alt='LOGO' />
-                                                   <h2 class="card-front__heading">
+                                   <img class="ccontainer" src={`${ props.userHome.categoryImages[`${topic}`][random] }`} alt='LOGO' />
+                                                   {/* <h2 class="card-front__heading">
                                                        {val.roomName}
-                                                   </h2>
+                                                   </h2> */}
                                                    {/* <p class="card-front__text-price">
                                                        From £199
                                                    </p> */}
@@ -79,7 +110,7 @@ const AllRooms = props => {
     
                                     <div class="card-front__bt">
                                         <p class="card-front__text-view card-front__text-view--ski">
-                                            View me
+                                        {val.roomName}
                                         </p>
                                     </div>
                                 </div>

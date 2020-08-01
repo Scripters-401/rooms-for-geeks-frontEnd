@@ -37,6 +37,7 @@ let initialState = {
         members: [],
         password: false,
         oranaizationType: 'none', //defualt global room
+        _id:'1'
     }, {
         roomName: 'Python',
         public: true,
@@ -45,6 +46,7 @@ let initialState = {
         members: [],
         password: false,
         oranaizationType: 'none', //defualt global room
+        _id:'2'
     }, {
         roomName: 'Java',
         public: true,
@@ -53,6 +55,7 @@ let initialState = {
         members: [],
         password: false,
         oranaizationType: 'none', //defualt global room
+        _id:'3'
     }],
     checkMyRooms: true,
     choosenRoomID: '',
@@ -179,6 +182,11 @@ let initialState = {
             'https://images.unsplash.com/photo-1543286386-2e659306cd6c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80'
         ]
     },
+    allCourses: [{ topic: 'sport', roomID: '1' },
+    { topic: 'nutrition', roomID: '2' },
+    { topic: 'math', roomID: '3' },
+    ],
+    roomsLength:2,
 };
 
 // reducer : switch case
@@ -192,8 +200,8 @@ export default (state = initialState, action) => {
             return { ...state };
 
         case 'getAllRooms':
-
-            state.allRooms = payload;
+            state.allRooms = payload.res;
+            state.allCourses = payload.response;
             return { ...state };
         case 'check':
             state.checkMyRooms = payload;
@@ -205,6 +213,12 @@ export default (state = initialState, action) => {
             return { ...state };
         case 'show-ALL':
             state.showAllRooms = !state.showAllRooms;
+            return { ...state };
+        // case 'getAllCourses':
+        //     state.allCourses = payload;
+        //     return { ...state };
+        case 'Length':
+            state.roomsLength = payload;
             return { ...state };
 
 
@@ -245,6 +259,18 @@ export const favRoom = (token, id) => async dispatch => {
 
 export const rooms = (token) => async dispatch => {
     try {
+        let r = await fetch(`${API}/allCourses`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: new Headers({
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }),
+        });
+        let response = await r.json();
+        // console.log('coursessssssssssss',response);
+        // dispatch(getAllCourses(response));
         let results = await fetch(`${API}/rooms`, {
             method: 'GET',
             mode: 'cors',
@@ -255,7 +281,9 @@ export const rooms = (token) => async dispatch => {
             }),
         });
         let res = await results.json();
-        dispatch(getAllRooms(res));
+        
+        dispatch(getAllRooms(res,response));
+        dispatch(allRoomsLength(res));
     } catch (error) {
         console.error(`ERROR: SIGNOUT`);
     }
@@ -288,7 +316,35 @@ export const upgrade = (token, id, role) => async dispatch => {
     }
 }
 
+// export const courses = (token) => async dispatch => {
+//     try {
+//         let results = await fetch(`${API}/allCourses`, {
+//             method: 'GET',
+//             mode: 'cors',
+//             headers: new Headers({
+//                 'Authorization': `Bearer ${token}`,
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/json'
+//             }),
+//         });
+//         let res = await results.json();
+//         console.log('coursessssssssssss',res);
+//         dispatch(getAllCourses(res));
+//     } catch (error) {
+//         console.error(`ERROR: SIGNOUT`);
+//     }
+// }
 
+
+
+
+
+export const allRoomsLength = res => {
+    return {
+        type: 'Length',
+        payload: res.length
+    }
+}
 
 export const roomID = (id) => async dispatch => {
     console.log('roomIDAction', id);
@@ -316,9 +372,16 @@ export const favorite = res => {
     }
 }
 
-export const getAllRooms = res => {
+export const getAllRooms = (res,response) => {
     return {
         type: 'getAllRooms',
+        payload: {res,response},
+    }
+}
+
+export const getAllCourses = res => {
+    return {
+        type: 'getAllCourses',
         payload: res,
     }
 }
