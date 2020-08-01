@@ -8,7 +8,6 @@ import '../../reset.css';
 import './header.scss';
 import { HashLink as Link2 } from 'react-router-hash-link';
 import logo from '../../assest/LOGOC.png';
-
 const Header = props => {
   return (
     <header id='AppHeader'>
@@ -36,7 +35,7 @@ const Header = props => {
 
             <Show condition={!props.sign.loggedIn}>
               <li className='liHeader'>
-                <Link2 smooth to="/#aboutus" className="navHeader">About-Us</Link2>
+                <Link2 smooth to="/#aboutus" className="navHeader">About Us</Link2>
               </li>
             </Show>
 

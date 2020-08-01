@@ -1,25 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as actions from '../../store/postRoomReduser'
+import * as action from '../../store/postCourseReducer'
+import * as actionForQuiz from '../../store/postQuizReducer'
 import './room.scss';
 
 const RoomForm = props => {
 
-    // useEffect(() => {
-    //     props.roomPost(
-    //         props.sign.token,
-    //         props.sign.user.id,
-    //         props.thePostRoom.roomName,
-    //         props.thePostRoom.publicc,
-    //         props.thePostRoom.password,
-    //         props.thePostRoom.adminName,
-    //         props.thePostRoom.members,
-    //     )
-    // }, [props.sign.token, props.sign.user.id])
 
     const testPrivet = e =>{
-        console.log('e.targ',e.target.value);
         let x =!(!e.target.value);
         if(e.target.value == "true"){
             props.handlePrivetPass(false);
@@ -27,26 +18,45 @@ const RoomForm = props => {
         else{
             props.handlePrivetPass(true);
         }
-console.log('xxx',x);
         props.handleChangeRoom(e);
-        // props.handlePrivetPass(x);
     }
-    const handleSubmitFun = e => {
+    const handleSubmitFun = async e => {
         e.preventDefault();
-        console.log(props.thePostRoom.publicc);
-        props.roomPost(
+        // console.log('roooooo', props.thePostRoom);
+        // console.log('hhh', props.thePostRoom.roomName,
+        // props.thePostRoom.publicc,
+        // props.thePostRoom.password,
+        // props.userInfo.user.username,
+        // props.thePostRoom.members
+       await props.roomPost(
             props.sign.token,
             props.sign.user.id,
             props.thePostRoom.roomName,
             props.thePostRoom.publicc,
             props.thePostRoom.password,
-
-            // props.thePostRoom.adminName,
             props.userInfo.user.username,
             props.thePostRoom.members,
-
         );
-
+        
+        await props.coursePost(
+        props.sign.token,
+        props.thePostRoom.courseName,
+        props.thePostRoom.topic,
+        props.thePostRoom.discription,
+        props.thePostRoom.tutorial,
+        props.userInfo.user._id,
+        props.thePostRoom.newRoomId,
+       ) 
+    //    token, quizName, discription, questions, correctAnswer, wrongChoices,courseID
+       props.quizPost(
+        props.sign.token,
+        props.postNewQuiz.quizName,
+        props.postNewQuiz.discription,
+        props.postNewQuiz.questions,
+        props.postNewQuiz.correctAnswer,
+        props.postNewQuiz.wrongChoices,
+        props.postNewCourse.NewCourseId,
+       )
     }
 
     return (
@@ -69,34 +79,35 @@ console.log('xxx',x);
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder="courseName"
                             />
+                            
+                            <input className="input"
+                                type="text"
+                                name="topic"
+                                onChange={(e) => props.handleChangeRoom(e)}
+                                placeholder="Topic"
+                            />
+                            <input className="input"
+                                type="text"
+                                name="tutorial"
+                                onChange={(e) => props.handleChangeRoom(e)}
+                                placeholder="Tutorial Link"
+                            />
                             <input className="description"
                                 type="text"
                                 name="Description"
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder="Description"
                             />
-                            <input className="input"
-                                type="text"
-                                name="Topic"
-                                onChange={(e) => props.handleChangeRoom(e)}
-                                placeholder="Topic"
-                            />
-                            <input className="input"
-                                type="text"
-                                name="Tutorial Link"
-                                onChange={(e) => props.handleChangeRoom(e)}
-                                placeholder="Tutorial Link"
-                            />
-                            <button className="addQuiz">Add Quiz</button>
+                             <Link to="/create-quiz"><button className="addQuiz">Add Quiz</button></Link>
 
                             <div className="radioButton">
                                 <div className="radioPriv">
-                                    <input className="radioBut" onClick={(e) => testPrivet(e)} value={true} type="radio" checked id="public" name="publicc"  />
+                                    <input className="radioBut" onClick={(e) => testPrivet(e)} value={true} type="radio"  id="public" name="publicc"  />
                                     <label for="public">Public</label><br></br>
                                 </div>
                                 <div className="radioPublic">
                                     <input className="radioBut" onClick={(e) => testPrivet(e)}  value={false} type="radio" id="privet" name="publicc" />
-                                    <label for="privet">Privet</label>
+                                    <label for="privet">Private</label>
                                 </div>
                             </div>
 
@@ -126,41 +137,6 @@ console.log('xxx',x);
                 </div>
             </div>
 
-            {/* {console.log('pppppppppppp',props)}
-            <div>
-                <form onSubmit={(e) => handleSubmitFun(e)}>
-                    <h3>Create Room</h3>
-
-                    <div>
-                        <label>roomName</label>
-                        <input
-                            type="text"
-                            name="roomName"
-                            onChange={(e) => props.handleChangeRoom(e)}
-                        />
-                    </div>
-
-                    <div>
-                        <label>public</label>
-                        <input
-                            type='text'
-                            name="publicc"
-                            onChange={(e) => props.handleChangeRoom(e)}
-                        />
-                    </div>
-
-                    <div>
-                        <label>password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            onChange={(e) => props.handleChangeRoom(e)}
-                        />
-                    </div>
-
-                    <button type="submit">Submit</button>
-                </form>
-            </div> */}
         </>
     )
 }
@@ -169,6 +145,8 @@ const mapStateToProps = state => ({
     sign: state.sign,
     thePostRoom: state.thePostRoom,
     userInfo: state.userInfo,
+    postNewCourse: state.thePostCourse,
+    postNewQuiz : state.postNewQuiz,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
@@ -178,7 +156,14 @@ const mapDispatchToProps = (dispatch, getState) => ({
     roomPost: (token, id, roomName, publicc, password, adminName, members) =>
         dispatch(actions.roomPost(token, id, roomName, publicc, password, adminName, members)),
     
-        handlePrivetPass : (value) => dispatch(actions.handlePrivetPass(value)),     
+        handlePrivetPass : (value) => dispatch(actions.handlePrivetPass(value)),   
+
+    coursePost: (token, courseName, topic, discription, tutorial, userid, roomID) =>
+      dispatch(action.coursePost(token, courseName, topic, discription, tutorial, userid, roomID)),   
+
+
+    quizPost: (token, quizName, discription, questions, correctAnswer, wrongChoices,courseID) =>
+    dispatch(actionForQuiz.quizPost(token, quizName, discription, questions, correctAnswer, wrongChoices,courseID)), 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomForm);

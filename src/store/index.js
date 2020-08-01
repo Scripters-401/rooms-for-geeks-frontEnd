@@ -18,6 +18,7 @@ import newPass from './forgotPassReducer';
 import upload from './uploadImageReducer';
 import addReview from './putReviewReducer';
 
+import postNewQuiz from './postQuizReducer'
 
 let reducers = combineReducers({
     data: reducer,
@@ -35,6 +36,8 @@ let reducers = combineReducers({
     upload,
     newPass,
     addReview,
+    postNewQuiz,
+    
 });
 
 const store = () => {

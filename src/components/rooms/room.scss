@@ -92,6 +92,8 @@
         input.passfalse{
             display: none;
         }
+       
+
         input.passtrue{
           
             display: block;
@@ -112,11 +114,11 @@
 
             transition-duration: 0.25s;
             font-weight: 300;
-            &:hover {
-                background-color: #49756263;
-                transition-duration: 0.25s;
-                color: white;
-            }
+            // &:hover {
+            //     background-color: #49756263;
+            //     transition-duration: 0.25s;
+            //     color: white;
+            // }
 
             &:focus {
                 background-color: white;
@@ -145,11 +147,11 @@
 
             transition-duration: 0.25s;
             font-weight: 330;
-            &:hover {
-                background-color: #49756263;
-                transition-duration: 0.25s;
-                color: white;
-            }
+            // &:hover {
+            //     background-color: #49756263;
+            //     transition-duration: 0.25s;
+            //     color: white;
+            // }
 
             &:focus {
                 background-color: white;
@@ -199,11 +201,11 @@
             transition-duration: 0.25s;
             font-weight: 330;
             
-            &:hover {
-                background-color: #49756263;
-                transition-duration: 0.25s;
-                color: white;
-            }
+            // &:hover {
+            //     background-color: #49756263;
+            //     transition-duration: 0.25s;
+            //     color: white;
+            // }
 
             &:focus {
                 background-color: white;
@@ -231,35 +233,8 @@
             color:white; 
             }
         }
-        input[type='radio']:after {
-            width: 15px;
-            height: 15px;
-            border-radius: 15px;
-            top: -5px;
-            left: -1px;
-            position: relative;
-            background-color: white;
-            content: '';
-            display: inline-block;
-            visibility: visible;
-            border: 1px solid #777c7b;
-           
-        }
-    
-        input[type='radio']:checked:after {
-            width: 15px;
-            height: 15px;
-            border-radius: 15px;
-            top: -5px;
-            left: -1px;
-            position: relative;
-            background-color: #416760;
-            content: '';
-            display: inline-block;
-            visibility: visible;
-            border: 1px solid white;
-           
-        }
+        
+
         .addQuiz{
             appearance: none;
             outline: 0;
@@ -280,7 +255,34 @@
             }
         }
     }
+    input[type='radio']:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -5px;
+        left: -1px;
+        position: relative;
+        background-color: white;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 1px solid #777c7b;
+       
+    }
 
+    input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -5px;
+        left: -1px;
+        position: relative;
+        background-color: #416760;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 1px solid white;           
+    }
    
 }
 
