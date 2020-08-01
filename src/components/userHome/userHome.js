@@ -7,6 +7,7 @@ import Show from '../auth/show';
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom';
 import ShowAll from './showAllRooms'
+import Popup from './popup';
 import * as actions from '../../store/userHome';
 // import { Redirect } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
@@ -16,6 +17,7 @@ const UserHome = props =>{
     
     return(
         <>
+        
         <Show condition={props.sign.user.role === 'user'}>
         <Upgrade /></Show>
         <div className="searchAndBut">
@@ -44,8 +46,10 @@ const UserHome = props =>{
             <ShowAll />
             <div className='show-more'><Button onClick={props.showAllFun} >Show Less</Button></div>
             </Show>
+            <Popup></Popup>
 
         </>
+        
     )
 }
 

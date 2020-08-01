@@ -6,10 +6,11 @@ import { connect } from 'react-redux'
 import './userHome.scss'
 import * as actions from '../../store/userHome';
 import { Link } from 'react-router-dom';
+import Show from '../auth/show';
 // import { sign } from 'jsonwebtoken';
 
 const AllRooms = props => {
-    let randomArr=[];
+    let randomArr = [];
 
     useEffect(() => {
         setTimeout(() => {
@@ -37,17 +38,17 @@ const AllRooms = props => {
                 {props.userHome.allRooms.map((val, i) => {
                     var topic = '';
                     let random = Math.floor(Math.random() * 10)
-                    let counter=0;
-                    while(counter<10){
-                        
-                        if(!randomArr.includes(random)){
+                    let counter = 0;
+                    while (counter < 10) {
+
+                        if (!randomArr.includes(random)) {
                             randomArr.push(random);
                             break;
                         }
-                        else{
+                        else {
                             random = Math.floor(Math.random() * 10)
                             counter++;
-                            if(counter===10){randomArr=[];counter=0;}
+                            if (counter === 10) { randomArr = []; counter = 0; }
                         }
                     }
                     // console.log('props.userHome.allRooms.length',props.userHome.allRooms.length)
@@ -57,11 +58,11 @@ const AllRooms = props => {
                             // console.log('topiccccccc',topic);
                             break;
                         }
-                        
+
                     }
-                    
+
                     // console.log('randommmmmm',random);
-                    
+
                     return (
                         <div class='card-area-div'>
                             <section class="card-area">
@@ -92,7 +93,7 @@ const AllRooms = props => {
                                                             <path d="M33.5,36L33.5,36c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S34.6,36,33.5,36z" />
                                                         </g>
                                                     </svg> */}
-                                    
+
                                                         <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random]}`} alt='LOGO' />
 
                                                         {/* <h2 class="card-front__heading">
@@ -101,9 +102,14 @@ const AllRooms = props => {
                                                     </div>
 
                                                     <div class="card-front__bt">
-                                                        <p class="card-front__text-view card-front__text-view--camping">
-                                                        {val.roomName}
-                                    </p>
+                                                        <div className='p-container'><p class="card-front__text-view card-front__text-view--ski">
+                                                            {val.roomName}
+                                                        </p></div>
+                                                        <Show condition={val.publicc === false}>
+
+                                                            <div className='svg-lock'><svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20px" height="20px"><path d="M 25 3 C 18.363281 3 13 8.363281 13 15 L 13 20 L 9 20 C 7.300781 20 6 21.300781 6 23 L 6 47 C 6 48.699219 7.300781 50 9 50 L 41 50 C 42.699219 50 44 48.699219 44 47 L 44 23 C 44 21.300781 42.699219 20 41 20 L 37 20 L 37 15 C 37 8.363281 31.636719 3 25 3 Z M 25 5 C 30.566406 5 35 9.433594 35 15 L 35 20 L 15 20 L 15 15 C 15 9.433594 19.433594 5 25 5 Z M 25 30 C 26.699219 30 28 31.300781 28 33 C 28 33.898438 27.601563 34.6875 27 35.1875 L 27 38 C 27 39.101563 26.101563 40 25 40 C 23.898438 40 23 39.101563 23 38 L 23 35.1875 C 22.398438 34.6875 22 33.898438 22 33 C 22 31.300781 23.300781 30 25 30 Z" /></svg>
+                                                            </div>
+                                                        </Show>
                                                     </div>
                                                 </div>
                                                 <div class="card-back">
@@ -123,7 +129,7 @@ const AllRooms = props => {
                                                 <p class="inside-page__text">
                                                     {val.createdTime.slice(0, 10)}
                                                 </p>
-                                                <a class="inside-page__btn inside-page__btn--camping btn-go" onClick={(e) => goToRoom(e, val._id)}><Link to="/rooms" className="goToRoom" key={i}>View Room</ Link></a>
+                                                <Link to="/rooms" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
                                             </div>
                                         </div>
                                     </div>

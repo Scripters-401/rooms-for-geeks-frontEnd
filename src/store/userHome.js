@@ -37,7 +37,7 @@ let initialState = {
         members: [],
         password: false,
         oranaizationType: 'none', //defualt global room
-        _id:'1'
+        _id: '1'
     }, {
         roomName: 'Python',
         public: true,
@@ -46,7 +46,7 @@ let initialState = {
         members: [],
         password: false,
         oranaizationType: 'none', //defualt global room
-        _id:'2'
+        _id: '2'
     }, {
         roomName: 'Java',
         public: true,
@@ -55,7 +55,7 @@ let initialState = {
         members: [],
         password: false,
         oranaizationType: 'none', //defualt global room
-        _id:'3'
+        _id: '3'
     }],
     checkMyRooms: true,
     choosenRoomID: '',
@@ -186,7 +186,8 @@ let initialState = {
     { topic: 'nutrition', roomID: '2' },
     { topic: 'math', roomID: '3' },
     ],
-    roomsLength:2,
+    roomsLength: 2,
+    roomPrivatePass:''
 };
 
 // reducer : switch case
@@ -219,6 +220,9 @@ export default (state = initialState, action) => {
         //     return { ...state };
         case 'Length':
             state.roomsLength = payload;
+            return { ...state };
+        case 'roomPass':
+            state.roomPrivatePass = payload;
             return { ...state };
 
 
@@ -281,8 +285,8 @@ export const rooms = (token) => async dispatch => {
             }),
         });
         let res = await results.json();
-        
-        dispatch(getAllRooms(res,response));
+
+        dispatch(getAllRooms(res, response));
         dispatch(allRoomsLength(res));
     } catch (error) {
         console.error(`ERROR: SIGNOUT`);
@@ -351,12 +355,25 @@ export const roomID = (id) => async dispatch => {
     dispatch(roomIDAction(id))
 }
 
+export const roomPass = (pass) => async dispatch => {
+
+    dispatch(roomPassword(pass))
+}
+
 export const showAllFun = () => {
     return {
         type: 'show-ALL',
         payload: ''
     }
 }
+
+export const roomPassword = (pass) => {
+    return {
+        type: 'roomPass',
+        payload: pass
+    }
+}
+
 export const userRole = payloadData => {
     return {
         type: 'USER_ROLE',
@@ -372,10 +389,10 @@ export const favorite = res => {
     }
 }
 
-export const getAllRooms = (res,response) => {
+export const getAllRooms = (res, response) => {
     return {
         type: 'getAllRooms',
-        payload: {res,response},
+        payload: { res, response },
     }
 }
 
