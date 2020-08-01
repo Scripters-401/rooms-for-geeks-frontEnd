@@ -30,8 +30,8 @@ export const handleChangeCourse = e => {
 }
 
 
-export const coursePost = (token, courseName, topic, discription, tutorial) => async dispatch => {
-
+export const coursePost = (token, courseName, topic, discription, tutorial, userid, roomID) => async dispatch => {
+    console.log(courseName, topic, discription, tutorial, userid, roomID);
     try {
         const results = await fetch(`${API}/course`, {
             method: 'POST',
@@ -42,7 +42,7 @@ export const coursePost = (token, courseName, topic, discription, tutorial) => a
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }),
-            body: JSON.stringify({ courseName, topic, discription, tutorial })
+            body: JSON.stringify({ courseName, topic, discription, tutorial, userid, roomID })
         });
         await results.json();
 

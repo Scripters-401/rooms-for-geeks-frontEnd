@@ -1,97 +1,78 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/postRoomReduser'
-import './createquiz.scss';
+import * as actions from '../../store/postQuizReducer'
+import '../rooms/room.scss'
 
-const RoomForm = props => {
+const QuizForm = props => {
 
-
-    const testPrivet = e =>{
-        let x =!(!e.target.value);
-        if(e.target.value == "true"){
-            props.handlePrivetPass(false);
-        }
-        else{
-            props.handlePrivetPass(true);
-        }
-        props.handleChangeRoom(e);
-    }
     const handleSubmitFun = e => {
         e.preventDefault();
         props.roomPost(
             props.sign.token,
-            props.sign.user.id,
-            props.thePostRoom.roomName,
-            props.thePostRoom.publicc,
-            props.thePostRoom.password,
+            props.postNewQuiz.quizName,
+            props.postNewQuiz.discription,
+            props.postNewQuiz.questions,
+            props.postNewQuiz.correctAnswer,
+            props.postNewQuiz.wrongChoices,
+            props.postNewQuiz.courseID,
             props.userInfo.user.username,
-            props.thePostRoom.members,
-
         );
 
     }
 
     return (
         <>
-            <div className="allInall">
+         <div className="allInall">
                 <div className="wrapper ">
                     <div className="container">
-                        <h1 className="nameOfForm">Create Room</h1>
+                        <h1 className="nameOfForm">Create Quiz</h1>
 
                         <form className="form" onSubmit={(e) => handleSubmitFun(e)}>
                             <input className="input"
                                 type="text"
-                                name="roomName"
-                                onChange={(e) => props.handleChangeRoom(e)}
-                                placeholder="roomName"
+                                name="quizName"
+                                onChange={(e) => props.handleAddQuiz(e)}
+                                placeholder="quizName"
                             />
                             <input className="input"
                                 type="text"
-                                name="courseName"
-                                onChange={(e) => props.handleChangeRoom(e)}
-                                placeholder="courseName"
+                                name="questions"
+                                onChange={(e) => props.handleAddQuiz(e)}
+                                placeholder="question"
                             />
                             
                             <input className="input"
                                 type="text"
-                                name="Topic"
-                                onChange={(e) => props.handleChangeRoom(e)}
-                                placeholder="Topic"
+                                name="correctAnswer"
+                                onChange={(e) => props.handleAddQuiz(e)}
+                                placeholder="correctAnswer"
                             />
                             <input className="input"
                                 type="text"
-                                name="Tutorial Link"
-                                onChange={(e) => props.handleChangeRoom(e)}
-                                placeholder="Tutorial Link"
+                                name="wrongChoices"
+                                onChange={(e) => props.handleAddQuiz(e)}
+                                placeholder="wrongChoices #1"
+                            />
+                               <input className="input"
+                                type="text"
+                                name="wrongChoices"
+                                onChange={(e) => props.handleAddQuiz(e)}
+                                placeholder="wrongChoices #2"
+                            />
+                               <input className="input"
+                                type="text"
+                                name="wrongChoices"
+                                onChange={(e) => props.handleAddQuiz(e)}
+                                placeholder="wrongChoices #3"
                             />
                             <input className="description"
                                 type="text"
-                                name="Description"
-                                onChange={(e) => props.handleChangeRoom(e)}
-                                placeholder="Description"
-                            />
-                            <button className="addQuiz">Add Quiz</button>
-
-                            <div className="radioButton">
-                                <div className="radioPriv">
-                                    <input className="radioBut" onClick={(e) => testPrivet(e)} value={true} type="radio"  id="public" name="publicc"  />
-                                    <label for="public">Public</label><br></br>
-                                </div>
-                                <div className="radioPublic">
-                                    <input className="radioBut" onClick={(e) => testPrivet(e)}  value={false} type="radio" id="privet" name="publicc" />
-                                    <label for="privet">Private</label>
-                                </div>
-                            </div>
-
-                            <input className={`pass${props.thePostRoom.privetRoomPass}`}
-                                type="password"
-                                name="password"
-                                onChange={(e) => props.handleChangeRoom(e)}
-                                placeholder="Password"
+                                name="discription"
+                                onChange={(e) => props.handleAddQuiz(e)}
+                                placeholder="discription"
                             />
 
-                            <button className="button" type="submit" id="login-button">CREATE!</button>
+                            <button className="button" type="submit" id="login-button">CREATE Quiz!</button>
                         </form>
                     </div>
 
@@ -116,18 +97,14 @@ const RoomForm = props => {
 
 const mapStateToProps = state => ({
     sign: state.sign,
-    thePostRoom: state.thePostRoom,
+    postNewQuiz: state.postNewQuiz,
     userInfo: state.userInfo,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
-    handleChangeRoom: (e) => dispatch(actions.handleChangeRoom(e)),
-
-
-    roomPost: (token, id, roomName, publicc, password, adminName, members) =>
-        dispatch(actions.roomPost(token, id, roomName, publicc, password, adminName, members)),
-    
-        handlePrivetPass : (value) => dispatch(actions.handlePrivetPass(value)),     
+    handleAddQuiz: (e) => dispatch(actions.handleAddQuiz(e)),
+    quizPost: (token, quizName, discription, questions, correctAnswer, wrongChoices,courseID) =>
+        dispatch(actions.quizPost(token, quizName, discription, questions, correctAnswer, wrongChoices,courseID)),       
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoomForm);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizForm);

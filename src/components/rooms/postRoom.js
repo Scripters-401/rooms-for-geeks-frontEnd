@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/postRoomReduser'
+// import * as action from '../../store/postCourseReducer'
 import './room.scss';
 
 const RoomForm = props => {
@@ -19,17 +20,30 @@ const RoomForm = props => {
     }
     const handleSubmitFun = e => {
         e.preventDefault();
+        console.log('roooooo', props.thePostRoom);
+        console.log('hhh', props.thePostRoom.roomName,
+        props.thePostRoom.publicc,
+        props.thePostRoom.password,
+        props.userInfo.user.username,
+        props.thePostRoom.members);
         props.roomPost(
             props.sign.token,
-            props.sign.user.id,
             props.thePostRoom.roomName,
             props.thePostRoom.publicc,
             props.thePostRoom.password,
             props.userInfo.user.username,
             props.thePostRoom.members,
-
         );
-
+        
+    //     props.coursePost(
+    //     props.sign.token,
+    //     props.thePostRoom.courseName,
+    //     props.thePostRoom.topic,
+    //     props.thePostRoom.discription,
+    //     props.thePostRoom.tutorial,
+    //     props.userInfo.user._id,
+    //     props.thePostRoom.newRoomId,
+    //    ) 
     }
 
     return (
@@ -61,7 +75,7 @@ const RoomForm = props => {
                             />
                             <input className="input"
                                 type="text"
-                                name="Tutorial Link"
+                                name="tutorial"
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder="Tutorial Link"
                             />
@@ -118,6 +132,7 @@ const mapStateToProps = state => ({
     sign: state.sign,
     thePostRoom: state.thePostRoom,
     userInfo: state.userInfo,
+  
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
@@ -127,7 +142,11 @@ const mapDispatchToProps = (dispatch, getState) => ({
     roomPost: (token, id, roomName, publicc, password, adminName, members) =>
         dispatch(actions.roomPost(token, id, roomName, publicc, password, adminName, members)),
     
-        handlePrivetPass : (value) => dispatch(actions.handlePrivetPass(value)),     
+        handlePrivetPass : (value) => dispatch(actions.handlePrivetPass(value)),   
+
+    // coursePost: (token, courseName, topic, discription, tutorial, userid, roomID) =>
+    //   dispatch(action.coursePost(token, courseName, topic, discription, tutorial, userid, roomID)),   
+        
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomForm);
