@@ -8,17 +8,7 @@ const QuizForm = props => {
 
     const handleSubmitFun = e => {
         e.preventDefault();
-        props.roomPost(
-            props.sign.token,
-            props.postNewQuiz.quizName,
-            props.postNewQuiz.discription,
-            props.postNewQuiz.questions,
-            props.postNewQuiz.correctAnswer,
-            props.postNewQuiz.wrongChoices,
-            props.postNewQuiz.courseID,
-            props.userInfo.user.username,
-        );
-
+    
     }
 
     return (
@@ -73,7 +63,7 @@ const QuizForm = props => {
                                 placeholder="discription"
                             />
 
-                            <Link to="/room"><button className="button" type="submit" id="login-button">CREATE Quiz!</button></Link>
+                            <Link to="/create-room"><button className="button" type="submit" id="login-button">CREATE Quiz!</button></Link>
                         </form>
                     </div>
 

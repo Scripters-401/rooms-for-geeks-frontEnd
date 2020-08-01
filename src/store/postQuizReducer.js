@@ -1,6 +1,6 @@
-require('dotenv').config();
-const API = process.env.REACR_APP_API;
-
+// require('dotenv').config();
+// const API = process.env.REACR_APP_API;
+const API ='http://localhost:4000';
 let initialState ={
    
 };
@@ -25,11 +25,12 @@ export const handleAddQuiz = e => {
 
 export const quizPost = (token, quizName, discription, questions, correctAnswer, wrongChoices,courseID) => async dispatch =>{
     console.log(quizName, discription, questions, correctAnswer, wrongChoices,courseID);
+    console.log('API', API , 'tokennn' , token);
     try {
         const results = await fetch(`${API}/quiz` ,{
             method: 'POST',
             mode: 'cors',
-            cache: 'no-cache',
+            // cache: 'no-cache',
             headers: new Headers({
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
