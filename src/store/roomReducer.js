@@ -13,6 +13,7 @@ let initialState = {
   adminName: '',
   choosenRoomIDSocket: '',
   redirectTakeQuiz: false,
+  finishQuiz: false,
 };
 
 // reducer : switch case
@@ -45,6 +46,11 @@ export default (state = initialState, action) => {
       state.choosenRoomIDSocket = payload
       return { ...state };
 
+    case 'updatefinishQuiz':
+      state.redirectTakeQuiz = payload.redirectTakeQuiz
+      state.finishQuiz = payload.finishQuiz
+      return { ...state };
+
 
 
 
@@ -54,6 +60,14 @@ export default (state = initialState, action) => {
 }
 
 /*************************************************** actions ****************************************************** */
+
+
+export const updatefinishQuiz = (finishQuiz, redirectTakeQuiz) => {
+  return {
+    type: 'updatefinishQuiz',
+    payload: { finishQuiz, redirectTakeQuiz },
+  }
+}
 export const roomData = payload => {
   return {
     type: 'roomDataAction',

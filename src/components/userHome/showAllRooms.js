@@ -91,7 +91,7 @@ const AllRooms = props => {
                                                         </g>
                                                     </svg> */}
                                     
-                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${'sport'}`][random]}`} alt='LOGO' />
+                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random]}`} alt='LOGO' />
 
                                                         {/* <h2 class="card-front__heading">
                                                             {val.roomName}

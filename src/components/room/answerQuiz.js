@@ -8,6 +8,7 @@ import * as actions from '../../store/roomReducer';
 import Show from '../auth/show'
 // import './room.scss'
 let selectedAnswers = [];
+let cc = false;
 const Quiz = props => {
 
   useEffect(() => {
@@ -25,7 +26,14 @@ const Quiz = props => {
     } else {
       props.postAnswers(props.sign.token, selectedAnswers, quizID, props.userInfo.user._id)
       selectedAnswers = [];
-      props.room.redirectTakeQuiz = false;
+      // props.room.redirectTakeQuiz = false;
+      setTimeout(() => {
+        console.log('iiiiiiiiiiiiiiiiiiiiiiiiiiii');
+        // props.room.finishQuiz = true;
+        props.updatefinishQuiz(true, false)
+        // cc = true
+        console.log(props.room.redirectTakeQuiz, props.room.finishQuiz, !props.room.redirectTakeQuiz && props.room.finishQuiz);
+      }, 2000)
 
 
     }
@@ -81,15 +89,8 @@ const Quiz = props => {
       </Show>
       <Show condition={props.room.score !== null}>
         {props.room.score}
-        {!props.room.redirectTakeQuiz ?
-          (<>
-            <div> SCoreeeeeeeeee</div>
-
-               (<Redirect to="/room" />)
-
-
-          </>)
-          : null}
+        {console.log(props.room.redirectTakeQuiz, props.room.finishQuiz, !props.room.redirectTakeQuiz && props.room.finishQuiz)}
+        {!props.room.redirectTakeQuiz && props.room.finishQuiz ? (<Redirect to="/room" />) : null}
 
       </Show>
     </div>
@@ -116,6 +117,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
   postAnswers: (token, answers, quizID, userID) => dispatch(actions.postAnswers(token, answers, quizID, userID)),
   // resetOutput: () => dispatch(actions.resetOutput()),
   updateScore: (score) => dispatch(actions.updateScore(score)),
+  updatefinishQuiz: (finishQuiz, redirectTakeQuiz) => dispatch(actions.updatefinishQuiz(finishQuiz, redirectTakeQuiz)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
