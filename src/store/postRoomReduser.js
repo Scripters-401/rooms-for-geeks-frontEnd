@@ -4,7 +4,8 @@ const API = process.env.REACT_APP_API;
 
 let initialState = {
     roomC: '',
-    privetRoomPass: false
+    privetRoomPass: false,
+    newRoomId : '',
 };
 
 export default (state = initialState, action) => {
@@ -19,13 +20,23 @@ export default (state = initialState, action) => {
         case 'HANDLE_PRIVET_PASS':
             state.privetRoomPass= payload
             return { ...state };
+        case 'HANDLE_NEW_ROOM_ID':
+            state.newRoomId = payload._id
+            return { ...state };    
         default:
             return state;
     }
 }
 
+export const handleNewRoomId = e => {
+    return {
+        type : 'HANDLE_NEW_ROOM_ID',
+        payload : e,
+        }
+}
+
 export const handleChangeRoom = e => {
-    console.log('JJJJJFFFFFF',e.target);
+    // console.log('JJJJJFFFFFF',e.target);
     return {
         type: 'HANDLE_CHANGE_ROOM',
         payload: { name: [e.target.name], value: e.target.value },
@@ -56,6 +67,7 @@ export const roomPost = (token, id, roomName, publicc, password, adminName, memb
 
         });
       let res = await results.json();
+      dispatch(handleNewRoomId(res));
       console.log('jjjj',res);
     } catch (error) {
         console.error(`ERROR: ROOMS`);

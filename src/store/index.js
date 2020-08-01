@@ -15,7 +15,7 @@ import thePostCourse from './postCourseReducer';
 import thunk from 'redux-thunk';
 import userHome from './userHome';
 import newPass from './forgotPassReducer';
-
+import postNewQuiz from './postQuizReducer'
 
 import upload from './uploadImageReducer'
 let reducers = combineReducers({
@@ -33,6 +33,7 @@ let reducers = combineReducers({
     userHome,
     upload,
     newPass,
+    postNewQuiz,
     
 });
 

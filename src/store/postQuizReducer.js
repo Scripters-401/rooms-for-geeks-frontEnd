@@ -2,7 +2,7 @@ require('dotenv').config();
 const API = process.env.REACR_APP_API;
 
 let initialState ={
-    quiz: '',
+   
 };
 
 export default (state = initialState, action) => {
@@ -23,9 +23,10 @@ export const handleAddQuiz = e => {
     }
 }
 
-export const quizPost = (token, quizName, discription, questions, correctAnswer, wrongChoices,adminName) => async dispatch =>{
+export const quizPost = (token, quizName, discription, questions, correctAnswer, wrongChoices,courseID) => async dispatch =>{
+    console.log(quizName, discription, questions, correctAnswer, wrongChoices,courseID);
     try {
-        const results = await fetch(`${API}/quizCreated` ,{
+        const results = await fetch(`${API}/quiz` ,{
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -34,7 +35,7 @@ export const quizPost = (token, quizName, discription, questions, correctAnswer,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }),
-            body: JSON.stringify({token, id, quizName, discription, questions, correctAnswer, wrongChoices, courseID, adminName})
+            body: JSON.stringify({ quizName, discription, questions, correctAnswer, wrongChoices, courseID})
         });
         let res = await results.json();
     } catch(error){
