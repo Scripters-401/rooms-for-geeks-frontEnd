@@ -5,8 +5,8 @@ import { HashLink as Link2 } from 'react-router-hash-link';
 
 import * as actions from '../../store/signINUPReducer.js'
 import Show from '../auth/show';
-import logo from '../../assest/LOGOC.png';
-
+import logo from '../../assest/webHeaderLogo.png';
+//LOGOC.png
 import '../../reset.css';
 import './header.scss';
 
@@ -76,7 +76,7 @@ const Header = props => {
             </li>
           </ul>
         </nav>
-        <h1 className="H1">Rooms For Geeks</h1>
+        {/* <h1 className="H1">Rooms For Geeks</h1> */}
         <img className="logo" src={logo} alt='LOGO' />
       </div>
     </header>
