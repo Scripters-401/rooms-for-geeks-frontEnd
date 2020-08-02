@@ -16,12 +16,17 @@ const QuizForm = props => {
     const hi = () => {
         idx += 1
         props.updateOutput(renderForm(idx))
+        setTimeout(() => {
+            if (idx === 1) {
+                props.updateSettings({
+                    dots: true,
+                    autoplay: false,
+                })
+            }
+            document.getElementsByTagName('a')[6].click()
+        }, 200);
     }
-    const settings = {
-        dots: true,
-        autoplay: false,
-        arrow: true
-    }
+    
     const renderForm = (idx) => {
         return (
             <form className="form" key={idx}>
@@ -80,30 +85,22 @@ const QuizForm = props => {
                                 onChange={(e) => props.handleAddQuiz0(e)}
                                 placeholder="discription"
                             />
-                            <Slider {...settings}>
+                            <Slider {...props.postNewQuiz.settings}>
                                 <div>
                                     {renderForm(0)}
                                 </div>
-                                {props.postNewQuiz.output.map(formElement => {
-
+                                {props.postNewQuiz.output.map((formElement, i) => {
                                     return (
-                                        <div>
+                                        <div key={i}>
                                             {formElement}
                                         </div>
                                     )
-
-
                                 })}
                             </Slider>
-
+                            <button className="AddQuestionbutton" onClick={() => hi()} >Add Next Question</button>
                             <Link to="/create-room"><button className="button" type="submit" id="login-button">CREATE Quiz!</button></Link>
                         </form>
-                        <button id="login-button" onClick={() => hi()} style={{
-                            "z-index": "999999999",
-                            "position": "absolute",
-                            "bottom": "111px",
-                            "right": "125px",
-                        }}>Add Question</button>
+
                     </div>
 
                     <ul className="bg-bubbles">
@@ -137,6 +134,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
     quizPost: (token, quizName, discription, questions, correctAnswer, wrongChoices, courseID) =>
         dispatch(actions.quizPost(token, quizName, discription, questions, correctAnswer, wrongChoices, courseID)),
     updateOutput: (e) => dispatch(actions.updateOutput(e)),
+    updateSettings: (obj) => dispatch(actions.updateSettings(obj)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizForm);

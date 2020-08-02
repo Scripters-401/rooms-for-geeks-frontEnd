@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { Redirect, Link } from 'react-router-dom';
+
 import Show from '../auth/show'
 
 import * as actions from '../../store/roomReducer';
@@ -59,11 +61,15 @@ const Questions = props => {
         props.room.roomData.QAData[questionidx].answers.splice(answerIndex, 1)
 
     }
-
+    const goToQuestion = id => {
+        props.room.questionIndex = id
+        // props.room.goToQuestionState = true
+    }
 
     return (
 
         <div className='QAData'>
+            {props.room.goToQuestionState ? (<Redirect to="/Question" />) : null}
             <h2>Questions and Answers</h2>
             <form onSubmit={e => askQuestion(e)}>
                 <label>ADD your Question
@@ -82,7 +88,9 @@ const Questions = props => {
                         </Show>
                         <span>Asked by: {element.virtualcreatedName}</span><br />
                         <span>Created time: {element.createdTime.slice(0, 10)}</span>
-                        <ul>
+                        <div>Number of answers: {element.answers.length}</div>
+                        <Link to='/Question'> <button onClick={e => goToQuestion(idx)}>go to question</button></Link>
+                        {/* <ul>
                             {element.answers.map((e, i) => {
                                 return (
                                     <React.Fragment key={i}>
@@ -96,12 +104,13 @@ const Questions = props => {
                                 )
                             })}
                         </ul>
+                        
                         <form onSubmit={e => submit(e, idx)}>
                             <label>ADD your answer
                         <input onChange={e => answerFun(e)}></input>
                             </label>
                             <button>ADD Answer</button>
-                        </form>
+                        </form> */}
 
                     </div>
                 )
