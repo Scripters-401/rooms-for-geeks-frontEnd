@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amiri&display=swap");
 .header {
     display: flex;
     background-color: white;
-    max-height: 66px;
+    max-height: 90px;
     flex-direction: row-reverse;
     position: sticky;
     z-index: 999999;
@@ -12,13 +12,26 @@
     box-shadow: 0px 7px 24px rgba(206, 205, 205, 0.699);
 }
 
+#profileheader {
+    width: 40px;
+    border-radius: 38px;
+    position: relative;
+    top: -18%;
+    &:hover{
+        background: none;
+    }
+    // img{
+    //     width: 42%;
+    //     height: 100%;
+    // }
+}
 h1 {
     margin: auto;
-} 
+}
 
 h1.H1 {
     margin: auto 0;
-    font-family: 'Amiri', serif;
+    font-family: "Amiri", serif;
     color: #7da09a;
     font-size: 198%;
     display: flex;
@@ -26,15 +39,22 @@ h1.H1 {
     flex: 1;
     z-index: 999999;
 }
-// img.logo {
-//     height: 61px;
-//     margin: .5% 0% 0% 1%;
-// }
 
+// img.logo {
+//     height: 40px;
+//     margin: auto auto auto 0;
+
+// }
 img.logo {
-    height: 40px;
-    margin: auto auto auto 0;
-   
+    /* margin: auto auto auto 0; */
+    width: 2;
+    // height: 126px;
+    height: 86px;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin-top: -1.2%;
 }
 
 ul.ulHeader {
@@ -47,25 +67,36 @@ ul.ulHeader {
     color: #7da09a;
     font-size: 109%;
     padding: 13px;
-    font-family: 'Amiri', serif;
+    font-family: "Amiri", serif;
     margin: auto;
     position: relative;
-    
-    &:hover{
+
+    &:hover {
         color: #7da09a;
         text-decoration: none;
         border-radius: 15px;
-        background-image: url('https://data.whicdn.com/images/298919914/original.gif') ;
+        background-image: url("https://data.whicdn.com/images/298919914/original.gif");
         opacity: 0.25;
-        
     }
-   
 }
 
+.navHeader2 {
+    color: #7da09a;
+    font-size: 109%;
+    padding: 13px;
+    font-family: "Amiri", serif;
+    margin: auto;
+    position: relative;
+
+    // &:hover {
+    //     color: #7da09a;
+    //     text-decoration: none;
+    //     border-radius: 15px;
+    //     background-image: url("https://data.whicdn.com/images/298919914/original.gif");
+    //     opacity: 0.25;
+    // }
+}
 
 nav.allNavHeader {
     margin: auto 37px auto auto;
 }
-
-
-

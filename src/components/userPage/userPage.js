@@ -9,9 +9,9 @@ import * as actions3 from '../../store/uploadImageReducer';
 
 const User = props => {
 
-    // useEffect(() => {
-    //     props.getInfoUser(props.sign.token, props.sign.user.id)
-    // }, [props.sign.token, props.sign.user.id])
+    useEffect(() => {
+        props.getInfoUser(props.sign.token, props.sign.user.id)
+    }, [props.sign.token, props.sign.user.id])
 
     const handleSubmitFun = event => {
         event.preventDefault();
