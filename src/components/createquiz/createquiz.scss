@@ -1,0 +1,11 @@
+.slider {
+  height: 315px;
+  a.nextButton {
+    right: 20px;
+    z-index: 99999;
+  }
+  a.previousButton {
+    left: 20px;
+    z-index: 99999;
+  }
+}

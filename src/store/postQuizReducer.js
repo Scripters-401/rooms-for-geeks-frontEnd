@@ -1,33 +1,49 @@
 // require('dotenv').config();
 // const API = process.env.REACR_APP_API;
-const API ='http://localhost:4000';
-let initialState ={
-   
-};
+const API = 'http://localhost:4000';
+let initialState = {
+    output: [],
+    questions:[],
+    correctAnswer:[],
+    wrongChoices:[],
+ };
 
 export default (state = initialState, action) => {
-    let { type , payload} = action;
-    switch(type){
+    let { type, payload } = action;
+    switch (type) {
         case 'HANDLE_ADD_QUIZ':
-            state[payload.name] = payload.value
-            return { ...state};
+            let z = payload.name.toString().slice(0,-1)
+            let idx = payload.name.toString().slice(-1)
+            state[z][idx] = payload.value
+            return { ...state };
+
+        case 'updateOutput':
+            state.output = [...state.output, payload]
+            return { ...state };
         default:
-            return state;    
+            return state;
     }
 }
 
 export const handleAddQuiz = e => {
     return {
-        type : 'HANDLE_ADD_QUIZ',
-        payload: { name: [e.target.name], value: e.target.value},
+        type: 'HANDLE_ADD_QUIZ',
+        payload: { name: [e.target.name], value: e.target.value },
     }
 }
 
-export const quizPost = (token, quizName, discription, questions, correctAnswer, wrongChoices,courseID) => async dispatch =>{
-    console.log(quizName, discription, questions, correctAnswer, wrongChoices,courseID);
-    console.log('API', API , 'tokennn' , token);
+export const updateOutput = e => {
+    return {
+        type: 'updateOutput',
+        payload: e,
+    }
+}
+
+export const quizPost = (token, quizName, discription, questions, correctAnswer, wrongChoices, courseID) => async dispatch => {
+    console.log(quizName, discription, questions, correctAnswer, wrongChoices, courseID);
+    console.log('API', API, 'tokennn', token);
     try {
-        const results = await fetch(`${API}/quiz` ,{
+        const results = await fetch(`${API}/quiz`, {
             method: 'POST',
             mode: 'cors',
             // cache: 'no-cache',
@@ -36,10 +52,11 @@ export const quizPost = (token, quizName, discription, questions, correctAnswer,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }),
-            body: JSON.stringify({ quizName, discription, questions, correctAnswer, wrongChoices, courseID})
+            body: JSON.stringify({ quizName, discription, questions, correctAnswer, wrongChoices, courseID })
         });
         let res = await results.json();
-    } catch(error){
+    } catch (error) {
         console.log(`ERROR: QUIZS`);
     }
 }
+
