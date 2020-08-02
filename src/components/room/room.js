@@ -63,8 +63,9 @@ const Room = props => {
         setTimeout(() => {
             cookie.save('roomID', props.room.choosenRoomIDSocket)
             props.getRoom(props.sign.token, props.room.choosenRoomIDSocket);
-            props.room.favOrNot = props.userInfo.user && props.userInfo.user.favRooms ? props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket) : null;
-        }, 700);
+            let fav = props.userInfo.user && props.userInfo.user.favRooms ? props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket) : null;
+            props.updateFavOrNot(fav)
+        }, 500);
 
     }, [props.room.choosenRoomIDSocket])
     useEffect(() => {
@@ -75,13 +76,17 @@ const Room = props => {
     const addToFav = e => {
         props.addToFav(props.sign.token, props.userInfo.user._id, props.userHome.choosenRoomID);
         props.userInfo.user.favRooms.push(props.userHome.choosenRoomID)
-        props.room.favOrNot = true;
+        // props.room.favOrNot = true;
+        props.updateFavOrNot(true)
+
     }
 
     const removefromFav = e => {
         props.userInfo.user.favRooms.splice(props.userInfo.user.favRooms.indexOf(props.userHome.choosenRoomID), 1)
         props.removefromFav(props.sign.token, props.userInfo.user._id, props.userHome.choosenRoomID);
-        props.room.favOrNot = false;
+        // props.room.favOrNot = false;
+        props.updateFavOrNot(false)
+
     }
     const deleteRoom = e => {
         props.deleteRoom(props.sign.token,
@@ -159,6 +164,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
     deleteRoom: (token, name, userid, roomID, courseID) => dispatch(actions.deleteRoom(token, name, userid, roomID, courseID)),
     updateRoomAdminBool: (userid) => dispatch(actions.updateRoomAdminBool(userid)),
     updateChoosenRoomIDSocket: (userid) => dispatch(actions.updateChoosenRoomIDSocket(userid)),
+    updateFavOrNot:(bool) => dispatch(actions.updateFavOrNot(bool)),
 });
 
 
