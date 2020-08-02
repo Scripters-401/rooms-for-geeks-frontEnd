@@ -11,13 +11,13 @@
 --darkGrey: #4F585E;
 }
 
-body {
-  background: var(--lightBG);
-  color: var(--darkGrey);
-  font-family: 'Source Sans Pro', sans-serif;
-  text-rendering: optimizeLegibility;
-}
-a.btn {
+// body {
+//   background: var(--lightBG);
+//   color: var(--darkGrey);
+//   font-family: 'Source Sans Pro', sans-serif;
+//   text-rendering: optimizeLegibility;
+// }
+span.btn {
   background: var(--teal);
   border-radius: 4px;
 	box-shadow: 0 2px 0px 0 rgba(0,0,0,0.25);
@@ -28,14 +28,14 @@ a.btn {
   text-decoration: none;
 	transition: all 0.1s 0s ease-out;
 }
-.no-touch a.btn:hover {
+.no-touch span.btn:hover {
   // background: lighten(var(--teal),2.5);
   box-shadow: 0px 8px 2px 0 rgba(0, 0, 0, 0.075);
   transform: translateY(-2px);
   transition: all 0.25s 0s ease-out;
 }
-.no-touch a.btn:active,
-a.btn:active {
+.no-touch span.btn:active,
+span.btn:active {
   // background: darken(var(--teal),2.5);
   box-shadow: 0 1px 0px 0 rgba(255,255,255,0.25);
   transform: translate3d(0,1px,0);
@@ -44,15 +44,20 @@ a.btn:active {
 div.card {
   background: var(--white);
   display: inline-block;
-  margin: 5%;
+  margin: 2%;
   perspective: 1000;
+  border: 1px solid #7da09a;
   position: relative;
-  text-align: left;
+  text-align: center;
   transition: all 0.3s 0s ease-in;
   width: 100%;
   z-index: 1;
   max-width: 70%;
-  // min-height: 300px;
+  box-shadow: 1px 2px 2px #9ce8dbb5;
+  &:hover{
+    box-shadow: 3px 3px 6px rgba(45, 117, 151, 0.514);
+  }
+
 
   // img {
   //   max-width: 300px;
@@ -67,7 +72,7 @@ div.card {
     padding: 6px 15px 0px;
     position: relative;
     z-index: 0;
-    a.toggle-info {
+    span.toggle-info {
       border-radius: 32px;
       height: 32px;
       padding: 0;
@@ -119,7 +124,7 @@ div.card {
   }
   div.card-flap {
     // background: darken(var(--white),15);
-    position: absolute;
+    // position: absolute;
     width: 100%;
     transform-origin: top;
     transform: rotateX(-90deg);
@@ -149,8 +154,9 @@ div.cards.showing {
 div.card.show {
   opacity: 1 !important;
   transform: scale(1) !important;
+  z-index: 10;
   div.card-title {
-    a.toggle-info {
+    span.toggle-info {
       background: var(--salmon) !important;
       span {
         top: 15px;
@@ -186,7 +192,7 @@ div#upperDiv {
 input.rangeInput {
   margin-left: 1%;
   position: relative;
-  top: 4px;
+  top: 3px;
 }
 
 input.inputRange {
@@ -203,7 +209,7 @@ p.userNameP {
 
 p.dateFormatedP {
   font-weight: 400;
-  font-size: 62%;
+  font-size: 68%;
 }
 
 p.compP {
@@ -218,6 +224,7 @@ p.pastionP {
 p.revP {
   font-size: 155%;
   font-weight: 350;
+  text-align: -webkit-center;
 }
 
 p.dateP {
@@ -226,6 +233,7 @@ p.dateP {
 
 p.rateP {
   font-size: 120%;
+  text-align-last: end;
 }
 
 div#divForm {
@@ -254,12 +262,11 @@ input.anonymousInput {
 
 
 .containerI {
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
   padding: 50px 0;
-  height: 400px;
   text-align: center;
-  margin-bottom: 35%;
+  margin-bottom: 6%;
 
   h3 {
       font-size: 25px;
@@ -272,6 +279,8 @@ input.anonymousInput {
   h3.nameOfForm {
       color: #32423f;
       z-index: 99999;
+      margin-bottom: 5%;
+      margin-top: 1%;
   }
 }
 
@@ -351,6 +360,7 @@ input.anonymousInput {
   }
 
   .buttonI {
+      align-self: center;
       appearance: none;
       outline: 0;
       background-color: #49756263;
@@ -370,6 +380,67 @@ input.anonymousInput {
     }
   }
 
+}
+
+form.addReviewForm {
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+textarea.addReviewInput {
+  text-align: center;
+  margin-bottom: 2%;
+  display: block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  border: 1px solid #a2a0a0;
+  background-color: #fafbfa;
+  width: 566px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: #0a0a0a;
+  transition-duration: 0.25s;
+  font-weight: 330;
+  &:hover {
+      background-color: #49756263;
+      transition-duration: 0.25s;
+      color: white;
+  }
+
+  &:focus {
+      background-color: white;
+      width: 620px;
+      color: #0a0a0a;
+      // font-weight: bold;
+  }
+}
+
+.addReviewButton{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  background-color: #162d23c2;
+  color: white;
+  border: 0;
+  padding: 8px 5px;
+  border-radius: 3px;
+  width: 163px;
+  margin-bottom: 3%;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25s;
+  box-shadow: 3px 3px 6px #537970;
+  &:hover {
+  background-color: #416760;
+  color:white; 
+  }
 }
 
 // div.card div.card-description {
@@ -395,3 +466,334 @@ input.anonymousInput {
 //   border: 1px solid rgba(0,0,0,.125);
 //   border-radius: 1px;
 // }
+
+
+
+.twoReview {
+
+}
+
+.moretext-true {
+  display: initial;
+}
+
+.moretext-false {
+  display: none;
+}
+
+
+#button {
+  margin: 20px;
+}
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+}
+
+
+
+.btn-16 {
+  border: none;
+  color: #000;
+}
+.btn-16:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.btn-16:hover {
+  color: #000;
+}
+.btn-16:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.btn-16:active {
+  top: 2px;
+}
+
+.divButton {
+  text-align: center;
+}
+
+
+
+div.card .card__image-holder {
+  background: #7da09a;
+  border-bottom: 2px solid #7da09a;
+  height: 0;
+  padding-bottom: 10%;
+  min-height: 106px;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  font-size: 132%;
+}
+
+// .card {
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   min-width: 0;
+//   min-height: 448px;
+//   word-wrap: break-word;
+//   background-color: #fff;
+//   background-clip: border-box;
+//   border: 2px solid #7da09a;
+//   border-radius: .25rem;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.rate {
+  // float: left;
+  // height: 46px;
+  // padding: 0 10px;
+}
+.rate:not(:checked) > .inputT {
+  display: none;
+}
+.rate:not(:checked) > .labelT {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+.rate:not(:checked) > .labelT:before {
+  content: "★ ";
+}
+.rate > .inputT:checked ~ .labelT {
+  color: #ffc700;
+}
+.rate:not(:checked) > .labelT:hover,
+.rate:not(:checked) > .labelT:hover ~ .labelT {
+  color: #deb217;
+}
+.rate > .inputT:checked + .labelT:hover,
+.rate > .inputT:checked + .labelT:hover ~ .labelT,
+.rate > .inputT:checked ~ .labelT:hover,
+.rate > .inputT:checked ~ .labelT:hover ~ .labelT,
+.rate > .labelT:hover ~ .inputT:checked ~ .labelT {
+  color: #c59b08;
+}
+
+p.pastionP {
+  padding-left: 1rem;
+  padding-top: 2rem;
+}
+
+span.compP {
+  padding-left: 10rem;
+}
+
+
+
+div#section {
+  box-shadow: 3px 3px 6px #9ce8dbb5;
+}
+
+div.card.show div.card-flap {
+  transform: rotateX(0deg);
+  border-block-end-width: 2px solid yellow;
+  width: 100%;
+}
+
+
+div.card div.card-flap {
+  /* position: absolute; */
+  width: 100%;
+  transform-origin: top; 
+  transform: rotateX(-90deg);
+}
+
+div.card.show div.card-title span.toggle-info {
+  background: #346f65 !important;
+}
+
+.formateD {
+  text-align-last: left;
+  padding-top: 8px;
+}
+
+textarea.addReviewInput {
+  float: left;
+  margin-left: 7%;
+}
+
+button.addReviewButton {
+  margin-bottom: 0;
+  margin-top: 2%;
+  margin-left: -6%;
+}
+
+p.reviewPPPP {
+  border: 2px solid #2b6b60e3;
+  margin-top: 5%;
+  border-radius: 11px;
+  width: 94%;
+  text-align: justify;
+  padding: 2%;
+  text-align-last: center;
+}
+
+form.addReviewForm {
+  text-align: center;
+  margin-bottom: 0%;
+  margin-top: 0%;
+  padding-top: 4%;
+  padding-bottom: 5%;
+}
+
+
+h3.PR {
+  margin-bottom: -2%;
+  margin-top: 3%;
+}
+
+
+
+
+.modal {
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; 
+  border: 1px solid #888;
+  width: 80%; 
+}
+
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: rgba(0,123,255,.25);
+  &:hover {
+    color: #36f4eb;
+  cursor: pointer;
+  }
+  &:focus {
+    color: #36f4eb;
+    cursor: pointer;
+  }
+}
+
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+
+#divBlock {
+  display: block;
+}
+
+#divNone {
+  display: none;
+}
+
+
+.twoReview {
+  padding-bottom: 1%;
+  padding-top: 1%;
+}
+
+
+
+.hideFirst-true {
+  display: none;
+  background-color: #969595;
+}
+
+.hideFirst-false {
+  display: initial;
+}
+
+// @for $i from 1 through 1000 {
+//   @if $i {
+//     .hideFirst-false-#{$i} {
+//       display: initial;
+//     }
+//   } @else {
+//     .hideFirst-true-#{$i} {
+//       display: none;
+//     }
+//   }
+// }
+
+
+div#btnInt {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 8%;
+  padding-top: 7%;
+}
+
+
+button#btnInterview {
+  width: 30%;
+  height: 58px;
+  color: #e9efee;
+  background-color: #5c7879;
+}
