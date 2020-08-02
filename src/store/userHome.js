@@ -20,6 +20,7 @@ let initialState = {
         members: [],
         password: false,
         oranaizationType: 'none', //defualt global room
+        _id: '1'
     }, {
         roomName: 'Python',
         public: true,
@@ -28,6 +29,7 @@ let initialState = {
         members: [],
         password: false,
         oranaizationType: 'none', //defualt global room
+        _id: '2'
     },],
     allRooms: [{
         roomName: 'JavaScript',
@@ -351,7 +353,7 @@ export const allRoomsLength = res => {
 }
 
 export const roomID = (id) => async dispatch => {
-    console.log('roomIDAction', id);
+    // console.log('roomIDAction', id);
     dispatch(roomIDAction(id))
 }
 

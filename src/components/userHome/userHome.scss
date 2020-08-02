@@ -469,7 +469,7 @@ a.createRoom {
 
 /* Specifically targeting the <video> element */
 .video__container {
-  clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%);
+  // clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%);
   height: auto;
   min-height: 69%;
   object-fit: cover;
@@ -547,3 +547,7 @@ a{
  
   right: 10px;
 }
+// .div-width{
+//   width:33%
+// }
+

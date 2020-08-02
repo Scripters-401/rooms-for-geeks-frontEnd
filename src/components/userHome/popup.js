@@ -3,36 +3,43 @@ import bcrypt from 'bcryptjs'
 import { connect } from 'react-redux'
 import './userHome.scss'
 import * as actions from '../../store/userHome';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+// import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 // var bcrypt = require('bcrypt');
 const Popup = props => {
     const [smShow, setSmShow] = useState(false);
-    
+    const [passCondition, setPassCondition] = useState(false);
+
 
     async function handleChangePass(e) {
-        // e.preventDefault();
-        console.log('inputtttttt', e.target.value);
         props.roomPassword(e.target.value);
     }
-    async function compare(e) {
-        // e.preventDefault();
-        console.log('props input password', props.userHome.roomPrivatePass);
-        props.userHome.allRooms.forEach(async val =>{
-            if(val.roomName === 'real'){
-                console.log('real password',val.password);
-                let koo =val.password;
-                let valid = await bcrypt.compare(props.userHome.roomPrivatePass, koo);
-                console.log('resulttttttsssss',valid);
+     function compare(id) {
+
+        for (let i = 0; i < props.userHome.allRooms.length; i++) {
+            
+            if (props.userHome.allRooms[i]._id === id) {
+                let koo = props.userHome.allRooms[i].password;
+                return  bcrypt.compare(props.userHome.roomPrivatePass, koo);
             }
-        })
-        
-
-        
+        }
     }
+    function goToRoom(e, id) {
 
+        compare(id).then((r) => {
+            if (r) {
+                props.choosenID(id);
+                setPassCondition(true)
+            }
+        }
+        )
+    }
+    console.log('idddddddsssss', props.userHome.choosenRoomID);
     return (
         <>
-            <Button onClick={() => setSmShow(true)}>Small modal</Button>{' '}
+            {passCondition ? <Redirect to="/room" /> : null}
+            <div class="inside-page__btn inside-page__btn--ski" onClick={() => setSmShow(true)}>View Room</div>{' '}
             <Modal
                 size="sm"
                 show={smShow}
@@ -47,7 +54,7 @@ const Popup = props => {
                 <Modal.Body>
                     <form>
                         <input type='password' name='pass' onChange={(e) => handleChangePass(e)} />
-                        <Button onClick={compare}>View Room</Button>
+                        <div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, props.bb)}> View Room</div>
                     </form>
                 </Modal.Body>
             </Modal>
@@ -60,7 +67,7 @@ const mapStateToProps = state => ({
     userHome: state.userHome
 });
 const mapDispatchToProps = (dispatch, getState) => ({
-    showAllFun: () => dispatch(actions.showAllFun()),
+    choosenID: (id) => dispatch(actions.roomID(id)),
     roomPassword: (pass) => dispatch(actions.roomPassword(pass))
 
 });

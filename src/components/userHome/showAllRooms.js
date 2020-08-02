@@ -7,8 +7,9 @@ import './userHome.scss'
 import * as actions from '../../store/userHome';
 import { Link } from 'react-router-dom';
 import Show from '../auth/show';
+import Popup from './popup';
 // import { sign } from 'jsonwebtoken';
-
+let random = [];
 const AllRooms = props => {
     let randomArr = [];
 
@@ -17,7 +18,7 @@ const AllRooms = props => {
             console.log('token', props.sign.token)
             props.rooms(props.sign.token);
             // props.courses(props.sign.token)
-        }, 2000);
+        }, 500);
 
     }, []);
 
@@ -35,16 +36,16 @@ const AllRooms = props => {
             <div className='allRooms'>
                 {props.userHome.allRooms.map((val, i) => {
                     var topic = '';
-                    let random = Math.floor(Math.random() * 10)
+                    if (!random[i]) random[i] = Math.floor(Math.random() * 10);
                     let counter = 0;
                     while (counter < 10) {
 
-                        if (!randomArr.includes(random)) {
-                            randomArr.push(random);
+                        if (!randomArr.includes(random[i])) {
+                            randomArr.push(random[i]);
                             break;
                         }
                         else {
-                            random = Math.floor(Math.random() * 10)
+                            random[i] = Math.floor(Math.random() * 10)
                             counter++;
                             if (counter === 10) { randomArr = []; counter = 0; }
                         }
@@ -62,7 +63,7 @@ const AllRooms = props => {
                     // console.log('randommmmmm',random);
 
                     return (
-                        <div class='card-area-div'>
+                        <div class='card-area-div div-width'>
                             <section class="card-area">
                                 <section class="card-section">
                                     <div class="card">
@@ -92,7 +93,7 @@ const AllRooms = props => {
                                                         </g>
                                                     </svg> */}
 
-                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random]}`} alt='LOGO' />
+                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random[i]]}`} alt='LOGO' />
 
                                                         {/* <h2 class="card-front__heading">
                                                             {val.roomName}
@@ -127,7 +128,13 @@ const AllRooms = props => {
                                                 <p class="inside-page__text">
                                                     {val.createdTime.slice(0, 10)}
                                                 </p>
-                                                <Link to="/room" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
+                                                <Show condition={val.publicc}>
+                                                    <Link to="/room" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
+                                                </Show>
+                                                <Show condition={!val.publicc}>
+                                                    {/* {props.choosenID(val._id)} */}
+                                                    <Popup bb={val._id}></Popup>
+                                                </Show>
                                             </div>
                                         </div>
                                     </div>

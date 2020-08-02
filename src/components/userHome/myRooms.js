@@ -11,19 +11,22 @@ import Carousel from 'react-bootstrap/Carousel'
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import logo from '../../assest/LOGOC.png';
 // import { sign } from 'jsonwebtoken';
-
+let random =[];
 const MyRooms = props => {
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
+    
     useEffect(() => {
         setTimeout(() => {
-            console.log('token', props.sign.token);
-            console.log('id', props.sign.user.id);
+            console.log('Coursesffffffff', props.userHome.allCourses);
+           
             props.favRoom(props.sign.token, props.sign.user.id);
-        }, 2500);
+            console.log('favvvvvv', props.userHome.myRooms);
+            // props.rooms(props.sign.token);
+        }, 400);
 
     }, [])
     function goToRoom(e, id) {
@@ -31,6 +34,7 @@ const MyRooms = props => {
         console.log('props.userHome.choosenRoomID', id);
         props.choosenID(id);
     }
+    let topic='sport'
     return (
         <>
 
@@ -43,7 +47,18 @@ const MyRooms = props => {
                     {console.log('myrooms', props.userHome.myRooms)}
                     <Carousel activeIndex={index} onSelect={handleSelect}>
                         {props.userHome.myRooms.map((val, i) => {
-                            let random = Math.floor(Math.random() * 10)
+                            
+                            if(!random[i]) random[i] = Math.floor(Math.random() * 10)
+                            for (let i = 0; i < props.userHome.allRooms.length; i++) { // 5
+                                // console.log('props.userHome.allCourses.roomID', props.userHome.allCourses[i], i)
+                                // console.log('manualID', val._id, 'courseID', props.userHome.allCourses[i].roomID);
+                                if (props.userHome && props.userHome.allCourses && (props.userHome.allCourses[i].roomID === val._id)) {
+                                    console.log('obadaaaaaaaaaaaaaaaaaaaa');
+                                    topic = props.userHome.allCourses[i].topic;
+                                    break;
+                                }
+                                console.log('topiccccccc', topic);
+                            }
                             return (
                                 <Carousel.Item style={{ 'height': "350px" }}>
                                     <div class='card-area-div'>
@@ -79,7 +94,7 @@ const MyRooms = props => {
                                        c-0.8,0-1.5,0.7-1.5,1.5S39.9,12.3,40.7,12.3z"/>
                                                                         </g>
                                                                     </svg>
-                                                                    {/* <img class="ccontainer" src={`${ props.userHome.categoryImages.science[random] }`} alt='LOGO' /> */}
+                                                                    <img class="ccontainer" src={`${ props.userHome.categoryImages[`${topic}`][random[i]] }`} alt='LOGO' />
                                                                     <h2 class="card-front__heading">
                                                                         {/* {val.roomName} */}
                                                                     </h2>
@@ -91,7 +106,7 @@ const MyRooms = props => {
                                                                     </p></div>
                                                                     <Show condition={val.publicc === false}>
 
-                                                                        <div className='svg-lock'><svg  fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20px" height="20px"><path d="M 25 3 C 18.363281 3 13 8.363281 13 15 L 13 20 L 9 20 C 7.300781 20 6 21.300781 6 23 L 6 47 C 6 48.699219 7.300781 50 9 50 L 41 50 C 42.699219 50 44 48.699219 44 47 L 44 23 C 44 21.300781 42.699219 20 41 20 L 37 20 L 37 15 C 37 8.363281 31.636719 3 25 3 Z M 25 5 C 30.566406 5 35 9.433594 35 15 L 35 20 L 15 20 L 15 15 C 15 9.433594 19.433594 5 25 5 Z M 25 30 C 26.699219 30 28 31.300781 28 33 C 28 33.898438 27.601563 34.6875 27 35.1875 L 27 38 C 27 39.101563 26.101563 40 25 40 C 23.898438 40 23 39.101563 23 38 L 23 35.1875 C 22.398438 34.6875 22 33.898438 22 33 C 22 31.300781 23.300781 30 25 30 Z" /></svg>
+                                                                        <div className='svg-lock'><svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20px" height="20px"><path d="M 25 3 C 18.363281 3 13 8.363281 13 15 L 13 20 L 9 20 C 7.300781 20 6 21.300781 6 23 L 6 47 C 6 48.699219 7.300781 50 9 50 L 41 50 C 42.699219 50 44 48.699219 44 47 L 44 23 C 44 21.300781 42.699219 20 41 20 L 37 20 L 37 15 C 37 8.363281 31.636719 3 25 3 Z M 25 5 C 30.566406 5 35 9.433594 35 15 L 35 20 L 15 20 L 15 15 C 15 9.433594 19.433594 5 25 5 Z M 25 30 C 26.699219 30 28 31.300781 28 33 C 28 33.898438 27.601563 34.6875 27 35.1875 L 27 38 C 27 39.101563 26.101563 40 25 40 C 23.898438 40 23 39.101563 23 38 L 23 35.1875 C 22.398438 34.6875 22 33.898438 22 33 C 22 31.300781 23.300781 30 25 30 Z" /></svg>
                                                                         </div>
                                                                     </Show>
                                                                 </div>
