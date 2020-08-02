@@ -49,14 +49,14 @@ const AllRooms = props => {
                         }
                     }
                     // console.log('props.userHome.allRooms.length',props.userHome.allRooms.length)
-                    // for (let i = 0; i < props.userHome.allRooms.length; i++) {
-                    //     if (props.userHome.allCourses[i].roomID === val._id) {
-                    //         topic = props.userHome.allCourses[i].topic;
-                    //         // console.log('topiccccccc',topic);
-                    //         break;
-                    //     }
+                    for (let i = 0; i < props.userHome.allRooms.length; i++) {
+                        if (props.userHome.allCourses[i].roomID === val._id) {
+                            topic = props.userHome.allCourses[i].topic;
+                            // console.log('topiccccccc',topic);
+                            break;
+                        }
                         
-                    // }
+                    }
                     
                     // console.log('randommmmmm',random);
                     
@@ -90,8 +90,8 @@ const AllRooms = props => {
                                                             <path d="M33.5,36L33.5,36c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S34.6,36,33.5,36z" />
                                                         </g>
                                                     </svg> */}
-                                    
-                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${'sport'}`][random]}`} alt='LOGO' />
+                                                    {console.log('ttttttttttttttt',topic)}
+                                                        <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random]}`} alt='LOGO' />
 
                                                         {/* <h2 class="card-front__heading">
                                                             {val.roomName}

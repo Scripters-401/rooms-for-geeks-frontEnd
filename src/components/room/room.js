@@ -61,28 +61,9 @@ const Room = props => {
 
     useEffect(() => {
         setTimeout(() => {
-
-            // roomID = props.userHome.choosenRoomID
-            // const cookieroomID = cookie.load('roomID');
-            // console.log('aa', cookieroomID, props.userHome.choosenRoomID, props.room.choosenRoomIDSocket);
-            // props.room.choosenRoomIDSocket = props.userHome.choosenRoomID || cookieroomID;
-            // console.log('bb', cookieroomID, props.userHome.choosenRoomID, props.room.choosenRoomIDSocket);
-
-            // cookie.save('roomID', props.userHome.choosenRoomIDSocket);
             cookie.save('roomID', props.room.choosenRoomIDSocket)
             props.getRoom(props.sign.token, props.room.choosenRoomIDSocket);
-            props.room.favOrNot = props.userInfo.user && props.userInfo.user.favRooms ?  props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket):null;
-            // window.scrollTo(0, 0)
-            // roomAdmin = (props.userInfo.user.username === props.room.adminName);
-            // props.updateRoomAdminBool(props.userInfo.user.username)
-            // props.room.adminName = props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName;
-            // props.room.roomAdmin = (props.userInfo.user.username === props.room.adminName);
-            // console.log(props.room.roomAdmin ,'.......................');
-            // roomName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.roomName : null;
-            // adminName = props.room.roomData && props.room.roomData.RData ? props.room.roomData.RData.cookieAdminName ? props.room.roomData.RData.cookieAdminName : props.room.roomData.RData.adminName : null;
-            // roomAdmin = (props.userInfo.user.username === adminName);
-            // console.log(props.userInfo.user.username, adminName, props.room.roomData.RData.cookieAdminName, props.room.roomData.RData.adminName, roomAdmin, 'nnnnnnnnnnnnnnnnnn');
-            // props.room.favOrNot = props.userInfo.user.favRooms.includes(props.userHome.choosenRoomID)
+            props.room.favOrNot = props.userInfo.user && props.userInfo.user.favRooms ? props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket) : null;
         }, 700);
 
     }, [props.room.choosenRoomIDSocket])
@@ -111,8 +92,7 @@ const Room = props => {
         props.room.redirectAfterDelete = true;
 
     }
-    const takeQuiz = () =>{
-        console.log('ttttttttttttttttt');
+    const takeQuiz = () => {
         props.room.redirectTakeQuiz = true;
     }
 
@@ -138,7 +118,7 @@ const Room = props => {
                         {props.room.adminName}
                     </p>
                     <p>
-                        {props.room.roomData && props.room.roomData.RData && props.room.roomData.RData.createdTime ? props.room.roomData.RData.createdTime.slice(0,10) : null}
+                        {props.room.roomData && props.room.roomData.RData && props.room.roomData.RData.createdTime ? props.room.roomData.RData.createdTime.slice(0, 10) : null}
                     </p>
                     <p>
                         Public: {props.room.roomData && props.room.roomData.RData ? `${props.room.roomData.RData.public || props.room.roomData.RData.publicc}` : null}
