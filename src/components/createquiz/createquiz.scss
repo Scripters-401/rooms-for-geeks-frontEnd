@@ -1,14 +1,16 @@
-.slider {
-  height: 315px;
-  width: 672px;
-  left: -37px;
-  a.nextButton {
-    right: 5px;
-    z-index: 99999;
-  }
-  a.previousButton {
-    left: 2px;
-    z-index: 99999;
+.allInall {
+  .slider {
+    height: 315px;
+    width: 672px;
+    left: -37px;
+    a.nextButton {
+      right: 5px;
+      z-index: 99999;
+    }
+    a.previousButton {
+      left: 2px;
+      z-index: 99999;
+    }
   }
 }
 .AddQuestionbutton {
@@ -27,7 +29,7 @@
   display: block;
   margin: auto;
   margin-bottom: 3%;
-  &:focus{
+  &:focus {
     outline: none;
   }
 }

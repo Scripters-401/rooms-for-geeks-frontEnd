@@ -85,7 +85,7 @@ const QuizForm = props => {
                                 onChange={(e) => props.handleAddQuiz0(e)}
                                 placeholder="discription"
                             />
-                            <Slider {...props.postNewQuiz.settings}>
+                            <Slider {...props.postNewQuiz.settings} >
                                 <div>
                                     {renderForm(0)}
                                 </div>
