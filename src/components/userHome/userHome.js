@@ -1,5 +1,5 @@
 import React from 'react';
-// import MyRooms from './myRooms';
+import MyRooms from './myRooms';
 import AllRooms from './allRooms'
 import Upgrade from './upgradeAdmin'
 import Auth from '../auth/auth';
@@ -7,6 +7,7 @@ import Show from '../auth/show';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import ShowAll from './showAllRooms'
+import Popup from './popup';
 import * as actions from '../../store/userHome';
 // import { Redirect } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
@@ -15,6 +16,11 @@ import { Button } from 'react-bootstrap';
 const UserHome = props => {
     props.room.redirectAfterDelete = false;
 
+    function hi(e){
+        e.preventDefault();
+        console.log('obadaaa im heree');
+    }
+
     return (
         <>
             <Show condition={props.sign.user.role === 'user'}>
@@ -22,10 +28,12 @@ const UserHome = props => {
             <div className="searchAndBut">
 
                 <div className='search-bar'>
+                    <form onSubmit={(e)=>hi(e)}>
                     <div class="search-container">
-                        <input type="text" placeholder="Search..." />
+                        <input type="text" placeholder="Search..."/>
                         <div class="search"></div>
                     </div>
+                    </form>
 
                 </div>
                 <Auth capability="master-room">
@@ -34,7 +42,7 @@ const UserHome = props => {
                 </Auth>
             </div>
 
-            {/* <MyRooms /> */}
+            <MyRooms />
             <Show condition={!props.userHome.showAllRooms}><AllRooms />
                 <div className='show-more'><Button onClick={props.showAllFun}>Show More</Button></div>
             </Show>
@@ -45,8 +53,10 @@ const UserHome = props => {
                 <ShowAll />
                 <div className='show-more'><Button onClick={props.showAllFun} >Show Less</Button></div>
             </Show>
+            
 
         </>
+        
     )
 }
 
