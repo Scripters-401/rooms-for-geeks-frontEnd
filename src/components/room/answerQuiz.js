@@ -8,7 +8,7 @@ import * as actions from '../../store/roomReducer';
 import Show from '../auth/show'
 // import './room.scss'
 let selectedAnswers = [];
-let cc = false;
+// let cc = false;
 const Quiz = props => {
 
   useEffect(() => {
@@ -28,11 +28,11 @@ const Quiz = props => {
       selectedAnswers = [];
       // props.room.redirectTakeQuiz = false;
       setTimeout(() => {
-        console.log('iiiiiiiiiiiiiiiiiiiiiiiiiiii');
+        // console.log('iiiiiiiiiiiiiiiiiiiiiiiiiiii');
         // props.room.finishQuiz = true;
         props.updatefinishQuiz(true, false)
         // cc = true
-        console.log(props.room.redirectTakeQuiz, props.room.finishQuiz, !props.room.redirectTakeQuiz && props.room.finishQuiz);
+        // console.log(props.room.redirectTakeQuiz, props.room.finishQuiz, !props.room.redirectTakeQuiz && props.room.finishQuiz);
       }, 2000)
 
 

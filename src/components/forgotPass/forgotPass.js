@@ -5,6 +5,7 @@ import * as actions from '../../store/forgotPassReducer'
 import '../rooms/room.scss';
 
 const ForgotPass = props => {
+    window.scrollTo(0, 0)
 
     const handleSubmitFun = e => {
         e.preventDefault();

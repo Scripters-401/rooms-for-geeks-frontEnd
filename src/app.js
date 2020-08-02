@@ -24,9 +24,9 @@ function App(props) {
     const cookieToken = cookie.load('auth');
     const token = cookieToken || null;
     props.validateToken(token);
-    if (token !== 'null') {
-      props.getInfoUser(props.sign.token, props.sign.user.id);
-    }
+    // if (token !== 'null') {
+    //   props.getInfoUser(props.sign.token, props.sign.user.id);
+    // }
   }, [])
 
   return (

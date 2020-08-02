@@ -80,6 +80,7 @@ function SigninForm(props) {
 
     const handleSubmitFunSignup = e => {
         e.preventDefault();
+        if (props.upload.image) {
         const uploadTask = storage.ref(`images/${props.upload.image.name}`).put(props.upload.image);
         uploadTask.on("state_changed", () => {
             storage
@@ -96,7 +97,17 @@ function SigninForm(props) {
                         url,
                     );
                 });
-        });
+        });}
+        else{
+            props.signup(
+                props.sign.username,
+                props.sign.password,
+                props.sign.email,
+                props.sign.name,
+                props.sign.major,
+                
+            );
+        }
     }
 
     useEffect(() => {

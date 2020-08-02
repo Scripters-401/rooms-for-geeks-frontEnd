@@ -5,6 +5,7 @@ import * as actions from '../../store/forgotPassReducer'
 // import './confirmEmail.scss';
 import '../rooms/room.scss';
 const ConfirmEmail = props => {
+    window.scrollTo(0, 0)
 
     const handleSubmitFun = e => {
         e.preventDefault();
