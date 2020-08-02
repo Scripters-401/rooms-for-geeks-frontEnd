@@ -1,5 +1,5 @@
 import React from 'react';
-import MyRooms from './myRooms';
+// import MyRooms from './myRooms';
 import AllRooms from './allRooms'
 import Upgrade from './upgradeAdmin'
 import Auth from '../auth/auth';
@@ -42,7 +42,7 @@ const UserHome = props => {
                 </Auth>
             </div>
 
-            <MyRooms />
+            {/* <MyRooms /> */}
             <Show condition={!props.userHome.showAllRooms}><AllRooms />
                 <div className='show-more'><Button onClick={props.showAllFun}>Show More</Button></div>
             </Show>

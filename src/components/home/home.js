@@ -14,7 +14,23 @@ const Home = () => {
 
                     </div>
                     <div className="typewriter">
-                        <h1 className='animateText'>Welcome to Rooms For Geeks Website</h1>
+                        {/* <h1 className='animateText'>Welcome to Rooms For Geeks Website</h1> */}
+                    </div>
+
+
+                    <div class="contentHome">
+                        <div class="contentHome__container">
+                            <p class="contentHome__container__text">
+                                Hello
+                            </p>
+
+                            <ul class="contentHome__container__list">
+                                <li class="contentHome__container__list__item">Geek !</li>
+                                <li class="contentHome__container__list__item">Geeks !</li>
+                                <li class="contentHome__container__list__item">users !</li>
+                                <li class="contentHome__container__list__item">everybody !</li>
+                            </ul>
+                        </div>
                     </div>
 
                     {/* { <div class="typewriter1">

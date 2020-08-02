@@ -13,7 +13,7 @@ import * as actions2 from './store/userReducer.js'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleUp as upIcon } from '@fortawesome/free-solid-svg-icons';
-import './reset.css';
+// import './reset.css';
 import './app.scss';
 require('dotenv').config();
 
@@ -24,9 +24,9 @@ function App(props) {
     const cookieToken = cookie.load('auth');
     const token = cookieToken || null;
     props.validateToken(token);
-    if (token !== 'null') {
-      props.getInfoUser(props.sign.token, props.sign.user.id);
-    }
+    // if (token !== 'null') {
+    //   props.getInfoUser(props.sign.token, props.sign.user.id);
+    // }
   }, [])
 
   return (

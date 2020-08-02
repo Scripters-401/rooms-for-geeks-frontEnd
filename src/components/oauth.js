@@ -1,32 +1,32 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+// /* eslint-disable react-hooks/exhaustive-deps */
+// import React, { useEffect } from 'react';
 
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
-import * as actions from '../store/signINUPReducer'
+// import * as actions from '../store/signINUPReducer'
 
-const Oauth = props => {
-  useEffect(() => {
-    props.getOauth()
-  }, [])
+// const Oauth = props => {
+//   useEffect(() => {
+//     props.getOauth()
+//   }, [])
 
-  return (
-    <>
+//   return (
+//     <>
 
-      <div>
+//       <div>
 
-      </div>
+//       </div>
 
-    </>
-  )
-};
+//     </>
+//   )
+// };
 
-const mapStateToProps = state => ({
-  sign: state.sign
-});
+// const mapStateToProps = state => ({
+//   sign: state.sign
+// });
 
-const mapDispatchToProps = (dispatch, getState) => ({
-  getOauth:() => dispatch(actions.getOauth()),
-});
+// const mapDispatchToProps = (dispatch, getState) => ({
+//   getOauth:() => dispatch(actions.getOauth()),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Oauth);
+// export default connect(mapStateToProps, mapDispatchToProps)(Oauth);

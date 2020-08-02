@@ -9,37 +9,33 @@ import Show from '../auth/show';
 let random = [];
 let randomNumber = null;
 const AllRooms = props => {
-
-
+    
     useEffect(() => {
         setTimeout(() => {
-            console.log('token', props.sign.token)
+            
             props.rooms(props.sign.token);
-            // allLength= props.userHome.roomsLength
+           
         }, 500);
-
     }, []);
-
     function goToRoom(e, id) {
-        // e.preventDefault();
-        // console.log('props.userHome.choosenRoomID', id);
+        
         props.choosenID(id);
     }
     var allLength = props.userHome.roomsLength;
-    console.log('lengthhhhhhhh', props.userHome.roomsLength);
+    
     let max = props.userHome.allRooms.length - 3;
-    console.log('max', max);
+   
     if (!randomNumber) randomNumber = Math.floor((max) * Math.random());
     let randomArr = [];
 
-    // console.log('random',randomNumber);
+    
     return (
         <>
             <div>
                 <h3 className='topic'>Random Rooms</h3>
             </div>
             <div className='allRooms'>
-                {console.log('rooms', props.userHome.allRooms)}
+                
                 {props.userHome.allRooms.slice(randomNumber, randomNumber + 4).map((val, i) => {
                     var topic = '';
                     if (!random[i]) random[i] = Math.floor(Math.random() * 10)
@@ -56,23 +52,15 @@ const AllRooms = props => {
                             if (counter === 10) { randomArr = []; counter = 0; }
                         }
                     }
-
-                    console.log('props.userHome.allCourses.roomID', props.userHome.allCourses)
                     for (let i = 0; i < props.userHome.allRooms.length; i++) {
-                        console.log('props.userHome.allCourses.roomID', props.userHome.allCourses[i], i)
-                        console.log('manualID', val._id, 'courseID', props.userHome.allCourses[i].roomID);
                         if (props.userHome && props.userHome.allCourses && (props.userHome.allCourses[i].roomID === val._id)) {
-                            // console.log('obadaaaaaaaaaaaaaaaaaaaa');
                             topic = props.userHome.allCourses[i].topic;
                             break;
                         }
-                        console.log('topiccccccc', topic);
                     }
                     return (
                         <div class='card-area-div'>
                             <section class="card-area">
-
-
                                 <section class="card-section">
                                     <div class="card">
                                         <div class="flip-card">
@@ -151,13 +139,7 @@ const AllRooms = props => {
                         </div>
                     )
                 })}
-
             </div>
-
-
-
-
-
         </>
     );
 }
