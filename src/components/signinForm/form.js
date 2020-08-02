@@ -7,6 +7,7 @@ import { storage } from "../firebase";
 import * as actions2 from '../../store/uploadImageReducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import {  } from '@fortawesome/free-brands-svg-icons';
 import './form.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';

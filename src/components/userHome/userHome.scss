@@ -140,11 +140,11 @@
 .allRooms{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    button{
-      width: 20%;
-      margin: 2%;
-    }
+    justify-content: center;
+    // button{
+    //   width: 20%;
+    //   margin: 2%;
+    // }
 }
 a.createRoom {
   position: absolute;
@@ -189,16 +189,16 @@ a.createRoom {
 }
 
 .inside-page__heading--city,
-.card-front__text-view--city { color: #ff62b2; }
+.card-front__text-view--city { color: #416760; }
 
 .inside-page__heading--ski,
 .card-front__text-view--ski { color: #416760; }
 
 .inside-page__heading--beach,
-.card-front__text-view--beach { color: #fa7f67; }
+.card-front__text-view--beach { color: #416760; }
 
 .inside-page__heading--camping,
-.card-front__text-view--camping { color: #00b97c; }
+.card-front__text-view--camping { color: #416760; }
 
 /* Front cover */
 
@@ -240,7 +240,7 @@ a.createRoom {
   padding: .7rem .75rem;
   position: relative;
   text-decoration: none;
-  transition: all .3s ease;
+  transition: all 2s ease;
   width: 90%;
   z-index: 10;
 }
@@ -252,45 +252,58 @@ a.createRoom {
   position: absolute;
   top: 0;
   transform: scaleY(0);
-  transition: all .3s ease;
+  transition: all 1s ease;
   width: 100%;
   z-index: -1;
 }
 
 .inside-page__btn--city { 
-  border-color: #ff40a1;
-  color: #ff40a1;
+  border-color: #416760;
+  color: #416760;
+  cursor: pointer;
+  width: 100%;
+
+
 }
 
 .inside-page__btn--city::before { 
-  background-color: #ff40a1;
+  background-color: #416760;
 }
 
 .inside-page__btn--ski { 
-  border-color: #279eb2;
-  color: #279eb2;
+  border-color: #416760;
+  color: #416760;
+  cursor: pointer;
+  width: 100%;
+
 }
 
 .inside-page__btn--ski::before { 
-  background-color: #279eb2;
+  background-color: #416760;
 }
 
 .inside-page__btn--beach { 
-  border-color: #fa7f67;
-  color: #fa7f67;
+  border-color: #416760;
+  color: #416760;
+  cursor: pointer;
+  width: 100%;
+
 }
 
 .inside-page__btn--beach::before { 
-  background-color: #fa7f67;
+  background-color: #416760;
 }
 
 .inside-page__btn--camping { 
-  border-color: #00b97d;
-  color: #00b97d;
+  border-color: #416760;
+  color: #416760;
+  cursor: pointer;
+  width: 100%;
+
 }
 
 .inside-page__btn--camping::before { 
-  background-color: #00b97d;
+  background-color: #416760;
 }
 
 .inside-page__btn:hover { 
@@ -343,7 +356,7 @@ a.createRoom {
   box-shadow: -.1rem 1.7rem 6.6rem -3.2rem rgba(0,0,0,0.5);
   height: 15rem;
   position: relative;
-  transition: all 1s ease;
+  transition: all 2s ease;
   width: 15rem;
 }
 
@@ -355,7 +368,7 @@ a.createRoom {
   perspective: 100rem;
   position: absolute;
   right: 0;
-  transition: all 1s ease;
+  transition: all 2s ease;
   visibility: hidden;
   width: 15rem;
   z-index: 100;
@@ -374,7 +387,7 @@ a.createRoom {
   right: 0;
   transform-origin: left;
   transform-style: preserve-3d;
-  transition: all 1s ease;
+  transition: all 2s ease;
   width: 100%;
 }
 
@@ -456,7 +469,7 @@ a.createRoom {
 
 /* Specifically targeting the <video> element */
 .video__container {
-  clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%);
+  // clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%);
   height: auto;
   min-height: 69%;
   object-fit: cover;
@@ -511,6 +524,7 @@ a.createRoom {
 
 a{
   color: black;
+  text-decoration: none;
 }
 
 }
@@ -526,4 +540,14 @@ a{
   justify-content: center;
   margin: 20px;
 }
+
+.svg-lock {
+  
+  position: absolute;
+ 
+  right: 10px;
+}
+// .div-width{
+//   width:33%
+// }
 
