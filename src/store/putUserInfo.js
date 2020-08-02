@@ -5,7 +5,11 @@ const API = process.env.REACT_APP_API;
 let initialState = {
     putInfo: '',
     hide: false,
-    toggle: true
+    toggle: true,
+    flipUniversity: true,
+    flipName: true,
+    flipMajor: true,
+
 };
 
 
@@ -24,6 +28,12 @@ export default (state = initialState, action) => {
             state.toggle = payload;
             return { ...state }
 
+        case 'updateFlip':
+            state[payload] = !state[payload];
+            return { ...state }
+
+
+
         default:
             return state;
     }
@@ -33,6 +43,13 @@ export const hideFun = payload => {
     return {
         type: 'HIDE_TOGGLE',
         payload: payload,
+    }
+}
+
+export const updateFlip = (flipName) => {
+    return {
+        type: 'updateFlip',
+        payload: flipName,
     }
 }
 

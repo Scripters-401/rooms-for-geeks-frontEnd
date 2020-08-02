@@ -66,23 +66,25 @@ const Chat = props => {
   }, [props.room.choosenRoomIDSocket])
 
 
-  useEffect(() => {
-    props.room.socket.on('notif', function (data) {
-      if (props.userInfo.user.username === adminName) {
-        props.updateNotifications(`Hey Admin ${adminName} New user joined the room ${roomName} ...`);
+  // useEffect(() => {
+  //   props.room.socket.on('notif', function (data) {
+  //     if (props.userInfo.user.username === adminName) {
+  //       props.updateNotifications(`Hey Admin ${adminName} New user joined the room ${roomName} ...`);
 
-        setTimeout(() => {
-          props.updateNotifications('');
-        }, 5000);
-      }
-    });
-  }, [props.room.roomData.RData])
+  //       setTimeout(() => {
+  //         props.updateNotifications('');
+  //       }, 5000);
+  //     }
+  //   });
+  // }, [props.room.roomData.RData])
 
 
   const onlineFun = () => {
+    console.log(props.userInfo.user,'kkkkkkkkkkkkkkkk');
     props.room.socket.emit('chat', {
       message: props.chat.message,
       userName: props.userInfo.user.username,
+      profileIMG: props.userInfo.user.profileIMG,
     });
     document.getElementById('message').value = '';
   }
@@ -141,8 +143,10 @@ const Chat = props => {
           {props.chat.output.map((element, idx) => {
             return (
               <div key={idx}>
+                <img src={element.profileIMG} alt='profileIMG'></img>
                 <p><strong>{element.userName}: </strong>
                   {element.message}
+                  
                   <span className='msgTime'>
 
                     {element.msgTime.hours}:

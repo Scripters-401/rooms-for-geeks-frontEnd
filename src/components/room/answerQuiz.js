@@ -10,7 +10,11 @@ import Show from '../auth/show'
 let selectedAnswers = [];
 // let cc = false;
 const Quiz = props => {
+  useEffect(() => {
 
+    props.room.redirectTakeQuiz = false;
+
+  }, [])
   useEffect(() => {
     setTimeout(() => {
       props.updateScore({ score: null })

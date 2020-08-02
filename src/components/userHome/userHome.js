@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MyRooms from './myRooms';
 import AllRooms from './allRooms'
 import Upgrade from './upgradeAdmin'
@@ -15,8 +15,11 @@ import { Button } from 'react-bootstrap';
 
 const UserHome = props => {
     props.room.redirectAfterDelete = false;
+    useEffect(() => {
+        window.scrollTo(0, 0)
 
-    function hi(e){
+    }, [])
+    function hi(e) {
         e.preventDefault();
         console.log('obadaaa im heree');
     }
@@ -28,11 +31,11 @@ const UserHome = props => {
             <div className="searchAndBut">
 
                 <div className='search-bar'>
-                    <form onSubmit={(e)=>hi(e)}>
-                    <div class="search-container">
-                        <input type="text" placeholder="Search..."/>
-                        <div class="search"></div>
-                    </div>
+                    <form onSubmit={(e) => hi(e)}>
+                        <div class="search-container">
+                            <input type="text" placeholder="Search..." />
+                            <div class="search"></div>
+                        </div>
                     </form>
 
                 </div>
@@ -53,10 +56,10 @@ const UserHome = props => {
                 <ShowAll />
                 <div className='show-more'><Button onClick={props.showAllFun} >Show Less</Button></div>
             </Show>
-            
+
 
         </>
-        
+
     )
 }
 

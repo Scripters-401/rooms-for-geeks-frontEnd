@@ -12,8 +12,8 @@ let initialState = {
   roomAdmin: false,
   adminName: '',
   choosenRoomIDSocket: '',
-  redirectTakeQuiz: false,
   finishQuiz: false,
+  questionIndex: '',
 };
 
 // reducer : switch case
