@@ -5,7 +5,9 @@ const API = process.env.REACT_APP_API;
 let initialState = {
     roomC: '',
     privetRoomPass: false,
-    newRoomId : '',
+    newRoomId: '',
+    checked: true,
+    redirectCreateQuiz: false,
 };
 
 export default (state = initialState, action) => {
@@ -16,13 +18,24 @@ export default (state = initialState, action) => {
 
         case 'HANDLE_CHANGE_ROOM':
             state[payload.name] = payload.value
+            // console.log(state[payload.name],payload.name);
             return { ...state };
         case 'HANDLE_PRIVET_PASS':
-            state.privetRoomPass= payload
+            state.privetRoomPass = payload
             return { ...state };
         case 'HANDLE_NEW_ROOM_ID':
             state.newRoomId = payload._id
-            return { ...state };    
+            return { ...state };
+
+        case 'updateChecked':
+            state.checked = payload
+            return { ...state };
+
+        case 'updateRedirectCreateQuiz':
+            state.redirectCreateQuiz = payload
+            return { ...state };
+
+
         default:
             return state;
     }
@@ -30,10 +43,26 @@ export default (state = initialState, action) => {
 
 export const handleNewRoomId = e => {
     return {
-        type : 'HANDLE_NEW_ROOM_ID',
-        payload : e,
-        }
+        type: 'HANDLE_NEW_ROOM_ID',
+        payload: e,
+    }
 }
+
+export const updateChecked = e => {
+    return {
+        type: 'updateChecked',
+        payload: e,
+    }
+}
+
+export const updateRedirectCreateQuiz = e => {
+    return {
+        type: 'updateRedirectCreateQuiz',
+        payload: e,
+    }
+}
+
+
 
 export const handleChangeRoom = e => {
     // console.log('JJJJJFFFFFF',e.target);
@@ -44,14 +73,14 @@ export const handleChangeRoom = e => {
 }
 
 export const handlePrivetPass = e => {
-    return{
-        type : 'HANDLE_PRIVET_PASS',
+    return {
+        type: 'HANDLE_PRIVET_PASS',
         payload: e,
     }
 }
 
 export const roomPost = (token, id, roomName, publicc, password, adminName, members) => async dispatch => {
-    console.log(roomName, publicc, password, adminName, members);
+    // console.log(roomName, publicc, password, adminName, members);
     try {
         const results = await fetch(`${API}/room`, {
             method: 'POST',
@@ -66,9 +95,9 @@ export const roomPost = (token, id, roomName, publicc, password, adminName, memb
             body: JSON.stringify({ roomName, publicc, password, adminName, members })
 
         });
-      let res = await results.json();
-      dispatch(handleNewRoomId(res));
-      console.log('jjjj',res);
+        let res = await results.json();
+        dispatch(handleNewRoomId(res));
+        //   console.log('jjjj',res);
     } catch (error) {
         console.error(`ERROR: ROOMS`);
     }

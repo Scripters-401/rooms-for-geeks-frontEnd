@@ -3,19 +3,24 @@
 const API = 'http://localhost:4000';
 let initialState = {
     output: [],
-    questions:[],
-    correctAnswer:[],
-    wrongChoices:[],
- };
+    questions: [],
+    correctAnswer: [],
+    wrongChoices: [],
+};
 
 export default (state = initialState, action) => {
     let { type, payload } = action;
     switch (type) {
         case 'HANDLE_ADD_QUIZ':
-            let z = payload.name.toString().slice(0,-1)
+            let z = payload.name.toString().slice(0, -1)
             let idx = payload.name.toString().slice(-1)
             state[z][idx] = payload.value
             return { ...state };
+
+        case 'HANDLE_ADD_QUIZ_0':
+            state[payload.name] = payload.value
+            return { ...state };
+
 
         case 'updateOutput':
             state.output = [...state.output, payload]
@@ -28,6 +33,13 @@ export default (state = initialState, action) => {
 export const handleAddQuiz = e => {
     return {
         type: 'HANDLE_ADD_QUIZ',
+        payload: { name: [e.target.name], value: e.target.value },
+    }
+}
+
+export const handleAddQuiz0 = e => {
+    return {
+        type: 'HANDLE_ADD_QUIZ_0',
         payload: { name: [e.target.name], value: e.target.value },
     }
 }

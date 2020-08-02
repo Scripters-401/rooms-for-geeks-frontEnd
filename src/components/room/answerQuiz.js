@@ -89,7 +89,7 @@ const Quiz = props => {
       </Show>
       <Show condition={props.room.score !== null}>
         {props.room.score}
-        {console.log(props.room.redirectTakeQuiz, props.room.finishQuiz, !props.room.redirectTakeQuiz && props.room.finishQuiz)}
+        {/* {console.log(props.room.redirectTakeQuiz, props.room.finishQuiz, !props.room.redirectTakeQuiz && props.room.finishQuiz)} */}
         {!props.room.redirectTakeQuiz && props.room.finishQuiz ? (<Redirect to="/room" />) : null}
 
       </Show>

@@ -4,24 +4,22 @@ import { Link } from 'react-router-dom';
 import * as actions from '../../store/postQuizReducer'
 import '../rooms/room.scss'
 import './createquiz.scss'
-// import Carousel from 'react-bootstrap/Carousel'
 import Slider from 'react-animated-slider';
+
 let idx = 0;
 const QuizForm = props => {
 
     const handleSubmitFun = e => {
         e.preventDefault();
-        console.log(props, 'ppppppppppppppp');
     }
 
     const hi = () => {
-        props.updateOutput(renderForm(idx))
         idx += 1
+        props.updateOutput(renderForm(idx))
     }
     const settings = {
         dots: true,
         autoplay: false,
-        // autoplaySpeed: 4000,
         arrow: true
     }
     const renderForm = (idx) => {
@@ -73,17 +71,19 @@ const QuizForm = props => {
                             <input className="input"
                                 type="text"
                                 name="quizName"
-                                onChange={(e) => props.handleAddQuiz(e)}
+                                onChange={(e) => props.handleAddQuiz0(e)}
                                 placeholder="quizName"
                             />
                             <input className="description"
                                 type="text"
                                 name="discription"
-                                onChange={(e) => props.handleAddQuiz(e)}
+                                onChange={(e) => props.handleAddQuiz0(e)}
                                 placeholder="discription"
                             />
-                            {/* <Slider className="slider"> */}
                             <Slider {...settings}>
+                                <div>
+                                    {renderForm(0)}
+                                </div>
                                 {props.postNewQuiz.output.map(formElement => {
 
                                     return (
@@ -97,12 +97,12 @@ const QuizForm = props => {
                             </Slider>
 
                             <Link to="/create-room"><button className="button" type="submit" id="login-button">CREATE Quiz!</button></Link>
-                            {/* <button className="button" type="submit" id="login-button">CREATE Quiz!</button> */}
                         </form>
-                        <button onClick={() => hi()} style={{
+                        <button id="login-button" onClick={() => hi()} style={{
                             "z-index": "999999999",
-                            "background-color": "red",
-                            "position": "absolute"
+                            "position": "absolute",
+                            "bottom": "111px",
+                            "right": "125px",
                         }}>Add Question</button>
                     </div>
 
@@ -133,6 +133,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, getState) => ({
     handleAddQuiz: (e) => dispatch(actions.handleAddQuiz(e)),
+    handleAddQuiz0: (e) => dispatch(actions.handleAddQuiz0(e)),
     quizPost: (token, quizName, discription, questions, correctAnswer, wrongChoices, courseID) =>
         dispatch(actions.quizPost(token, quizName, discription, questions, correctAnswer, wrongChoices, courseID)),
     updateOutput: (e) => dispatch(actions.updateOutput(e)),
