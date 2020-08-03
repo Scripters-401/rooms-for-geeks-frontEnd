@@ -19,7 +19,7 @@ import ForgotPass from './forgotPass/forgotPass';
 import Quiz from './room/answerQuiz'
 import ConfirmEmail from './forgotPass/confirmEmail';
 import PostQuiz from './createquiz/postQuiz'
-
+import QuestionAndAnswer from './room/answerForQuestion'
 const Routes = () => {
 
     return (
@@ -87,6 +87,9 @@ const Routes = () => {
             </Route>
             <Route path="/create-quiz" exact>
                 <PostQuiz />
+            </Route>
+            <Route path="/Question" exact>
+                <QuestionAndAnswer />
             </Route>
         </>
     )

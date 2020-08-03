@@ -4,7 +4,7 @@
 }
 .wrapper {
     // background: whitesmoke;
-    background: -webkit-linear-gradient(top left,whitesmoke 0%, whitesmoke 100%);
+    background: -webkit-linear-gradient(top left, whitesmoke 0%, whitesmoke 100%);
     background: -moz-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
     background: -o-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
     background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
@@ -89,13 +89,11 @@
         padding: 20px 0;
         position: relative;
         z-index: 2;
-        input.passfalse{
+        input.passfalse {
             display: none;
         }
-       
 
-        input.passtrue{
-          
+        input.passtrue {
             display: block;
             appearance: none;
             outline: 0;
@@ -165,23 +163,20 @@
             font-size: 108%;
             margin-left: 4px;
         }
-       
+
         .radioButton {
             display: flex;
             font-size: 17px;
             justify-items: center;
             justify-content: center;
             font-size: 18px;
-            
         }
 
         .radioPriv {
             margin: 1% 8% 2% 4%;
-           
         }
-        .radioPublic{
+        .radioPublic {
             margin: 1% 8% 2% 4%;
-    
         }
 
         .input {
@@ -200,7 +195,7 @@
             color: #416760;
             transition-duration: 0.25s;
             font-weight: 330;
-            
+
             // &:hover {
             //     background-color: #49756263;
             //     transition-duration: 0.25s;
@@ -219,7 +214,7 @@
             appearance: none;
             outline: 0;
             background-color: #49756263;
-            color:white;   
+            color: white;
             border: 0;
             padding: 10px 15px;
             border-radius: 3px;
@@ -229,19 +224,18 @@
             transition-duration: 0.25s;
             box-shadow: 6px 7px 6px #79948f;
             &:hover {
-                 background-color: #416760;
-            color:white; 
+                background-color: #416760;
+                color: white;
             }
         }
-        
 
-        .addQuiz{
+        .addQuiz {
             appearance: none;
             outline: 0;
             background-color: #49756263;
             color: white;
             border: 0;
-            padding: 10px 15px;          
+            padding: 10px 15px;
             border-radius: 3px;
             width: 566px;
             cursor: pointer;
@@ -249,13 +243,12 @@
             box-shadow: 6px 7px 6px #79948f;
             transition-duration: 0.25s;
             &:hover {
-            background-color: #416760;
-            color:white; 
-            
+                background-color: #416760;
+                color: white;
             }
         }
     }
-    input[type='radio']:after {
+    input[type="radio"]:after {
         width: 15px;
         height: 15px;
         border-radius: 15px;
@@ -263,14 +256,13 @@
         left: -1px;
         position: relative;
         background-color: white;
-        content: '';
+        content: "";
         display: inline-block;
         visibility: visible;
         border: 1px solid #777c7b;
-       
     }
 
-    input[type='radio']:checked:after {
+    input[type="radio"]:checked:after {
         width: 15px;
         height: 15px;
         border-radius: 15px;
@@ -278,12 +270,15 @@
         left: -1px;
         position: relative;
         background-color: #416760;
-        content: '';
+        content: "";
         display: inline-block;
         visibility: visible;
-        border: 1px solid white;           
+        border: 1px solid white;
     }
-   
+    .selector {
+        text-align: center;
+        text-align-last: center;
+    }
 }
 
 .bg-bubbles {
@@ -390,8 +385,6 @@
 }
 
 /************************************************************************************************/
-
-
 
 /*************************************************************************************************/
 

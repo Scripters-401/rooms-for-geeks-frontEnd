@@ -19,20 +19,20 @@ const Footer = () => {
                         <p className="body"> +962 66667776</p>
                     </div>
                 </div>
-             
+                <div className="footerLogo">  <img className="logoFooter" src={logo} alt='LOGO' /></div>
+
                 <div className="followUs">
                     <p className="follow">Follow Us  </p>
                     <div className="div1">
-                        <a href="https://web.facebook.com/Rooms-For-Geeks-106373851178474/" className="faceBook">  <FontAwesomeIcon icon={faFacebook} size="2x" /></a>
-                        <a href="https://github.com/Scripters-401" className="faceBook">  <FontAwesomeIcon icon={faGithub} size="2x" /></a>
-                        <a href="https://www.linkedin.com/feed/" className="faceBook">  <FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
+                        <a href="https://web.facebook.com/Rooms-For-Geeks-106373851178474/" className="faceBook" rel="noopener noreferrer" target='_blank'>  <FontAwesomeIcon icon={faFacebook} size="2x" /></a>
+                        <a href="https://github.com/Scripters-401" className="faceBook" rel="noopener noreferrer" target='_blank'>  <FontAwesomeIcon icon={faGithub} size="2x" /></a>
+                        <a href="https://www.linkedin.com/feed/" className="faceBook" rel="noopener noreferrer" target='_blank'>  <FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
                     </div>
                 </div>
             </div>
 
 
-            <div className="footerLogo">  <img className="logoFooter" src={logo} alt='LOGO' />
-            <p className="right" >&copy; 2020 Scripters Group</p></div>
+            <p className="right" >&copy; 2020 Scripters Group</p>
         </footer>
     )
 };

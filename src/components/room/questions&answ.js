@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { Redirect, Link } from 'react-router-dom';
+
 import Show from '../auth/show'
 
 import * as actions from '../../store/roomReducer';
-import './question.scss'
+import './room.scss'
 
 let answer = '';
 let question = ''
@@ -59,30 +61,35 @@ const Questions = props => {
         props.room.roomData.QAData[questionidx].answers.splice(answerIndex, 1)
 
     }
-
+    const goToQuestion = id => {
+        props.room.questionIndex = id
+        // props.room.goToQuestionState = true
+    }
 
     return (
 
         <div className='QAData'>
-            <h2>Questions and Answers</h2>
-            <form onSubmit={e => askQuestion(e)}>
-                <label>ADD your Question
-                        <input onChange={e => questionFun(e)}></input>
-                </label>
-                <button>Ask</button>
-            </form>
+            {props.room.goToQuestionState ? (<Redirect to="/Question" />) : null}
+            <h2 className="courseName">Questions and Answers</h2>
+
             {props.room.roomData && props.room.roomData.QAData ? props.room.roomData.QAData.map((element, idx) => {
                 return (
                     <div className='questionDiv' key={idx}>
-                        <p>
+                      <Link to='/Question'> <p className="questionAsked" onClick={e => goToQuestion(idx)}>
                             {element.question}
-                        </p>
+                        </p></Link> 
                         <Show condition={props.room.roomAdmin || (props.userInfo.user._id === props.room.roomData.QAData[idx].virtualuserID)}>
                             <button onClick={e => deleteQuestion(props.room.roomData.QAData[idx]._id, idx)}>delete question</button>
                         </Show>
-                        <span>Asked by: {element.virtualcreatedName}</span><br />
-                        <span>Created time: {element.createdTime.slice(0, 10)}</span>
-                        <ul>
+                        <div className="time and creater">
+                            <span className="nameOfWhoQues">{element.virtualcreatedName}</span><br />
+                            <span>at {element.createdTime.slice(0, 10)}</span></div>
+
+                        <div className="numberOfAnswer">This question has {element.answers.length}  answers  <Link to='/Question'> <p className="checAns" onClick={e => goToQuestion(idx)}>
+                        Check answers!
+                        </p></Link>  </div>
+                        {/* <Link to='/Question'> <button onClick={e => goToQuestion(idx)}>go to question</button></Link> */}
+                        {/* <ul>
                             {element.answers.map((e, i) => {
                                 return (
                                     <React.Fragment key={i}>
@@ -96,17 +103,26 @@ const Questions = props => {
                                 )
                             })}
                         </ul>
+                        
                         <form onSubmit={e => submit(e, idx)}>
                             <label>ADD your answer
                         <input onChange={e => answerFun(e)}></input>
                             </label>
                             <button>ADD Answer</button>
-                        </form>
+                        </form> */}
 
                     </div>
                 )
             }) : null}
+            <form className="addQuesForm" onSubmit={e => askQuestion(e)}>
+              
+        <input className="addQuesFor" onChange={e => questionFun(e)} placeholder=" Have a question ? you can ask here !"></input>
+              
+                <button className="addQuesForButt">Ask</button>
+            </form>
         </div>
+
+
     )
 }
 

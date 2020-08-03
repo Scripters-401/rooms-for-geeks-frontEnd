@@ -3,16 +3,187 @@
 // }
 
 #room-data {
-  // float: left;
-  width: 70%;
-  height: 100%;
-  .addToFav-false{
-    color: red;
-    cursor: pointer;
-  }
-  .addToFav-true{
-    color: green;
-    cursor: pointer;
-  }
+    // float: left;
+    width: 70%;
+    height: 100%;
+    // .addToFav-false{
+    //   color: red;
+    //   cursor: pointer;
+    // }
+    // .addToFav-true{
+    //   color: green;
+    //   cursor: pointer;
+    // }
+    h2#roon-name {
+        text-align: center;
+        margin-top: 5%;
+        color: #416760;
+        font-size: 226%;
+    }
 }
 
+.slideThree {
+    width: 80px;
+    height: 26px;
+    background: #333;
+    margin: 36px auto;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    &:after {
+        content: "!Fav";
+        color: #000;
+        position: absolute;
+        right: 10px;
+        z-index: 0;
+        font: 12px/26px Arial, sans-serif;
+        font-weight: bold;
+        text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+    }
+    &:before {
+        content: "Fav";
+        color: green;
+        position: absolute;
+        left: 10px;
+        z-index: 0;
+        font: 12px/26px Arial, sans-serif;
+        font-weight: bold;
+    }
+    label {
+        display: block;
+        width: 34px;
+        height: 20px;
+        cursor: pointer;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        z-index: 1;
+        background: #fcfff4;
+        background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+        border-radius: 50px;
+        transition: all 0.4s ease;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    }
+    input[type="checkbox"] {
+        visibility: hidden;
+        &:checked + label {
+            left: 43px;
+        }
+    }
+}
+/* end .slideThree */
+
+.quwsHead {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.roomDataFor {
+    display: flex;
+    color: #a2abab;
+}
+
+h2.courseName {
+    margin-top: 2%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    padding: 1%;
+    color: #333333;
+    border-bottom: solid 1px gainsboro;
+}
+
+p.Discription {
+    margin-left: 1%;
+    padding: 1%;
+    font-size: 119%;
+    color: #333333;
+}
+
+p.CreatedByOn {
+    margin-left: 1%;
+}
+p.Topic {
+    margin-left: 1%;
+}
+.courseData {
+    margin-bottom: 5%;
+}
+
+.QAData .questionDiv {
+    border: solid #c7c8c7 1px;
+    width: 83%;
+    margin: auto;
+    margin-bottom: 3%;
+}
+
+p.questionAsked {
+    padding: 1%;
+    text-align: center;
+    background-color: #7da09a;
+    color: white;
+    font-size: 156%;
+    /* height: 57px; */
+    margin-bottom: 18px;
+}
+
+.time.and.creater {
+    display: flex;
+    justify-content: flex-end;
+    color: #a2abab;
+    /* margin-left: -3%; */
+}
+
+span.nameOfWhoQues {
+    margin-right: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.numberOfAnswer {
+    color: #333333;
+    font-size: 117%;
+    margin: 1% 1% 3% 1%;
+    display: flex;
+}
+
+p.checAns {
+    margin-left: 2px;
+    color: #7da09a;
+    cursor: pointer;
+}
+
+form.addQuesForm {
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+input.addQuesFor {
+    padding: 2%;
+    width: 70%;
+    border: solid 2px #7da09a;
+    &:focus {
+        outline: none;
+    }
+}
+
+button.addQuesForButt {
+    width: 12%;
+    background-color: #7da09a;
+    border: none;
+    height: 47px;
+    color: white;
+    margin-top: 1%;
+    border-radius: 52px;
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 88%;
+    font-weight: bold;
+    &:hover {
+        background-color: white;
+        color: #7da09a;
+        border: solid 1px #7da09a;
+    }
+}

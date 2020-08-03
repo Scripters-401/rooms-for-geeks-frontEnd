@@ -36,6 +36,10 @@ const UserHome = props => {
         }, 500);
 
     }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0)
+
+    }, [])
 
     function goToRoom(e, id) {
         // e.preventDefault();

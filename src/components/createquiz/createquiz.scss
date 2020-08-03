@@ -1,11 +1,47 @@
-.slider {
-  height: 315px;
-  a.nextButton {
-    right: 20px;
-    z-index: 99999;
+.allInall {
+  .slider {
+    height: 315px;
+    width: 672px;
+    left: -37px;
+    a.nextButton {
+      right: 5px;
+      z-index: 99999;
+    }
+    a.previousButton {
+      left: 2px;
+      z-index: 99999;
+    }
   }
-  a.previousButton {
-    left: 20px;
-    z-index: 99999;
+}
+.AddQuestionbutton {
+  appearance: none;
+  outline: 0;
+  background-color: #49756263;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 3px;
+  width: 565px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25s;
+  box-shadow: 6px 7px 6px #79948f;
+  display: block;
+  margin: auto;
+  margin-bottom: 3%;
+  &:focus {
+    outline: none;
   }
+}
+.wrapper {
+  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+  background-color: whitesmoke;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 800px;
+  margin-top: -263px;
+  overflow: hidden;
+  max-height: 122%;
 }

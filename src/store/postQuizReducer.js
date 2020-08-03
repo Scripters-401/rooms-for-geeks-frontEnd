@@ -6,6 +6,13 @@ let initialState = {
     questions: [],
     correctAnswer: [],
     wrongChoices: [],
+    settings: {
+        dots: true,
+        autoplay: false,
+        // arrow: false,
+        nextButton: '',
+        previousButton: ''
+    }
 };
 
 export default (state = initialState, action) => {
@@ -25,6 +32,12 @@ export default (state = initialState, action) => {
         case 'updateOutput':
             state.output = [...state.output, payload]
             return { ...state };
+
+        case 'updateSettings':
+            state.settings = payload
+            return { ...state };
+
+
         default:
             return state;
     }
@@ -47,6 +60,12 @@ export const handleAddQuiz0 = e => {
 export const updateOutput = e => {
     return {
         type: 'updateOutput',
+        payload: e,
+    }
+}
+export const updateSettings = e => {
+    return {
+        type: 'updateSettings',
         payload: e,
     }
 }

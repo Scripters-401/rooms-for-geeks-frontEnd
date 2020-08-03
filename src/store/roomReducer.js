@@ -12,8 +12,8 @@ let initialState = {
   roomAdmin: false,
   adminName: '',
   choosenRoomIDSocket: '',
-  redirectTakeQuiz: false,
   finishQuiz: false,
+  questionIndex: '',
 };
 
 // reducer : switch case
@@ -51,6 +51,10 @@ export default (state = initialState, action) => {
       state.finishQuiz = payload.finishQuiz
       return { ...state };
 
+    case 'updateFavOrNot':
+      state.favOrNot = payload
+      return { ...state };
+
 
 
 
@@ -68,6 +72,14 @@ export const updatefinishQuiz = (finishQuiz, redirectTakeQuiz) => {
     payload: { finishQuiz, redirectTakeQuiz },
   }
 }
+
+export const updateFavOrNot = (bool) => {
+  return {
+    type: 'updateFavOrNot',
+    payload: bool,
+  }
+}
+
 export const roomData = payload => {
   return {
     type: 'roomDataAction',

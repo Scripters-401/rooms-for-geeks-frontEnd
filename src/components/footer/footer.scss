@@ -1,33 +1,42 @@
 footer.footer {
-   border-top: 4px solid #416760;
-   background-color:#416760 ;
-   position: relative;
+  // border-top: 4px solid #416760;
+  background-color: #416760;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
 }
-.div1 a.faceBook{
-color: #c9c9c9;
-padding: 14%;
-}  
-
-.div1 a.faceBook:hover{
+.div1 a.faceBook {
+  color: #c9c9c9;
+  // padding: 14%;
+}
+.div1 a{
+  margin: 1%;
+  text-decoration: none;
+}
+.div1 a.faceBook:hover {
   color: white;
   transition: all 2s ease;
--webkit-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
 }
 
 .div1 {
-  display: flex;
-  justify-content: center;
-  margin-top: 2%;
+  // display: flex;
+  // justify-content: center;
+  // margin-top: 2%;
+  width: 116%;
+  position: relative;
+  right: 26%;
 }
 
 p.right {
   text-align: center;
   color: #c9c9c9;
+  margin: 0;
 }
 .emailAndNumber {
   display: flex;
   color: #c9c9c9;
- 
 }
 
 p.contactIn {
@@ -38,22 +47,24 @@ p.follow {
   color: #c9c9c9;
   display: flex;
   justify-content: left;
-  margin: 1% 1% -44% -135%;
+  // margin: 1% 1% -44% -135%;
 }
 
 .fott {
   display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 .followUs {
-  margin: 4% auto auto 61%;
+  // margin: 4% auto auto 61%;
 }
 .contactUs {
-  margin: 1% auto 2% 3%;
+  // margin: 1% auto 2% 3%;
 }
 p.body {
   margin-left: 9px;
   cursor: pointer;
-  &:hover{
+  &:hover {
     color: white;
   }
 }
@@ -61,10 +72,12 @@ p.body {
 img.logoFooter {
   /* height: 300px; */
   width: 180px;
-  align-items: center;
-  margin: auto;
-  display: flex;
-  margin-bottom: -2%;
-  margin-top: -141px;
-  
+  // align-items: center;
+  // margin: auto;
+  // display: flex;
+  // margin-bottom: -2%;
+  // margin-top: -141px;
+
+  position: relative;
+  right: 40%;
 }

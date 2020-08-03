@@ -8,6 +8,8 @@ import * as userHomeAction from '../../store/userHome'
 import * as actions from '../../store/postRoomReduser'
 import * as action from '../../store/postCourseReducer'
 import * as actionForQuiz from '../../store/postQuizReducer'
+// import * as actions from '../../store/userHome';
+
 import './room.scss';
 
 const RoomForm = props => {
@@ -40,7 +42,6 @@ const RoomForm = props => {
             props.userInfo.user.username,
             props.thePostRoom.members,
         );
-        props.roomID(props.thePostRoom.newRoomId);
 
         await props.coursePost(
             props.sign.token,
@@ -61,6 +62,8 @@ const RoomForm = props => {
             props.postNewQuiz.wrongChoices,
             props.postNewCourse.NewCourseId,
         )
+        props.roomID(props.thePostRoom.newRoomId);
+
         // props.thePostRoom.redirectCreateQuiz = true;
         props.updateRedirectCreateQuiz(true);
     }
@@ -80,6 +83,7 @@ const RoomForm = props => {
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder={props.thePostRoom.roomName ? props.thePostRoom.roomName : "roomName"}
                                 required
+                                value={props.thePostRoom.roomName ? props.thePostRoom.roomName : null}
                             />
                             <input className="input"
                                 type="text"
@@ -87,18 +91,24 @@ const RoomForm = props => {
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder={props.thePostRoom.courseName ? props.thePostRoom.courseName : "courseName"}
                                 required
+                                value={props.thePostRoom.courseName ? props.thePostRoom.courseName : null}
+
                             />
 
-                            <input className="input"
+                            {/* <input className="input"
                                 type="text"
                                 name="topic"
                                 // onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder={props.thePostRoom.topic ? props.thePostRoom.topic : "Topic"}
                                 hidden={true}
-                            />
+                            /> */}
 
 
-                            <select required name="topic" className="input" onChange={(e) => props.handleChangeRoom(e)}>
+                            <select required name="topic" className="input selector"
+                                onChange={(e) => props.handleChangeRoom(e)}
+                                value={props.thePostRoom.topic ? props.thePostRoom.topic : null}
+
+                            >
                                 <option value="" disabled selected>Topic</option>
                                 <option value="engineering">Engineering</option>
                                 <option value="art">ART</option>
@@ -117,6 +127,7 @@ const RoomForm = props => {
                                 name="tutorial"
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder={props.thePostRoom.tutorial ? props.thePostRoom.tutorial : "Tutorial Link"}
+                                value={props.thePostRoom.tutorial ? props.thePostRoom.tutorial : null}
 
                             />
                             <input className="description"
@@ -125,6 +136,8 @@ const RoomForm = props => {
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder={props.thePostRoom.discription ? props.thePostRoom.discription : "Description"}
                                 required
+                                value={props.thePostRoom.discription ? props.thePostRoom.discription : null}
+
                             />
                             <Link to="/create-quiz"><button className="addQuiz">Add Quiz</button></Link>
 
@@ -181,7 +194,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
     handleChangeRoom: (e) => dispatch(actions.handleChangeRoom(e)),
     updateChecked: (bool) => dispatch(actions.updateChecked(bool)),
     updateRedirectCreateQuiz: (bool) => dispatch(actions.updateRedirectCreateQuiz(bool)),
-    
+
     roomID: (e) => dispatch(userHomeAction.roomID(e)),
 
     roomPost: (token, id, roomName, publicc, password, adminName, members) =>
@@ -195,6 +208,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
 
     quizPost: (token, quizName, discription, questions, correctAnswer, wrongChoices, courseID) =>
         dispatch(actionForQuiz.quizPost(token, quizName, discription, questions, correctAnswer, wrongChoices, courseID)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomForm);

@@ -66,23 +66,25 @@ const Chat = props => {
   }, [props.room.choosenRoomIDSocket])
 
 
-  useEffect(() => {
-    props.room.socket.on('notif', function (data) {
-      if (props.userInfo.user.username === adminName) {
-        props.updateNotifications(`Hey Admin ${adminName} New user joined the room ${roomName} ...`);
+  // useEffect(() => {
+  //   props.room.socket.on('notif', function (data) {
+  //     if (props.userInfo.user.username === adminName) {
+  //       props.updateNotifications(`Hey Admin ${adminName} New user joined the room ${roomName} ...`);
 
-        setTimeout(() => {
-          props.updateNotifications('');
-        }, 5000);
-      }
-    });
-  }, [props.room.roomData.RData])
+  //       setTimeout(() => {
+  //         props.updateNotifications('');
+  //       }, 5000);
+  //     }
+  //   });
+  // }, [props.room.roomData.RData])
 
 
   const onlineFun = () => {
+    console.log(props.userInfo.user,'kkkkkkkkkkkkkkkk');
     props.room.socket.emit('chat', {
       message: props.chat.message,
       userName: props.userInfo.user.username,
+      profileIMG: props.userInfo.user.profileIMG,
     });
     document.getElementById('message').value = '';
   }
@@ -128,10 +130,10 @@ const Chat = props => {
 
   return (
     <div id="geeks-chat" className={`chat-${props.chat.open}`}>
-      <p>{props.chat.notification}</p>
+      {/* <p>{props.chat.notification}</p> */}
       <div className='chatHeader' onClick={e => props.openCloseChat()}>
         <h2 >Geeks Chat</h2>
-        <span>Online Members: {props.chat.counter} </span>
+        <span>Members {props.chat.counter} </span>
         {/* <span id="members-counter"></span> */}
       </div>
 
@@ -140,9 +142,12 @@ const Chat = props => {
         <div id="output">
           {props.chat.output.map((element, idx) => {
             return (
-              <div key={idx}>
+              <div className="messaheDiv" key={idx}>
+                <div className="userInfoAll">
+                <img className="userImgeChat" src={element.profileIMG} alt='profileIMG'></img>
                 <p><strong>{element.userName}: </strong>
                   {element.message}
+                  
                   <span className='msgTime'>
 
                     {element.msgTime.hours}:
@@ -154,6 +159,8 @@ const Chat = props => {
 
                   </span>
                 </p>
+                </div>
+                <div className="emoji">
                 <span
                   className={`like-${props.chat.didLike[idx] ? props.chat.didLike[idx] : false}`}
                   role="img"
@@ -166,14 +173,15 @@ const Chat = props => {
                   role="img"
                   aria-label="likeEmoji"
                   onClick={e => props.chat.didHaHa[idx] ? removeHaHa(idx) : addHaHa(idx, element.userName)}
-                >😂:{`${element.haha}`}</span>
+                >😂{`${element.haha}`}</span>
 
                 <span
                   className={`like-${props.chat.didLove[idx] ? props.chat.didLove[idx] : false}`}
                   role="img"
                   aria-label="likeEmoji"
                   onClick={e => props.chat.didLove[idx] ? removeLove(idx) : addLove(idx, element.userName)}
-                >❤:{`${element.Love}`}</span>
+                >❤{`${element.Love}`}</span>
+                </div>
               </div>
             )
           })}
