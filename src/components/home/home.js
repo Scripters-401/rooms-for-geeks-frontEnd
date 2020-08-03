@@ -18,17 +18,17 @@ const Home = () => {
                     </div>
 
 
-                    <div class="contentHome">
-                        <div class="contentHome__container">
-                            <p class="contentHome__container__text">
+                    <div className="contentHome">
+                        <div className="contentHome__container">
+                            <p className="contentHome__container__text">
                                 Hello
                             </p>
 
-                            <ul class="contentHome__container__list">
-                                <li class="contentHome__container__list__item">Geek !</li>
-                                <li class="contentHome__container__list__item">Geeks !</li>
-                                <li class="contentHome__container__list__item">users !</li>
-                                <li class="contentHome__container__list__item">everybody !</li>
+                            <ul className="contentHome__container__list">
+                                <li className="contentHome__container__list__item">Geek !</li>
+                                <li className="contentHome__container__list__item">Geeks !</li>
+                                <li className="contentHome__container__list__item">users !</li>
+                                <li className="contentHome__container__list__item">everybody !</li>
                             </ul>
                         </div>
                     </div>

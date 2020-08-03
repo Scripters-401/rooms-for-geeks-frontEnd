@@ -121,6 +121,7 @@ const User = props => {
             });
         }
     }
+    
     return (
         <div className="mainDiv">
 
@@ -244,6 +245,43 @@ const User = props => {
                         </form>
                     </Show>
                 </div>
+
+
+                <div className='hiii'>
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <input type='password' id="password" onClick={() => changeToForm('Password')} />
+                            <label for="password"></label>
+
+                        </div>
+
+                    </div>
+                    <Show condition={props.editUserInfo.flipPassword}>
+
+                        <p className="majorr infoSec">Change password</p>
+
+                    </Show>
+
+                    <Show condition={!props.editUserInfo.flipPassword}>
+                        <form className='changeData' onSubmit={(e) => handleSubmitFun(e, 'Password')}>
+
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="New Password"
+                                id="passInput"
+                                onChange={(e) => props.updateData(e)}
+                                className="form-control"
+                                value={props.editUserInfo.password}
+                            />
+                            <p className="showPass"><input className="checkB" type="checkbox" onClick={togglePass}></input><span className="spanChe">Show Password</span> </p>
+                            
+                            <button>Done Edit</button>
+
+                        </form>
+                    </Show>
+                </div>
+
 
                 <p className="joined infoSec"> Member since: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
 

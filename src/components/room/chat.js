@@ -80,7 +80,7 @@ const Chat = props => {
 
 
   const onlineFun = () => {
-    console.log(props.userInfo.user,'kkkkkkkkkkkkkkkk');
+    console.log(props.userInfo.user, 'kkkkkkkkkkkkkkkk');
     props.room.socket.emit('chat', {
       message: props.chat.message,
       userName: props.userInfo.user.username,
@@ -143,44 +143,43 @@ const Chat = props => {
           {props.chat.output.map((element, idx) => {
             return (
               <div className="messaheDiv" key={idx}>
+                <span className='msgTime'>
+
+                  {element.msgTime.hours}:
+{element.msgTime.minutes}:
+{element.msgTime.seconds}
+({element.msgTime.date}/
+{element.msgTime.month})
+
+
+</span>
                 <div className="userInfoAll">
-                <img className="userImgeChat" src={element.profileIMG} alt='profileIMG'></img>
-                <p><strong>{element.userName}: </strong>
-                  {element.message}
-                  
-                  <span className='msgTime'>
-
-                    {element.msgTime.hours}:
-                    {element.msgTime.minutes}:
-                    {element.msgTime.seconds}
-                    ({element.msgTime.date}/
-                    {element.msgTime.month})
-
-
-                  </span>
-                </p>
+                  <img className="userImgeChat" src={element.profileIMG} alt='profileIMG'></img>
+                  <p><strong>{element.userName} </strong>
+                    {element.message}
+                  </p>
                 </div>
                 <div className="emoji">
-                <span
-                  className={`like-${props.chat.didLike[idx] ? props.chat.didLike[idx] : false}`}
-                  role="img"
-                  aria-label="likeEmoji"
-                  onClick={e => props.chat.didLike[idx] ? removeLike(idx) : addLike(idx, element.userName)}
-                >👍<span>likes{`${element.likes}`}</span></span>
+                  <span
+                    className={`like-${props.chat.didLike[idx] ? props.chat.didLike[idx] : false}`}
+                    role="img"
+                    aria-label="likeEmoji"
+                    onClick={e => props.chat.didLike[idx] ? removeLike(idx) : addLike(idx, element.userName)}
+                  >👍{`${element.likes}`}</span>
 
-                <span
-                  className={`like-${props.chat.didHaHa[idx] ? props.chat.didHaHa[idx] : false}`}
-                  role="img"
-                  aria-label="likeEmoji"
-                  onClick={e => props.chat.didHaHa[idx] ? removeHaHa(idx) : addHaHa(idx, element.userName)}
-                >😂{`${element.haha}`}</span>
+                  <span
+                    className={`like-${props.chat.didHaHa[idx] ? props.chat.didHaHa[idx] : false}`}
+                    role="img"
+                    aria-label="likeEmoji"
+                    onClick={e => props.chat.didHaHa[idx] ? removeHaHa(idx) : addHaHa(idx, element.userName)}
+                  >😂{`${element.haha}`}</span>
 
-                <span
-                  className={`like-${props.chat.didLove[idx] ? props.chat.didLove[idx] : false}`}
-                  role="img"
-                  aria-label="likeEmoji"
-                  onClick={e => props.chat.didLove[idx] ? removeLove(idx) : addLove(idx, element.userName)}
-                >❤{`${element.Love}`}</span>
+                  <span
+                    className={`like-${props.chat.didLove[idx] ? props.chat.didLove[idx] : false}`}
+                    role="img"
+                    aria-label="likeEmoji"
+                    onClick={e => props.chat.didLove[idx] ? removeLove(idx) : addLove(idx, element.userName)}
+                  >❤{`${element.Love}`}</span>
                 </div>
               </div>
             )

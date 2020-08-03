@@ -99,11 +99,11 @@ const AllInterviewR = props => {
                                         <span className="rate">
                                             <If condition={data.rate === 5} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star5" name="rate" value="5" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star5" name={`rate${index}`}  value="5" defaultChecked disabled />
                                                     <label className="labelT" for="star5" title="text" >5 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star5" name="rate" value="5" disabled />
+                                                    <input className="inputT" type="radio" id="star5" name={`rate${index}`}  value="5" disabled />
                                                     <label className="labelT" for="star5" title="text">5 stars</label>
                                                 </Else>
                                             </If>
@@ -111,11 +111,11 @@ const AllInterviewR = props => {
 
                                             <If condition={data.rate === 4} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star4" name="rate" value="4" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star4" name={`rate${index}`}  value="4" defaultChecked disabled />
                                                     <label className="labelT" for="star4" title="text" >4 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star4" name="rate" value="4" disabled />
+                                                    <input className="inputT" type="radio" id="star4" name={`rate${index}`}  value="4" disabled />
                                                     <label className="labelT" for="star4" title="text">4 stars</label>
                                                 </Else>
                                             </If>
@@ -123,11 +123,11 @@ const AllInterviewR = props => {
 
                                             <If condition={data.rate === 3} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star3" name="rate" value="3" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star3" name={`rate${index}`}  value="3" defaultChecked disabled />
                                                     <label className="labelT" for="star3" title="text" >3 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star3" name="rate" value="3" disabled />
+                                                    <input className="inputT" type="radio" id="star3" name={`rate${index}`}  value="3" disabled />
                                                     <label className="labelT" for="star3" title="text">3 stars</label>
                                                 </Else>
                                             </If>
@@ -135,21 +135,21 @@ const AllInterviewR = props => {
 
                                             <If condition={data.rate === 2} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star2" name="rate" value="2" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star2" name={`rate${index}`}  value="2" defaultChecked disabled />
                                                     <label className="labelT" for="star2" title="text" >2 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star2" name="rate" value="2" disabled />
+                                                    <input className="inputT" type="radio" id="star2" name={`rate${index}`}  value="2" disabled />
                                                     <label className="labelT" for="star2" title="text">2 stars</label>
                                                 </Else>
                                             </If>
                                             <If condition={data.rate === 1} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star1" name="rate" value="1" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star1" name={`rate${index}`}  value="1" defaultChecked disabled />
                                                     <label className="labelT" for="star1" title="text" >1 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star1" name="rate" value="1" disabled />
+                                                    <input className="inputT" type="radio" id="star1" name={`rate${index}`}  value="1" disabled />
                                                     <label className="labelT" for="star1" title="text">1 stars</label>
                                                 </Else>
                                             </If>
@@ -166,7 +166,7 @@ const AllInterviewR = props => {
                                             <p className="userNameP">{data.userName}</p>
                                         </h2>
                                     </div>
-                                    <div className={`card-flap flap1 hideFirst-${props.allInterview.hideFirstSection}`} /** hideFirst-${props.allInterview.hideFirstSection} */>
+                                    <div className={`card-flap flap1 hideFirst-${(props.allInterview.showHide === index ? 'false' : 'true')}`} /** hideFirst-${props.allInterview.hideFirstSection} */>
                                         <div className={`card-description`}>
                                             <div className="intD"><p className={`dateP`}>The date of the interview was on {data.date}</p></div>
 

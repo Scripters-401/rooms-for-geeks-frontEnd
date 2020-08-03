@@ -184,6 +184,7 @@ span.toggleButton {
         width: 34px;
         height: 30px;
         cursor: pointer;
+        display: inline-block;
         // border: solid red;
     }
     .uploadButton {
@@ -233,4 +234,14 @@ span.toggleButton {
             background:  #7d938f ;
         }
     }
+}
+
+p.showPass {
+    margin-top: 5%;
+}
+
+input.checkB {
+    margin-right: 4px;
+    position: relative;
+    top: 2px;
 }
