@@ -9,7 +9,7 @@ let initialState = {
   didLike: [],
   didHaHa: [],
   didLove:[],
-  open: true,
+  open: false,
 };
 
 // reducer : switch case
