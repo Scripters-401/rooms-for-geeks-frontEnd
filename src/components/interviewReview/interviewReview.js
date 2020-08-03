@@ -5,6 +5,7 @@ import * as actions from '../../store/getInterviewReducer';
 import * as actions2 from '../../store/interviewReviewReducer';
 import * as actions3 from '../../store/putReviewReducer';
 import './interviewReview.scss';
+import '../rooms/room.scss';
 // import $ from 'jquery';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { If, Then, Else } from '../if/if.js';
@@ -42,6 +43,7 @@ const AllInterviewR = props => {
             props.sign.token,
             id,
             props.addReview.review,
+            props.userInfo.user.name
         )
             .then(() => {
                 props.getInterviewreview(props.sign.token)
@@ -59,13 +61,13 @@ const AllInterviewR = props => {
             props.showHide(false);
             props.lessMore(false);
             props.showMore('Show More');
-            
+
             props.hideFirstOne(true);
             props.theIndex(false);
         }
         else {
             props.showHide(e);
-            
+
             props.hideFirstOne(false);
             props.theIndex(e);
         }
@@ -99,11 +101,11 @@ const AllInterviewR = props => {
                                         <span className="rate">
                                             <If condition={data.rate === 5} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star5" name={`rate${index}`}  value="5" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star5" name={`rate${index}`} value="5" defaultChecked disabled />
                                                     <label className="labelT" for="star5" title="text" >5 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star5" name={`rate${index}`}  value="5" disabled />
+                                                    <input className="inputT" type="radio" id="star5" name={`rate${index}`} value="5" disabled />
                                                     <label className="labelT" for="star5" title="text">5 stars</label>
                                                 </Else>
                                             </If>
@@ -111,11 +113,11 @@ const AllInterviewR = props => {
 
                                             <If condition={data.rate === 4} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star4" name={`rate${index}`}  value="4" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star4" name={`rate${index}`} value="4" defaultChecked disabled />
                                                     <label className="labelT" for="star4" title="text" >4 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star4" name={`rate${index}`}  value="4" disabled />
+                                                    <input className="inputT" type="radio" id="star4" name={`rate${index}`} value="4" disabled />
                                                     <label className="labelT" for="star4" title="text">4 stars</label>
                                                 </Else>
                                             </If>
@@ -123,11 +125,11 @@ const AllInterviewR = props => {
 
                                             <If condition={data.rate === 3} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star3" name={`rate${index}`}  value="3" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star3" name={`rate${index}`} value="3" defaultChecked disabled />
                                                     <label className="labelT" for="star3" title="text" >3 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star3" name={`rate${index}`}  value="3" disabled />
+                                                    <input className="inputT" type="radio" id="star3" name={`rate${index}`} value="3" disabled />
                                                     <label className="labelT" for="star3" title="text">3 stars</label>
                                                 </Else>
                                             </If>
@@ -135,21 +137,21 @@ const AllInterviewR = props => {
 
                                             <If condition={data.rate === 2} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star2" name={`rate${index}`}  value="2" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star2" name={`rate${index}`} value="2" defaultChecked disabled />
                                                     <label className="labelT" for="star2" title="text" >2 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star2" name={`rate${index}`}  value="2" disabled />
+                                                    <input className="inputT" type="radio" id="star2" name={`rate${index}`} value="2" disabled />
                                                     <label className="labelT" for="star2" title="text">2 stars</label>
                                                 </Else>
                                             </If>
                                             <If condition={data.rate === 1} >
                                                 <Then>
-                                                    <input className="inputT" type="radio" id="star1" name={`rate${index}`}  value="1" defaultChecked disabled />
+                                                    <input className="inputT" type="radio" id="star1" name={`rate${index}`} value="1" defaultChecked disabled />
                                                     <label className="labelT" for="star1" title="text" >1 stars</label>
                                                 </Then>
                                                 <Else>
-                                                    <input className="inputT" type="radio" id="star1" name={`rate${index}`}  value="1" disabled />
+                                                    <input className="inputT" type="radio" id="star1" name={`rate${index}`} value="1" disabled />
                                                     <label className="labelT" for="star1" title="text">1 stars</label>
                                                 </Else>
                                             </If>
@@ -173,9 +175,13 @@ const AllInterviewR = props => {
                                             <If condition={data.review.length <= 2} >
                                                 <Then>
                                                     <div className="reviewsP">
-                                                        <p className={`revP`}><h3 className="PR">Reviews:</h3> {data.review.map((reviewData) => {
+                                                        <p className={`revP`}><h3 className="PR">Reviews:</h3> {data.review.map((reviewData, i) => {
+                                                            // console.log('iiiiiiiii', i);
                                                             return (
+                                                                <>
                                                                 <p className={`reviewPPPP`}>{reviewData}</p>
+                                                                {/* <p>{data.reviewUserName[i]}</p> */}
+                                                                </>
                                                             )
                                                         })}</p></div>
                                                     <div className="divLessTow">
@@ -200,15 +206,22 @@ const AllInterviewR = props => {
                                                             <div className="reviewsP">
                                                                 <p className="revP"><h3 className="PR">Reviews:</h3> {data.review.slice(0, 2).map((reviewData) => {
                                                                     return (
+                                                                        <>
                                                                         <p className="reviewPPPP">{reviewData}</p>
+                                                                        {/* <p>{data.reviewUserName[index]}</p> */}
+                                                                        </>
                                                                     )
                                                                 })}
                                                                 </p>
                                                             </div>
                                                             <p className={`revP moretext-${props.allInterview.moreLess}`}>
                                                                 {data.review.slice(2, data.review.length).map((reviewData) => {
+                                                                    // {console.log('rrrrrrrrrrr', data.reviewUserName)}
                                                                     return (
+                                                                        <>
                                                                         <p className="reviewPPPP">{reviewData}</p>
+                                                                    {/* <p>{data.reviewUserName[index]}</p> */}
+                                                                        </>
                                                                     )
                                                                 })}
                                                             </p>
@@ -269,71 +282,93 @@ const AllInterviewR = props => {
 
 
                     <Scrollbars>
-                        <div className="containerI">
-                            <form className="modal-content" id="formI" onSubmit={(e) => { handleSubmitFun(e); props.divBlockNone('divNone') }}>
-                                <h3 className="nameOfForm">Add Interview Review</h3>
+                        <div className="allInall">
+                            {/* <div className="containerI"> */}
+                            <div className="wrapper ">
+                                <div className="container">
+                                    <h1 className="nameOfForm">Add Interview Review</h1>
+                                    <form className="form" id="formI" onSubmit={(e) => { handleSubmitFun(e); props.divBlockNone('divNone') }}>
 
-                                <div>
-                                    <input className="inputI"
-                                        type="text"
-                                        name="companyName"
-                                        placeholder="Company Name"
-                                        onChange={(e) => props.handleChangeInterview(e)}
-                                    />
-                                </div>
 
-                                <div>
-                                    <textarea className="reviewTextarea"
-                                        placeholder="Review"
-                                        type="text"
-                                        name="review"
-                                        onChange={(e) => props.handleChangeInterview(e)}
-                                    ></textarea>
-                                </div>
+                                        <div>
+                                            <input className="input"
+                                                type="text"
+                                                name="companyName"
+                                                placeholder="Company Name"
+                                                onChange={(e) => props.handleChangeInterview(e)}
+                                            />
+                                        </div>
 
-                                <div>
-                                    <label>Interview Date</label>
-                                    <input className="inputI"
-                                        type="date"
-                                        name="date"
-                                        onChange={(e) => props.handleChangeInterview(e)}
-                                    />
-                                </div>
+                                        <div>
+                                            <textarea className="reviewTextarea"
+                                                placeholder="Review"
+                                                type="text"
+                                                name="review"
+                                                onChange={(e) => props.handleChangeInterview(e)}
+                                            ></textarea>
+                                        </div>
 
-                                <div>
-                                    <input className="inputI"
-                                        placeholder="Position"
-                                        type="text"
-                                        name="position"
-                                        onChange={(e) => props.handleChangeInterview(e)}
-                                    />
+                                        <div>
+                                            <label>Interview Date</label>
+                                            <input className="input"
+                                                type="date"
+                                                name="date"
+                                                onChange={(e) => props.handleChangeInterview(e)}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <input className="input"
+                                                placeholder="Position"
+                                                type="text"
+                                                name="position"
+                                                onChange={(e) => props.handleChangeInterview(e)}
+                                            />
+                                        </div>
+                                        <div className="deRange">
+                                            <label>Rate:</label>
+                                            <input className="inputRange"
+                                                type='range'
+                                                defaultValue="0"
+                                                min={0}
+                                                max={5}
+                                                step={1}
+                                                name="rate"
+                                                onChange={(e) => props.handleChangeInterview(e)}
+                                            />
+                                            <label className="anonymousL">Anonymous:</label>
+                                            <input className="anonymousInput"
+                                                type="checkbox"
+                                                name="anonymous"
+                                                value={false}
+                                                onClick={(e) => trueAnonymous(e)}
+                                            />
+                                        </div>
+                                        <button type="submit" className="button"
+                                        >Submit</button>
+                                    </form>
                                 </div>
-                                <div className="deRange">
-                                    <label>Rate:</label>
-                                    <input className="inputRange"
-                                        type='range'
-                                        defaultValue="0"
-                                        min={0}
-                                        max={5}
-                                        step={1}
-                                        name="rate"
-                                        onChange={(e) => props.handleChangeInterview(e)}
-                                    />
-                                    <label className="anonymousL">Anonymous:</label>
-                                    <input className="anonymousInput"
-                                        type="checkbox"
-                                        name="anonymous"
-                                        value={false}
-                                        onClick={(e) => trueAnonymous(e)}
-                                    />
-                                </div>
-                                <button type="submit" className="buttonI"
-                                >Submit</button>
-                            </form>
+                                <ul className="bg-bubbles">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
                         </div>
+
+
+
                     </Scrollbars>
                 </div>
             </div>
+
         </>
     );
 }
@@ -356,7 +391,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
         dispatch(actions2.interviewPost(token, companyName, review, date, rate, anonymous, position, userName)),
     checkAnonymous: (e) => dispatch(actions2.checkAnonymous(e)),
     // pagenation: (payload) => dispatch(actions.pagenation(payload)),
-    putReview: (token, id, review) => dispatch(actions3.putReview(token, id, review)),
+    putReview: (token, id, review, reviewUserName) => dispatch(actions3.putReview(token, id, review, reviewUserName)),
     updateReview: (event) => dispatch(actions3.updateReview(event)),
     showHide: (payload) => dispatch(actions.showHide(payload)),
     showMore: (payload) => dispatch(actions.showMore(payload)),
