@@ -75,18 +75,31 @@ const Questions = props => {
             {props.room.roomData && props.room.roomData.QAData ? props.room.roomData.QAData.map((element, idx) => {
                 return (
                     <div className='questionDiv' key={idx}>
-                      <Link to='/Question'> <p className="questionAsked" onClick={e => goToQuestion(idx)}>
-                            {element.question}
-                        </p></Link> 
-                        <Show condition={props.room.roomAdmin || (props.userInfo.user._id === props.room.roomData.QAData[idx].virtualuserID)}>
-                            <button onClick={e => deleteQuestion(props.room.roomData.QAData[idx]._id, idx)}>delete question</button>
-                        </Show>
+                        <div className="quesHeader">
+                            <Link to='/Question'> <p className="questionAsked" onClick={e => goToQuestion(idx)}>
+                                Q{idx + 1}: {element.question}
+                            </p></Link>
+                            <Show condition={props.room.roomAdmin || (props.userInfo.user._id === props.room.roomData.QAData[idx].virtualuserID)}>
+                                <div className="removeQuesRec">
+                                    <div className="bin-container" onClick={e => deleteQuestion(props.room.roomData.QAData[idx]._id, idx)}>
+                                        <div className="bin-bg full"></div>
+                                        <div className="white-bg cover"></div>
+                                        <div className="bin-bg lid"></div>
+                                    </div>
+                                </div>
+
+                                {/* <button className="TakeQuizAndToto" onClick={e => deleteQuestion(props.room.roomData.QAData[idx]._id, idx)}>delete question</button> */}
+                            </Show>
+                        </div>
+                        {/* <Show condition={props.room.roomAdmin || (props.userInfo.user._id === props.room.roomData.QAData[idx].virtualuserID)}>
+                            <button className="TakeQuizAndToto" onClick={e => deleteQuestion(props.room.roomData.QAData[idx]._id, idx)}>delete question</button>
+                        </Show> */}
                         <div className="time and creater">
                             <span className="nameOfWhoQues">{element.virtualcreatedName}</span><br />
                             <span>at {element.createdTime.slice(0, 10)}</span></div>
 
                         <div className="numberOfAnswer">This question has {element.answers.length}  answers  <Link to='/Question'> <p className="checAns" onClick={e => goToQuestion(idx)}>
-                        Check answers!
+                            Check answers!
                         </p></Link>  </div>
                         {/* <Link to='/Question'> <button onClick={e => goToQuestion(idx)}>go to question</button></Link> */}
                         {/* <ul>
@@ -115,10 +128,10 @@ const Questions = props => {
                 )
             }) : null}
             <form className="addQuesForm" onSubmit={e => askQuestion(e)}>
-              
-        <input className="addQuesFor" onChange={e => questionFun(e)} placeholder=" Have a question ? you can ask here !"></input>
-              
-                <button className="addQuesForButt">Ask</button>
+
+                <input className="addQuesFor" onChange={e => questionFun(e)} placeholder="Have a question you can ask here  !"></input>
+
+                <button className="addQuesForButt" >Ask</button>
             </form>
         </div>
 

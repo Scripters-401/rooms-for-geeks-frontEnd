@@ -1,15 +1,17 @@
+
+
 .chat-true{
-  max-width: 136px;
-  margin: 0px auto;
-  border: 1px solid #ddd;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.05);
-  border-radius: 2px;
-  transition: all 5s linear;
-  position: fixed;
-  right: 0;
-  top: 92px;
-  z-index: 99999999;
-  // min-width: 300px;
+ margin: 0px auto;
+    border: 1px solid #ddd;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    transition: all 5s linear;
+    z-index: 99999999;
+    position: fixed;
+    width: 25%;
+    bottom: 0;
+    right: 0%;
+    // top: 24%;
   .chatHeader {
     font-size: 18px;
     padding: 10px 20px;
@@ -21,11 +23,9 @@
   }
   p{
     display: none;
-
   }
   span {
     display: none;
-
   }
   label {
     display: none;
@@ -55,14 +55,13 @@
   border: 1px solid #ddd;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.05);
   border-radius: 2px;
-  transition: all 5s linear;
-
-  position: fixed;
-  right: 0;
-  top: 92px;
+  right: 0%;
+  // transition: all 5s linear;
   z-index: 99999999;
   min-width: 300px;
-
+    position: fixed;
+    width: 25%;
+    top: 24%;
   .chatHeader {
     font-size: 18px;
     padding: 10px 20px;
@@ -93,6 +92,9 @@
     border-bottom: 1px solid #eee;
     font-family: Nunito;
     font-size: 16px;
+    &:focus {
+        outline: none;
+    }
   }
 
   button {
@@ -103,6 +105,9 @@
     padding: 12px 0;
     width: 100%;
     border-radius: 0 0 2px 2px;
+    &:focus {
+        outline: none;
+    }
    
   }
 
@@ -112,11 +117,11 @@
     overflow: auto;
     background: #f9f9f9;
     #output p {
-    margin: 20px 5px;
+     margin: 13px 5px;
     color: #555;
     }
     #output strong {
-      color: #575ed8;
+      color:#416760;
     }
     #feedback p {
       color: #aaa;
@@ -125,13 +130,23 @@
     }
   }
   .like-false{
-    background-color: white;
+       background-color: #ccc7c76e;
+    /* height: 34px; */
+    padding: 2%;
+    color:#191212;
+    border-radius: 24px;
     &:hover{
       cursor: pointer;
+      background-color: white;
+      // border: solid #416760 1px;
     }
   }
   .like-true{
-    background-color: cadetblue;
+    background-color: #416760ba;
+    /* height: 34px; */
+    padding: 2%;
+    border-radius: 24px;
+       
     &:hover{
       cursor: pointer;
     }
@@ -151,12 +166,23 @@ img.userImgeChat {
     display: flex;
 }
 
-.messaheDiv {
-    border-bottom: 1px solid #80808024;
-}
+// .messaheDiv {
+//     border-bottom: 1px solid #80808024;
+// }
 
 .emoji {
    margin-bottom: 4%;
     display: flex;
     justify-content: space-evenly;
 }
+
+span.msgTime {
+    color: #827e7e78;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    border-bottom: 1px solid;
+}
+
+//className="TakeQuizAndTotoButt"
