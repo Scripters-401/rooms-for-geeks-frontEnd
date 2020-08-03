@@ -89,14 +89,11 @@ const Room = props => {
                             <Show condition={props.room.favOrNot}>
                                 <span className={`addToFav-${props.room.favOrNot}`} onClick={e => removefromFav()}>
 
-                                    {/* <section title=".slideThree"> */}
-
                                     <div class="slideThree">
                                         <input type="checkbox" value="None" id="slideThree" name="check" checked />
                                         <label for="slideThree"></label>
                                     </div>
 
-                                    {/* </section> */}
                                 </span>
                             </Show>
                             <Show condition={!props.room.favOrNot}>
@@ -106,7 +103,7 @@ const Room = props => {
                                 </div></span>
                             </Show>
                         </div>
-                     
+
                     </div>
 
                     <div className='courseData'>
@@ -122,30 +119,31 @@ const Room = props => {
                         <Show condition={!(props.room.roomData.renderedQuiz && props.room.roomData.renderedQuiz.constructor === Object && Object.keys(props.room.roomData.renderedQuiz).length === 0)}>
                             <Link className="aHrefLinkdds" to="/take-quiz"> <button className="TakeQuizAndToto" >Take Quiz</button></Link>
                         </Show>
-                        
+
                         <Show condition={(props.room.roomData.courseData && props.room.roomData.courseData.tutorial)}>
-                           <a className="aHrefLinkdds" href={`https://${props.room.roomData.courseData && props.room.roomData.courseData.tutorial ? props.room.roomData.courseData.tutorial : null}`} rel="noopener noreferrer" target='_blank'><button className="TakeQuizAndToto" >Tutorial</button></a> 
+                            <a className="aHrefLinkdds" href={`https://${props.room.roomData.courseData && props.room.roomData.courseData.tutorial ? props.room.roomData.courseData.tutorial : null}`} rel="noopener noreferrer" target='_blank'><button className="TakeQuizAndToto" >Tutorial</button></a>
                         </Show>
                     </div>
                 </div>
                 <div className="chatSet">
                     <Chat />
-                    <div className="roomDataFor">
-                            <p className=" CreatedBy">
-                                Created By :
+                </div>
+                <div className="roomDataFor">
+                    <p className=" CreatedBy">
+                        Created By :
                         {props.room.adminName}
-                            </p>
-                            <p className=" CreatedByOn">
-                                On :
+                    </p>
+                    <p className=" CreatedByOn">
+                        On :
                         {props.room.roomData && props.room.roomData.RData && props.room.roomData.RData.createdTime ? props.room.roomData.RData.createdTime.slice(0, 10) : null}
-                            </p>
-                            <p className="Topic">Topic: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.topic : null}</p>
-                            {/* <p>
+                    </p>
+                    <p className="Topic">Topic: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.topic : null}</p>
+                    {/* <p>
                         Public: {props.room.roomData && props.room.roomData.RData ? `${props.room.roomData.RData.public || props.room.roomData.RData.publicc}` : null}
                     </p> */}
 
-                        </div>
                 </div>
+
             </div>
 
 
