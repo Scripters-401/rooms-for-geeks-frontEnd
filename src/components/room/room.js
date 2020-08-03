@@ -83,18 +83,21 @@ const Room = props => {
                         </Show>
                         <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null}</h2>
                         <Show condition={!props.room.favOrNot}>
-                            <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}> <section title=".slideThree">
+                            <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}>
+                                
+                                 {/* <section title=".slideThree"> */}
 
                                 <div class="slideThree">
                                     <input type="checkbox" value="None" id="slideThree" name="check" checked />
                                     <label for="slideThree"></label>
                                 </div>
 
-                            </section></span>
+                            {/* </section> */}
+                            </span>
                         </Show>
                         <Show condition={props.room.favOrNot}>
                             <span className={`addToFav-${props.room.favOrNot}`} onClick={e => removefromFav()}>  <div class="slideThree">
-                                <input type="checkbox" value="None" id="slideThree" name="check" checked />
+                                <input type="checkbox" value="None" id="slideThree" name="check" />
                                 <label for="slideThree"></label>
                             </div></span>
                         </Show>
