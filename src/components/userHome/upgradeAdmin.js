@@ -22,11 +22,14 @@ const UpgradeAdmin = props => {
     }
     return (
         <>
-            
-            <Button onClick={upgradeFun}>
+            <div className='upgradePost'>
+            <div> Join us as instructor and build your own rooms</div>
+            <Button onClick={upgradeFun} className='upgradeButton'>
                 Upgrade
             </Button>
-            {console.log('role',props.sign.user.role)}
+            
+            </div>
+            
             
         </>
     );

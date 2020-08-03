@@ -75,72 +75,81 @@ const Room = props => {
 
     return (
         <>
-            <div className='roomData'>
-                {props.room.redirectAfterDelete ? (<Redirect to="/user-Home" />) : null}
-                <div id="room-data">
-                    <div className="quwsHead">
-                        <Show condition={props.room.roomAdmin}>
-                            <Auth capability="master-room">
-                                <button className='deleteRoom' onClick={e => deleteRoom()}> Delete Room</button>
-                            </Auth>
-                        </Show>
-                        <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null}</h2>
-                        <Show condition={!props.room.favOrNot}>
-                            <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}>
+            <div className="bodyDiv">
+                <div className='roomData'>
+                    {props.room.redirectAfterDelete ? (<Redirect to="/user-Home" />) : null}
+                    <div id="room-data">
+                        <div className="quwsHead">
+                            <Show condition={props.room.roomAdmin}>
+                                <Auth capability="master-room">
+                                    <button className='deleteRoom' onClick={e => deleteRoom()}> Delete Room</button>
+                                </Auth>
+                            </Show>
+                            <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null}</h2>
+                            <Show condition={props.room.favOrNot}>
+                                <span className={`addToFav-${props.room.favOrNot}`} onClick={e => removefromFav()}>
 
-                                {/* <section title=".slideThree"> */}
+                                    {/* <section title=".slideThree"> */}
 
-                                <div class="slideThree">
-                                    <input type="checkbox" value="None" id="slideThree" name="check" checked />
+                                    <div class="slideThree">
+                                        <input type="checkbox" value="None" id="slideThree" name="check" checked />
+                                        <label for="slideThree"></label>
+                                    </div>
+
+                                    {/* </section> */}
+                                </span>
+                            </Show>
+                            <Show condition={!props.room.favOrNot}>
+                                <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}>  <div class="slideThree">
+                                    <input type="checkbox" value="None" id="slideThree" name="check" />
                                     <label for="slideThree"></label>
-                                </div>
+                                </div></span>
+                            </Show>
+                        </div>
+                     
+                    </div>
 
-                                {/* </section> */}
-                            </span>
+                    <div className='courseData'>
+                        <h2 className="courseName"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
+                        <p className="Discription"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
+
+                    </div>
+
+
+
+                    <QA />
+                    <div className="buttonRoom">
+                        <Show condition={!(props.room.roomData.renderedQuiz && props.room.roomData.renderedQuiz.constructor === Object && Object.keys(props.room.roomData.renderedQuiz).length === 0)}>
+                            <Link className="aHrefLinkdds" to="/take-quiz"> <button className="TakeQuizAndToto" >Take Quiz</button></Link>
                         </Show>
-                        <Show condition={props.room.favOrNot}>
-                            <span className={`addToFav-${props.room.favOrNot}`} onClick={e => removefromFav()}>  <div class="slideThree">
-                                <input type="checkbox" value="None" id="slideThree" name="check" />
-                                <label for="slideThree"></label>
-                            </div></span>
+                        
+                        <Show condition={(props.room.roomData.courseData && props.room.roomData.courseData.tutorial)}>
+                           <a className="aHrefLinkdds" href={`https://${props.room.roomData.courseData && props.room.roomData.courseData.tutorial ? props.room.roomData.courseData.tutorial : null}`} rel="noopener noreferrer" target='_blank'><button className="TakeQuizAndToto" >Tutorial</button></a> 
                         </Show>
                     </div>
+                </div>
+                <div className="chatSet">
+                    <Chat />
                     <div className="roomDataFor">
-                        <p className=" CreatedBy">
-                            Created By :
+                            <p className=" CreatedBy">
+                                Created By :
                         {props.room.adminName}
-                        </p>
-                        <p className=" CreatedByOn">
-                            On :
+                            </p>
+                            <p className=" CreatedByOn">
+                                On :
                         {props.room.roomData && props.room.roomData.RData && props.room.roomData.RData.createdTime ? props.room.roomData.RData.createdTime.slice(0, 10) : null}
-                        </p>
-                        <p className="Topic">Topic: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.topic : null}</p>
-                        {/* <p>
+                            </p>
+                            <p className="Topic">Topic: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.topic : null}</p>
+                            {/* <p>
                         Public: {props.room.roomData && props.room.roomData.RData ? `${props.room.roomData.RData.public || props.room.roomData.RData.publicc}` : null}
                     </p> */}
 
-                    </div>
+                        </div>
                 </div>
-
-
-
-            </div>
-            <div className='courseData'>
-                <h2 className="courseName"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
-                <p className="Discription"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
-
             </div>
 
 
-            <Show condition={(props.room.roomData.courseData && props.room.roomData.courseData.tutorial)}>
-                <button ><a href={`https://${props.room.roomData.courseData && props.room.roomData.courseData.tutorial ? props.room.roomData.courseData.tutorial : null}`} rel="noopener noreferrer" target='_blank'>See Tutorial</a></button>
-            </Show>
 
-            {/* <Show condition={!(props.room.roomData.renderedQuiz && props.room.roomData.renderedQuiz.constructor === Object && Object.keys(props.room.roomData.renderedQuiz).length === 0)}>
-                <Link to="/take-quiz"> <button >Take Quiz</button></Link>
-            </Show> */}
-            <QA />
-            <Chat />
 
 
         </>

@@ -189,7 +189,9 @@ let initialState = {
     { topic: 'math', roomID: '3' },
     ],
     roomsLength: 2,
-    roomPrivatePass: ''
+    roomPrivatePass: '',
+    searchActivated: false,
+    searchKey:''
 };
 
 // reducer : switch case
@@ -226,6 +228,14 @@ export default (state = initialState, action) => {
         case 'roomPass':
             state.roomPrivatePass = payload;
             return { ...state };
+        case 'search-On':
+            state.searchActivated = payload;
+            return { ...state };
+        case 'search-String':
+            state.searchKey = payload;
+            return { ...state };
+
+
 
 
         default:
@@ -374,6 +384,20 @@ export const showAllFun = () => {
     return {
         type: 'show-ALL',
         payload: ''
+    }
+}
+
+export const searchOn = (boolean) => {
+    return {
+        type: 'search-On',
+        payload: boolean
+    }
+}
+
+export const searchString = (str) => {
+    return {
+        type: 'search-String',
+        payload: str
     }
 }
 

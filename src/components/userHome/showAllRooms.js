@@ -57,9 +57,9 @@ const AllRooms = props => {
                             // console.log('topiccccccc',topic);
                             break;
                         }
-                        
+
                     }
-                    
+
                     // console.log('randommmmmm',random);
 
                     return (
@@ -115,16 +115,28 @@ const AllRooms = props => {
                                                     {/* <video class="video__container" autoplay muted loop>
                                     <source class="video__media" src="https://player.vimeo.com/external/180185916.sd.mp4?s=c893e4770f87b00e0d6b5a1de138b01b02aaa085&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
                                 </video> */}
+                                                    <ul className="bg-bubbles">
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="inside-page">
                                             <div class="inside-page__container">
-                                                <h3 class="inside-page__heading inside-page__heading--camping">
+                                                <h5 class="inside-page__heading inside-page__heading--camping">
                                                     <p>Created By:</p>
                                                     {val.cookieAdminName}
-                                                </h3>
+                                                </h5>
                                                 <p class="inside-page__text">
                                                     {val.createdTime.slice(0, 10)}
                                                 </p>
@@ -132,7 +144,6 @@ const AllRooms = props => {
                                                     <Link to="/room" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
                                                 </Show>
                                                 <Show condition={!val.publicc}>
-                                                    {/* {props.choosenID(val._id)} */}
                                                     <Popup bb={val._id}></Popup>
                                                 </Show>
                                             </div>
