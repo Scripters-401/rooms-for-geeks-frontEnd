@@ -6,6 +6,7 @@ import cookie from 'react-cookies';
 
 import * as actions from '../../store/roomReducer';
 // import * as actions2 from '../../store/userHome';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Show from '../auth/show'
 import Auth from '../auth/auth'
