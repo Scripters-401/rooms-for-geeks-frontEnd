@@ -59,6 +59,7 @@ const UserHome = props => {
 
     return (
         <>
+        <div className='allByall'>
             <Show condition={props.sign.user.role === 'user'}>
                 <Upgrade /></Show>
             <div className="searchAndBut">
@@ -209,17 +210,17 @@ const UserHome = props => {
 
             <MyRooms />
             <Show condition={!props.userHome.showAllRooms}><AllRooms />
-                <div className='show-more'><Button onClick={props.showAllFun}>Show More</Button></div>
+                <div className='show-more'><Button onClick={props.showAllFun} className='upgradeButton'>Show More</Button></div>
             </Show>
 
 
             <Show condition={props.userHome.showAllRooms}>
 
                 <ShowAll />
-                <div className='show-more'><Button onClick={props.showAllFun} >Show Less</Button></div>
+                <div className='show-more'><Button onClick={props.showAllFun} className='upgradeButton'>Show Less</Button></div>
             </Show>
 
-
+            </div>
         </>
 
     )

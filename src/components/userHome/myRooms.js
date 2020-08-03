@@ -50,9 +50,7 @@ const MyRooms = props => {
                         {props.userHome.myRooms.map((val, i) => {
 
                             if (!random[i]) random[i] = Math.floor(Math.random() * 10)
-                            for (let i = 0; i < props.userHome.allRooms.length; i++) { // 5
-                                // console.log('props.userHome.allCourses.roomID', props.userHome.allCourses[i], i)
-                                // console.log('manualID', val._id, 'courseID', props.userHome.allCourses[i].roomID);
+                            for (let i = 0; i < props.userHome.allRooms.length; i++) { 
                                 if (props.userHome && props.userHome.allCourses && (props.userHome.allCourses[i].roomID === val._id)) {
                                     console.log('obadaaaaaaaaaaaaaaaaaaaa');
                                     topic = props.userHome.allCourses[i].topic;
@@ -137,7 +135,7 @@ const MyRooms = props => {
                                                     <div class="inside-page">
                                                         <div class="inside-page__container">
                                                             <h3 class="inside-page__heading inside-page__heading--ski">
-                                                                <p>Created By:</p>
+                                                                <p>By:</p>
                                                                 {val.cookieAdminName}
                                                             </h3>
                                                             <p class="inside-page__text">
