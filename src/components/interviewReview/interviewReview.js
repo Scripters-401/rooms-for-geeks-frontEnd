@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/getInterviewReducer';
 import * as actions2 from '../../store/interviewReviewReducer';
 import * as actions3 from '../../store/putReviewReducer';
+import * as loader from '../../store/signINUPReducer'
 import './interviewReview.scss';
 // import $ from 'jquery';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -13,7 +14,12 @@ import { If, Then, Else } from '../if/if.js';
 const AllInterviewR = props => {
 
     useEffect(() => {
+        props.updateLoader(true);
+
         props.getInterviewreview(props.sign.token)
+
+        // props.updateLoader(false);
+
     }, [props.sign.token])
 
 
@@ -364,6 +370,10 @@ const mapDispatchToProps = (dispatch, getState) => ({
     hideFirstOne: (payload) => dispatch(actions.hideFirstOne(payload)),
     theIndex: (payload) => dispatch(actions.theIndex(payload)),
     divBlockNone: (payload) => dispatch(actions.divBlockNone(payload)),
+    updateLoader: (payload) => dispatch(loader.updateLoader(payload)),
+
+
+    
 });
 
 

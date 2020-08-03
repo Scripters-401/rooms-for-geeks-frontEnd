@@ -189,7 +189,7 @@ let initialState = {
     { topic: 'math', roomID: '3' },
     ],
     roomsLength: 2,
-    roomPrivatePass:''
+    roomPrivatePass: ''
 };
 
 // reducer : switch case
@@ -257,12 +257,20 @@ export const favRoom = (token, id) => async dispatch => {
             dispatch(favorite(initialState.myRooms));
             dispatch(check(false));
         }
+        dispatch(updateLoader(false))
 
     } catch (error) {
         console.error(`ERROR: SIGNOUT`);
     }
 }
 
+
+export const updateLoader = e => {
+    return {
+        type: 'updateLoader',
+        payload: e,
+    }
+}
 export const rooms = (token) => async dispatch => {
     try {
         let r = await fetch(`${API}/allCourses`, {

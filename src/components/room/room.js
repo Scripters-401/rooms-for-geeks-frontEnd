@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 
 import * as actions from '../../store/roomReducer';
-// import * as actions2 from '../../store/userHome';
+import * as loader from '../../store/signINUPReducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Show from '../auth/show'
@@ -27,6 +27,7 @@ const Room = props => {
         let x = props.userHome.choosenRoomID || cookieroomID;
         props.updateChoosenRoomIDSocket(x)
         window.scrollTo(0, 0)
+
         // }, 500);
 
     }, [])
@@ -38,6 +39,8 @@ const Room = props => {
             props.getRoom(props.sign.token, props.room.choosenRoomIDSocket);
             let fav = props.userInfo.user && props.userInfo.user.favRooms ? props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket) : null;
             props.updateFavOrNot(fav)
+            props.updateLoader(false);
+
         }, 500);
 
     }, [props.room.choosenRoomIDSocket])
@@ -84,15 +87,15 @@ const Room = props => {
                         <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null}</h2>
                         <Show condition={!props.room.favOrNot}>
                             <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}>
-                                
-                                 {/* <section title=".slideThree"> */}
+
+                                {/* <section title=".slideThree"> */}
 
                                 <div class="slideThree">
                                     <input type="checkbox" value="None" id="slideThree" name="check" checked />
                                     <label for="slideThree"></label>
                                 </div>
 
-                            {/* </section> */}
+                                {/* </section> */}
                             </span>
                         </Show>
                         <Show condition={props.room.favOrNot}>
@@ -120,15 +123,15 @@ const Room = props => {
                 </div>
 
 
-              
+
             </div>
             <div className='courseData'>
-                    <h2 className="courseName"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
-                    <p className="Discription"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
-                   
-                </div>
+                <h2 className="courseName"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
+                <p className="Discription"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
 
-        
+            </div>
+
+
             <Show condition={(props.room.roomData.courseData && props.room.roomData.courseData.tutorial)}>
                 <button ><a href={`https://${props.room.roomData.courseData && props.room.roomData.courseData.tutorial ? props.room.roomData.courseData.tutorial : null}`} rel="noopener noreferrer" target='_blank'>See Tutorial</a></button>
             </Show>
@@ -160,6 +163,9 @@ const mapDispatchToProps = (dispatch, getState) => ({
     updateRoomAdminBool: (userid) => dispatch(actions.updateRoomAdminBool(userid)),
     updateChoosenRoomIDSocket: (userid) => dispatch(actions.updateChoosenRoomIDSocket(userid)),
     updateFavOrNot: (bool) => dispatch(actions.updateFavOrNot(bool)),
+    updateLoader: (bool) => dispatch(loader.updateLoader(bool)),
+
+
 });
 
 
