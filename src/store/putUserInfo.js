@@ -9,7 +9,7 @@ let initialState = {
     flipUniversity: true,
     flipName: true,
     flipMajor: true,
-
+    flipPassword: true,
 };
 
 
