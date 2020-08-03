@@ -95,13 +95,13 @@ const RoomForm = props => {
 
                             />
 
-                            <input className="input"
+                            {/* <input className="input"
                                 type="text"
                                 name="topic"
                                 // onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder={props.thePostRoom.topic ? props.thePostRoom.topic : "Topic"}
                                 hidden={true}
-                            />
+                            /> */}
 
 
                             <select required name="topic" className="input selector"

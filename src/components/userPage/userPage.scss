@@ -31,10 +31,10 @@ img.image {
     padding-bottom: 14%;
     // background: url("https://38.media.tumblr.com/c026c2203f47be8d0f3fb81f6c5aee25/tumblr_n2hutxfrNr1tubinno1_1280.jpg")
     //     no-repeat center center fixed;
-    background: url("../../assest/Clock1.jpg")
-    no-repeat center center fixed;
-    //  background: url("../../assest/HomeCover.jpg")
+    // background: url("../../assest/Clock1.jpg")
     // no-repeat center center fixed;
+     background: url("../../assest/HomeCover.jpg")
+    no-repeat center center fixed;
     
     background-size: cover;
     position: sticky;
@@ -46,8 +46,8 @@ img.image {
         left: 0;
         background: #c0392b; /* IE Fallback */
         background: rgba(52, 73, 94, 0.8);
-        // background: rgba(181, 186, 191, 0.8);
-        background: rgba(181, 186, 191, 0.45);
+        background: rgba(181, 186, 191, 0.8);
+        // background: rgba(181, 186, 191, 0.45);
         width: 100%;
         height: 100%;
     }
@@ -220,3 +220,17 @@ span.toggleButton {
 }
 
 //
+
+.changeData{
+    width: 95%;
+
+    button{
+        margin-bottom: 4%;
+        margin-top: 1%;
+        width: 56%;
+        background-color: #7d938fc2;
+        &:hover{
+            background:  #7d938f ;
+        }
+    }
+}

@@ -174,7 +174,7 @@ const User = props => {
 
                     </Show>
                     <Show condition={!props.editUserInfo.flipName}>
-                        <form onSubmit={(e) => handleSubmitFun(e, 'Name')}>
+                        <form className='changeData' onSubmit={(e) => handleSubmitFun(e, 'Name')}>
 
                             <input
                                 type="text"
@@ -205,7 +205,7 @@ const User = props => {
                     </Show>
 
                     <Show condition={!props.editUserInfo.flipMajor}>
-                        <form onSubmit={(e) => handleSubmitFun(e, 'Major')}>
+                        <form className='changeData' onSubmit={(e) => handleSubmitFun(e, 'Major')}>
 
                             <input
                                 type="text"
@@ -232,7 +232,7 @@ const User = props => {
                         <p className="university infoSec">University: {props.userInfo.user.university}</p>
                     </Show>
                     <Show condition={!props.editUserInfo.flipUniversity}>
-                        <form onSubmit={(e) => handleSubmitFun(e, 'University')}>
+                        <form className='changeData' onSubmit={(e) => handleSubmitFun(e, 'University')}>
                             <input
                                 type="text"
                                 name="university"
