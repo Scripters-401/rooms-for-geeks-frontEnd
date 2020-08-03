@@ -10,19 +10,20 @@ import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import logo from '../../assest/LOGOC.png';
+import Popup from './popup';
 // import { sign } from 'jsonwebtoken';
-let random =[];
+let random = [];
 const MyRooms = props => {
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
-    
+
     useEffect(() => {
         setTimeout(() => {
             console.log('Coursesffffffff', props.userHome.allCourses);
-           
+
             props.favRoom(props.sign.token, props.sign.user.id);
             console.log('favvvvvv', props.userHome.myRooms);
             // props.rooms(props.sign.token);
@@ -34,7 +35,7 @@ const MyRooms = props => {
         console.log('props.userHome.choosenRoomID', id);
         props.choosenID(id);
     }
-    let topic='sport'
+    let topic = 'sport'
     return (
         <>
 
@@ -47,11 +48,9 @@ const MyRooms = props => {
                     {console.log('myrooms', props.userHome.myRooms)}
                     <Carousel activeIndex={index} onSelect={handleSelect}>
                         {props.userHome.myRooms.map((val, i) => {
-                            
-                            if(!random[i]) random[i] = Math.floor(Math.random() * 10)
-                            for (let i = 0; i < props.userHome.allRooms.length; i++) { // 5
-                                // console.log('props.userHome.allCourses.roomID', props.userHome.allCourses[i], i)
-                                // console.log('manualID', val._id, 'courseID', props.userHome.allCourses[i].roomID);
+
+                            if (!random[i]) random[i] = Math.floor(Math.random() * 10)
+                            for (let i = 0; i < props.userHome.allRooms.length; i++) { 
                                 if (props.userHome && props.userHome.allCourses && (props.userHome.allCourses[i].roomID === val._id)) {
                                     console.log('obadaaaaaaaaaaaaaaaaaaaa');
                                     topic = props.userHome.allCourses[i].topic;
@@ -66,9 +65,9 @@ const MyRooms = props => {
 
 
                                             <section class="card-section">
-                                                <div class="card">
+                                                <div class="card my-rooms">
                                                     <div class="flip-card">
-                                                        <div class="flip-card__container">
+                                                        <div class="flip-card__container rotatee">
                                                             <div class="card-front">
                                                                 <div class="card-front__tp card-front__tp--ski">
                                                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -94,7 +93,7 @@ const MyRooms = props => {
                                        c-0.8,0-1.5,0.7-1.5,1.5S39.9,12.3,40.7,12.3z"/>
                                                                         </g>
                                                                     </svg>
-                                                                    <img class="ccontainer" src={`${ props.userHome.categoryImages[`${topic}`][random[i]] }`} alt='LOGO' />
+                                                                    <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random[i]]}`} alt='LOGO' />
                                                                     <h2 class="card-front__heading">
                                                                         {/* {val.roomName} */}
                                                                     </h2>
@@ -117,6 +116,18 @@ const MyRooms = props => {
                                         <source class="video__media" src="https://player.vimeo.com/external/195913085.sd.mp4?s=7c12f7a83de62a8900fd2ae049297070b9bc8a54&profile_id=164&oauth2_token_id=574477611" type="video/mp4">
                                     </video> */}
                                                                 {/* <img class="video__container" src='https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80' alt='LOGO' /> */}
+                                                                <ul className="bg-bubbles">
+                                                                    <li></li>
+                                                                    <li></li>
+                                                                    <li></li>
+                                                                    <li></li>
+                                                                    <li></li>
+                                                                    <li></li>
+                                                                    <li></li>
+                                                                    <li></li>
+                                                                    <li></li>
+                                                                    <li></li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -124,14 +135,18 @@ const MyRooms = props => {
                                                     <div class="inside-page">
                                                         <div class="inside-page__container">
                                                             <h3 class="inside-page__heading inside-page__heading--ski">
-                                                                <p>Created By:</p>
+                                                                <p>By:</p>
                                                                 {val.cookieAdminName}
                                                             </h3>
                                                             <p class="inside-page__text">
                                                                 {val.createdTime.slice(0, 10)}
                                                             </p>
-                                                            <Link to="/room" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
-
+                                                            <Show condition={val.publicc}>
+                                                                <Link to="/room" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
+                                                            </Show>
+                                                            <Show condition={!val.publicc}>
+                                                                <Popup bb={val._id}></Popup>
+                                                            </Show>
                                                         </div>
                                                     </div>
                                                 </div>
