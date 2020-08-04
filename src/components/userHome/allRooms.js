@@ -106,15 +106,15 @@ const AllRooms = props => {
 
                                         <div class="inside-page">
                                             <div class="inside-page__container">
-                                                <h3 class="inside-page__heading inside-page__heading--ski">
-                                                    <p>Created By:</p>
-                                                    {val.cookieAdminName}
+                                                <h3 class="inside-page__heading inside-page__heading--ski ">
+                                                    <p className='by-textt'>By: {val.cookieAdminName}</p>
+                                                    {/* <p className='name-userr'>{val.cookieAdminName}</p> */}
                                                 </h3>
                                                 <p class="inside-page__text">
                                                     {val.createdTime.slice(0, 10)}
                                                 </p>
                                                 <Show condition={val.publicc}>
-                                                    <Link to="/room" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
+                                                    <Link to="/room"  key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
                                                 </Show>
                                                 <Show condition={!val.publicc}>
                                                     <Popup bb={val._id}></Popup>

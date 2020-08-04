@@ -45,7 +45,7 @@ const MyRooms = props => {
                 </div>
                 <div className='favRooms'>
                     {console.log('myrooms', props.userHome.myRooms)}
-                    <Carousel activeIndex={index} onSelect={handleSelect}>
+                    <Carousel activeIndex={index} onSelect={handleSelect} >
                         {props.userHome.myRooms.map((val, i) => {
 
                             if (!random[i]) random[i] = Math.floor(Math.random() * 10)
@@ -133,15 +133,15 @@ const MyRooms = props => {
 
                                                     <div class="inside-page">
                                                         <div class="inside-page__container">
-                                                            <h3 class="inside-page__heading inside-page__heading--ski">
-                                                                <p>By:</p>
+                                                            <h3 class="inside-page__heading inside-page__heading--ski name-userr">
+                                                                <p className='by-textt'>By:</p>
                                                                 {val.cookieAdminName}
                                                             </h3>
                                                             <p class="inside-page__text">
                                                                 {val.createdTime.slice(0, 10)}
                                                             </p>
                                                             <Show condition={val.publicc}>
-                                                                <Link to="/room" className="goToRoom" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
+                                                                <Link to="/room" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
                                                             </Show>
                                                             <Show condition={!val.publicc}>
                                                                 <Popup bb={val._id}></Popup>

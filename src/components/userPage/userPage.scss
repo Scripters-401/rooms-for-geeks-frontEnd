@@ -1,4 +1,7 @@
 ///////////------------------------------------------
+
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
 img.image {
     width: 342px;
     height: 329px;
@@ -106,13 +109,14 @@ span.toggleButton {
         position: absolute;
         // right: 12px;
         z-index: 1;
+        top: 3px;
         // top: 10px;
         input {
             display: none;
             + label {
                 display: inline-block;
-                width: 34px;
-                height: 34px;
+                width: 27px;
+                height: 27px;
                 margin-bottom: 0;
                 border-radius: 100%;
                 background: #ffffff;
@@ -121,9 +125,8 @@ span.toggleButton {
                 cursor: pointer;
                 font-weight: normal;
                 transition: all 0.2s ease-in-out;
-
                 position: relative;
-                bottom: 9px;
+                bottom: -1px;
                 &:hover {
                     background: #f1f1f1;
                     border-color: #d6d6d6;
@@ -133,7 +136,7 @@ span.toggleButton {
                     font-family: "FontAwesome";
                     color: #757575;
                     position: absolute;
-                    top: 5px;
+                    top: 0px;
                     left: 0;
                     right: 0;
                     text-align: center;
@@ -200,18 +203,18 @@ span.toggleButton {
         float: left;
         height: 29px;
         width: 15px;
-        background: #1381b3;
+        background: #535455;
         border-radius: 15px 0 0 15px;
         display: block;
     }
     &:hover .left_circle {
-        background: green;
+        background: #416760;
     }
     &:hover .right_circle {
-        background: green;
+        background: #416760;
     }
     .right_circle {
-        background: #1381b3;
+        background: #535455;
         height: 29px;
         width: 15px;
         border-radius: 0 15px 15px 0;
@@ -220,28 +223,50 @@ span.toggleButton {
     }
 }
 
-//
 
 .changeData{
     width: 95%;
 
     button{
+        color: white;
+        background-color: #416760;
+        border-radius: 6px;
+        border: solid 1px #416760;
+        transition-duration: 1.2s;
         margin-bottom: 4%;
         margin-top: 1%;
-        width: 56%;
-        background-color: #7d938fc2;
-        &:hover{
-            background:  #7d938f ;
-        }
+        margin-left: 87%;
+    &:hover {
+        background-color: white;
+        color: #416760;
+        border: solid 1px #416760;
+    }
+    &:focus {
+        outline: none;
+    }
     }
 }
 
 p.showPass {
     margin-top: 5%;
+    margin-left: 6px;
 }
 
 input.checkB {
     margin-right: 4px;
     position: relative;
     top: 2px;
+}
+
+button#saveId {
+    top: -31px;
+    position: relative;
+}
+
+.infoSec {
+    margin-top: 2%;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: 114%;
+    // font-family: 'Arvo', serif;
 }

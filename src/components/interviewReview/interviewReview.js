@@ -7,6 +7,7 @@ import * as actions3 from '../../store/putReviewReducer';
 import * as loader from '../../store/signINUPReducer'
 import './interviewReview.scss';
 import '../rooms/room.scss';
+import './interviewReview.scss';
 // import $ from 'jquery';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { If, Then, Else } from '../if/if.js';
@@ -192,15 +193,14 @@ const AllInterviewR = props => {
                                                         })}</p></div>
                                                     <div className="divLessTow">
                                                         <form className="addReviewForm" onSubmit={(e) => handleSubmitFunReview(e, data._id)}>
-                                                            <div>
                                                                 <textarea
                                                                     type="text"
                                                                     name="review"
                                                                     placeholder="Add Review"
                                                                     className="addReviewInput"
+                                                                    required
                                                                     onChange={(e) => props.updateReview(e)}
                                                                 ></textarea>
-                                                            </div>
 
                                                             <button className="addReviewButton" type="submit">Submit</button>
                                                         </form>
@@ -239,7 +239,9 @@ const AllInterviewR = props => {
                                                                     type="text"
                                                                     name="review"
                                                                     placeholder="Add Review"
+                                                                    id="addReviewInput"
                                                                     className="addReviewInput"
+                                                                    required
                                                                     onChange={(e) => props.updateReview(e)}
                                                                 ></textarea>
 
@@ -280,11 +282,8 @@ const AllInterviewR = props => {
                 <div id="btnInt">
                     <button id="btnInterview" className="custom-btn btn-16" onClick={(e) => props.divBlockNone('divBlock')} >Add Interview Review</button>
                 </div>
-                <div id={props.allInterview.blockNone} className="modal">
+                <div id={props.allInterview.blockNone} className="modall">s
                     <span onClick={(e) => props.divBlockNone('divNone')} className="close" title="Close Modal">&times;</span>
-
-
-
 
 
                     <Scrollbars>
@@ -293,17 +292,14 @@ const AllInterviewR = props => {
                             <div className="wrapper ">
                                 <div className="container">
                                     <h1 className="nameOfForm">Add Interview Review</h1>
-                                    <form className="form" id="formI" onSubmit={(e) => { handleSubmitFun(e); props.divBlockNone('divNone') }}>
+                                    <form className="form" onSubmit={(e) => { handleSubmitFun(e); props.divBlockNone('divNone') }}>
 
-
-                                        <div>
                                             <input className="input"
                                                 type="text"
                                                 name="companyName"
                                                 placeholder="Company Name"
                                                 onChange={(e) => props.handleChangeInterview(e)}
                                             />
-                                        </div>
 
                                         <div>
                                             <textarea className="reviewTextarea"
@@ -314,23 +310,19 @@ const AllInterviewR = props => {
                                             ></textarea>
                                         </div>
 
-                                        <div>
                                             <label>Interview Date</label>
                                             <input className="input"
                                                 type="date"
                                                 name="date"
                                                 onChange={(e) => props.handleChangeInterview(e)}
                                             />
-                                        </div>
 
-                                        <div>
                                             <input className="input"
                                                 placeholder="Position"
                                                 type="text"
                                                 name="position"
                                                 onChange={(e) => props.handleChangeInterview(e)}
                                             />
-                                        </div>
                                         <div className="deRange">
                                             <label>Rate:</label>
                                             <input className="inputRange"
