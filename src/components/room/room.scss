@@ -119,11 +119,10 @@ p.Topic {
     position: relative;
 }
 
-p.questionAsked {
-    // text-align: center;
+div.questionAsked {
     margin-top: -40px;
-    // color: white;
-    // font-size: 156%;
+    position: absolute;
+    left: 39px;
 }
 
 .time.and.creater {
@@ -400,3 +399,139 @@ hr.magic {
     bottom: 35px;
     width: 94%;
 }
+
+span.answerLength {
+    position: absolute;
+    top: 80px;
+    right: 28px;
+    font-size: 68%;
+}
+
+
+
+
+
+
+
+
+
+
+.svgR {
+    outline: none;
+}
+
+
+  .iconbutton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin: 0 50px;
+    outline: none;
+    position: absolute;
+    top: 10px;
+    left: 662px;
+    svg {
+      transition: 200ms all;
+      outline: none;
+    }
+    
+    &.poof {
+      position: relative;
+      outline: none;
+      
+      svg {
+        opacity: 0.01;
+        outline: none;
+      }
+      
+      &:after {
+        position: absolute;
+        left: 0;
+        bottom: 5px;
+        right: 0;
+        content: '';
+        background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/8585/poof.png) no-repeat 0 0;
+        animation: poof 500ms 1;
+        animation-fill-mode: forwards;
+        background-size: 128px 640px;
+        outline: none;
+      }
+    }
+    
+    $size: 20px;
+    $sizem: 35px;
+    $sizexl: 50px;
+    
+    svg {
+      width: $size;
+      outline: none;
+    }
+    &.poof:after {
+      height: $size;
+      background-size: $size (640 * ($size/128));
+      outline: none;
+    }
+    
+    &.medium {
+      svg { width: $sizem; }
+      outline: none;
+      &:after {
+        height: $sizem;
+        background-size: $sizem (640 * ($sizem/128));
+        outline: none;
+      }
+    }
+    
+    &.large {
+      svg { width: $sizexl; }
+      &:after {
+        height: $sizexl;
+        background-size: $sizexl (640 * ($sizexl/128));
+      }
+    }
+  }
+  svg.delete-animation {
+    fill: red;
+    outline: none;
+    .lid {
+      transform-origin: 2px 5px;
+      transition: 500ms all;
+      outline: none;
+    }
+    .can {
+      transition: 500ms all;
+      outline: none;
+    }
+    &:hover {
+      fill: yellow;
+      outline: none;
+      .lid {
+        transform: rotate(-30deg);
+        outline: none;
+      }
+    }
+    &:active .lid {
+      transform: rotate(-50deg);
+      outline: none;
+    }
+    &:focus {
+        outline: none;
+    }
+  }
+  
+  
+  @keyframes poof {
+    0% { background-position: 0 0; }
+    20% { background-position: 0 0; }
+    21% { background-position: 0 25%; }
+    40% { background-position: 0 25%; }
+    41% { background-position: 0 50%; }
+    60% { background-position: 0 50%; }
+    61% { background-position: 0 75%; }
+    80% { background-position: 0 75%; }
+    81% { background-position: 0 100%; }
+    99% { background-position: 0 100%; }
+    100% { background-position: 0 200%; }
+  }

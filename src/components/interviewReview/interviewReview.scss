@@ -696,13 +696,19 @@ button.addReviewButton {
 }
 
 p.reviewPPPP {
-  border: 2px solid #2b6b60e3;
+  /* border: 2px solid #2b6b60e3; */
   margin-top: 5%;
   border-radius: 4px;
   width: 94%;
   text-align: justify;
-  padding: 1%;
+  /* padding: 1%; */
   text-align-last: center;
+}
+
+hr.hrRev {
+  width: 94%;
+  /* background: #416760; */
+  margin: -13px;
 }
 
 form.addReviewForm {
