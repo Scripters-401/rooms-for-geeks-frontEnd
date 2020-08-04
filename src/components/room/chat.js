@@ -130,15 +130,15 @@ const Chat = props => {
 
   return (
     <div id="geeks-chat" className={`chat-${props.chat.open}`} style={props.room.scroll ? {
-      position: 'absolute', left: '126%', margin: '0px auto',
+      position: 'absolute', left: '267%', margin: '0px auto',
       border: '1px solid #ddd',
-      width: '300px',
+      width: '302px',
       bottom: '0'
     } : { position: 'fixed', right: '0' }}>
       {/* <p>{props.chat.notification}</p> */}
       <div className='chatHeader' onClick={e => props.openCloseChat()}>
-        <h2 >Geeks Chat</h2>
-        <span>Members {props.chat.counter} </span>
+        <span className="chatH2">Geeks Chat</span>
+        <span className="chatMembers">Members {props.chat.counter} </span>
         {/* <span id="members-counter"></span> */}
       </div>
 
@@ -148,16 +148,7 @@ const Chat = props => {
           {props.chat.output.map((element, idx) => {
             return (
               <div className="messaheDiv" key={idx}>
-                <span className='msgTime'>
-
-                  {element.msgTime.hours}:
-{element.msgTime.minutes}:
-{element.msgTime.seconds}
-({element.msgTime.date}/
-{element.msgTime.month})
-
-
-</span>
+                
                 <div className="userInfoAll">
                   <img className="userImgeChat" src={element.profileIMG} alt='profileIMG'></img>
                   <p><strong>{element.userName} </strong>
@@ -186,6 +177,16 @@ const Chat = props => {
                     onClick={e => props.chat.didLove[idx] ? removeLove(idx) : addLove(idx, element.userName)}
                   >❤{`${element.Love}`}</span>
                 </div>
+                <span className='msgTime'>
+
+                  {element.msgTime.hours}:
+{element.msgTime.minutes}:
+{element.msgTime.seconds}
+({element.msgTime.date}/
+{element.msgTime.month})
+
+
+</span>
               </div>
             )
           })}
