@@ -275,7 +275,7 @@ const AllInterviewR = props => {
                 <div id="btnInt">
                     <button id="btnInterview" className="custom-btn btn-16" onClick={(e) => props.divBlockNone('divBlock')} >Add Interview Review</button>
                 </div>
-                <div id={props.allInterview.blockNone} className="modal">
+                <div id={props.allInterview.blockNone} className="modall">s
                     <span onClick={(e) => props.divBlockNone('divNone')} className="close" title="Close Modal">&times;</span>
 
 
