@@ -172,7 +172,7 @@ export const postAnswers = (token, answers, quizID, userID) => async dispatch =>
   }
 }
 
-export const askQuestion = (token, question, courseID, name, userid) => async dispatch => {
+export const askQuestion = (token, question, courseID, name, userid, profileIMG) => async dispatch => {
   try {
     let results = await fetch(`${API}/QA`, {
       method: 'POST',
@@ -182,7 +182,7 @@ export const askQuestion = (token, question, courseID, name, userid) => async di
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }),
-      body: JSON.stringify({ question, courseID, name, userid })
+      body: JSON.stringify({ question, courseID, name, userid, profileIMG })
 
     });
 

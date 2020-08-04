@@ -45,7 +45,8 @@ const Questions = props => {
             question,
             props.room.roomData.courseData._id,
             props.userInfo.user.name,
-            props.userInfo.user._id
+            props.userInfo.user._id,
+            props.userInfo.user.profileIMG
         )
         e.target.reset()
 
@@ -76,10 +77,16 @@ const Questions = props => {
                 return (
                     <div className='questionDiv' key={idx}>
                         <div className="quesHeader">
-                            <Link to='/Question'> <p className="questionAsked" onClick={e => goToQuestion(idx)}>
-                                Q{idx + 1}: {element.question}
-                            </p></Link>
-                            <Show condition={props.room.roomAdmin || (props.userInfo.user._id === props.room.roomData.QAData[idx].virtualuserID)}>
+                            {/* <Link to='/Question'>  */}
+                            <div className="time and creater">
+                                <div className="imgAndName">
+                                <img className="imgOfWhoQues" src={element.profileIMG} />
+                                <p className="nameOfWhoQues">{element.virtualcreatedName}</p><br />
+                                </div>
+                                
+
+                                
+                                <Show condition={props.room.roomAdmin || (props.userInfo.user._id === props.room.roomData.QAData[idx].virtualuserID)}>
                                 <div className="removeQuesRec">
                                     <div className="bin-container" onClick={e => deleteQuestion(props.room.roomData.QAData[idx]._id, idx)}>
                                         <div className="bin-bg full"></div>
@@ -90,17 +97,53 @@ const Questions = props => {
 
                                 {/* <button className="TakeQuizAndToto" onClick={e => deleteQuestion(props.room.roomData.QAData[idx]._id, idx)}>delete question</button> */}
                             </Show>
+
+
+                                <p className="createdTimeQues"> {element.createdTime.slice(0, 10)}</p></div>
+                                <hr className="magic" />
+
+                            <p className="questionAsked" onClick={e => goToQuestion(idx)}>
+                                Q{idx + 1}: {element.question}
+                            </p>
+                            {/* </Link> */}
+                            
                         </div>
                         {/* <Show condition={props.room.roomAdmin || (props.userInfo.user._id === props.room.roomData.QAData[idx].virtualuserID)}>
                             <button className="TakeQuizAndToto" onClick={e => deleteQuestion(props.room.roomData.QAData[idx]._id, idx)}>delete question</button>
                         </Show> */}
-                        <div className="time and creater">
-                            <span className="nameOfWhoQues">{element.virtualcreatedName}</span><br />
-                            <span>at {element.createdTime.slice(0, 10)}</span></div>
 
-                        <div className="numberOfAnswer">This question has {element.answers.length}  answers  <Link to='/Question'> <p className="checAns" onClick={e => goToQuestion(idx)}>
-                            Check answers!
-                        </p></Link>  </div>
+
+                        <div className="numberOfAnswer">{element.answers.length}  Answers
+
+                            <p className="checAns">
+                                <ul>
+                                    {props.room.roomData.QAData[idx].answers.map((e, i) => {
+                                        return (
+                                            <React.Fragment key={i}>
+                                                <h4 > answer {i + 1}</h4>
+                                                <Show condition={props.room.roomAdmin || props.userInfo.user._id === props.room.roomData.QAData[idx].virtualAnswerID[i]}>
+                                                    <button onClick={e => deleteAnswer(props.room.roomData.QAData[idx]._id, idx, i)}>delete answer</button>
+                                                </Show>
+                                                <li >{e}</li>
+                                                <span>Answer From: {props.room.roomData.QAData[idx].virtualAnswerName[i]}</span>
+                                            </React.Fragment>
+                                        )
+                                    })}
+                                </ul>
+                                <form onSubmit={e => submit(e, idx)}>
+                                    <label>ADD your answer
+                                    <input required onChange={e => answerFun(e)}></input>
+                                    </label>
+                                    <button>ADD Answer</button>
+                                </form>
+
+                                {/* Check answers! */}
+                            </p>
+                            {/* <Link to='/Question'> 
+                            <p className="checAns" onClick={e => goToQuestion(idx)}>
+                            ddd</p>
+                            </Link>   */}
+                        </div>
                         {/* <Link to='/Question'> <button onClick={e => goToQuestion(idx)}>go to question</button></Link> */}
                         {/* <ul>
                             {element.answers.map((e, i) => {
@@ -151,8 +194,8 @@ const mapDispatchToProps = (dispatch, getState) => ({
     addAnswer: (token, questionId, answers, userid, name) =>
         dispatch(actions.addAnswer(token, questionId, answers, userid, name)),
     deleteQuestion: (token, questionID, userid) => dispatch(actions.deleteQuestion(token, questionID, userid)),
-    askQuestion: (token, question, courseID, name, userid) =>
-        dispatch(actions.askQuestion(token, question, courseID, name, userid)),
+    askQuestion: (token, question, courseID, name, userid, profileIMG) =>
+        dispatch(actions.askQuestion(token, question, courseID, name, userid, profileIMG)),
     deleteAnswer: (token, userid, questionid, answerIndex) =>
         dispatch(actions.deleteAnswer(token, userid, questionid, answerIndex)),
 });

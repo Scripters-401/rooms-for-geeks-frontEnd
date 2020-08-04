@@ -4,14 +4,14 @@
     margin-top: 26px;
     margin: auto;
     .addToFav-true {
-        margin-top: 26px;
+        margin-top: 42px;
     }
     .addToFav-false {
-        margin-top: 26px;
+        margin-top: 42px;
     }
 
     span.addToFav-null {
-        margin-top: 23px;
+        margin-top: 42px;
     }
     h2#roon-name {
         text-align: center;
@@ -80,9 +80,8 @@
 }
 
 .roomDataFor {
-    display: flex;
     color: #a2abab;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 3%;
 }
 
@@ -121,21 +120,28 @@ p.Topic {
 }
 
 p.questionAsked {
-    text-align: center;
-    background-color: #416760;
-    color: white;
-    font-size: 156%;
+    // text-align: center;
+    margin-top: -40px;
+    // color: white;
+    // font-size: 156%;
 }
 
 .time.and.creater {
-    display: flex;
-    justify-content: flex-end;
     color: #a2abab;
-    /* margin-left: -3%; */
 }
 
-span.nameOfWhoQues {
-    margin-right: 5px;
+p.nameOfWhoQues {
+    margin-right: 10px;
+    position: relative;
+    text-transform: capitalize;
+    // top: 3px;
+    // right: 107px;
+}
+
+p.createdTimeQues {
+    position: relative;
+    bottom: 29px;
+    left: 65px;
 }
 
 a {
@@ -173,6 +179,9 @@ input.addQuesFor {
     }
 }
 
+
+
+
 button.addQuesForButt {
     width: 12%;
     background-color: #416760;
@@ -180,7 +189,7 @@ button.addQuesForButt {
     height: 47px;
     color: white;
     margin-top: 1%;
-    border-radius: 52px;
+    border-radius: 5px;
     margin-left: 8px;
     cursor: pointer;
     font-size: 88%;
@@ -198,7 +207,7 @@ button.addQuesForButt {
 
 button.deleteRoom {
     height: 16%;
-    margin-top: 47px;
+    margin-top: 69px;
     border-radius: 5px;
     border: none;
     background-color: #416760;
@@ -218,11 +227,14 @@ button.deleteRoom {
 .bodyDiv {
     display: flex;
     width: 100%;
+    flex-direction: column;
 }
 
 .roomData {
-    width: 69%;
+    width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .chatSet {
@@ -233,13 +245,16 @@ button.deleteRoom {
 .TakeQuizAndToto {
     border: none;
     margin-bottom: 2%;
-    padding: 1%;
+    padding: 5%;
     color: white;
     background-color: #416760;
     border-radius: 6px;
-    margin-right: 2%;
+    margin-right: 1%;
+    margin-left: 8%;
     border: solid 1px #416760;
     transition-duration: 1.2s;
+    width: 100px;
+    margin-top: 50%;
     &:hover {
         background-color: white;
         color: #416760;
@@ -258,16 +273,20 @@ a.TakeQuizAndTotoButt {
 .buttonRoom {
     /* display: flex; */
     text-align: center;
+    position: sticky;
+    /* left: -138%; */
+    /* bottom: 48%; */
+    top: 0;
 }
 .quesHeader {
-    display: flex;
+    // display: flex;
     width: 100%;
-    background-color: #416760;
-    padding: 1%;
-    justify-content: start;
-    margin: auto;
-    position: relative;
-    justify-content: center;
+    // background-color: #416760;
+    // padding: 1%;
+    // justify-content: start;
+    // margin: auto;
+    // position: relative;
+    // justify-content: center;
 }
 .bin-container {
     position: absolute;
@@ -278,8 +297,8 @@ a.TakeQuizAndTotoButt {
     /*   margin-left: -6px; */
     /*   margin-top: -8px; */
     /*   border:solid red; */
-    right: 5%;
-    top: 20%;
+    right: 16px;
+    top: 16px;
     cursor: pointer;
 }
 
@@ -330,4 +349,54 @@ a.TakeQuizAndTotoButt {
 
 .bin-container:hover .bin-bg.lid {
     transform: rotateZ(-8deg) translate(8px, 1px);
+}
+
+
+aside.quiaAndTutorial {
+    width: -19%;
+    /* position: fixed; */
+    /* left: 254%; */
+    right: 92%;
+    bottom: 48%;
+    width: 13%;
+}
+
+
+.containerRoom {
+    width: 100%;
+    text-align: -webkit-center;
+}
+
+.QA-Component {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.just-QA {
+    width: 68%;
+    /* margin-left: -29%; */
+}
+
+img.imgOfWhoQues {
+    width: 38px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-left: 6px;
+    /* margin-top: 0px; */
+    /* top: 7px; */
+}
+
+.imgAndName {
+    display: flex;
+    padding: 10px;
+}
+
+
+hr.magic {
+    position: relative;
+    /* color: red; */
+    /* background: #da125c; */
+    bottom: 35px;
+    width: 94%;
 }
