@@ -13,10 +13,11 @@
 }
 
 #profileheader {
-    width: 40px;
+    width: 50px;
     border-radius: 38px;
     position: relative;
     top: -18%;
+    height: 50px;
     &:hover{
         background: none;
     }
@@ -71,17 +72,19 @@ ul.ulHeader {
     margin: auto;
     position: relative;
     text-decoration:none;
+    top: 5px;
     &:hover {
-        color: #7da09a;
+        color: white;
         text-decoration: none;
         border-radius: 15px;
-        background-image: url("https://data.whicdn.com/images/298919914/original.gif");
-        opacity: 0.25;
+        // background-image: url("https://data.whicdn.com/images/298919914/original.gif");
+        background-color: #7da09a;
+        // opacity: 0.25;
     }
 }
 
 .navHeader2 {
-    color: #7da09a;
+    color: #416760;
     font-size: 109%;
     padding: 13px;
     font-family: "Amiri", serif;
