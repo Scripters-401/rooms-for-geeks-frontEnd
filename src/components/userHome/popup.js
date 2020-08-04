@@ -46,13 +46,13 @@ const Popup = props => {
     return (
         <>
             {passCondition ? <Redirect to="/room" /> : null}
-            <div class="inside-page__btn inside-page__btn--ski" onClick={() => setSmShow(true)}>View Room</div>{' '}
+            <div class="goToRoom" onClick={() => setSmShow(true)}>View Room</div>{' '}
             <Modal
                 size="sm"
                 show={smShow}
                 onHide={() => setSmShow(false)}
                 aria-labelledby="example-modal-sizes-title-sm"
-                className='khawaaaaa'
+            
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-modal-sizes-title-sm">
@@ -63,7 +63,7 @@ const Popup = props => {
                     <form>
                         <input type='password' name='pass' onChange={(e) => handleChangePass(e)} placeholder='password'/>
                         <Show condition={incorrect}> <span style={{color:'red'}}>Incorrect password</span></Show>
-                        <Button><div class="inside-page__btn inside-page__btn--ski goToRoom" onClick={(e) => goToRoom(e, props.bb)}> View Room</div></Button>
+                        <Button><div class="inside-page__btn inside-page__btn--ski " onClick={(e) => goToRoom(e, props.bb)}> View Room</div></Button>
                     </form>
                 </Modal.Body>
             </Modal>
