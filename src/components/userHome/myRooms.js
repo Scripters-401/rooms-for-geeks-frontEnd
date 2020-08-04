@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-// // /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import './userHome.scss'
@@ -167,7 +166,6 @@ const MyRooms = props => {
                 </div>
 
             </Show>
-
         </>
     );
 }
@@ -183,4 +181,3 @@ const mapDispatchToProps = (dispatch, getState) => ({
     choosenID: (id) => dispatch(actions.roomID(id))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(MyRooms);
-

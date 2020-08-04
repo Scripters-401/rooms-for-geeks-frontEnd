@@ -7,7 +7,7 @@ import { storage } from "../firebase";
 import * as actions2 from '../../store/uploadImageReducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
-import {  } from '@fortawesome/free-brands-svg-icons';
+import { } from '@fortawesome/free-brands-svg-icons';
 import './form.scss';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
@@ -76,39 +76,50 @@ function SigninForm(props) {
 
     const handleSubmitFun = e => {
         e.preventDefault();
+        props.updateLoader(true);
         props.login(props.sign.username, props.sign.password)
+        setTimeout(() => {
+
+            props.updateLoader(false);
+        }, 1000);
+
     }
 
     const handleSubmitFunSignup = e => {
         e.preventDefault();
         if (props.upload.image) {
-        const uploadTask = storage.ref(`images/${props.upload.image.name}`).put(props.upload.image);
-        uploadTask.on("state_changed", () => {
-            storage
-                .ref("images")
-                .child(props.upload.image.name)
-                .getDownloadURL()
-                .then(url => {
-                    props.signup(
-                        props.sign.username,
-                        props.sign.password,
-                        props.sign.email,
-                        props.sign.name,
-                        props.sign.major,
-                        url,
-                    );
-                });
-        });}
-        else{
+        props.updateLoader(true);
+
+            const uploadTask = storage.ref(`images/${props.upload.image.name}`).put(props.upload.image);
+            uploadTask.on("state_changed", () => {
+                storage
+                    .ref("images")
+                    .child(props.upload.image.name)
+                    .getDownloadURL()
+                    .then(url => {
+                        props.signup(
+                            props.sign.username,
+                            props.sign.password,
+                            props.sign.email,
+                            props.sign.name,
+                            props.sign.major,
+                            url,
+                        );
+                    });
+            });
+        }
+        else {
             props.signup(
                 props.sign.username,
                 props.sign.password,
                 props.sign.email,
                 props.sign.name,
                 props.sign.major,
-                
+
             );
         }
+        props.updateLoader(false);
+
     }
 
     useEffect(() => {
@@ -145,7 +156,7 @@ function SigninForm(props) {
                                 <input className='ChooseImage' type="file" onChange={handleChangePic} />
                                 <div className='checkBoxDiv'>
                                     <label className="bubble" htmlFor='bubble'>
-                                    <input type="checkbox" name="terms" value="terms" id="bubble" required />
+                                        <input type="checkbox" name="terms" value="terms" id="bubble" required />
                                     Accept <span><a className="terms" href='/'>Terms of Service</a></span> and <span><a className="terms" href='/'>Privacy Policy</a></span>
                                     </label>
                                 </div>
@@ -199,6 +210,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
     signup: (username, password, email, name, major, url) =>
         dispatch(actions.signup(username, password, email, name, major, url)),
     setImage: (image) => dispatch(actions2.setImage(image)),
+    updateLoader: (bool) => dispatch(actions.updateLoader(bool)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);

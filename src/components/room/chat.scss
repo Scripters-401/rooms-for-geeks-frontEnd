@@ -5,7 +5,7 @@
     border: 1px solid #ddd;
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.05);
     border-radius: 2px;
-    transition: all 5s linear;
+    // transition: all 5s linear;
     z-index: 99999999;
     position: fixed;
     width: 25%;
@@ -61,7 +61,8 @@
   min-width: 300px;
     position: fixed;
     width: 25%;
-    top: 24%;
+    // top: 24%;
+    bottom:0;
   .chatHeader {
     font-size: 18px;
     padding: 10px 20px;

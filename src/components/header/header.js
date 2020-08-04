@@ -32,7 +32,20 @@ const Header = props => {
         <nav className='allNavHeader'>
           <ul className='ulHeader'>
             <li className='liHeader'>
-              <Link to="/" className="navHeader">Home</Link>
+
+              <Show condition={!props.sign.loggedIn}>
+
+                <Link to="/" className="navHeader">Home</Link>
+
+              </Show>
+
+              <Show condition={props.sign.loggedIn}>
+
+                <Link to="/user-Home" className="navHeader">Home</Link>
+              </Show>
+
+
+
             </li>
             {/* <Show condition={props.sign.loggedIn}>
               <li className='liHeader'>

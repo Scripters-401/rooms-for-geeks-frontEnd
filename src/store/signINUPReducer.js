@@ -16,6 +16,7 @@ let initialState = {
   errorMsg: '',
   errorMsgSignUP: '',
   overView: 1,
+  loaderState: false,
 };
 
 // reducer : switch case
@@ -51,6 +52,10 @@ export default (state = initialState, action) => {
       state.overView = payload;
       return { ...state };
 
+    case 'updateLoader':
+      state.loaderState = payload;
+      return { ...state };
+
     default:
       return state;
   }
@@ -60,6 +65,13 @@ export default (state = initialState, action) => {
 export const updateOverView = e => {
   return {
     type: 'update-overView',
+    payload: e,
+  }
+}
+
+export const updateLoader = e => {
+  return {
+    type: 'updateLoader',
     payload: e,
   }
 }
@@ -166,7 +178,7 @@ export const login = (username, password) => async dispatch => {
 export const logoutFun = () => async dispatch => {
   try {
     dispatch(logout())
-    await fetch(`${API}/signout`, {
+    fetch(`${API}/signout`, {
       method: 'GET',
       mode: 'cors',
     });
