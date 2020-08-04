@@ -22,31 +22,27 @@ import { Redirect, Link } from 'react-router-dom';
 
 const Room = props => {
 
-    // window.scrollTo(0, document.body.scrollHeight)
-    // console.log('lllllllllll', document.body.scrollHeight,window.scrollY);
-    // let z = document.body.scrollHeight;
-    // let  x = window.scrollY
     useEffect(() => {
         // setTimeout(() => {
-        const cookieroomID = cookie.load('roomID');
-        let x = props.userHome.choosenRoomID || cookieroomID;
-        props.updateChoosenRoomIDSocket(x)
-        window.scrollTo(0, 0)
+            const cookieroomID = cookie.load('roomID');
+            let x = props.userHome.choosenRoomID || cookieroomID;
+            props.updateChoosenRoomIDSocket(x)
+            window.scrollTo(0, 0)
 
-        // }, 500);
+        // }, 200);
 
     }, [])
 
 
     useEffect(() => {
-        setTimeout(() => {
+        // setTimeout(() => {
             cookie.save('roomID', props.room.choosenRoomIDSocket)
             props.getRoom(props.sign.token, props.room.choosenRoomIDSocket);
             let fav = props.userInfo.user && props.userInfo.user.favRooms ? props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket) : null;
             props.updateFavOrNot(fav)
             props.updateLoader(false);
 
-        }, 500);
+        // }, 500);
 
     }, [props.room.choosenRoomIDSocket])
     useEffect(() => {
@@ -54,16 +50,6 @@ const Room = props => {
 
     }, [props.room.adminName])
 
-    // useEffect(() => {
-    //     console.log('uuuuuuuuuuuuuuuuuuuuuuuuu',window.scrollY);
-
-    //     // let x = props.chat.down.getBoundingClientRect().width
-    //     // console.log(x);
-    // }, [x])
-
-    // useEffect(()=>{
-    //     console.log('ccccccccccc',window.scrollY);
-    //   })
 
     const addToFav = e => {
         props.addToFav(props.sign.token, props.userInfo.user._id, props.userHome.choosenRoomID);
@@ -88,13 +74,13 @@ const Room = props => {
 
     }
 
-    const someMeothod = ()=>{
+    const someMeothod = () => {
         let z = document.body.scrollHeight;
-        let  x = window.scrollY
-        let height = document.body.scrollHeight-window.scrollY
-        if(height<830){
+        let x = window.scrollY
+        let height = document.body.scrollHeight - window.scrollY
+        if (height < 830) {
             props.updateChatScroll(true)
-        }else{
+        } else {
             props.updateChatScroll(false)
 
         }
@@ -102,8 +88,7 @@ const Room = props => {
 
     return (
         <>
-       {/* {onScroll=e =>someMeothod()} */}
-            <div className="bodyDiv" onWheel={e =>someMeothod()} >
+            <div className="bodyDiv" onWheel={e => someMeothod()} >
                 <div className='roomData'>
                     {props.room.redirectAfterDelete ? (<Redirect to="/user-Home" />) : null}
                     <div id="room-data">
@@ -114,22 +99,29 @@ const Room = props => {
                                 </Auth>
                             </Show>
                             <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null}</h2>
+                           
+                           <span className='like-icon heart-animation-1'></span>
+                           
                             <Show condition={props.room.favOrNot}>
                                 <span className={`addToFav-${props.room.favOrNot}`} onClick={e => removefromFav()}>
 
                                     <div class="slideThree">
-                                        <input type="checkbox" value="None" id="slideThree" name="check" checked />
-                                        <label for="slideThree"></label>
+                                        <input type="checkbox" value="None" id="slideThree" name="check" defaultChecked={true} />
+                                        <label htmlFor="slideThree"></label>
                                     </div>
 
                                 </span>
                             </Show>
                             <Show condition={!props.room.favOrNot}>
-                                <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}>  <div class="slideThree">
-                                    <input type="checkbox" value="None" id="slideThree" name="check" />
-                                    <label for="slideThree"></label>
-                                </div></span>
+                                <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}>
+                                    <div className="slideThree">
+                                        <input type="checkbox" value="None" id="slideThree" name="check" />
+                                        <label htmlFor="slideThree"></label>
+                                    </div>
+                                </span>
                             </Show>
+
+
                         </div>
 
                     </div>

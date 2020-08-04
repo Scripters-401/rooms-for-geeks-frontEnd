@@ -11,6 +11,7 @@ let selectedAnswers = [];
 // let cc = false;
 const Quiz = props => {
   useEffect(() => {
+    window.scrollTo(0, 0)
 
     props.room.redirectTakeQuiz = false;
 
