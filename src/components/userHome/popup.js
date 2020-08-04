@@ -41,6 +41,10 @@ const Popup = props => {
         }
         )
     }
+    function submitPass(e,id){
+        e.preventDefault();
+        goToRoom(e,id);
+    }
     console.log('idddddddsssss', props.userHome.choosenRoomID);
     let status=true;
     return (
@@ -52,18 +56,19 @@ const Popup = props => {
                 show={smShow}
                 onHide={() => setSmShow(false)}
                 aria-labelledby="example-modal-sizes-title-sm"
+                className='roomPass'
             
             >
-                <Modal.Header closeButton>
+                <Modal.Header closeButton >
                     <Modal.Title id="example-modal-sizes-title-sm">
                         Private Room
             </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form>
-                        <input type='password' name='pass' onChange={(e) => handleChangePass(e)} placeholder='password'/>
+                    <form onSubmit={(e)=>submitPass(e,props.bb)}>
+                        <input type='password' name='pass' onChange={(e) => handleChangePass(e)} placeholder='password' required/>
                         <Show condition={incorrect}> <span style={{color:'red'}}>Incorrect password</span></Show>
-                        <Button><div class="inside-page__btn inside-page__btn--ski " onClick={(e) => goToRoom(e, props.bb)}> View Room</div></Button>
+                        <div class="  inside-popup-btn" onClick={(e) => goToRoom(e, props.bb)}> View Room</div>
                     </form>
                 </Modal.Body>
             </Modal>

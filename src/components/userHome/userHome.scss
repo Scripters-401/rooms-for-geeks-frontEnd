@@ -534,7 +534,7 @@ a.createRoom {
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, #c9c9c9,#41676099, #000000a6);
+      background: linear-gradient(300deg, #c9c9c9, #41676099, #000000a6);
       z-index: 1;
       overflow: hidden;
   
@@ -683,7 +683,7 @@ a.createRoom {
   transform: rotateY(-120deg);
 }
 .card:hover .rotatee{
-  transform: rotateY(-180deg);
+  transform: rotateY(-120deg);
 }
 
 /* When the card is hovered, the shadow on the inside page will shrink to the left */
@@ -876,6 +876,71 @@ button.upgradeButton.btn.btn-primary:hover {
 }
 
 .goToRoom:hover::before { 
+  transform: scaleY(1);
+}
+
+// .inside-popup-btn{
+//   // padding: 1%;
+//     color: white;
+//     background-color: #416760;
+//     border-radius: 6px;
+//     // border: solid 1px #416760;
+//     transition-duration: 1.2s;
+//     margin: auto auto 2% auto;
+//    &:hover {
+//         background-color: white;
+//         color: #416760;
+//         border: solid 1px #416760;
+//     }
+//     &:focus {
+//         outline: none;
+//     }
+
+// }
+
+.inside-popup-btn {
+  text-align: center;
+  border-color: #416760;
+    color: #416760;
+    cursor: pointer;
+    width: 60%;
+    background-color: transparent;
+  border: 3px solid;
+  border-radius: .5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 2rem;
+  margin-left:2.3rem;
+  overflow: hidden;
+  padding: .4rem .40rem;
+  position: relative;
+  text-decoration: none;
+  transition: all 2s ease;
+  // width: 90%;
+  z-index: 10;
+}
+.inside-popup-btn::before { 
+  font-size: small;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scaleY(0);
+  transition: all 1s ease;
+  width: 100%;
+  z-index: -1;
+}
+.inside-popup-btn::before { 
+  background-color: #416760;
+}
+
+.inside-popup-btn:hover { 
+  color: white;
+  border-color: white;
+}
+
+.inside-popup-btn:hover::before { 
   transform: scaleY(1);
 }
 
