@@ -707,6 +707,23 @@ h3.PR {
   overflow: auto; 
   background-color: #474e5d;
   padding-top: 50px;
+
+  .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: rgba(0,123,255,.25);
+    &:hover {
+      color: #36f4eb;
+    cursor: pointer;
+    }
+    &:focus {
+      color: #36f4eb;
+      cursor: pointer;
+    }
+  }
 }
 
 .modal-content {
@@ -716,22 +733,7 @@ h3.PR {
   width: 80%; 
 }
 
-.close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: rgba(0,123,255,.25);
-  &:hover {
-    color: #36f4eb;
-  cursor: pointer;
-  }
-  &:focus {
-    color: #36f4eb;
-    cursor: pointer;
-  }
-}
+
 
 
 .clearfix::after {
