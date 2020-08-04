@@ -15,6 +15,7 @@ const Chat = props => {
   let roomName;
   let adminName;
 
+
   useEffect(() => {
 
     if (props.room.socket) {
@@ -80,7 +81,6 @@ const Chat = props => {
 
 
   const onlineFun = () => {
-    console.log(props.userInfo.user, 'kkkkkkkkkkkkkkkk');
     props.room.socket.emit('chat', {
       message: props.chat.message,
       userName: props.userInfo.user.username,
@@ -129,7 +129,12 @@ const Chat = props => {
   }
 
   return (
-    <div id="geeks-chat" className={`chat-${props.chat.open}`}>
+    <div id="geeks-chat" className={`chat-${props.chat.open}`} style={props.room.scroll ? {
+      position: 'absolute', left: '126%', margin: '0px auto',
+      border: '1px solid #ddd',
+      width: '300px',
+      bottom: '0'
+    } : { position: 'fixed', right: '0' }}>
       {/* <p>{props.chat.notification}</p> */}
       <div className='chatHeader' onClick={e => props.openCloseChat()}>
         <h2 >Geeks Chat</h2>

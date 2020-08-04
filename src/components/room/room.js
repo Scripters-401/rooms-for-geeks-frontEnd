@@ -21,6 +21,11 @@ import { Redirect, Link } from 'react-router-dom';
 
 
 const Room = props => {
+
+    // window.scrollTo(0, document.body.scrollHeight)
+    // console.log('lllllllllll', document.body.scrollHeight,window.scrollY);
+    // let z = document.body.scrollHeight;
+    // let  x = window.scrollY
     useEffect(() => {
         // setTimeout(() => {
         const cookieroomID = cookie.load('roomID');
@@ -49,6 +54,17 @@ const Room = props => {
 
     }, [props.room.adminName])
 
+    // useEffect(() => {
+    //     console.log('uuuuuuuuuuuuuuuuuuuuuuuuu',window.scrollY);
+
+    //     // let x = props.chat.down.getBoundingClientRect().width
+    //     // console.log(x);
+    // }, [x])
+
+    // useEffect(()=>{
+    //     console.log('ccccccccccc',window.scrollY);
+    //   })
+
     const addToFav = e => {
         props.addToFav(props.sign.token, props.userInfo.user._id, props.userHome.choosenRoomID);
         props.userInfo.user.favRooms.push(props.userHome.choosenRoomID)
@@ -72,10 +88,22 @@ const Room = props => {
 
     }
 
+    const someMeothod = ()=>{
+        let z = document.body.scrollHeight;
+        let  x = window.scrollY
+        let height = document.body.scrollHeight-window.scrollY
+        if(height<830){
+            props.updateChatScroll(true)
+        }else{
+            props.updateChatScroll(false)
+
+        }
+    }
 
     return (
         <>
-            <div className="bodyDiv">
+       {/* {onScroll=e =>someMeothod()} */}
+            <div className="bodyDiv" onWheel={e =>someMeothod()} >
                 <div className='roomData'>
                     {props.room.redirectAfterDelete ? (<Redirect to="/user-Home" />) : null}
                     <div id="room-data">
@@ -125,7 +153,7 @@ const Room = props => {
                         </Show>
                     </div>
                 </div>
-                <div className="chatSet">
+                <div className="chatSet" >
                     <Chat />
                 </div>
                 <div className="roomDataFor">
@@ -160,6 +188,7 @@ const mapStateToProps = state => ({
     room: state.room,
     userInfo: state.userInfo,
     userHome: state.userHome,
+    chat: state.chat,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
@@ -171,7 +200,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
     updateChoosenRoomIDSocket: (userid) => dispatch(actions.updateChoosenRoomIDSocket(userid)),
     updateFavOrNot: (bool) => dispatch(actions.updateFavOrNot(bool)),
     updateLoader: (bool) => dispatch(loader.updateLoader(bool)),
-
+    updateChatScroll: (bool) => dispatch(actions.updateChatScroll(bool)),
 
 });
 

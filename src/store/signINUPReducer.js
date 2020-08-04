@@ -16,7 +16,7 @@ let initialState = {
   errorMsg: '',
   errorMsgSignUP: '',
   overView: 1,
-  loaderState: false,
+  loaderState: true,
 };
 
 // reducer : switch case

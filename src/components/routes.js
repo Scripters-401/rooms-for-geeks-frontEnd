@@ -31,7 +31,7 @@ const Routes = props => {
 
     return (
         <>
-            {/* <Loader /> */}
+            <Loader />
             {/* <Show condition={!props.sign.loggedIn}> */}
                 <Route path="/" exact>
                     <Homemain />

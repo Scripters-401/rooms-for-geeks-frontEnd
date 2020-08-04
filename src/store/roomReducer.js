@@ -14,6 +14,7 @@ let initialState = {
   choosenRoomIDSocket: '',
   finishQuiz: false,
   questionIndex: '',
+  scroll: false
 };
 
 // reducer : switch case
@@ -55,6 +56,10 @@ export default (state = initialState, action) => {
       state.favOrNot = payload
       return { ...state };
 
+    case 'updateChatScroll':
+      state.scroll = payload
+      return { ...state };
+
 
 
 
@@ -64,6 +69,13 @@ export default (state = initialState, action) => {
 }
 
 /*************************************************** actions ****************************************************** */
+
+export const updateChatScroll = (scroll) => {
+  return {
+    type: 'updateChatScroll',
+    payload: scroll,
+  }
+}
 
 
 export const updatefinishQuiz = (finishQuiz, redirectTakeQuiz) => {

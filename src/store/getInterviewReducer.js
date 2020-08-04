@@ -143,7 +143,7 @@ export const getInterviewreview = (token) => async dispatch => {
         })
         let res = await results.json();
         dispatch(actionInterviewreview(res))
-        dispatch(updateLoader(false))
+        // dispatch(updateLoader(false))
         // dispatch(pagenation(res))
     } catch (error) {
         console.error(`ERROR: GET_INTERVIEW_REVIEW`);

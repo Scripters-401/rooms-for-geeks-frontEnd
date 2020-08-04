@@ -44,8 +44,8 @@ img.image {
         z-index: -1;
         top: 0;
         left: 0;
-        background: #c0392b; /* IE Fallback */
-        background: rgba(52, 73, 94, 0.8);
+        // background: #c0392b; /* IE Fallback */
+        // background: rgba(52, 73, 94, 0.8);
         background: rgba(181, 186, 191, 0.8);
         // background: rgba(181, 186, 191, 0.45);
         width: 100%;
@@ -133,7 +133,7 @@ span.toggleButton {
                     font-family: "FontAwesome";
                     color: #757575;
                     position: absolute;
-                    top: 10px;
+                    top: 5px;
                     left: 0;
                     right: 0;
                     text-align: center;
