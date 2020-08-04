@@ -241,4 +241,3 @@ const mapDispatchToProps = (dispatch, getState) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserHome);
-

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import AboutUs from './aboutUs/about-us';
 
 import Room from './room/room.js';
@@ -20,19 +22,40 @@ import Quiz from './room/answerQuiz'
 import ConfirmEmail from './forgotPass/confirmEmail';
 import PostQuiz from './createquiz/postQuiz'
 import QuestionAndAnswer from './room/answerForQuestion'
-const Routes = () => {
+// import Show from './auth/show.js';
+
+import Loader from './loader';
+// import UserHome from './userHome/userHome'
+
+const Routes = props => {
 
     return (
         <>
-            <Route path="/" exact>
-                <Homemain />
-                <OverView />
-                <Auth capability="read">
+            <Loader />
+            {/* <Show condition={!props.sign.loggedIn}> */}
+                <Route path="/" exact>
+                    <Homemain />
+                    <OverView />
+                    <Auth capability="read">
                     <Redirect to="/user-Home" />
                 </Auth>
-                <LoginForm />
-                <AboutUs />
-            </Route>
+                    <LoginForm />
+                    <AboutUs />
+                </Route>
+
+            {/* </Show> */}
+            {/* <Route path="/user-Home" exact>
+                <UserHome />
+            </Route> */}
+
+
+            {/* <Show condition={props.sign.loggedIn}> */}
+                {/* <Route path="/user-Home" exact>
+                    <UserHome />
+                </Route> */}
+
+            {/* </Show> */}
+
             <Route path="/room" exact>
                 <Auth capability="read">
                     <Room />
@@ -95,4 +118,24 @@ const Routes = () => {
     )
 }
 
-export default Routes;
+const mapStateToProps = state => ({
+    sign: state.sign,
+    // userInfo: state.userInfo,
+    // room: state.room,
+
+});
+// const mapStateToProps = state => ({
+//   sign: state.sign
+// });
+// const mapDispatchToProps = (dispatch, getState) => ({
+//   validateToken: token => dispatch(actions.validateToken(token)),
+//   getInfoUser: (token, id) => dispatch(actions2.getInfoUser(token, id))
+// });
+// const mapDispatchToProps = (dispatch, getState) => ({
+//     logout: () => dispatch(actions.logoutFun()),
+//     getInfoUser: (token, id) => dispatch(actions2.getInfoUser(token, id))
+
+// });
+
+export default connect(mapStateToProps)(Routes);
+// export default Routes;

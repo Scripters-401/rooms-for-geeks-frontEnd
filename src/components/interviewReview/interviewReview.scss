@@ -397,7 +397,7 @@ textarea.addReviewInput {
   outline: 0;
   border: 1px solid #a2a0a0;
   background-color: #fafbfa;
-  width: 566px;
+  width: 620px;
   border-radius: 3px;
   padding: 10px 15px;
   margin: 0 auto 10px auto;
@@ -415,7 +415,7 @@ textarea.addReviewInput {
 
   &:focus {
       background-color: white;
-      width: 620px;
+      // width: 620px;
       color: #0a0a0a;
       // font-weight: bold;
   }
@@ -484,6 +484,21 @@ textarea.addReviewInput {
 
 #button {
   margin: 20px;
+  padding: 1%;
+  color: white;
+  background-color: #416760;
+  border-radius: 6px;
+  border: solid 1px #416760;
+  transition-duration: 1.2s;
+  margin: auto auto 2% auto;
+  &:hover {
+      background-color: white;
+      color: #416760;
+      border: solid 1px #416760;
+  }
+  &:focus {
+      outline: none;
+  }
 }
 
 .custom-btn {
@@ -629,11 +644,6 @@ span.compP {
 }
 
 
-
-div#section {
-  box-shadow: 3px 3px 6px #9ce8dbb5;
-}
-
 div.card.show div.card-flap {
   transform: rotateX(0deg);
   border-block-end-width: 2px solid yellow;
@@ -659,23 +669,39 @@ div.card.show div.card-title span.toggle-info {
 
 textarea.addReviewInput {
   float: left;
-  margin-left: 2%;
-  width: 95%;
+  margin-left: 4%;
+  width: 70%;
 }
 
 button.addReviewButton {
   margin-bottom: 0;
   margin-top: 2%;
-  margin-left: 0%;
+  margin-left: 2%;
+  position: relative;
+  top: 10px;
+  color: white;
+  background-color: #416760;
+  border-radius: 6px;
+  border: solid 1px #416760;
+  transition-duration: 1.2s;
+  margin: auto auto 2% auto;
+  &:hover {
+      background-color: white;
+      color: #416760;
+      border: solid 1px #416760;
+  }
+  &:focus {
+      outline: none;
+  }
 }
 
 p.reviewPPPP {
   border: 2px solid #2b6b60e3;
   margin-top: 5%;
-  border-radius: 11px;
+  border-radius: 4px;
   width: 94%;
   text-align: justify;
-  padding: 2%;
+  padding: 1%;
   text-align-last: center;
 }
 
@@ -732,7 +758,6 @@ h3.PR {
   border: 1px solid #888;
   width: 80%; 
 }
-
 
 
 
@@ -799,4 +824,41 @@ button#btnInterview {
   height: 58px;
   color: #e9efee;
   background-color: #5c7879;
+}
+
+
+
+
+textarea.reviewTextarea {
+  text-align: center;
+  margin-bottom: 2%;
+  display: block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  border: 1px solid white;
+  background-color: white;
+  width: 566px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: #0a0a0a;
+  transition-duration: 0.25s;
+  font-weight: 330;
+  &:hover {
+      background-color: #49756263;
+      transition-duration: 0.25s;
+      color: white;
+  }
+
+  &:focus {
+      background-color: white;
+      width: 620px;
+      color: #0a0a0a;
+      // font-weight: bold;
+  }
 }

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import cookie from 'react-cookies';
 
 import * as actions from '../../store/roomReducer';
-// import * as actions2 from '../../store/userHome';
+import * as loader from '../../store/signINUPReducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Show from '../auth/show'
@@ -21,12 +21,18 @@ import { Redirect, Link } from 'react-router-dom';
 
 
 const Room = props => {
+
+    // window.scrollTo(0, document.body.scrollHeight)
+    // console.log('lllllllllll', document.body.scrollHeight,window.scrollY);
+    // let z = document.body.scrollHeight;
+    // let  x = window.scrollY
     useEffect(() => {
         // setTimeout(() => {
         const cookieroomID = cookie.load('roomID');
         let x = props.userHome.choosenRoomID || cookieroomID;
         props.updateChoosenRoomIDSocket(x)
         window.scrollTo(0, 0)
+
         // }, 500);
 
     }, [])
@@ -38,6 +44,8 @@ const Room = props => {
             props.getRoom(props.sign.token, props.room.choosenRoomIDSocket);
             let fav = props.userInfo.user && props.userInfo.user.favRooms ? props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket) : null;
             props.updateFavOrNot(fav)
+            props.updateLoader(false);
+
         }, 500);
 
     }, [props.room.choosenRoomIDSocket])
@@ -45,6 +53,17 @@ const Room = props => {
         props.updateRoomAdminBool(props.userInfo.user.username)
 
     }, [props.room.adminName])
+
+    // useEffect(() => {
+    //     console.log('uuuuuuuuuuuuuuuuuuuuuuuuu',window.scrollY);
+
+    //     // let x = props.chat.down.getBoundingClientRect().width
+    //     // console.log(x);
+    // }, [x])
+
+    // useEffect(()=>{
+    //     console.log('ccccccccccc',window.scrollY);
+    //   })
 
     const addToFav = e => {
         props.addToFav(props.sign.token, props.userInfo.user._id, props.userHome.choosenRoomID);
@@ -69,82 +88,102 @@ const Room = props => {
 
     }
 
+    const someMeothod = () => {
+        let z = document.body.scrollHeight;
+        let x = window.scrollY
+        let height = document.body.scrollHeight - window.scrollY
+        if (height < 830) {
+            props.updateChatScroll(true)
+        } else {
+            props.updateChatScroll(false)
+
+        }
+    }
 
     return (
         <>
-            <div className="bodyDiv">
+            {/* {onScroll=e =>someMeothod()} */}
+            <div className="bodyDiv" onWheel={e => someMeothod()} >
                 <div className='roomData'>
-                    {props.room.redirectAfterDelete ? (<Redirect to="/user-Home" />) : null}
-                    <div id="room-data">
-                        <div className="quwsHead">
-                            <Show condition={props.room.roomAdmin}>
-                                <Auth capability="master-room">
-                                    <button className='deleteRoom' onClick={e => deleteRoom()}> Delete Room</button>
-                                </Auth>
-                            </Show>
-                            <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null}</h2>
-                            <Show condition={props.room.favOrNot}>
-                                <span className={`addToFav-${props.room.favOrNot}`} onClick={e => removefromFav()}>
+                    <div className="containerRoom">
+                        {props.room.redirectAfterDelete ? (<Redirect to="/user-Home" />) : null}
+                        <div id="room-data">
+                            <div className="quwsHead">
 
-                                    {/* <section title=".slideThree"> */}
+                                <Show condition={props.room.favOrNot}>
+                                    <span className={`addToFav-${props.room.favOrNot}`} onClick={e => removefromFav()}>
 
-                                    <div class="slideThree">
-                                        <input type="checkbox" value="None" id="slideThree" name="check" checked />
+                                        <div class="slideThree">
+                                            <input type="checkbox" value="None" id="slideThree" name="check" checked />
+                                            <label for="slideThree"></label>
+                                        </div>
+
+                                    </span>
+                                </Show>
+                                <Show condition={!props.room.favOrNot}>
+                                    <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}>  <div class="slideThree">
+                                        <input type="checkbox" value="None" id="slideThree" name="check" />
                                         <label for="slideThree"></label>
-                                    </div>
-
-                                    {/* </section> */}
-                                </span>
-                            </Show>
-                            <Show condition={!props.room.favOrNot}>
-                                <span className={`addToFav-${props.room.favOrNot}`} onClick={e => addToFav()}>  <div class="slideThree">
-                                    <input type="checkbox" value="None" id="slideThree" name="check" />
-                                    <label for="slideThree"></label>
-                                </div></span>
-                            </Show>
+                                    </div></span>
+                                </Show>
+                                <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null} room</h2>
+                                <Show condition={props.room.roomAdmin}>
+                                    <Auth capability="master-room">
+                                        <button className='deleteRoom' onClick={e => deleteRoom()}> Delete Room</button>
+                                    </Auth>
+                                </Show>
+                            </div>
                         </div>
-                     
-                    </div>
-
-                    <div className='courseData'>
-                        <h2 className="courseName"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
-                        <p className="Discription"> {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
-
-                    </div>
-
-
-
-                    <QA />
-                    <div className="buttonRoom">
-                        <Show condition={!(props.room.roomData.renderedQuiz && props.room.roomData.renderedQuiz.constructor === Object && Object.keys(props.room.roomData.renderedQuiz).length === 0)}>
-                            <Link className="aHrefLinkdds" to="/take-quiz"> <button className="TakeQuizAndToto" >Take Quiz</button></Link>
-                        </Show>
-                        
-                        <Show condition={(props.room.roomData.courseData && props.room.roomData.courseData.tutorial)}>
-                           <a className="aHrefLinkdds" href={`https://${props.room.roomData.courseData && props.room.roomData.courseData.tutorial ? props.room.roomData.courseData.tutorial : null}`} rel="noopener noreferrer" target='_blank'><button className="TakeQuizAndToto" >Tutorial</button></a> 
-                        </Show>
-                    </div>
-                </div>
-                <div className="chatSet">
-                    <Chat />
-                    <div className="roomDataFor">
+                        {/* <div className="roomDataFor">
+                            <p className="Topic">Topic: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.topic : null}</p>
                             <p className=" CreatedBy">
-                                Created By :
-                        {props.room.adminName}
-                            </p>
-                            <p className=" CreatedByOn">
+                                Created By: {props.room.adminName} at {props.room.roomData && props.room.roomData.RData && props.room.roomData.RData.createdTime ? props.room.roomData.RData.createdTime.slice(0, 10) : null}
+                            </p> */}
+                            {/* <p className=" CreatedByOn">
                                 On :
                         {props.room.roomData && props.room.roomData.RData && props.room.roomData.RData.createdTime ? props.room.roomData.RData.createdTime.slice(0, 10) : null}
-                            </p>
-                            <p className="Topic">Topic: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.topic : null}</p>
+                            </p> */}
+
                             {/* <p>
                         Public: {props.room.roomData && props.room.roomData.RData ? `${props.room.roomData.RData.public || props.room.roomData.RData.publicc}` : null}
                     </p> */}
 
-                        </div>
-                </div>
-            </div>
+                        {/* </div> */}
 
+                        <div className='courseData'>
+                            <h2 className="courseName">Course {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
+                            <p className="Discription">Discription {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
+
+                        </div>
+                    </div>
+
+
+
+                    <div className="QA-Component">
+                        <aside className="quiaAndTutorial">
+                            
+                            <div className="buttonRoom">
+                                <Show condition={!(props.room.roomData.renderedQuiz && props.room.roomData.renderedQuiz.constructor === Object && Object.keys(props.room.roomData.renderedQuiz).length === 0)}>
+                                    <Link className="aHrefLinkdds" to="/take-quiz"> <button className="TakeQuizAndToto" >Take Quiz</button></Link>
+                                </Show>
+
+                                <Show condition={(props.room.roomData.courseData && props.room.roomData.courseData.tutorial)}>
+                                    <a className="aHrefLinkdds" href={`https://${props.room.roomData.courseData && props.room.roomData.courseData.tutorial ? props.room.roomData.courseData.tutorial : null}`} rel="noopener noreferrer" target='_blank'><button className="TakeQuizAndToto" >Tutorial</button></a>
+                                </Show>
+                            </div>
+                        </aside>
+                        <div className="just-QA"><QA /></div>
+                    </div>
+
+
+
+                    <div className="chatSet" >
+                        <Chat />
+                    </div>
+                </div>
+
+
+            </div>
 
 
 
@@ -160,6 +199,7 @@ const mapStateToProps = state => ({
     room: state.room,
     userInfo: state.userInfo,
     userHome: state.userHome,
+    chat: state.chat,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
@@ -170,6 +210,9 @@ const mapDispatchToProps = (dispatch, getState) => ({
     updateRoomAdminBool: (userid) => dispatch(actions.updateRoomAdminBool(userid)),
     updateChoosenRoomIDSocket: (userid) => dispatch(actions.updateChoosenRoomIDSocket(userid)),
     updateFavOrNot: (bool) => dispatch(actions.updateFavOrNot(bool)),
+    updateLoader: (bool) => dispatch(loader.updateLoader(bool)),
+    updateChatScroll: (bool) => dispatch(actions.updateChatScroll(bool)),
+
 });
 
 
