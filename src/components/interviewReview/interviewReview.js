@@ -187,6 +187,7 @@ const AllInterviewR = props => {
                                                             return (
                                                                 <>
                                                                 <p className={`reviewPPPP`}>{reviewData}</p>
+                                                                <hr className="hrRev" />
                                                                 {/* <p>{data.reviewUserName[i]}</p> */}
                                                                 </>
                                                             )
@@ -214,6 +215,7 @@ const AllInterviewR = props => {
                                                                     return (
                                                                         <>
                                                                         <p className="reviewPPPP">{reviewData}</p>
+                                                                        <hr className="hrRev" />
                                                                         {/* <p>{data.reviewUserName[index]}</p> */}
                                                                         </>
                                                                     )
@@ -226,6 +228,7 @@ const AllInterviewR = props => {
                                                                     return (
                                                                         <>
                                                                         <p className="reviewPPPP">{reviewData}</p>
+                                                                        <hr className="hrRev" />
                                                                     {/* <p>{data.reviewUserName[index]}</p> */}
                                                                         </>
                                                                     )
