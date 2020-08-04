@@ -127,7 +127,7 @@ const User = props => {
 
             <div id="imgAndBtn">
                 <div id="divJustImage">
-                    <img className="image infoSec" src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img>
+                    <img className="image" src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img>
                     <div class="edit_container2 cf" >
                         <span className='photoIcon'>
                             {/* <form > */}
@@ -184,7 +184,7 @@ const User = props => {
                                 placeholder={props.userInfo.user.name}
                                 className="form-control"
                             ></input>
-                            <button>Done Edit</button>
+                            <button>Save</button>
 
                         </form>
                     </Show>
@@ -215,7 +215,7 @@ const User = props => {
                                 placeholder={props.userInfo.user.major}
                                 className="form-control"
                             />
-                            <button>Done Edit</button>
+                            <button>Save</button>
 
                         </form>
                     </Show>
@@ -241,7 +241,7 @@ const User = props => {
                                 placeholder={props.userInfo.user.university}
                                 className="form-control"
                             />
-                            <button>Done Edit</button>
+                            <button>Save</button>
                         </form>
                     </Show>
                 </div>
@@ -274,9 +274,9 @@ const User = props => {
                                 className="form-control"
                                 value={props.editUserInfo.password}
                             />
-                            <p className="showPass"><input className="checkB" type="checkbox" onClick={togglePass}></input><span className="spanChe">Show Password</span> </p>
+                            <p className="showPass"><input className="checkB" type="checkbox" onClick={togglePass}></input><span className="spanChe">Show Password <button id="saveId">Save</button></span> </p>
                             
-                            <button>Done Edit</button>
+                            {/* <button>Save</button> */}
 
                         </form>
                     </Show>

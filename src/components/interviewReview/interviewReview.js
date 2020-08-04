@@ -191,6 +191,7 @@ const AllInterviewR = props => {
                                                                     name="review"
                                                                     placeholder="Add Review"
                                                                     className="addReviewInput"
+                                                                    required
                                                                     onChange={(e) => props.updateReview(e)}
                                                                 ></textarea>
 
@@ -233,6 +234,7 @@ const AllInterviewR = props => {
                                                                     placeholder="Add Review"
                                                                     id="addReviewInput"
                                                                     className="addReviewInput"
+                                                                    required
                                                                     onChange={(e) => props.updateReview(e)}
                                                                 ></textarea>
 
