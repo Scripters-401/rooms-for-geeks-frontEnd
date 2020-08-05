@@ -22,6 +22,7 @@
 }
 
 .buttonsHeaderRoom {
+    // display: flex;
     .roomHeaderButtonStyle {
         cursor: pointer;
         background: #7ea19b;
@@ -204,7 +205,11 @@ p.checAns {
     // position: relative;
     // /* left: 72px; */
     // margin: auto;
-    ul {
+    .answers-false{
+        display: none;
+    }
+
+    .answers-true {
         position: relative;
         width: 86%;
         .deleteAnswer {
@@ -306,8 +311,8 @@ button.addQuesForButt {
 
 .formAnswerQuestion {
     display: flex;
-    .inputLabel {
-    }
+    // .inputLabel {
+    // }
 }
 
 button.deleteRoom {

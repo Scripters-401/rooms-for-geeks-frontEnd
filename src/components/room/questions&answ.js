@@ -150,10 +150,10 @@ const Questions = props => {
                         </Show> */}
 
 
-                        <div className="numberOfAnswer"><span className="answerLength">{element.answers.length}  Answers</span>
+                        <div className="numberOfAnswer"><span className="answerLength" onClick={e => props.updateAnswersHide(idx)}>{element.answers.length}  Answers</span>
 
                             <p className="checAns">
-                                <ul>
+                                <ul className={props.room.answersHide === idx ? 'answers-true' : 'answers-true'} >
                                     {props.room.roomData.QAData[idx].answers.map((e, i) => {
                                         return (
                                             <React.Fragment key={i}>
@@ -167,7 +167,6 @@ const Questions = props => {
                                                         <span className="deleteAnswer" onClick={e => deleteAnswer(props.room.roomData.QAData[idx]._id, idx, i)}>X</span>
                                                     </Show>
                                                 </span>
-
 
 
 
