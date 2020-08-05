@@ -235,7 +235,7 @@ p.checAns {
 
                 span.nameOfWhoAnswer {
                     color: #e5f64a;
-                    font-size: 135%;
+                    font-size: 106%;
                     font-weight: 600;
                     // position: absolute;
                     // right: 75%;
@@ -275,15 +275,17 @@ form.addQuesForm {
 input.addQuesFor {
     padding: 2%;
     width: 70%;
-    border: solid 2px #7da09a;
+    border: solid 1px #7da09a;
     &:focus {
         outline: none;
     }
 }
 .addAnswer {
     padding: 2%;
-    width: 70%;
-    border: solid 2px #7da09a;
+    width: 84%;
+
+    border: solid 1px #7da09a;
+    margin: auto;
     &:focus {
         outline: none;
     }
