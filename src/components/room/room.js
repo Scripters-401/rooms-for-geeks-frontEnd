@@ -110,7 +110,7 @@ const Room = props => {
                         <div id="room-data">
                             <div className="quwsHead">
 
-                                <Show condition={props.room.favOrNot}>
+                                {/* <Show condition={props.room.favOrNot}>
                                     <span className={`addToFav-${props.room.favOrNot}`} onClick={e => removefromFav()}>
 
                                         <div class="slideThree">
@@ -125,7 +125,7 @@ const Room = props => {
                                         <input type="checkbox" value="None" id="slideThree" name="check" />
                                         <label for="slideThree"></label>
                                     </div></span>
-                                </Show>
+                                </Show> */}
                                 <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null} room</h2>
                                 <Show condition={props.room.roomAdmin}>
                                     <Auth capability="master-room">
