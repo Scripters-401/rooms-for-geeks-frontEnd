@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
-
+import Swal from 'sweetalert2'
 import Show from '../auth/show'
 import cookie from 'react-cookies';
 
@@ -34,12 +34,26 @@ const Questions = props => {
         )
         const cookieroomID = cookie.load('roomID');
         props.getRoom(props.sign.token, cookieroomID)
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Answer Added',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 
     const deleteQuestion = (questionID, idx) => {
         props.deleteQuestion(props.sign.token, questionID, props.userInfo.user._id)
         const cookieroomID = cookie.load('roomID');
         props.getRoom(props.sign.token, cookieroomID)
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Deleted',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 
     const askQuestion = (e) => {
@@ -53,6 +67,13 @@ const Questions = props => {
             props.userInfo.user.profileIMG
         )
         e.target.reset()
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Question Added',
+            showConfirmButton: false,
+            timer: 1500
+        })
 
     }
 
@@ -65,6 +86,14 @@ const Questions = props => {
             answerIndex)
         const cookieroomID = cookie.load('roomID');
         props.getRoom(props.sign.token, cookieroomID)
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Deleted!',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        
 
     }
     const goToQuestion = id => {

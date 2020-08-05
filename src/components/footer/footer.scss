@@ -19,7 +19,18 @@ footer.footer {
   transition: all 2s ease;
   -webkit-transition: all 1s ease;
 }
-
+.terms{
+  font-size: small;
+  cursor: pointer;
+  &:hover{
+    color: gray;
+  }
+}
+.termsAndPrivacy {
+  position: absolute;
+  left: 43%;
+  top: 88%;
+}
 .div1 {
   width: 151%;
   position: relative;
@@ -31,7 +42,9 @@ footer.footer {
 p.right {
   text-align: center;
   color: #c9c9c9;
-  margin: 0;
+  margin: 0px;
+  position: relative;
+  bottom: 15px;
 }
 .emailAndNumber {
   display: flex;
@@ -49,7 +62,7 @@ p.follow {
   display: flex;
   justify-content: left;
   font-size: 21px;
-  margin: 97px 0 27px 0;
+  margin: 32px 0 27px 0;
 }
 
 .fott {
@@ -69,7 +82,7 @@ img.logoFooter {
   width: 180px;
   position: relative;
   right: 47%;
-  top: 37%;
+  top: 25%;
 }
 
 p.test {

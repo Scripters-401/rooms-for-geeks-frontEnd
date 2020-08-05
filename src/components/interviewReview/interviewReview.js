@@ -8,6 +8,7 @@ import * as loader from '../../store/signINUPReducer'
 import './interviewReview.scss';
 import '../rooms/room.scss';
 import './interviewReview.scss';
+import '../room/room.scss'
 // import $ from 'jquery';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { If, Then, Else } from '../if/if.js';
@@ -92,6 +93,16 @@ const AllInterviewR = props => {
 
         <>
             <div id="cont">
+
+<div className="headerDes">
+                <div className="quwsHead2"><h2 className="courseName2">Interview Review</h2></div>
+                <div className='courseData'>
+
+                    <p className="Discription2">Our website provides a great service for its users to be able to share their experience in the company's interviews!
+                    Here you can read all the reviews, share your own company reviews, or add a review on other people review!</p>
+                </div>
+                </div>
+
                 <div id="upperDiv" className={"cards " + (props.allInterview.showHide || props.allInterview.showHide === 0 ? 'showing' : '')}>
 
                     {props.allInterview.user.map((data, index) => {
@@ -104,7 +115,7 @@ const AllInterviewR = props => {
                                 <div id="divCont">
                                     <div className="card__image-holder">
 
-                                        <span className="compP">{data.companyName}</span>
+                                        
                                         <span className="rate">
                                             <If condition={data.rate === 5} >
                                                 <Then>
@@ -163,6 +174,7 @@ const AllInterviewR = props => {
                                                 </Else>
                                             </If>
                                         </span>
+                                        <p className="compP">Company Name: {data.companyName}</p>
                                         <p className="pastionP">Position: {data.position}</p>
                                     </div>
                                     <div className="card-title">
@@ -186,22 +198,22 @@ const AllInterviewR = props => {
                                                             // console.log('iiiiiiiii', i);
                                                             return (
                                                                 <>
-                                                                <p className={`reviewPPPP`}>{reviewData}</p>
-                                                                <hr className="hrRev" />
-                                                                {/* <p>{data.reviewUserName[i]}</p> */}
+                                                                    <p className={`reviewPPPP`}>{reviewData}</p>
+                                                                    <hr className="hrRev" />
+                                                                    {/* <p>{data.reviewUserName[i]}</p> */}
                                                                 </>
                                                             )
                                                         })}</p></div>
                                                     <div className="divLessTow">
                                                         <form className="addReviewForm" onSubmit={(e) => handleSubmitFunReview(e, data._id)}>
-                                                                <textarea
-                                                                    type="text"
-                                                                    name="review"
-                                                                    placeholder="Add Review"
-                                                                    className="addReviewInput"
-                                                                    required
-                                                                    onChange={(e) => props.updateReview(e)}
-                                                                ></textarea>
+                                                            <textarea
+                                                                type="text"
+                                                                name="review"
+                                                                placeholder="Add Review"
+                                                                className="addReviewInput"
+                                                                required
+                                                                onChange={(e) => props.updateReview(e)}
+                                                            ></textarea>
 
                                                             <button className="addReviewButton" type="submit">Submit</button>
                                                         </form>
@@ -214,9 +226,9 @@ const AllInterviewR = props => {
                                                                 <p className="revP"><h3 className="PR">Reviews:</h3> {data.review.slice(0, 2).map((reviewData) => {
                                                                     return (
                                                                         <>
-                                                                        <p className="reviewPPPP">{reviewData}</p>
-                                                                        <hr className="hrRev" />
-                                                                        {/* <p>{data.reviewUserName[index]}</p> */}
+                                                                            <p className="reviewPPPP">{reviewData}</p>
+                                                                            <hr className="hrRev" />
+                                                                            {/* <p>{data.reviewUserName[index]}</p> */}
                                                                         </>
                                                                     )
                                                                 })}
@@ -227,9 +239,9 @@ const AllInterviewR = props => {
                                                                     // {console.log('rrrrrrrrrrr', data.reviewUserName)}
                                                                     return (
                                                                         <>
-                                                                        <p className="reviewPPPP">{reviewData}</p>
-                                                                        <hr className="hrRev" />
-                                                                    {/* <p>{data.reviewUserName[index]}</p> */}
+                                                                            <p className="reviewPPPP">{reviewData}</p>
+                                                                            <hr className="hrRev" />
+                                                                            {/* <p>{data.reviewUserName[index]}</p> */}
                                                                         </>
                                                                     )
                                                                 })}
@@ -297,12 +309,12 @@ const AllInterviewR = props => {
                                     <h1 className="nameOfForm">Add Interview Review</h1>
                                     <form className="form" onSubmit={(e) => { handleSubmitFun(e); props.divBlockNone('divNone') }}>
 
-                                            <input className="input"
-                                                type="text"
-                                                name="companyName"
-                                                placeholder="Company Name"
-                                                onChange={(e) => props.handleChangeInterview(e)}
-                                            />
+                                        <input className="input"
+                                            type="text"
+                                            name="companyName"
+                                            placeholder="Company Name"
+                                            onChange={(e) => props.handleChangeInterview(e)}
+                                        />
 
                                         <div>
                                             <textarea className="reviewTextarea"
@@ -313,19 +325,19 @@ const AllInterviewR = props => {
                                             ></textarea>
                                         </div>
 
-                                            <label>Interview Date</label>
-                                            <input className="input"
-                                                type="date"
-                                                name="date"
-                                                onChange={(e) => props.handleChangeInterview(e)}
-                                            />
+                                        <label>Interview Date</label>
+                                        <input className="input"
+                                            type="date"
+                                            name="date"
+                                            onChange={(e) => props.handleChangeInterview(e)}
+                                        />
 
-                                            <input className="input"
-                                                placeholder="Position"
-                                                type="text"
-                                                name="position"
-                                                onChange={(e) => props.handleChangeInterview(e)}
-                                            />
+                                        <input className="input"
+                                            placeholder="Position"
+                                            type="text"
+                                            name="position"
+                                            onChange={(e) => props.handleChangeInterview(e)}
+                                        />
                                         <div className="deRange">
                                             <label>Rate:</label>
                                             <input className="inputRange"
@@ -403,7 +415,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
     updateLoader: (payload) => dispatch(loader.updateLoader(payload)),
 
 
-    
+
 });
 
 

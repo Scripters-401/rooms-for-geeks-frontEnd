@@ -3,6 +3,7 @@
 .header {
     display: flex;
     background-color: #fff;
+    background: linear-gradient(45deg, #c9c9c9, #41676099, #000000a6);
     max-height: 90px;
     flex-direction: row-reverse;
     position: -webkit-sticky;
@@ -68,7 +69,7 @@ ul.ulHeader {
 }
 
 .navHeader {
-    color: #7DA09A;
+    color: white;
     font-size: 100%;
     padding: 13px;
     margin: auto;

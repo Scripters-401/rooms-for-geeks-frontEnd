@@ -15,6 +15,7 @@ let initialState = {
   finishQuiz: false,
   questionIndex: '',
   scroll: false,
+  textArea:null,
   answersHide: null,
 };
 
