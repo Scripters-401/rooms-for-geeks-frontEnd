@@ -15,7 +15,8 @@ let initialState = {
   finishQuiz: false,
   questionIndex: '',
   scroll: false,
-  textArea:null
+  textArea:null,
+  answersHide: null,
 };
 
 // reducer : switch case
@@ -61,6 +62,10 @@ export default (state = initialState, action) => {
       state.scroll = payload
       return { ...state };
 
+    case 'updateAnswersHide':
+      state.answersHide = payload
+      return { ...state };
+
 
 
 
@@ -75,6 +80,13 @@ export const updateChatScroll = (scroll) => {
   return {
     type: 'updateChatScroll',
     payload: scroll,
+  }
+}
+
+export const updateAnswersHide = (id) => {
+  return {
+    type: 'updateAnswersHide',
+    payload: id,
   }
 }
 

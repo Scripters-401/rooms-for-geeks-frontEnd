@@ -116,7 +116,6 @@ const Room = props => {
                         <div id="room-data">
                             <div className="quwsHead">
 
-
                                 <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null} room</h2>
                                 <Show condition={props.room.roomAdmin}>
                                     <Auth capability="master-room">
@@ -142,8 +141,8 @@ const Room = props => {
                         {/* </div> */}
 
                         <div className='courseData'>
-                            <h2 className="courseName">Course {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
-                            <p className="Discription">Discription {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
+                            <h2 className="courseName">Course: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
+                            <p className="Discription">Discription: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
 
                         </div>
 

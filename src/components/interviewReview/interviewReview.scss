@@ -212,13 +212,19 @@ p.dateFormatedP {
   font-size: 68%;
 }
 
-p.compP {
-  padding-top: 1rem;
-  padding-left: 1rem;
+.compP {
+  position: relative;
+  right: -17px;
+  top: 15px;
+  width: fit-content;
 }
 
 p.pastionP {
   padding-left: 1rem;
+  padding-top: 2rem;
+  top: 28px;
+  left: 2px;
+  position: absolute;
 }
 
 p.revP {
@@ -634,14 +640,9 @@ div.card .card__image-holder {
 //   color: #c59b08;
 // }
 
-p.pastionP {
-  padding-left: 1rem;
-  padding-top: 2rem;
-}
 
-span.compP {
-  padding-left: 10rem;
-}
+
+
 
 
 div.card.show div.card-flap {
@@ -867,4 +868,40 @@ textarea.reviewTextarea {
       color: #0a0a0a;
       // font-weight: bold;
   }
+}
+
+
+
+
+.quwsHead2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e5f64a;
+  text-transform: uppercase;
+  font-size: 252%;
+}
+
+
+p.Discription2 {
+  font-size: 119%;
+  font-weight: 100;
+  line-height: 1.4;
+  width: 78%;
+  color: white;
+}
+
+.headerDes {
+  width: 100%;
+  background-color: #7ea19b;
+  padding: 48px 52px;
+    margin-top: 6%;
+  color: #e5f64a;
+}
+
+h2.courseName2 {
+  margin-bottom: 1%;
+  padding: 1% 0;
+  color: #e5f64a;
+  border-bottom: solid 1px #dcdcdc;
 }
