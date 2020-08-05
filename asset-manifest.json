@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/rooms-for-geeks-frontEnd/static/css/main.6f267abc.chunk.css",
+    "main.js": "/rooms-for-geeks-frontEnd/static/js/main.fd4d133f.chunk.js",
+    "main.js.map": "/rooms-for-geeks-frontEnd/static/js/main.fd4d133f.chunk.js.map",
+    "runtime-main.js": "/rooms-for-geeks-frontEnd/static/js/runtime-main.4c2e4936.js",
+    "runtime-main.js.map": "/rooms-for-geeks-frontEnd/static/js/runtime-main.4c2e4936.js.map",
+    "static/css/2.b5e63294.chunk.css": "/rooms-for-geeks-frontEnd/static/css/2.b5e63294.chunk.css",
+    "static/js/2.ba7b8c13.chunk.js": "/rooms-for-geeks-frontEnd/static/js/2.ba7b8c13.chunk.js",
+    "static/js/2.ba7b8c13.chunk.js.map": "/rooms-for-geeks-frontEnd/static/js/2.ba7b8c13.chunk.js.map",
+    "index.html": "/rooms-for-geeks-frontEnd/index.html",
+    "precache-manifest.f39300fb1d9e311b0c7f96451b662194.js": "/rooms-for-geeks-frontEnd/precache-manifest.f39300fb1d9e311b0c7f96451b662194.js",
+    "service-worker.js": "/rooms-for-geeks-frontEnd/service-worker.js",
+    "static/css/2.b5e63294.chunk.css.map": "/rooms-for-geeks-frontEnd/static/css/2.b5e63294.chunk.css.map",
+    "static/css/main.6f267abc.chunk.css.map": "/rooms-for-geeks-frontEnd/static/css/main.6f267abc.chunk.css.map",
+    "static/js/2.ba7b8c13.chunk.js.LICENSE.txt": "/rooms-for-geeks-frontEnd/static/js/2.ba7b8c13.chunk.js.LICENSE.txt",
+    "static/media/userPage.scss": "/rooms-for-geeks-frontEnd/static/media/HomeCover.e7306e82.jpg",
+    "static/media/IMGG.jpeg": "/rooms-for-geeks-frontEnd/static/media/IMGG.290f4711.jpeg",
+    "static/media/LOGOC.png": "/rooms-for-geeks-frontEnd/static/media/LOGOC.9c669a4a.png",
+    "static/media/Obada.jpg": "/rooms-for-geeks-frontEnd/static/media/Obada.ceb91788.jpg",
+    "static/media/WhatsApp Image 2020-04-23 at 02.01.13.jpeg": "/rooms-for-geeks-frontEnd/static/media/WhatsApp Image 2020-04-23 at 02.01.13.610b4174.jpeg",
+    "static/media/react-bootstrap-carousel.css": "/rooms-for-geeks-frontEnd/static/media/react-bootstrap-carousel.f7448c04.ttf",
+    "static/media/form.scss": "/rooms-for-geeks-frontEnd/static/media/retrosupply-jLwVAUtLOAQ-unsplash.6dd9cb77.jpg",
+    "static/media/webHeaderLogo.png": "/rooms-for-geeks-frontEnd/static/media/webHeaderLogo.e991491c.png",
+    "static/media/weblogo2.png": "/rooms-for-geeks-frontEnd/static/media/weblogo2.e53d50c5.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4c2e4936.js",
+    "static/css/2.b5e63294.chunk.css",
+    "static/js/2.ba7b8c13.chunk.js",
+    "static/css/main.6f267abc.chunk.css",
+    "static/js/main.fd4d133f.chunk.js"
+  ]
+}
