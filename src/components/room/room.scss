@@ -1,8 +1,8 @@
 #room-data {
-    width: 70%;
+    width: 100%;
     height: 100%;
     margin-top: 26px;
-    margin: auto;
+    // margin: auto;
     .addToFav-true {
         margin-top: 42px;
     }
@@ -13,14 +13,42 @@
     span.addToFav-null {
         margin-top: 42px;
     }
-    h2#roon-name {
-        text-align: center;
-        margin-top: 5%;
-        color: #416760;
-        font-size: 226%;
-    }
+    // h2#roon-name {
+    //     color: #E5F64A;
+    //     font-size: 252%;
+    //     text-transform: uppercase;
+    //     line-height: 1.4;
+    // }
 }
 
+.buttonsHeaderRoom {
+    .roomHeaderButtonStyle {
+        cursor: pointer;
+        background: #7ea19b;
+        padding: 15px 32px;
+        border: 1px solid #ffffff;
+        color: #ffffff;
+        margin: 10px 17px 10px 0;
+        width: 18%;
+        font-size: 23px;
+        font-weight: 611;
+        border-radius: 4px;
+        &:focus {
+            outline: none;
+            // border: none;
+        }
+        &:hover {
+            background: #e5f64a;
+        }
+        .loveButton {
+            width: 28px;
+            margin-left: 3px;
+        }
+        svg {
+            margin-left: 5px;
+        }
+    }
+}
 .slideThree {
     width: 164px;
     height: 26px;
@@ -76,7 +104,10 @@
 
 .quwsHead {
     display: flex;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
+    // justify-content: left;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .roomDataFor {
@@ -86,19 +117,19 @@
 }
 
 h2.courseName {
-    margin-top: 2%;
     margin-bottom: 1%;
-    margin-left: 1%;
-    padding: 1%;
-    color: #333333;
-    border-bottom: solid 1px gainsboro;
+    // margin-left: 1%;
+    padding: 1% 0;
+    color: #fff;
+    border-bottom: solid 1px #dcdcdc;
 }
 
 p.Discription {
-    margin-left: 1%;
-    padding: 1%;
     font-size: 119%;
-    color: #333333;
+    font-weight: 100;
+    line-height: 1.4;
+    width: 78%;
+    color: white;
 }
 
 p.CreatedByOn {
@@ -107,9 +138,9 @@ p.CreatedByOn {
 p.Topic {
     margin-left: 1%;
 }
-.courseData {
-    margin-bottom: 5%;
-}
+// .courseData {
+//     margin-bottom: 5%;
+// }
 
 .QAData .questionDiv {
     border: solid #c7c8c7 1px;
@@ -119,11 +150,13 @@ p.Topic {
     position: relative;
 }
 
-p.questionAsked {
-    // text-align: center;
+div.questionAsked {
     margin-top: -40px;
-    // color: white;
-    // font-size: 156%;
+    position: absolute;
+    left: 72px;
+    font-size: 163%;
+    color: #416760;
+    text-transform: capitalize;
 }
 
 .time.and.creater {
@@ -131,17 +164,17 @@ p.questionAsked {
 }
 
 p.nameOfWhoQues {
-    margin-right: 10px;
     position: relative;
+    color: #416760;
+    font-size: 148%;
     text-transform: capitalize;
-    // top: 3px;
-    // right: 107px;
 }
 
 p.createdTimeQues {
     position: relative;
-    bottom: 29px;
-    left: 65px;
+    bottom: 33px;
+    left: 69px;
+    font-size: 80%;
 }
 
 a {
@@ -160,8 +193,69 @@ a {
 
 p.checAns {
     margin-left: 2px;
-    color: #7da09a;
-    cursor: pointer;
+    color: #416760;
+    width: 100%;
+    position: relative;
+    left: 72px;
+
+    /* margin-left: 2px; */
+    // color: #416760;
+    // width: 80%;
+    // position: relative;
+    // /* left: 72px; */
+    // margin: auto;
+    ul {
+        position: relative;
+        width: 86%;
+        .deleteAnswer {
+            position: absolute;
+            right: 0;
+            color: red;
+            cursor: pointer;
+            top: -10px;
+        }
+        .answerALL {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            li {
+                width: 78%;
+                background-color: #7ea19b;
+                padding: 2%;
+                border-radius: 14px;
+
+                span.nameOfWhoAnswer {
+                    color: #e5f64a;
+                    font-size: 135%;
+                    font-weight: 600;
+                    // position: absolute;
+                    // right: 75%;
+                    /* top: 9px;*/
+                }
+                span.answersOfWhoAnswer {
+                    color: white;
+                    font-size: 99%;
+                    /* position: absolute; */
+                    margin-left: 11px;
+                }
+            }
+        }
+
+    }
+    .answerImg {
+        width: 50px;
+        height: 49px;
+        border-radius: 59px;
+        margin-right: 10px;
+        margin-top: 1px;
+    }
+    form {
+        width: 89%;
+        margin: auto;
+        position: relative;
+        left: 61px;
+    }
 }
 
 form.addQuesForm {
@@ -178,13 +272,18 @@ input.addQuesFor {
         outline: none;
     }
 }
-
-
-
+.addAnswer {
+    padding: 2%;
+    width: 70%;
+    border: solid 2px #7da09a;
+    &:focus {
+        outline: none;
+    }
+}
 
 button.addQuesForButt {
     width: 12%;
-    background-color: #416760;
+    background-color: #7ea19b;
     border: none;
     height: 47px;
     color: white;
@@ -205,23 +304,29 @@ button.addQuesForButt {
     }
 }
 
+.formAnswerQuestion {
+    display: flex;
+    .inputLabel {
+    }
+}
+
 button.deleteRoom {
-    height: 16%;
-    margin-top: 69px;
+    width: 10%;
+    // margin-top: 69px;
     border-radius: 5px;
     border: none;
     background-color: #416760;
     padding: 1%;
-    color: white;
+    color: #e5f64a;
     &:focus {
         outline: none;
     }
 }
 #room-data h2#roon-name {
-    text-align: center;
-    margin-top: 7%;
-    color: #416760;
-    font-size: 226%;
+    color: #e5f64a;
+    font-size: 252%;
+    text-transform: uppercase;
+    line-height: 1.4;
 }
 
 .bodyDiv {
@@ -235,6 +340,7 @@ button.deleteRoom {
     height: 100%;
     display: flex;
     flex-direction: column;
+    margin-top: 91px;
 }
 
 .chatSet {
@@ -246,12 +352,12 @@ button.deleteRoom {
     border: none;
     margin-bottom: 2%;
     padding: 5%;
-    color: white;
-    background-color: #416760;
+    color: #e5f64a;
+    background-color: #7ea19b;
     border-radius: 6px;
     margin-right: 1%;
     margin-left: 8%;
-    border: solid 1px #416760;
+    border: solid 1px #7ea19b;
     transition-duration: 1.2s;
     width: 100px;
     margin-top: 50%;
@@ -351,7 +457,6 @@ a.TakeQuizAndTotoButt {
     transform: rotateZ(-8deg) translate(8px, 1px);
 }
 
-
 aside.quiaAndTutorial {
     width: -19%;
     /* position: fixed; */
@@ -361,16 +466,17 @@ aside.quiaAndTutorial {
     width: 13%;
 }
 
-
 .containerRoom {
     width: 100%;
-    text-align: -webkit-center;
+    background-color: #7ea19b;
+    padding: 0 52px;
 }
 
 .QA-Component {
     display: flex;
     flex-direction: row;
     width: 100%;
+    min-height: 100vh;
 }
 
 .just-QA {
@@ -379,12 +485,11 @@ aside.quiaAndTutorial {
 }
 
 img.imgOfWhoQues {
-    width: 38px;
-    border-radius: 20px;
+    width: 50px;
+    height: 49px;
+    border-radius: 59px;
     margin-right: 10px;
-    margin-left: 6px;
-    /* margin-top: 0px; */
-    /* top: 7px; */
+    margin-top: 1px;
 }
 
 .imgAndName {
@@ -392,11 +497,161 @@ img.imgOfWhoQues {
     padding: 10px;
 }
 
-
 hr.magic {
     position: relative;
     /* color: red; */
     /* background: #da125c; */
     bottom: 35px;
     width: 94%;
+}
+
+span.answerLength {
+    position: absolute;
+    top: 80px;
+    right: 28px;
+    font-size: 68%;
+}
+
+.svgR {
+    outline: none;
+}
+
+.iconbutton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin: 0 50px;
+    outline: none;
+    position: absolute;
+    top: 10px;
+    left: 662px;
+    svg {
+        transition: 200ms all;
+        outline: none;
+    }
+
+    &.poof {
+        position: relative;
+        outline: none;
+
+        svg {
+            opacity: 0.01;
+            outline: none;
+        }
+
+        &:after {
+            position: absolute;
+            left: 0;
+            bottom: 5px;
+            right: 0;
+            content: "";
+            background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/8585/poof.png) no-repeat 0 0;
+            animation: poof 500ms 1;
+            animation-fill-mode: forwards;
+            background-size: 128px 640px;
+            outline: none;
+        }
+    }
+
+    $size: 20px;
+    $sizem: 35px;
+    $sizexl: 50px;
+
+    svg {
+        width: $size;
+        outline: none;
+    }
+    &.poof:after {
+        height: $size;
+        background-size: $size (640 * ($size/128));
+        outline: none;
+    }
+
+    &.medium {
+        svg {
+            width: $sizem;
+        }
+        outline: none;
+        &:after {
+            height: $sizem;
+            background-size: $sizem (640 * ($sizem/128));
+            outline: none;
+        }
+    }
+
+    &.large {
+        svg {
+            width: $sizexl;
+        }
+        &:after {
+            height: $sizexl;
+            background-size: $sizexl (640 * ($sizexl/128));
+        }
+    }
+}
+svg.delete-animation {
+    fill: red;
+    outline: none;
+    .lid {
+        transform-origin: 2px 5px;
+        transition: 500ms all;
+        outline: none;
+    }
+    .can {
+        transition: 500ms all;
+        outline: none;
+    }
+    &:hover {
+        fill: yellow;
+        outline: none;
+        .lid {
+            transform: rotate(-30deg);
+            outline: none;
+        }
+    }
+    &:active .lid {
+        transform: rotate(-50deg);
+        outline: none;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+@keyframes poof {
+    0% {
+        background-position: 0 0;
+    }
+    20% {
+        background-position: 0 0;
+    }
+    21% {
+        background-position: 0 25%;
+    }
+    40% {
+        background-position: 0 25%;
+    }
+    41% {
+        background-position: 0 50%;
+    }
+    60% {
+        background-position: 0 50%;
+    }
+    61% {
+        background-position: 0 75%;
+    }
+    80% {
+        background-position: 0 75%;
+    }
+    81% {
+        background-position: 0 100%;
+    }
+    99% {
+        background-position: 0 100%;
+    }
+    100% {
+        background-position: 0 200%;
+    }
 }
