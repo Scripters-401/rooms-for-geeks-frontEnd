@@ -97,7 +97,6 @@ const Room = props => {
                         <div id="room-data">
                             <div className="quwsHead">
 
-
                                 <h2 id='roon-name'>{props.room.roomData.RData && props.room.roomData.RData.roomName ? props.room.roomData.RData.roomName : null} room</h2>
                                 <Show condition={props.room.roomAdmin}>
                                     <Auth capability="master-room">
