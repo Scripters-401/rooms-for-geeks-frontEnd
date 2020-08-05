@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/Scripters-401/rooms-for-geeks-frontEnd/issues"
   },
-  "homepage": "https://rooms-for-geeks.netlify.app",
+  "homepage": "https://5f2a66df18ae2f08de9050b7--rooms-for-geeks.netlify.app",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
