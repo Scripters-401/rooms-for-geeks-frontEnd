@@ -127,7 +127,7 @@ SVG Styles
     .chat * {
       transform-origin: 50% 50%;
       transform: translateZ(0);
-      -webkit-backface-visibility: hidden;
+      // -webkit-backface-visibility: hidden;
     }
     .computer {
       transform: translate3d(-612px, 0, 0);

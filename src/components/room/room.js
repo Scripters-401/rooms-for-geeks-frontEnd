@@ -186,7 +186,7 @@ const Room = props => {
                                 </Show>
 
                                 <Show condition={(props.room.roomData.courseData && props.room.roomData.courseData.tutorial)}>
-                                    <a className="aHrefLinkdds" href={`https://${props.room.roomData.courseData && props.room.roomData.courseData.tutorial ? props.room.roomData.courseData.tutorial : null}`} rel="noopener noreferrer" target='_blank'><button className="TakeQuizAndToto" >Tutorial</button></a>
+                                    <a className="aHrefLinkdds" href={`${props.room.roomData.courseData && props.room.roomData.courseData.tutorial ? props.room.roomData.courseData.tutorial : null}`} rel="noopener noreferrer" target='_blank'><button className="TakeQuizAndToto" >Tutorial</button></a>
                                 </Show>
                             </div>
                         </aside>
