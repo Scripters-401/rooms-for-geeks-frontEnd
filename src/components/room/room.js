@@ -142,7 +142,7 @@ const Room = props => {
 
                         <div className='courseData'>
                             <h2 className="courseName">Course: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
-                            <p className="Discription">Discription: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
+                            <p className="Discription">{props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
 
                         </div>
 
