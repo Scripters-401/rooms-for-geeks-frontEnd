@@ -19,8 +19,9 @@ export default (state = initialState, action) => {
     let { type, payload } = action;
     switch (type) {
         case 'HANDLE_ADD_QUIZ':
-            let z = payload.name.toString().slice(0, -1)
-            let idx = payload.name.toString().slice(-1)
+            let [z, idx] = payload.name.toString().split('#')
+            // let  = payload.name.toString().slice(-1)
+            console.log(payload.name, z, idx, payload.value);
             state[z][idx] = payload.value
             return { ...state };
 

@@ -29,7 +29,7 @@ const Room = props => {
         let x = props.userHome.choosenRoomID || cookieroomID;
         props.updateChoosenRoomIDSocket(x)
         window.scrollTo(0, 0)
-
+        props.thePostRoom.redirectCreateQuiz = false
         // }, 200);
 
     }, [])
@@ -293,6 +293,7 @@ const mapStateToProps = state => ({
     userInfo: state.userInfo,
     userHome: state.userHome,
     chat: state.chat,
+    thePostRoom: state.thePostRoom
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({

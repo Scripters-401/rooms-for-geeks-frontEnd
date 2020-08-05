@@ -66,6 +66,7 @@ const RoomForm = props => {
 
         // props.thePostRoom.redirectCreateQuiz = true;
         props.updateRedirectCreateQuiz(true);
+        // e.target.reset()
     }
 
     return (
@@ -157,6 +158,7 @@ const RoomForm = props => {
                                 name="password"
                                 onChange={(e) => props.handleChangeRoom(e)}
                                 placeholder="Password"
+                                disabled={!props.thePostRoom.privetRoomPass} required={props.thePostRoom.privetRoomPass}
                             />
 
                             <button className="button" type="submit" id="login-button">CREATE!</button>
