@@ -32,6 +32,7 @@ const AllRooms = props => {
     
     return (
         <>
+        
             <div>
                 <h3 className='topic'>Random Rooms</h3>
             </div>

@@ -194,7 +194,7 @@ export const askQuestion = (token, question, courseID, name, userid, profileIMG)
   }
 }
 
-export const addAnswer = (token, questionId, answers, userid, name) => async dispatch => {
+export const addAnswer = (token, questionId, answers, userid, name, profileIMG) => async dispatch => {
   try {
     fetch(`${API}/A/${questionId}`, {
       method: 'PUT',
@@ -204,7 +204,7 @@ export const addAnswer = (token, questionId, answers, userid, name) => async dis
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       }),
-      body: JSON.stringify({ answers, userid, name })
+      body: JSON.stringify({ answers, userid, name, profileIMG })
     });
   } catch (error) {
     console.error(`ERROR: SIGNOUT`);

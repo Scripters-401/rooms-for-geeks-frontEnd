@@ -17,7 +17,7 @@
 
 .loaderDiv-true {
   // background-color: red;
-  background-color: #96aba9;;
+  background-color: #ffffff;;
   position: absolute;
   z-index: 999999999999999999;
   // top: 50px;
@@ -67,7 +67,7 @@
 
 #top {
   animation: top 5s linear infinite;
-  border-top: 20px solid #fff;
+  border-top: 20px solid #96aba9;
   border-right: 20px solid transparent;
   border-left: 20px solid transparent;
   height: 0px;
@@ -78,7 +78,7 @@
 #bottom {
   animation: bottom 5s linear infinite;
   border-right: 20px solid transparent;
-  border-bottom: 20px solid #fff;
+  border-bottom: 20px solid #96aba9;
   border-left: 20px solid transparent;
   height: 0px;
   width: 1px;
@@ -88,7 +88,7 @@
 
 #line {
   animation: line 5s linear infinite;
-  border-left: 1px dotted #fff;
+  border-left: 1px dotted #96aba9;
   height: 0px;
   width: 0px;
   position: absolute;
