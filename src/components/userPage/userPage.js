@@ -11,6 +11,8 @@ import Show from '../auth/show';
 const User = props => {
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+
         props.getInfoUser(props.sign.token, props.sign.user.id)
     }, [props.sign.token, props.sign.user.id,])
 
@@ -52,38 +54,33 @@ const User = props => {
 
     }
 
-    // const handleChangePic = e => {
-    //     if (e.target.files[0]) {
-    //         props.setImage(e.target.files[0]);
-    //     }
-    // };
 
-    const currentDate = new Date();
-    let fullYear = currentDate.getFullYear();
-    let month = currentDate.getMonth();
-    let day = currentDate.getDay();
+    // const currentDate = new Date();
+    // let fullYear = currentDate.getFullYear();
+    // let month = currentDate.getMonth();
+    // let day = currentDate.getDay();
 
-    let createdTimeDate = props.userInfo.user.createdTime;
-    let newDatecreatedTime = new Date(createdTimeDate);
-    let createdTimeFullYear = newDatecreatedTime.getFullYear();
-    let createdTimeMonth = newDatecreatedTime.getMonth();
-    let createdTimeDay = newDatecreatedTime.getDay();
+    // let createdTimeDate = props.userInfo.user.createdTime;
+    // let newDatecreatedTime = new Date(createdTimeDate);
+    // let createdTimeFullYear = newDatecreatedTime.getFullYear();
+    // let createdTimeMonth = newDatecreatedTime.getMonth();
+    // let createdTimeDay = newDatecreatedTime.getDay();
 
-    let getExactYear = fullYear - createdTimeFullYear;
-    let getExactMonth;
-    let getExactDay
+    // let getExactYear = fullYear - createdTimeFullYear;
+    // let getExactMonth;
+    // let getExactDay
 
-    if (createdTimeDay > day) {
-        getExactDay = createdTimeDay - day;
-    } else {
-        getExactDay = day - createdTimeDay;
-    }
+    // if (createdTimeDay > day) {
+    //     getExactDay = createdTimeDay - day;
+    // } else {
+    //     getExactDay = day - createdTimeDay;
+    // }
 
-    if (month > createdTimeMonth) {
-        getExactMonth = month - createdTimeMonth;
-    } else {
-        getExactMonth = createdTimeMonth - month;
-    }
+    // if (month > createdTimeMonth) {
+    //     getExactMonth = month - createdTimeMonth;
+    // } else {
+    //     getExactMonth = createdTimeMonth - month;
+    // }
 
     const togglePass = () => {
         let idInput = document.getElementById("passInput");
@@ -121,38 +118,25 @@ const User = props => {
             });
         }
     }
-    
+
     return (
         <div className="mainDiv">
 
             <div id="imgAndBtn">
                 <div id="divJustImage">
                     <img className="image" src={`${props.userInfo.user.profileIMG}`} alt='userImage'></img>
-                    <div class="edit_container2 cf" >
+                    <div className="edit_container2 cf" >
                         <span className='photoIcon'>
-                            {/* <form > */}
-                            {/* <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" /> */}
                             <label htmlFor='ee' className='inputImagelabel'></label>
                             <input className='uploadButton' id='ee' type='file' name="imagesUpload" onChange={e => uploadImageEdit(e)} />
                             <img src="http://stjdev.convio.net/app/common/img/camera.png" alt='camera' />
-                            {/* <button>lllll</button> */}
-                            {/* </form> */}
-
                         </span>
-                        <div class="left_circle">
+                        <div className="left_circle">
                         </div>
-                        <div class="right_circle">
+                        <div className="right_circle">
                         </div>
                     </div>
                 </div>
-                {/* <span href="#" className={`btn btn-default toggleButton make-${props.editUserInfo.hide}`} id="toggle-form" onClick={(payload) => props.hideFun(payload)}>Edit</span>
-                    <div className={`make-${props.editUserInfo.toggle}`}>
-
-                    </div> */}
-
-
-
-                {/* commmmmmmmmmmment */}
 
                 <p className="username infoSec">Username: {props.userInfo.user.username}</p>
                 <p className="email infoSec">Email: {props.userInfo.user.email}</p>
@@ -160,10 +144,10 @@ const User = props => {
 
 
                 <div className='hiii'>
-                    <div class="avatar-upload">
-                        <div class="avatar-edit">
+                    <div className="avatar-upload">
+                        <div className="avatar-edit">
                             <input type='text' id="name" onClick={() => changeToForm('Name')} />
-                            <label for="name"></label>
+                            <label htmlFor="name"></label>
 
                         </div>
 
@@ -181,7 +165,7 @@ const User = props => {
                                 type="text"
                                 name="name"
                                 onChange={(e) => props.updateData(e)}
-                                placeholder={props.userInfo.user.name}
+                                defaultValue={props.userInfo.user.name}
                                 className="form-control"
                             ></input>
                             <button>Save</button>
@@ -191,18 +175,16 @@ const User = props => {
                 </div>
 
                 <div className='hiii'>
-                    <div class="avatar-upload">
-                        <div class="avatar-edit">
+                    <div className="avatar-upload">
+                        <div className="avatar-edit">
                             <input type='text' id="major" onClick={() => changeToForm('Major')} />
-                            <label for="major"></label>
+                            <label htmlFor="major"></label>
 
                         </div>
 
                     </div>
                     <Show condition={props.editUserInfo.flipMajor}>
-
                         <p className="majorr infoSec">Major: {props.userInfo.user.major}</p>
-
                     </Show>
 
                     <Show condition={!props.editUserInfo.flipMajor}>
@@ -214,7 +196,8 @@ const User = props => {
                                 onChange={(e) => props.updateData(e)}
                                 placeholder={props.userInfo.user.major}
                                 className="form-control"
-                            />
+                                defaultValue={props.userInfo.user.major}
+                            ></input>
                             <button>Save</button>
 
                         </form>
@@ -223,10 +206,10 @@ const User = props => {
                 </div>
 
                 <div className='hiii'>
-                    <div class="avatar-upload">
-                        <div class="avatar-edit">
+                    <div className="avatar-upload">
+                        <div className="avatar-edit">
                             <input type='text' id="university" onClick={() => changeToForm('University')} />
-                            <label for="university"></label>
+                            <label htmlFor="university"></label>
                         </div>
                     </div>
                     <Show condition={props.editUserInfo.flipUniversity}>
@@ -238,7 +221,7 @@ const User = props => {
                                 type="text"
                                 name="university"
                                 onChange={(e) => props.updateData(e)}
-                                placeholder={props.userInfo.user.university}
+                                defaultValue={props.userInfo.user.university}
                                 className="form-control"
                             />
                             <button>Save</button>
@@ -248,10 +231,10 @@ const User = props => {
 
 
                 <div className='hiii'>
-                    <div class="avatar-upload">
-                        <div class="avatar-edit">
+                    <div className="avatar-upload">
+                        <div className="avatar-edit">
                             <input type='password' id="password" onClick={() => changeToForm('Password')} />
-                            <label for="password"></label>
+                            <label htmlFor="password"></label>
 
                         </div>
 
@@ -275,86 +258,16 @@ const User = props => {
                                 value={props.editUserInfo.password}
                             />
                             <p className="showPass"><input className="checkB" type="checkbox" onClick={togglePass}></input><span className="spanChe">Show Password <button id="saveId">Save</button></span> </p>
-                            
-                            {/* <button>Save</button> */}
+
 
                         </form>
                     </Show>
                 </div>
 
 
-                <p className="joined infoSec"> Member since: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
+                <p className="joined infoSec"> Member since: {props.userInfo.user.createdTime?props.userInfo.user.createdTime.slice(0,10):null}</p>
 
-                {/* End commmmmmmmmmmment */}
-
-
-                {/* <div id="infoForm">
-                        <div id='info' acceptCharset='UTF-8'>
-                            <p className="username infoSec">Username: {props.userInfo.user.username}</p>
-                            <p className="email infoSec">Email: {props.userInfo.user.email}</p>
-                            <p className="name infoSec">Name: {props.userInfo.user.name}</p>
-                            <p className="majorr infoSec">Major: {props.userInfo.user.major}</p>
-                            <p className="university infoSec">University: {props.userInfo.user.university}</p>
-                            <p className="joined infoSec"> Member since: {`${getExactYear} Years, ${getExactMonth} Months, and ${getExactDay} Days`}</p>
-                        </div>
-                    </div> */}
             </div>
-            {/* 
-                <div className={`do-${!props.editUserInfo.hide} do-${props.editUserInfo.toggle}`}>
-                    <span href="#" className="btn btn-default xx" id="toggle-info" onClick={(payload) => props.toggleFun(payload)}>X</span>
-                    <div id="formForm" id='form'>
-                        <form id="formI" onSubmit={(e) => {
-                            e.preventDefault();
-                            handleSubmitFun(e);
-                            // window.location.reload()
-                        }}>
-                            <h3 className="subForm">Update Profile</h3>
-
-                            <div className="form-group col-md-5">
-                                <label>Password</label>
-                                <input placeholder="password" className="form-control" type="password" value={props.editUserInfo.password} name="password" id="passInput" onChange={(e) => props.updateData(e)}></input>
-                                <input type="checkbox" onClick={togglePass}></input>Show Password
-                    </div>
-
-                            <div className="form-group col-md-5">
-                                <label>Name</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    onChange={(e) => props.updateData(e)}
-                                    placeholder={props.userInfo.user.name}
-                                    className="form-control"
-                                ></input>
-                            </div>
-                            <div className="form-group col-md-5">
-                                <label>Major</label>
-                                <input
-                                    type="text"
-                                    name="major"
-                                    onChange={(e) => props.updateData(e)}
-                                    placeholder={props.userInfo.user.major}
-                                    className="form-control"
-                                />
-                            </div>
-                            <div className="form-group col-md-5">
-                                <label>University</label>
-                                <input
-                                    type="text"
-                                    name="university"
-                                    onChange={(e) => props.updateData(e)}
-                                    placeholder={props.userInfo.user.university}
-                                    className="form-control"
-                                />
-                            </div>
-                            <div className="form-group col-md-5">
-                                <label>Profile Image</label>
-                                <input id="imagesUploadId" className='form-control-file' name="imagesUpload" type="file" onChange={handleChangePic} className="form-control" />
-                            </div>
-                            <div className="form-group col-md-5">
-                                <button type="submit" className="btn">Submit</button></div>
-                        </form>
-                    </div>
-                </div> */}
 
         </div>
     );
