@@ -9,6 +9,7 @@ import * as actions2 from '../../store/userReducer.js'
 import Show from '../auth/show';
 import logo from '../../assest/webHeaderLogo.png';
 //LOGOC.png
+//webHeaderLogo.png
 import '../../reset.css';
 import './header.scss';
 

@@ -56,7 +56,7 @@ const Quiz = props => {
 
 
   return (
-<div className="allQuizDiv" style={props.room.score !== null ?{ "background": "url('https://images.unsplash.com/photo-1569705460033-cfaa4bf9f822?ixlib=rb-1.2.1&auto=format&fit=crop&w=635&q=80') no-repeat center center fixed" ,"background-size": "cover" ,"position": "sticky"} : {"background":"url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')  " ,"background-size": "cover"} }>
+<div className="allQuizDiv" style={props.room.score !== null ?{ "background": "url('https://images.unsplash.com/photo-1569705460033-cfaa4bf9f822?ixlib=rb-1.2.1&auto=format&fit=crop&w=635&q=80') no-repeat center center fixed" ,"background-size": "cover" ,"position": "sticky"} : {"background":"url('')"} }>
     <div className='renderedQuiz'>
       <h2 className="quizHeaderQues">Quiz Name: {props.room.roomData && props.room.roomData.renderedQuiz ? props.room.roomData.renderedQuiz.quizName : null}</h2>
 

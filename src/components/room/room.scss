@@ -144,12 +144,13 @@ p.Topic {
 // }
 
 .QAData .questionDiv {
-    border: solid #c7c8c7 1px;
+    // border: solid #c7c8c7 1px;
     width: 100%;
     margin: auto;
     margin-bottom: 3%;
     position: relative;
     padding: 2%;
+    box-shadow: 1px 1px 5px #959292;
 }
 
 div.questionAsked {
@@ -353,7 +354,7 @@ button.deleteRoom {
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 91px;
+    margin-top: 90px;
 }
 
 .chatSet {

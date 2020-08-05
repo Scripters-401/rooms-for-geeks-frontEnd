@@ -30,8 +30,9 @@ p.Quizquestion {
 .eachQuesDiv {
     width: 80%;
     padding: 1%;
-    border: solid 1px #808080;
+    // border: solid 1px #808080;
     margin: 2% auto 2% auto;
+    box-shadow: 1px 1px 5px #959292;
 }
 
 h2.quizHeaderQues {
@@ -43,6 +44,7 @@ h2.quizHeaderQues {
 
 .answerDivQuiz {
     margin-left: 2%;
+    padding: 2%;;
 }
 
 .submitQuizAndToto {
@@ -70,11 +72,11 @@ h2.quizHeaderQues {
 }
 
 .finalScore {
-    min-height: 240px;
+    min-height: 119px;
     color: #416760;
     justify-content: center;
     display: flex;
-    margin-top: 13%;
+    margin-top: 7%;
     font-size: 199%;
 }
 .returnquiz{
