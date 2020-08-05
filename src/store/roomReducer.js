@@ -14,7 +14,8 @@ let initialState = {
   choosenRoomIDSocket: '',
   finishQuiz: false,
   questionIndex: '',
-  scroll: false
+  scroll: false,
+  textArea:null
 };
 
 // reducer : switch case

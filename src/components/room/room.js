@@ -3,12 +3,12 @@ import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
-
+import $ from 'jquery'
 import * as actions from '../../store/roomReducer';
 import * as chatActions from '../../store/chat';
 import * as loader from '../../store/signINUPReducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Swal from 'sweetalert2'
 import Show from '../auth/show'
 import Auth from '../auth/auth'
 import QA from './questions&answ'
@@ -87,6 +87,25 @@ const Room = props => {
         }
     }
 
+    const copyURL = (e) => {
+        let copyText = document.getElementById('copyy');
+        copyText.select();
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+        // props.room.textArea.select();
+        // document.execCommand('copy');
+        // $('#copyy').select();
+        // $('#copyy').setSelectionRange(0, 99999);
+        // document.execCommand('copy');
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Copied',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+
     return (
         <>
             {/* {onScroll=e =>someMeothod()} */}
@@ -144,8 +163,8 @@ const Room = props => {
                                     <img className='loveButton' src="https://img.icons8.com/small/64/000000/hearts.png" />
                                 </button>
                             </Show>
-
-                            <button className='roomHeaderButtonStyle'>
+                            <input id='copyy' style={{width:'1%',position:'relative',left:'20px',zIndex:'-1'}} defaultValue='https://rooms-for-geeks.netlify.app/' ></input>
+                            <button className='roomHeaderButtonStyle' onClick={(e) => copyURL(e)}>
                                 Share
                                 <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" >
                                     <path d="M 18 2 A 3 3 0 0 0 15 5 A 3 3 0 0 0 15.054688 5.5605469 L 7.9394531 9.7109375 A 3 3 0 0 0 6 9 A 3 3 0 0 0 3 12 A 3 3 0 0 0 6 15 A 3 3 0 0 0 7.9355469 14.287109 L 15.054688 18.439453 A 3 3 0 0 0 15 19 A 3 3 0 0 0 18 22 A 3 3 0 0 0 21 19 A 3 3 0 0 0 18 16 A 3 3 0 0 0 16.0625 16.712891 L 8.9453125 12.560547 A 3 3 0 0 0 9 12 A 3 3 0 0 0 8.9453125 11.439453 L 16.060547 7.2890625 A 3 3 0 0 0 18 8 A 3 3 0 0 0 21 5 A 3 3 0 0 0 18 2 z" /></svg>
