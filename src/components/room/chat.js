@@ -130,9 +130,7 @@ const Chat = props => {
 
   return (
     <div id="geeks-chat" className={`chat-${props.chat.open}`} style={props.room.scroll ? {
-      position: 'absolute', left: '267%', margin: '0px auto',
-      border: '1px solid #ddd',
-      width: '302px',
+      position: 'absolute',
       bottom: '0'
     } : { position: 'fixed', right: '0' }}>
       {/* <p>{props.chat.notification}</p> */}
@@ -201,6 +199,7 @@ const Chat = props => {
         placeholder="Message"
         onKeyPress={typing}
         onChange={(e) => props.message(e)}
+        required={true}
       />
       <button id="send" onClick={onlineFun}>Send</button>
     </div>

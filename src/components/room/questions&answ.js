@@ -29,7 +29,9 @@ const Questions = props => {
             props.room.roomData.QAData[idx]._id,
             answer,
             props.userInfo.user._id,
-            props.userInfo.user.name)
+            props.userInfo.user.name,
+            props.userInfo.user.profileIMG,
+        )
         const cookieroomID = cookie.load('roomID');
         props.getRoom(props.sign.token, cookieroomID)
     }
@@ -137,7 +139,7 @@ const Questions = props => {
                             <hr className="magic" />
 
                             <div className="questionAsked" onClick={e => goToQuestion(idx)}>
-                                
+
                                 Q{idx + 1}: <span className="sapnAQ">{element.question}</span>
                             </div>
                             {/* </Link> */}
@@ -148,27 +150,40 @@ const Questions = props => {
                         </Show> */}
 
 
-                        <div className="numberOfAnswer"><span className="answerLength">{element.answers.length}  Answers</span> 
+                        <div className="numberOfAnswer"><span className="answerLength">{element.answers.length}  Answers</span>
 
                             <p className="checAns">
                                 <ul>
                                     {props.room.roomData.QAData[idx].answers.map((e, i) => {
                                         return (
                                             <React.Fragment key={i}>
-                                                <h4 > answer {i + 1}</h4>
+                                                <hr />
+                                                {/* <h4 > Answer {i + 1}</h4> */}
 
-                                                <Show condition={props.room.roomAdmin || props.userInfo.user._id === props.room.roomData.QAData[idx].virtualAnswerID[i]}>
-                                                    <span className="deleteAnswer" onClick={e => deleteAnswer(props.room.roomData.QAData[idx]._id, idx, i)}>X</span>
-                                                </Show>
-                                                <li >{e}</li>
-                                                <span>Answer From: {props.room.roomData.QAData[idx].virtualAnswerName[i]}</span>
+                                                <span className='answerALL'>
+                                                    <img className="answerImg" src={props.room.roomData.QAData[idx].virtualAnswerImage[i]} />
+                                                    <li > <span className="nameOfWhoAnswer">{props.room.roomData.QAData[idx].virtualAnswerName[i]}</span> <br /> <span className="answersOfWhoAnswer">{e}</span></li>
+                                                    <Show condition={props.room.roomAdmin || props.userInfo.user._id === props.room.roomData.QAData[idx].virtualAnswerID[i]}>
+                                                        <span className="deleteAnswer" onClick={e => deleteAnswer(props.room.roomData.QAData[idx]._id, idx, i)}>X</span>
+                                                    </Show>
+                                                </span>
+
+
+
+
+
                                             </React.Fragment>
                                         )
                                     })}
                                 </ul>
                                 <form onSubmit={e => submit(e, idx)}>
-                                    <label>ADD your answer
-                                    <input required onChange={e => answerFun(e)}></input>
+                                    <label className='formAnswerQuestion'>
+
+                                        {/* <span className='inputLabel'>
+                                            ADD your answer
+                                        </span> */}
+
+                                        <input className='addAnswer' required onChange={e => answerFun(e)} placeholder='ADD your answer'></input>
                                     </label>
                                     {/* <button>ADD Answer</button> */}
                                 </form>
@@ -227,8 +242,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, getState) => ({
     getRoom: (token, id) => dispatch(actions.getRoom(token, id)),
-    addAnswer: (token, questionId, answers, userid, name) =>
-        dispatch(actions.addAnswer(token, questionId, answers, userid, name)),
+    addAnswer: (token, questionId, answers, userid, name, profileIMG) =>
+        dispatch(actions.addAnswer(token, questionId, answers, userid, name, profileIMG)),
     deleteQuestion: (token, questionID, userid) => dispatch(actions.deleteQuestion(token, questionID, userid)),
     askQuestion: (token, question, courseID, name, userid, profileIMG) =>
         dispatch(actions.askQuestion(token, question, courseID, name, userid, profileIMG)),
