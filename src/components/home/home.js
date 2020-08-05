@@ -31,7 +31,18 @@ const Home = () => {
                                 <li className="contentHome__container__list__item">everybody !</li>
                             </ul>
                         </div>
+
+                        {/* <div class='textAnim'>
+                            <div class="container">
+                                <h1>Welcome to Rooms For Geeks!</h1>
+                                <span class="text1">Here you will find everything you want</span>
+                                <span class="text2">What are you waiting for?!</span>
+                                <span class="text3">Join us to learn everything you want to learn</span>
+                            </div>
+                        </div> */}
                     </div>
+
+
 
                     {/* { <div class="typewriter1">
                         <h1>We hope that you will enjoy your time here!</h1>
