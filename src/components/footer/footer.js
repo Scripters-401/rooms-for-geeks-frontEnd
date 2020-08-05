@@ -9,6 +9,7 @@ const Footer = () => {
         <footer className='footer'>
             <div className="fott">
                 <div className="contactUs">
+                    <p className="test">Do you need help ?</p>
                     <p className="contactIn"> Contact Us </p>
                     <div className="emailAndNumber">
                         <p className="Tag">Email :  </p>
