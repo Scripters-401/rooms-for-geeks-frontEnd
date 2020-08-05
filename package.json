@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/Scripters-401/rooms-for-geeks-frontEnd/issues"
   },
-  "homepage": "https://rooms-for-geeks.netlify.app",
+  "homepage": "https://5f2a66df18ae2f08de9050b7--rooms-for-geeks.netlify.app",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
@@ -43,6 +43,7 @@
     "react-bootstrap": "^1.3.0",
     "react-bootstrap-carousel": "^4.0.6",
     "react-cookies": "^0.1.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
