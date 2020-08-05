@@ -545,6 +545,11 @@ span.answerLength {
     top: 10px;
     /* left: 662px; */
     right: 0;
+    &:focus{
+        border: none;
+       outline: none;
+    }
+
     svg {
         transition: 200ms all;
         outline: none;
@@ -608,6 +613,7 @@ span.answerLength {
             background-size: $sizexl (640 * ($sizexl/128));
         }
     }
+
 }
 svg.delete-animation {
     fill: red;
@@ -622,7 +628,7 @@ svg.delete-animation {
         outline: none;
     }
     &:hover {
-        fill: yellow;
+        fill: red;
         outline: none;
         .lid {
             transform: rotate(-30deg);
