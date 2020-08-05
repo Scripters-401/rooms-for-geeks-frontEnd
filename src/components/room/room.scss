@@ -620,6 +620,13 @@ svg.delete-animation {
     }
 }
 
+.questionHeader{
+    margin-bottom: 1%;
+    padding: 1% 0;
+    color: #416760;
+    border-bottom: 1px solid #dcdcdc;
+}
+
 @keyframes poof {
     0% {
         background-position: 0 0;

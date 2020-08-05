@@ -78,7 +78,7 @@ const Questions = props => {
 
         <div className='QAData'>
             {props.room.goToQuestionState ? (<Redirect to="/Question" />) : null}
-            <h2 className="courseName">Questions and Answers</h2>
+            <h2 className="questionHeader">Questions and Answers</h2>
 
             {props.room.roomData && props.room.roomData.QAData ? props.room.roomData.QAData.map((element, idx) => {
                 return (

@@ -15,18 +15,17 @@ footer.footer {
   text-decoration: none;
 }
 .div1 a.faceBook:hover {
-  color: white;
+  color: #e0e248;
   transition: all 2s ease;
   -webkit-transition: all 1s ease;
 }
 
 .div1 {
-  // display: flex;
-  // justify-content: center;
-  // margin-top: 2%;
-  width: 116%;
+  width: 151%;
   position: relative;
   right: 26%;
+  display: flex;
+  justify-content: space-between;
 }
 
 p.right {
@@ -41,43 +40,41 @@ p.right {
 
 p.contactIn {
   color: #c9c9c9;
+  font-size: 24px;
+  margin: 27px 0;
 }
 
 p.follow {
   color: #c9c9c9;
   display: flex;
   justify-content: left;
-  // margin: 1% 1% -44% -135%;
+  font-size: 21px;
+  margin: 97px 0 27px 0;
 }
 
 .fott {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row;
 }
-.followUs {
-  // margin: 4% auto auto 61%;
-}
-.contactUs {
-  // margin: 1% auto 2% 3%;
-}
+
 p.body {
   margin-left: 9px;
   cursor: pointer;
   &:hover {
-    color: white;
+    color: #e0e248;
   }
 }
-
 img.logoFooter {
-  /* height: 300px; */
   width: 180px;
-  // align-items: center;
-  // margin: auto;
-  // display: flex;
-  // margin-bottom: -2%;
-  // margin-top: -141px;
-
   position: relative;
-  right: 40%;
+  right: 47%;
+  top: 37%;
+}
+
+p.test {
+  color: #e0e248;
+  font-size: 32px;
+  margin-top: 7%;
+  text-transform: capitalize;
 }
