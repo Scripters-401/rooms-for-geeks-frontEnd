@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+// import Swal from 'sweetalert2'
 import AboutUs from './aboutUs/about-us';
 
 import Room from './room/room.js';
@@ -23,8 +23,9 @@ import ConfirmEmail from './forgotPass/confirmEmail';
 import PostQuiz from './createquiz/postQuiz'
 import QuestionAndAnswer from './room/answerForQuestion'
 // import Show from './auth/show.js';
-
+// import Notification from './notification'
 import Loader from './loader';
+import notification from './notification';
 // import UserHome from './userHome/userHome'
 
 const Routes = props => {
@@ -68,7 +69,9 @@ const Routes = props => {
 
             <Route path="/sign" exact>
                 <Auth capability="read">
+                   
                     <Redirect to="/user-Home" />
+                    
                 </Auth>
             </Route>
 
@@ -138,4 +141,3 @@ const mapStateToProps = state => ({
 // });
 
 export default connect(mapStateToProps)(Routes);
-// export default Routes;

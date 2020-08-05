@@ -60,7 +60,8 @@
     "redux-thunk": "^2.3.0",
     "smart-css": "^1.1.1",
     "socket.io-client": "^2.3.0",
-    "superagent": "^5.3.1"
+    "superagent": "^5.3.1",
+    "sweetalert2": "^9.17.1"
   },
   "browserslist": {
     "production": [

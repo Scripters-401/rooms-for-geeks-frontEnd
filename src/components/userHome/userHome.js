@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
+import cookie from 'react-cookies';
 import MyRooms from './myRooms';
 import AllRooms from './allRooms'
 import Upgrade from './upgradeAdmin'
@@ -11,13 +12,19 @@ import ShowAll from './showAllRooms'
 import Popup from './popup';
 import * as actions from '../../store/userHome';
 // import { Redirect } from 'react-router-dom';
+import Swal from 'sweetalert2'
 import { Button } from 'react-bootstrap';
 
 
 let random = [];
 const UserHome = props => {
+
+    //notification
     let randomArr = [];
     props.room.redirectAfterDelete = false;
+    let times=1;
+    
+
     function hi(e) {
         e.preventDefault();
         props.searchString(e.target.value);
@@ -29,11 +36,33 @@ const UserHome = props => {
         }
     }
     useEffect(() => {
+        // console.log('cookie.loaaaaad',cookie.load('notification'));
+        if (cookie.load('notification') === 'false') {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'center-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+    
+            Toast.fire({
+                icon: 'success',
+                title: 'Signed in successfully'
+            })
+            // props.notification();
+            cookie.save('notification', 'true');
+        }
         setTimeout(() => {
             console.log('token', props.sign.token)
             props.rooms(props.sign.token);
             // props.courses(props.sign.token)
         }, 500);
+
 
     }, []);
     useEffect(() => {
@@ -182,14 +211,14 @@ const UserHome = props => {
                                                     <div class="inside-page">
                                                         <div class="inside-page__container">
                                                             <h3 class="inside-page__heading inside-page__heading--camping name-userr">
-                                                            <p className='by-textt'>By:</p>
+                                                                <p className='by-textt'>By:</p>
                                                                 {val.cookieAdminName}
                                                             </h3>
                                                             <p class="inside-page__text">
                                                                 {val.createdTime.slice(0, 10)}
                                                             </p>
                                                             <Show condition={val.publicc}>
-                                                                <Link to="/room"  key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
+                                                                <Link to="/room" key={i}><div class="inside-page__btn inside-page__btn--ski" onClick={(e) => goToRoom(e, val._id)}> View Room</div></ Link>
                                                             </Show>
                                                             <Show condition={!val.publicc}>
                                                                 {/* {props.choosenID(val._id)} */}
@@ -237,6 +266,7 @@ const mapDispatchToProps = (dispatch, getState) => ({
     searchString: (str) => dispatch(actions.searchString(str)),
     rooms: (token) => dispatch(actions.rooms(token)),
     choosenID: (id) => dispatch(actions.roomID(id)),
+    notification:() => dispatch(actions.notification()),
 
 });
 

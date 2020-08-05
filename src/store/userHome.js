@@ -191,7 +191,8 @@ let initialState = {
     roomsLength: 2,
     roomPrivatePass: '',
     searchActivated: false,
-    searchKey:''
+    searchKey: '',
+    notificationState:true
 };
 
 // reducer : switch case
@@ -233,6 +234,9 @@ export default (state = initialState, action) => {
             return { ...state };
         case 'search-String':
             state.searchKey = payload;
+            return { ...state };
+        case 'notification':
+            state.notificationState = payload;
             return { ...state };
 
 
@@ -375,6 +379,11 @@ export const roomID = (id) => async dispatch => {
     dispatch(roomIDAction(id))
 }
 
+export const notification = () => async dispatch => {
+    // console.log('roomIDAction', id);
+    dispatch(notificationStop())
+}
+
 export const roomPass = (pass) => async dispatch => {
 
     dispatch(roomPassword(pass))
@@ -386,6 +395,15 @@ export const showAllFun = () => {
         payload: ''
     }
 }
+
+export const notificationStop = () => {
+    return {
+        type: 'notification',
+        payload: false
+    }
+}
+
+
 
 export const searchOn = (boolean) => {
     return {

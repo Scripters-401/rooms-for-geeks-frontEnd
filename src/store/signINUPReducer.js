@@ -27,6 +27,7 @@ export default (state = initialState, action) => {
 
     case 'setLoginState':
       cookie.save('auth', payload.token);
+      
       state.loggedIn = payload.loggedIn;
       state.token = payload.token;
       state.user = payload.user;
@@ -178,6 +179,7 @@ export const login = (username, password) => async dispatch => {
 export const logoutFun = () => async dispatch => {
   try {
     dispatch(logout())
+    cookie.save('notification','false');
     fetch(`${API}/signout`, {
       method: 'GET',
       mode: 'cors',

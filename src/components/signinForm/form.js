@@ -11,7 +11,7 @@ import { } from '@fortawesome/free-brands-svg-icons';
 import './form.scss';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-
+import Swal from 'sweetalert2'
 require('dotenv').config();
 
 
@@ -19,6 +19,38 @@ function SigninForm(props) {
 
     const [hide, setHide] = useState(false);
     const [animate, setAnimate] = useState('true');
+
+    function privacyPolicy(e){
+        e.preventDefault();
+        Swal.fire({
+  
+            title: '<strong>Privacy Policy</strong>',
+            
+            html:
+              '<b>Privacy Statement for Rooms For Geeks</b><br><br>'+
+              '<h7>The following statements describes the privacy practices for Rooms For Geeks:</h7><br>'+'<li>We do not share any personal information from our users</li>'+'<li>Visits are logged for aggregate statistics and diagnosis</li>'+'<li>Security settings protect the misuse of sensitive information</li>'+'<b>Personal User Information</b><br>'+'Rooms For Geeks requires user registration. Users are free to create an account in Rooms For Geeks, and navigate all its pages.<br>'+'<b>Cookies</b><br>'+'Our website uses cookies, like almost all websites. Cookies are small text files that are placed on your computer or mobile phone when you browse websites, to help provide you with the best experience we can.',
+            showCloseButton: false,
+           
+            focusConfirm: false,
+          })
+    }
+
+    function termsOfService(e){
+        e.preventDefault();
+        Swal.fire({
+  
+            title: '<strong>Term Of Service </strong>',
+            
+            html:'<li>The Terms constitute the whole legal agreement between you and Rooms For Geeks and govern your use of the Services (but excluding any services which Rooms For Geeks may provide to you under a separate written agreement), and completely replace any prior agreements between you and Rooms For Geeks in relation to the Services.</li><br>'+'<li>You agree that Rooms For Geeks may provide you with notices, including those regarding changes to the Terms, by email, regular mail, or postings on the Services.</li><br>'+'<li>If any court of law, having the jurisdiction to decide on this matter, rules that any provision of these Terms is invalid, then that provision will be removed from the Terms without affecting the rest of the Terms. The remaining provisions of the Terms will continue to be valid and enforceable.</li>',
+              
+            showCloseButton: false,
+           
+            focusConfirm: false,
+            
+            
+            
+          })
+    }
 
     function signupFun(e) {
         e.preventDefault();
@@ -82,6 +114,7 @@ function SigninForm(props) {
 
             props.updateLoader(false);
         }, 1000);
+        
 
     }
 
@@ -157,7 +190,7 @@ function SigninForm(props) {
                                 <div className='checkBoxDiv'>
                                     <label className="bubble" htmlFor='bubble'>
                                         <input type="checkbox" name="terms" value="terms" id="bubble" required />
-                                    Accept <span><a className="terms" href='/'>Terms of Service</a></span> and <span><a className="terms" href='/'>Privacy Policy</a></span>
+                                    Accept <span><a className="terms" href='/' onClick={(e)=>termsOfService(e)}>Terms of Service</a></span> and <span><a className="terms" href='/' onClick={(e)=>privacyPolicy(e)}>Privacy Policy</a></span>
                                     </label>
                                 </div>
                                 <p className="errorMsg">{props.sign.errorMsgSignUP}</p>
