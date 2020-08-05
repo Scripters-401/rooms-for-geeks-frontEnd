@@ -9,7 +9,7 @@ let initialState = {
   didLike: [],
   didHaHa: [],
   didLove:[],
-  open: false,
+  open: true,
   down:'down'
 };
 

@@ -2,16 +2,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Amiri&display=swap");
 .header {
     display: flex;
-    background-color: white;
+    background-color: #fff;
     max-height: 90px;
     flex-direction: row-reverse;
-    position: sticky;
+    position: -webkit-sticky;
+    position: fixed;
     z-index: 999999;
     top: 0;
-    border-bottom: 4px solid #7da09a;
-    box-shadow: 0px 7px 24px rgba(206, 205, 205, 0.699);
-}
+    width: 100%;
+    box-shadow: 0 2px 18px hsla(0deg,0%,81%,.70);
+    padding: 0 1em;
 
+}
 #profileheader {
     width: 50px;
     border-radius: 38px;
@@ -47,32 +49,31 @@ h1.H1 {
 
 // }
 img.logo {
-    /* margin: auto auto auto 0; */
     width: 2;
-    // height: 126px;
-    height: 86px;
+    height: 104px;
     top: 0;
     display: flex;
     justify-content: center;
     justify-items: center;
-    margin-top: -1.2%;
+    margin-top: -3%;
+    margin-left: 25%;
 }
 
 ul.ulHeader {
     display: flex;
-    flex: 1;
+    flex: 1 1;
     margin: auto;
+    align-items: center;
+    text-transform: uppercase;
 }
 
 .navHeader {
-    color: #7da09a;
-    font-size: 109%;
+    color: #7DA09A;
+    font-size: 100%;
     padding: 13px;
-    font-family: "Amiri", serif;
     margin: auto;
     position: relative;
-    text-decoration:none;
-    top: 5px;
+    text-decoration: none;
     &:hover {
         color: white;
         text-decoration: none;
