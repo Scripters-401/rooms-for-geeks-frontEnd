@@ -144,12 +144,13 @@ p.Topic {
 // }
 
 .QAData .questionDiv {
-    border: solid #c7c8c7 1px;
+    // border: solid #c7c8c7 1px;
     width: 100%;
     margin: auto;
     margin-bottom: 3%;
     position: relative;
     padding: 2%;
+    box-shadow: 1px 1px 5px #959292;
 }
 
 div.questionAsked {
@@ -235,7 +236,7 @@ p.checAns {
 
                 span.nameOfWhoAnswer {
                     color: #e5f64a;
-                    font-size: 135%;
+                    font-size: 106%;
                     font-weight: 600;
                     // position: absolute;
                     // right: 75%;
@@ -275,15 +276,17 @@ form.addQuesForm {
 input.addQuesFor {
     padding: 2%;
     width: 70%;
-    border: solid 2px #7da09a;
+    border: solid 1px #7da09a;
     &:focus {
         outline: none;
     }
 }
 .addAnswer {
     padding: 2%;
-    width: 70%;
-    border: solid 2px #7da09a;
+    width: 84%;
+
+    border: solid 1px #7da09a;
+    margin: auto;
     &:focus {
         outline: none;
     }
@@ -351,7 +354,7 @@ button.deleteRoom {
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 91px;
+    margin-top: 90px;
 }
 
 .chatSet {
