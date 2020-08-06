@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 import { connect } from 'react-redux'
 import './userHome.scss'
 import * as actions from '../../store/userHome';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import Show from '../auth/show';
@@ -45,8 +45,7 @@ const Popup = props => {
         e.preventDefault();
         goToRoom(e,id);
     }
-    console.log('idddddddsssss', props.userHome.choosenRoomID);
-    let status=true;
+    // let status=true;
     return (
         <>
             {passCondition ? <Redirect to="/room" /> : null}

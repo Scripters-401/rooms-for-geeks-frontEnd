@@ -53,7 +53,6 @@ export const forgotPass = (emailToFound, newPassword, confirmEmail) => async dis
         if (res.msgRes) {
             dispatch(msgEmail(res.msgRes));
           }
-        console.log('jjjjjjjjjjjj', res);
     } catch (error) {
         console.error(`ERROR: FORGOT_PASSWORD`);
     }

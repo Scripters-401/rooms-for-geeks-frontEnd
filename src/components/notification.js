@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Swal from 'sweetalert2'
 
 import './loader.scss'
-import { Button } from 'react-bootstrap';
 
 const Not = props => {
 

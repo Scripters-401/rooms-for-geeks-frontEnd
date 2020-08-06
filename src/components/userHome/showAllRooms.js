@@ -8,22 +8,18 @@ import * as actions from '../../store/userHome';
 import { Link } from 'react-router-dom';
 import Show from '../auth/show';
 import Popup from './popup';
-// import { sign } from 'jsonwebtoken';
 let random = [];
 const AllRooms = props => {
     let randomArr = [];
 
     useEffect(() => {
         setTimeout(() => {
-            console.log('token', props.sign.token)
             props.rooms(props.sign.token);
-            // props.courses(props.sign.token)
         }, 500);
 
     }, []);
 
     function goToRoom(e, id) {
-        // e.preventDefault();
         props.choosenID(id);
     }
 
@@ -50,17 +46,14 @@ const AllRooms = props => {
                             if (counter === 10) { randomArr = []; counter = 0; }
                         }
                     }
-                    // console.log('props.userHome.allRooms.length',props.userHome.allRooms.length)
                     for (let i = 0; i < props.userHome.allRooms.length; i++) {
                         if (props.userHome.allCourses[i].roomID === val._id) {
                             topic = props.userHome.allCourses[i].topic;
-                            // console.log('topiccccccc',topic);
                             break;
                         }
 
                     }
 
-                    // console.log('randommmmmm',random);
 
                     return (
                         <div class='card-area-div div-width'>
@@ -94,10 +87,6 @@ const AllRooms = props => {
                                                     </svg> */}
 
                                                         <img class="ccontainer" src={`${props.userHome.categoryImages[`${topic}`][random[i]]}`} alt='LOGO' />
-
-                                                        {/* <h2 class="card-front__heading">
-                                                            {val.roomName}
-                                                        </h2> */}
                                                     </div>
 
                                                     <div class="card-front__bt">

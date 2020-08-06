@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect,useState } from 'react'
+import React, { useEffect } from 'react'
 import cookie from 'react-cookies';
 import MyRooms from './myRooms';
 import AllRooms from './allRooms'
@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import ShowAll from './showAllRooms'
 import Popup from './popup';
 import * as actions from '../../store/userHome';
-// import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { Button } from 'react-bootstrap';
 
@@ -19,10 +18,8 @@ import { Button } from 'react-bootstrap';
 let random = [];
 const UserHome = props => {
 
-    //notification
     let randomArr = [];
     props.room.redirectAfterDelete = false;
-    let times=1;
     
 
     function hi(e) {
@@ -30,13 +27,11 @@ const UserHome = props => {
         props.searchString(e.target.value);
         props.searchOn(true);
         if (e.target.value === '') {
-            // props.searchString('zzzzzzzzzzzzzzzzzzy');
             props.searchOn(false);
 
         }
     }
     useEffect(() => {
-        // console.log('cookie.loaaaaad',cookie.load('notification'));
         if (cookie.load('notification') === 'false') {
             const Toast = Swal.mixin({
                 toast: true,
@@ -54,13 +49,10 @@ const UserHome = props => {
                 icon: 'success',
                 title: 'Signed in successfully'
             })
-            // props.notification();
             cookie.save('notification', 'true');
         }
         setTimeout(() => {
-            console.log('token', props.sign.token)
             props.rooms(props.sign.token);
-            // props.courses(props.sign.token)
         }, 500);
 
 
@@ -135,7 +127,6 @@ const UserHome = props => {
                             for (let i = 0; i < props.userHome.allRooms.length; i++) {
                                 if (props.userHome.allCourses[i].roomID === val._id) {
                                     topic = props.userHome.allCourses[i].topic;
-                                    // console.log('topiccccccc',topic);
                                     break;
                                 }
 

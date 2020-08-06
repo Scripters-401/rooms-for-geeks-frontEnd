@@ -35,9 +35,7 @@ export default (state = initialState, action) => {
       return { ...state };
 
     case 'updateRoomAdminBool':
-      // console.log(payload,state.adminName,'llllllllllllllllllllllllllllll');
       state.roomAdmin = (payload === state.adminName)
-      // console.log( '................',state.roomAdmin , payload === state.adminName,payload , state.adminName);
       return { ...state };
 
 
@@ -120,7 +118,6 @@ export const updateScore = e => {
 }
 
 export const updateRoomAdminBool = id => {
-  // console.log(id,'kkkkkkkkkkkkkk');
   return {
     type: 'updateRoomAdminBool',
     payload: id,

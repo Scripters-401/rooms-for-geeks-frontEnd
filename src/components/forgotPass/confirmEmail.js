@@ -2,7 +2,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/forgotPassReducer'
-// import './confirmEmail.scss';
 import '../rooms/room.scss';
 const ConfirmEmail = props => {
     window.scrollTo(0, 0)
@@ -60,31 +59,6 @@ const ConfirmEmail = props => {
                     </ul>
                 </div>
             </div>
-
-        {/* <h3>Password change request</h3>
-        <p className={`msg-${cssMsg}`}>{props.newPass.msgEmail}</p>
-            <div>
-                <form onSubmit={(e) => handleSubmitFun(e)}>
-                    <div>
-                        <label>Email</label>
-                        <input
-                            type="email"
-                            name="emailToFound"
-                            onChange={(e) => props.handleForgotPass(e)}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Confirm Email</label>
-                        <input
-                            type="email"
-                            name="confirmEmail"
-                            onChange={(e) => props.handleForgotPass(e)}
-                        />
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
-            </div> */}
         </>
     )
 }

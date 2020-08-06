@@ -20,8 +20,6 @@ export default (state = initialState, action) => {
     switch (type) {
         case 'HANDLE_ADD_QUIZ':
             let [z, idx] = payload.name.toString().split('#')
-            // let  = payload.name.toString().slice(-1)
-            console.log(payload.name, z, idx, payload.value);
             state[z][idx] = payload.value
             return { ...state };
 
@@ -72,10 +70,8 @@ export const updateSettings = e => {
 }
 
 export const quizPost = (token, quizName, discription, questions, correctAnswer, wrongChoices, courseID) => async dispatch => {
-    console.log(quizName, discription, questions, correctAnswer, wrongChoices, courseID);
-    console.log('API', API, 'tokennn', token);
     try {
-        const results = await fetch(`${API}/quiz`, {
+         await fetch(`${API}/quiz`, {
             method: 'POST',
             mode: 'cors',
             // cache: 'no-cache',
@@ -86,7 +82,7 @@ export const quizPost = (token, quizName, discription, questions, correctAnswer,
             }),
             body: JSON.stringify({ quizName, discription, questions, correctAnswer, wrongChoices, courseID })
         });
-        let res = await results.json();
+        // let res = await results.json();
     } catch (error) {
         console.log(`ERROR: QUIZS`);
     }

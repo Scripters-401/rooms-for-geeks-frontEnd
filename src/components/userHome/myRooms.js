@@ -4,13 +4,10 @@ import { connect } from 'react-redux'
 import './userHome.scss'
 import * as actions from '../../store/userHome';
 import Show from '../auth/show'
-import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
-import logo from '../../assest/LOGOC.png';
 import Popup from './popup';
-// import { sign } from 'jsonwebtoken';
 let random = [];
 const MyRooms = props => {
     const [index, setIndex] = useState(0);
@@ -21,17 +18,11 @@ const MyRooms = props => {
 
     useEffect(() => {
         setTimeout(() => {
-            console.log('Coursesffffffff', props.userHome.allCourses);
-
             props.favRoom(props.sign.token, props.sign.user.id);
-            console.log('favvvvvv', props.userHome.myRooms);
-            // props.rooms(props.sign.token);
         }, 400);
 
     }, [])
     function goToRoom(e, id) {
-        // e.preventDefault();
-        console.log('props.userHome.choosenRoomID', id);
         props.choosenID(id);
     }
     let topic = 'sport'
@@ -44,18 +35,15 @@ const MyRooms = props => {
                     <h3 className='topic'>Favorite Rooms</h3>
                 </div>
                 <div className='favRooms'>
-                    {console.log('myrooms', props.userHome.myRooms)}
                     <Carousel activeIndex={index} onSelect={handleSelect} >
                         {props.userHome.myRooms.map((val, i) => {
 
                             if (!random[i]) random[i] = Math.floor(Math.random() * 10)
                             for (let i = 0; i < props.userHome.allRooms.length; i++) { 
                                 if (props.userHome && props.userHome.allCourses && (props.userHome.allCourses[i].roomID === val._id)) {
-                                    console.log('obadaaaaaaaaaaaaaaaaaaaa');
                                     topic = props.userHome.allCourses[i].topic;
                                     break;
                                 }
-                                console.log('topiccccccc', topic);
                             }
                             return (
                                 <Carousel.Item style={{ 'height': "350px" }}>
@@ -158,7 +146,6 @@ const MyRooms = props => {
                         })}</Carousel>
                 </div>
             </Show>
-            {console.log(props.userHome.checkMyRooms)}
             <Show condition={!props.userHome.checkMyRooms}>
 
                 <div className='topic'>

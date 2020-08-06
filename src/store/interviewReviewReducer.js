@@ -53,9 +53,7 @@ export const interviewPost = (token, companyName, review, date, rate, anonymous,
       body: JSON.stringify({ companyName, review, date, rate, anonymous, position, userName })
     });
 
-      let res = await results.json();
-    // console.log('jjjjjjjkhjhu', res._id);
-    //   dispatch(postInterview(res))
+      // let res = await results.json();
 
   } catch (error) {
     console.error(`ERROR: INTERVIEW_REVIEW`);

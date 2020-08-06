@@ -32,7 +32,6 @@ export const updateReview = e => {
 }
 
 export const putReview = (token, id, review, reviewUserName) => async dispatch => {
-  console.log('jjjjjj', token, id, review, reviewUserName);
   try {
       let theApi = `${API}/interviewReview/${id}`;
       let results = await fetch(theApi, {
@@ -46,7 +45,6 @@ export const putReview = (token, id, review, reviewUserName) => async dispatch =
           body: JSON.stringify({ review, reviewUserName })
       })
       let res = await results.json();
-      console.log('llll', res);
       dispatch(reviewAction(res))
   } catch (error) {
       console.error(`ERROR: PUT_REVIEW`);
