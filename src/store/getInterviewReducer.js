@@ -42,8 +42,6 @@ export default (state = initialState, action) => {
         //     let idxFirstPost = idxLastPost - state.postsPerPage;
         //     state.currentPost = state.user.slice(idxFirstPost, idxLastPost);
 
-        //     console.log('llllllllll', { ...state });
-
         //     return { ...state };
         case 'SHOW_HIDE':
             state.showHide = payload;

@@ -15,9 +15,7 @@ const UpgradeAdmin = props => {
     function upgradeFun(e){
         e.preventDefault();
         props.upgradeRole(props.sign.token,props.sign.user.id,'admin')
-        console.log('role',props.sign.user.role);
         props.sign.user.role = 'admin'
-        console.log('newRole',props.sign.user.role)
         
     }
     return (

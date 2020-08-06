@@ -67,19 +67,6 @@ const Chat = props => {
   }, [props.room.choosenRoomIDSocket])
 
 
-  // useEffect(() => {
-  //   props.room.socket.on('notif', function (data) {
-  //     if (props.userInfo.user.username === adminName) {
-  //       props.updateNotifications(`Hey Admin ${adminName} New user joined the room ${roomName} ...`);
-
-  //       setTimeout(() => {
-  //         props.updateNotifications('');
-  //       }, 5000);
-  //     }
-  //   });
-  // }, [props.room.roomData.RData])
-
-
   const onlineFun = () => {
     props.room.socket.emit('chat', {
       message: props.chat.message,
@@ -133,14 +120,11 @@ const Chat = props => {
       position: 'absolute',
       bottom: '0'
     } : { position: 'fixed', right: '0' }}>
-      {/* <p>{props.chat.notification}</p> */}
       <div className='chatHeader' onClick={e => props.openCloseChat()}>
         <span className="chatH2">Geeks Chat</span>
         <span className="chatMembers">Members {props.chat.counter} </span>
-        {/* <span id="members-counter"></span> */}
       </div>
 
-      {/* <h2 id='roon-name'>{roomName}</h2> */}
       <div id="chat-window">
         <div id="output">
           {props.chat.output.map((element, idx) => {
@@ -191,7 +175,6 @@ const Chat = props => {
         </div>
         <div id="typing">{props.chat.typingstate}</div>
       </div>
-      {/* <p id="userName">{props.userInfo.user.username}</p> */}
       <input
         id="message"
         name='message'

@@ -18,7 +18,6 @@ export default (state = initialState, action) => {
 
         case 'HANDLE_CHANGE_ROOM':
             state[payload.name] = payload.value
-            // console.log(state[payload.name],payload.name);
             return { ...state };
         case 'HANDLE_PRIVET_PASS':
             state.privetRoomPass = payload
@@ -65,7 +64,6 @@ export const updateRedirectCreateQuiz = e => {
 
 
 export const handleChangeRoom = e => {
-    // console.log('JJJJJFFFFFF',e.target);
     return {
         type: 'HANDLE_CHANGE_ROOM',
         payload: { name: [e.target.name], value: e.target.value },
@@ -80,7 +78,6 @@ export const handlePrivetPass = e => {
 }
 
 export const roomPost = (token, id, roomName, publicc, password, adminName, members) => async dispatch => {
-    // console.log(roomName, publicc, password, adminName, members);
     try {
         const results = await fetch(`${API}/room`, {
             method: 'POST',
@@ -97,7 +94,6 @@ export const roomPost = (token, id, roomName, publicc, password, adminName, memb
         });
         let res = await results.json();
         dispatch(handleNewRoomId(res));
-        //   console.log('jjjj',res);
     } catch (error) {
         console.error(`ERROR: ROOMS`);
     }

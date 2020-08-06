@@ -8,7 +8,6 @@ import * as actions from '../../store/roomReducer';
 import Show from '../auth/show';
 import './quizCss.scss';
 let selectedAnswers = [];
-// let cc = false;
 const Quiz = props => {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -19,16 +18,8 @@ const Quiz = props => {
 
   const scoreFunction =() =>{
     props.updateScore({ score: null })
-    // props.room.redirectTakeQuiz = false;
     props.updatefinishQuiz(true, false)
   }
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     props.updateScore({ score: null })
-  //     props.room.redirectTakeQuiz = false;
-
-  //   }, 2000)
-  // }, [props.room.score])
 
   const submitQuiz = (e, quizID) => {
     e.preventDefault();
@@ -38,22 +29,10 @@ const Quiz = props => {
       props.postAnswers(props.sign.token, selectedAnswers, quizID, props.userInfo.user._id)
       selectedAnswers = [];
       window.scrollTo(0, 0)
-
-      // props.room.redirectTakeQuiz = false;
-      // setTimeout(() => {
-      //   // console.log('iiiiiiiiiiiiiiiiiiiiiiiiiiii');
-      //   // props.room.finishQuiz = true;
-      //   props.updatefinishQuiz(true, false)
-      //   // cc = true
-      //   // console.log(props.room.redirectTakeQuiz, props.room.finishQuiz, !props.room.redirectTakeQuiz && props.room.finishQuiz);
-      // }, 2000)
-
-
     }
   }
   const choseAnswer = (e, questionID) => {
     selectedAnswers[questionID] = e.target.value
-    // console.log('selectedAnswers', selectedAnswers);
   }
 
 
@@ -109,7 +88,6 @@ const Quiz = props => {
          Your score is {props.room.score} / {props.room.roomData.renderedQuiz.questions.length}
        
         </div>
-        {/* {props.room.score} */}
         {!props.room.redirectTakeQuiz && props.room.finishQuiz ? (<Redirect to="/" />) : null}
         <div className="buttonReturn" >
               <button className="returnquiz" onClick={e => scoreFunction()}>Take quiz again! </button>
@@ -128,18 +106,10 @@ const mapStateToProps = state => ({
   sign: state.sign,
   room: state.room,
   userInfo: state.userInfo,
-  // userHome: state.userHome,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  // getRoom: (token, id) => dispatch(actions.getRoom(token, id)),
-  // message: (e) => dispatch(actions.message(e)),
-  // updateOutput: (e) => dispatch(actions.updateOutput(e)),
-  // updateCounter: (e) => dispatch(actions.updateCounter(e)),
-  // updateTyping: (e) => dispatch(actions.updateTyping(e)),
-  // updateNotifications: (e) => dispatch(actions.updateNotifications(e)),
   postAnswers: (token, answers, quizID, userID) => dispatch(actions.postAnswers(token, answers, quizID, userID)),
-  // resetOutput: () => dispatch(actions.resetOutput()),
   updateScore: (score) => dispatch(actions.updateScore(score)),
   updatefinishQuiz: (finishQuiz, redirectTakeQuiz) => dispatch(actions.updatefinishQuiz(finishQuiz, redirectTakeQuiz)),
 });

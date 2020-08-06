@@ -201,7 +201,6 @@ export default (state = initialState, action) => {
 
     switch (type) {
         case 'favorite':
-            console.log('payload', payload);
             state.myRooms = [...payload];
             return { ...state };
 
@@ -214,7 +213,6 @@ export default (state = initialState, action) => {
             return { ...state };
 
         case 'roomIDAction':
-            console.log('payyyyyyy', payload);
             state.choosenRoomID = payload;
             return { ...state };
         case 'show-ALL':
@@ -251,7 +249,6 @@ export default (state = initialState, action) => {
 
 export const favRoom = (token, id) => async dispatch => {
     try {
-        console.log('API', API);
         let results = await fetch(`${API}/favourite/${id}`, {
             method: 'GET',
             mode: 'cors',
@@ -262,7 +259,6 @@ export const favRoom = (token, id) => async dispatch => {
             }),
         });
         let res = await results.json();
-        console.log('res', res);
         if (res.length > 0) {
             dispatch(favorite(res));
             dispatch(check(true));
@@ -297,8 +293,6 @@ export const rooms = (token) => async dispatch => {
             }),
         });
         let response = await r.json();
-        // console.log('coursessssssssssss',response);
-        // dispatch(getAllCourses(response));
         let results = await fetch(`${API}/rooms`, {
             method: 'GET',
             mode: 'cors',
@@ -318,9 +312,6 @@ export const rooms = (token) => async dispatch => {
 }
 
 export const upgrade = (token, id, role) => async dispatch => {
-    console.log('token', token);
-    console.log('id', id);
-    console.log('role', role);
     try {
         let theApi = `${API}/user/${id}`;
         let results = await fetch(theApi, {
@@ -434,7 +425,6 @@ export const userRole = payloadData => {
 }
 
 export const favorite = res => {
-    console.log('resFav', res);
     return {
         type: 'favorite',
         payload: res,

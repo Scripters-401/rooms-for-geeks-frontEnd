@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { storage } from "../firebase";
 import * as actions from '../../store/userReducer';
 import * as actions2 from '../../store/putUserInfo';
-import uploadImageReducer, * as actions3 from '../../store/uploadImageReducer';
 import Show from '../auth/show';
 
 const User = props => {
@@ -54,33 +53,7 @@ const User = props => {
 
     }
 
-
-    // const currentDate = new Date();
-    // let fullYear = currentDate.getFullYear();
-    // let month = currentDate.getMonth();
-    // let day = currentDate.getDay();
-
-    // let createdTimeDate = props.userInfo.user.createdTime;
-    // let newDatecreatedTime = new Date(createdTimeDate);
-    // let createdTimeFullYear = newDatecreatedTime.getFullYear();
-    // let createdTimeMonth = newDatecreatedTime.getMonth();
-    // let createdTimeDay = newDatecreatedTime.getDay();
-
-    // let getExactYear = fullYear - createdTimeFullYear;
-    // let getExactMonth;
-    // let getExactDay
-
-    // if (createdTimeDay > day) {
-    //     getExactDay = createdTimeDay - day;
-    // } else {
-    //     getExactDay = day - createdTimeDay;
-    // }
-
-    // if (month > createdTimeMonth) {
-    //     getExactMonth = month - createdTimeMonth;
-    // } else {
-    //     getExactMonth = createdTimeMonth - month;
-    // }
+   
 
     const togglePass = () => {
         let idInput = document.getElementById("passInput");
@@ -94,7 +67,6 @@ const User = props => {
         props.updateFlip(`flip${name}`)
     }
     const uploadImageEdit = (e) => {
-        // e.preventDefault();
         let z = e.target.files[0];
         if (z) {
             const uploadTask = storage.ref(`images/${z.name}`).put(z);

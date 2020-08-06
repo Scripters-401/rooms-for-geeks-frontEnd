@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import cookie from 'react-cookies';
-import $ from 'jquery'
 import * as actions from '../../store/roomReducer';
 import * as chatActions from '../../store/chat';
 import * as loader from '../../store/signINUPReducer';
@@ -24,26 +23,22 @@ import { Redirect, Link } from 'react-router-dom';
 const Room = props => {
 
     useEffect(() => {
-        // setTimeout(() => {
         const cookieroomID = cookie.load('roomID');
         let x = props.userHome.choosenRoomID || cookieroomID;
         props.updateChoosenRoomIDSocket(x)
         window.scrollTo(0, 0)
         props.thePostRoom.redirectCreateQuiz = false
-        // }, 200);
 
     }, [])
 
 
     useEffect(() => {
-        // setTimeout(() => {
         cookie.save('roomID', props.room.choosenRoomIDSocket)
         props.getRoom(props.sign.token, props.room.choosenRoomIDSocket);
         let fav = props.userInfo.user && props.userInfo.user.favRooms ? props.userInfo.user.favRooms.includes(props.room.choosenRoomIDSocket) : null;
         props.updateFavOrNot(fav)
         props.updateLoader(false);
 
-        // }, 500);
 
     }, [props.room.choosenRoomIDSocket])
     useEffect(() => {
@@ -76,8 +71,8 @@ const Room = props => {
     }
 
     const someMeothod = () => {
-        let z = document.body.scrollHeight;
-        let x = window.scrollY
+        // let z = document.body.scrollHeight;
+        // let x = window.scrollY
         let height = document.body.scrollHeight - window.scrollY
         if (height < 890) {
             props.updateChatScroll(true)
@@ -92,11 +87,6 @@ const Room = props => {
         copyText.select();
         copyText.setSelectionRange(0, 99999)
         document.execCommand("copy");
-        // props.room.textArea.select();
-        // document.execCommand('copy');
-        // $('#copyy').select();
-        // $('#copyy').setSelectionRange(0, 99999);
-        // document.execCommand('copy');
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -108,7 +98,6 @@ const Room = props => {
 
     return (
         <>
-            {/* {onScroll=e =>someMeothod()} */}
             <div className="bodyDiv">
                 <div className='roomData' onWheel={e => someMeothod()}>
                     <div className="containerRoom">
@@ -124,21 +113,6 @@ const Room = props => {
                                 </Show>
                             </div>
                         </div>
-                        {/* <div className="roomDataFor">
-                            <p className="Topic">Topic: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.topic : null}</p>
-                            <p className=" CreatedBy">
-                                Created By: {props.room.adminName} at {props.room.roomData && props.room.roomData.RData && props.room.roomData.RData.createdTime ? props.room.roomData.RData.createdTime.slice(0, 10) : null}
-                            </p> */}
-                        {/* <p className=" CreatedByOn">
-                                On :
-                        {props.room.roomData && props.room.roomData.RData && props.room.roomData.RData.createdTime ? props.room.roomData.RData.createdTime.slice(0, 10) : null}
-                            </p> */}
-
-                        {/* <p>
-                        Public: {props.room.roomData && props.room.roomData.RData ? `${props.room.roomData.RData.public || props.room.roomData.RData.publicc}` : null}
-                    </p> */}
-
-                        {/* </div> */}
 
                         <div className='courseData'>
                             <h2 className="courseName">Course: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
@@ -151,7 +125,7 @@ const Room = props => {
                                 <button className={`roomHeaderButtonStyle`} onClick={e => removefromFav()}>
 
                                     <span>Favourite </span>
-                                    <img className='loveButton' src="https://img.icons8.com/officel/64/000000/hearts.png" />
+                                    <img className='loveButton' src="https://img.icons8.com/officel/64/000000/hearts.png" alt='name' />
 
                                 </button>
                             </Show>
@@ -159,7 +133,7 @@ const Room = props => {
                                 <button className={`roomHeaderButtonStyle `} onClick={e => addToFav()}>
 
                                     <span>Favourite </span>
-                                    <img className='loveButton' src="https://img.icons8.com/small/64/000000/hearts.png" />
+                                    <img className='loveButton' src="https://img.icons8.com/small/64/000000/hearts.png" alt='name2'/>
                                 </button>
                             </Show>
                             <input id='copyy' style={{width:'1%',position:'relative',left:'20px',zIndex:'-1'}} defaultValue='https://rooms-for-geeks.netlify.app/' ></input>

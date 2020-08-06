@@ -151,7 +151,6 @@ const Questions = props => {
                                         return (
                                             <React.Fragment key={i}>
                                                 <hr />
-                                                {/* <h4 > Answer {i + 1}</h4> */}
 
                                                 <span className='answerALL'>
                                                     <img className="answerImg" src={props.room.roomData.QAData[idx].virtualAnswerImage[i]} />
@@ -171,21 +170,12 @@ const Questions = props => {
                                 <form onSubmit={e => submit(e, idx)}>
                                     <label className='formAnswerQuestion'>
 
-                                        {/* <span className='inputLabel'>
-                                            ADD your answer
-                                        </span> */}
 
                                         <input className='addAnswer' required onChange={e => answerFun(e)} placeholder='ADD your answer'></input>
                                     </label>
-                                    {/* <button>ADD Answer</button> */}
                                 </form>
 
-                                {/* Check answers! */}
                             </p>
-                            {/* <Link to='/Question'> 
-                            <p className="checAns" onClick={e => goToQuestion(idx)}>
-                            ddd</p>
-                            </Link>   */}
                         </div>
 
                     </div>

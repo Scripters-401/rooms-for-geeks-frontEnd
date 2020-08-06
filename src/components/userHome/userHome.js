@@ -36,7 +36,6 @@ const UserHome = props => {
         }
     }
     useEffect(() => {
-        // console.log('cookie.loaaaaad',cookie.load('notification'));
         if (cookie.load('notification') === 'false') {
             const Toast = Swal.mixin({
                 toast: true,
@@ -58,9 +57,7 @@ const UserHome = props => {
             cookie.save('notification', 'true');
         }
         setTimeout(() => {
-            console.log('token', props.sign.token)
             props.rooms(props.sign.token);
-            // props.courses(props.sign.token)
         }, 500);
 
 
@@ -135,7 +132,6 @@ const UserHome = props => {
                             for (let i = 0; i < props.userHome.allRooms.length; i++) {
                                 if (props.userHome.allCourses[i].roomID === val._id) {
                                     topic = props.userHome.allCourses[i].topic;
-                                    // console.log('topiccccccc',topic);
                                     break;
                                 }
 

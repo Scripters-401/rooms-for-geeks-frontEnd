@@ -36,7 +36,6 @@ export const handleNewCourse = e => {
 }
 
 export const coursePost = (token, courseName, topic, discription, tutorial, userid, roomID) => async dispatch => {
-    console.log(courseName, topic, discription, tutorial, userid, roomID);
     try {
         const results = await fetch(`${API}/course`, {
             method: 'POST',

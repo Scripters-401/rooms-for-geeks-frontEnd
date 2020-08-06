@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../store/roomReducer';
 import Show from '../auth/show'
-// import './room.scss'
 let selectedAnswers = [];
 const Quiz = props => {
 
@@ -28,7 +27,6 @@ const Quiz = props => {
   }
   const choseAnswer = (e, questionID) => {
     selectedAnswers[questionID] = e.target.value
-    // console.log('selectedAnswers', selectedAnswers);
   }
 
 
@@ -89,7 +87,6 @@ const mapStateToProps = state => ({
   sign: state.sign,
   room: state.room,
   userInfo: state.userInfo,
-  // userHome: state.userHome,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({

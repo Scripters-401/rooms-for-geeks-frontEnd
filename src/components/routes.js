@@ -33,7 +33,6 @@ const Routes = props => {
     return (
         <>
             <Loader />
-            {/* <Show condition={!props.sign.loggedIn}> */}
                 <Route path="/" exact>
                     <Homemain />
                     <OverView />
@@ -43,19 +42,6 @@ const Routes = props => {
                     <LoginForm />
                     <AboutUs />
                 </Route>
-
-            {/* </Show> */}
-            {/* <Route path="/user-Home" exact>
-                <UserHome />
-            </Route> */}
-
-
-            {/* <Show condition={props.sign.loggedIn}> */}
-                {/* <Route path="/user-Home" exact>
-                    <UserHome />
-                </Route> */}
-
-            {/* </Show> */}
 
             <Route path="/room" exact>
                 <Auth capability="read">

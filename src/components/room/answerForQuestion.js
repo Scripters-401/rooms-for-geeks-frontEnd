@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-// import { NavLink } from 'react-router-dom';
 
 import Show from '../auth/show'
 
@@ -9,16 +8,11 @@ import * as actions from '../../store/roomReducer';
 import './question.scss'
 
 let answer = '';
-// let question = ''
 const QuestionAndAnswers = props => {
 
   const answerFun = e => {
     answer = e.target.value
   }
-
-  // const questionFun = e => {
-  //   question = e.target.value
-  // }
 
   const submit = (e, idx) => {
     e.preventDefault()
@@ -38,20 +32,6 @@ const QuestionAndAnswers = props => {
     props.room.roomData.QAData.splice(idx, 1)
   }
 
-  // const askQuestion = (e) => {
-  //   e.preventDefault()
-  //   props.askQuestion(
-  //     props.sign.token,
-  //     question,
-  //     props.room.roomData.courseData._id,
-  //     props.userInfo.user.name,
-  //     props.userInfo.user._id
-  //   )
-  //   e.target.reset()
-
-  // }
-
-
   const deleteAnswer = (questionid, questionidx, answerIndex) => {
     props.room.roomData.QAData[questionidx].answers.splice(answerIndex, 1)
     props.deleteAnswer(
@@ -66,7 +46,6 @@ const QuestionAndAnswers = props => {
   return (
 
     <div className='QAData'>
-      {/* <NavLink to='/room'>Go Back</NavLink> */}
       <h2>Question and Answers</h2>
 
       <div className='questionDiv'>
@@ -102,8 +81,6 @@ const QuestionAndAnswers = props => {
         </form>
 
       </div>
-      {/* ) */}
-      {/* }) : null} */}
     </div>
   )
 }

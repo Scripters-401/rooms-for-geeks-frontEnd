@@ -45,7 +45,6 @@ const Popup = props => {
         e.preventDefault();
         goToRoom(e,id);
     }
-    console.log('idddddddsssss', props.userHome.choosenRoomID);
     let status=true;
     return (
         <>
