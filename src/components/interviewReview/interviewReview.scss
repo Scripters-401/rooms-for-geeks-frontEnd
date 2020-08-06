@@ -1,4 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900);
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap');
+
+p{
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+  h1,h2,h3,h4,h5,h6{
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+
+  div{
+    font-family: 'Roboto Condensed', sans-serif;
+  }
 
 :root {
 --white: #FFFFFF;
@@ -11,7 +24,12 @@
 --darkGrey: #4F585E;
 }
 
-
+p{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Roboto Condensed', sans-serif;
+}
 // body {
 //   background: var(--lightBG);
 //   color: var(--darkGrey);
@@ -47,16 +65,17 @@ div.card {
   display: inline-block;
   margin: 2%;
   perspective: 1000;
-  border: 1px solid #7da09a;
+  /* border: 1px solid #7da09a; */
   position: relative;
-  text-align: center;
+  text-align: left;
   transition: all 0.3s 0s ease-in;
   width: 100%;
   z-index: 1;
   max-width: 70%;
-  box-shadow: 1px 2px 2px #9ce8dbb5;
+  box-shadow: 1px 1px 5px #c3c3c0;
   &:hover{
-    box-shadow: 3px 3px 6px rgba(45, 117, 151, 0.514);
+    box-shadow: 1px 1px 5px#e5f64a;
+    // box-shadow: 3px 3px 6px #e5f64a;
   }
 
 
@@ -81,6 +100,8 @@ div.card {
       right: 15px;
       top: 10px;
       width: 32px;
+    background: #7da09a;
+    color: aliceblue;
       span {
         background: var(--white);
         display: block;
@@ -205,19 +226,26 @@ input.inputRange {
 
 p.userNameP {
   font-weight: 400;
-  font-size: 94%;
+    font-size: 81%;
+    color: #416760;
+    text-transform: capitalize;
 }
 
 p.dateFormatedP {
   font-weight: 400;
-  font-size: 68%;
+    font-size: 66%;
+    color: #808080c9;
 }
 
 .compP {
   position: relative;
-  right: -17px;
-  top: 15px;
-  width: fit-content;
+    right: -17px;
+    font-weight: 500;
+    top: 15px;
+    font-size: 106%;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 p.pastionP {
@@ -231,11 +259,12 @@ p.pastionP {
 p.revP {
   font-size: 155%;
   font-weight: 350;
-  text-align: -webkit-center;
+  text-align: left;
 }
 
 p.dateP {
-  font-size: 120%;
+  font-size: 110%;
+  color: #416760;
 }
 
 p.rateP {
@@ -433,7 +462,7 @@ textarea.addReviewInput {
   -moz-appearance: none;
   appearance: none;
   outline: 0;
-  background-color: #162d23c2;
+  background-color: #7da09a;
   color: white;
   border: 0;
   padding: 8px 5px;
@@ -443,7 +472,7 @@ textarea.addReviewInput {
   cursor: pointer;
   font-size: 18px;
   transition-duration: 0.25s;
-  box-shadow: 3px 3px 6px #537970;
+  // box-shadow: 3px 3px 6px #537970;
   &:hover {
   background-color: #416760;
   color:white; 
@@ -493,9 +522,9 @@ textarea.addReviewInput {
   margin: 20px;
   padding: 1%;
   color: white;
-  background-color: #416760;
+  background-color: #86a5a0;
   border-radius: 6px;
-  border: solid 1px #416760;
+  border: solid 1px #86a5a0;
   transition-duration: 1.2s;
   margin: auto auto 2% auto;
   &:hover {
@@ -579,39 +608,7 @@ div.card .card__image-holder {
 }
 
 
-// .card {
-//   position: relative;
-//   display: flex;
-//   flex-direction: column;
-//   min-width: 0;
-//   min-height: 448px;
-//   word-wrap: break-word;
-//   background-color: #fff;
-//   background-clip: border-box;
-//   border: 2px solid #7da09a;
-//   border-radius: .25rem;
-// }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .rate {
-//   // float: left;
-//   // height: 46px;
-//   // padding: 0 10px;
-// }
 .rate:not(:checked) > .inputT {
   display: none;
 }
@@ -620,7 +617,6 @@ div.card .card__image-holder {
   width: 1em;
   overflow: hidden;
   white-space: nowrap;
-  // cursor: pointer;
   font-size: 30px;
   color: #ccc;
 }
@@ -628,7 +624,7 @@ div.card .card__image-holder {
   content: "★ ";
 }
 .rate > .inputT:checked ~ .labelT {
-  color: #ffc700;
+  color: #e5f64a;
 }
 // .rate:not(:checked) > .labelT:hover,
 // .rate:not(:checked) > .labelT:hover ~ .labelT {
@@ -662,7 +658,7 @@ div.card div.card-flap {
 }
 
 div.card.show div.card-title span.toggle-info {
-  background: #346f65 !important;
+  background: #7da09a !important;
 }
 
 .formateD {
@@ -683,9 +679,9 @@ button.addReviewButton {
   position: relative;
   top: 10px;
   color: white;
-  background-color: #416760;
+  background-color: #7da09a;
   border-radius: 6px;
-  border: solid 1px #416760;
+  border: solid 1px #7da09a;
   transition-duration: 1.2s;
   margin: auto auto 2% auto;
   &:hover {
@@ -699,19 +695,21 @@ button.addReviewButton {
 }
 
 p.reviewPPPP {
-  /* border: 2px solid #2b6b60e3; */
-  margin-top: 5%;
-  border-radius: 4px;
-  width: 94%;
-  text-align: justify;
-  /* padding: 1%; */
-  text-align-last: center;
+    
+     margin-top: 3%;
+     border-radius: 4px;
+     width: 94%;
+     background-color: #a5b3b01f;
+     color: #416760;
+     padding: 3%;
+     text-align: justify;
+     text-align-last: left;
 }
 
 hr.hrRev {
-  width: 94%;
-  /* background: #416760; */
-  margin: -13px;
+  width: 82%;
+  margin-top: 29px;
+  background-color: #c5c5c5;
 }
 
 form.addReviewForm {
@@ -726,6 +724,11 @@ form.addReviewForm {
 h3.PR {
   margin-bottom: -2%;
   margin-top: 3%;
+  font-size: 73%;
+  color: #416760;
+  padding-bottom: 16px;
+  font-weight: 700;
+  border-bottom: 1px solid #80808075;
 }
 
 
@@ -832,7 +835,10 @@ button#btnInterview {
   width: 30%;
   height: 58px;
   color: #e9efee;
-  background-color: #5c7879;
+  background-color: #7da09a;
+  &:focus {
+    outline: none;
+}
 }
 
 
@@ -897,7 +903,7 @@ p.Discription2 {
   width: 100%;
   background-color: #7ea19b;
   padding: 48px 52px;
-    margin-top: 6%;
+  margin-top: 90px;
   color: #e5f64a;
 }
 

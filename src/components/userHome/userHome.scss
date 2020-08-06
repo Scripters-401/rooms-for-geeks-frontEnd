@@ -1,6 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
 
-// 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap');
+
+p{
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+  h1,h2,h3,h4,h5,h6{
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+
+  div{
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+  button.close{
+    &:focus{
+      outline: none;
+    }
+  }
+  
 .search-bar{
     position: relative;
     min-height: 40px;
@@ -817,6 +834,7 @@ button.upgradeButton.btn.btn-primary:hover {
         width: 100%;
         height: 100%;
     }
+   
 }
 
 .by-textt{

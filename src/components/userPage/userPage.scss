@@ -1,7 +1,18 @@
 ///////////------------------------------------------
 
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap');
 
+p{
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+  h1,h2,h3,h4,h5,h6{
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+
+  div{
+    font-family: 'Roboto Condensed', sans-serif;
+  }
 img.image {
     width: 342px;
     height: 329px;

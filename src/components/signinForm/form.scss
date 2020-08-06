@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-
 $width-panel-static: 80%;
 $height-panel-static: 60%;
 $background-panel-static: rgba(0, 0, 0, 0.6);
@@ -150,6 +149,7 @@ html {
         font-size: 0.7rem;
         text-decoration: none;
         color: #aaa;
+        
     }
 
     a.terms {
@@ -232,6 +232,7 @@ p.oauthIcon {
 }
 .panel--static .panel__content {
     padding: 5rem;
+    margin-right: 9%;
     margin-top: -36px;
 }
 
