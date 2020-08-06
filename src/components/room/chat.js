@@ -157,7 +157,7 @@ const Chat = props => {
                     role="img"
                     aria-label="likeEmoji"
                     onClick={e => props.chat.didLove[idx] ? removeLove(idx) : addLove(idx, element.userName)}
-                  >❤{`${element.Love}`}</span>
+                  >💖{`${element.Love}`}</span>
                 </div>
                 <span className='msgTime'>
 
