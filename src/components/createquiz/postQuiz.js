@@ -33,32 +33,32 @@ const QuizForm = props => {
 
                 <input className="input"
                     type="text"
-                    name={`questions${idx}`}
+                    name={`questions#${idx}`}
                     onChange={(e) => props.handleAddQuiz(e)}
                     placeholder="question"
                 />
 
                 <input className="input"
                     type="text"
-                    name={`correctAnswer${idx}`}
+                    name={`correctAnswer#${idx}`}
                     onChange={(e) => props.handleAddQuiz(e)}
                     placeholder="correctAnswer"
                 />
                 <input className="input"
                     type="text"
-                    name={`wrongChoices${idx * 3}`}
+                    name={`wrongChoices#${idx * 3}`}
                     onChange={(e) => props.handleAddQuiz(e)}
                     placeholder="wrongChoices #1"
                 />
                 <input className="input"
                     type="text"
-                    name={`wrongChoices${idx * 3 + 1}`}
+                    name={`wrongChoices#${idx * 3 + 1}`}
                     onChange={(e) => props.handleAddQuiz(e)}
                     placeholder="wrongChoices #2"
                 />
                 <input className="input"
                     type="text"
-                    name={`wrongChoices${idx * 3 + 2}`}
+                    name={`wrongChoices#${idx * 3 + 2}`}
                     onChange={(e) => props.handleAddQuiz(e)}
                     placeholder="wrongChoices #3"
                 />

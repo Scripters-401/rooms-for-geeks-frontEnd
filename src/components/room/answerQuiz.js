@@ -37,6 +37,8 @@ const Quiz = props => {
     } else {
       props.postAnswers(props.sign.token, selectedAnswers, quizID, props.userInfo.user._id)
       selectedAnswers = [];
+      window.scrollTo(0, 0)
+
       // props.room.redirectTakeQuiz = false;
       // setTimeout(() => {
       //   // console.log('iiiiiiiiiiiiiiiiiiiiiiiiiiii');

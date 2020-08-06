@@ -91,6 +91,8 @@ const UserHome = props => {
             <div className='allByall'>
                 <Show condition={props.sign.user.role === 'user'}>
                     <Upgrade /></Show>
+
+                    
                 <div className="searchAndBut">
 
                     <div className='search-bar'>

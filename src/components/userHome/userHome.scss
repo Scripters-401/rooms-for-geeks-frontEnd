@@ -14,7 +14,7 @@ p{
   }
 .search-bar{
     position: relative;
-    min-height: 100px;
+    min-height: 40px;
     .search-container {
       position: absolute;
       margin: auto;
@@ -810,7 +810,9 @@ button.upgradeButton.btn.btn-primary:hover {
   text-align-last: center;
      background: url("https://images.unsplash.com/photo-1590998626514-36362cd48769?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=775&q=80")
     no-repeat center center fixed;
-    margin-top: -4%;
+    margin-top: 90px;
+    padding-top: 2%;
+    // margin-top: -4%;
     background-size: cover;
     position: sticky;
     padding-bottom: 1%;

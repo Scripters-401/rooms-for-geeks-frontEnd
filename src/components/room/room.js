@@ -29,7 +29,7 @@ const Room = props => {
         let x = props.userHome.choosenRoomID || cookieroomID;
         props.updateChoosenRoomIDSocket(x)
         window.scrollTo(0, 0)
-
+        props.thePostRoom.redirectCreateQuiz = false
         // }, 200);
 
     }, [])
@@ -142,7 +142,7 @@ const Room = props => {
 
                         <div className='courseData'>
                             <h2 className="courseName">Course: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.courseName : null}</h2>
-                            <p className="Discription">Discription: {props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
+                            <p className="Discription">{props.room.roomData && props.room.roomData.courseData ? props.room.roomData.courseData.discription : null}</p>
 
                         </div>
 
@@ -293,6 +293,7 @@ const mapStateToProps = state => ({
     userInfo: state.userInfo,
     userHome: state.userHome,
     chat: state.chat,
+    thePostRoom: state.thePostRoom
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
