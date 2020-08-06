@@ -743,22 +743,23 @@ h3.PR {
   width: 100%; 
   height: 100%; 
   overflow: auto; 
-  background-color: #474e5d;
+  background-color: #f5f5f5;
   padding-top: 50px;
 
   .close {
     position: absolute;
     right: 35px;
-    top: 15px;
+    top: 114px;
+    z-index: 99999999999;
     font-size: 40px;
     font-weight: bold;
-    color: rgba(0,123,255,.25);
+    color: rgb(212 ,24 ,41);
     &:hover {
-      color: #36f4eb;
+     
     cursor: pointer;
     }
     &:focus {
-      color: #36f4eb;
+    outline: none;
       cursor: pointer;
     }
   }
