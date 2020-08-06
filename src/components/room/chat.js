@@ -127,7 +127,7 @@ const Chat = props => {
 
       <div id="chat-window">
         <div id="output">
-          {props.chat.output.map((element, idx) => {
+          {props.chat.output?props.chat.output.map((element, idx) => {
             return (
               <div className="messaheDiv" key={idx}>
                 
@@ -171,7 +171,7 @@ const Chat = props => {
 </span>
               </div>
             )
-          })}
+          }):null}
         </div>
         <div id="typing">{props.chat.typingstate}</div>
       </div>

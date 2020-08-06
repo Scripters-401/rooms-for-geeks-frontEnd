@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { storage } from "../firebase";
 import * as actions from '../../store/userReducer';
 import * as actions2 from '../../store/putUserInfo';
+import * as actions3 from '../../store/uploadImageReducer';
 import Show from '../auth/show';
 
 const User = props => {
