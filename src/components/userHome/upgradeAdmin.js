@@ -1,14 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useEffect } from 'react'
+import React from 'react'
 // import Slider from "react-slick";
 import {connect} from 'react-redux'
 import './userHome.scss'
 import * as actions from '../../store/userHome';
-// import Show from '../auth/show' 
 import { Button } from 'react-bootstrap';
-// import { sign } from 'jsonwebtoken';
-// import { sign } from 'jsonwebtoken';
 
 const UpgradeAdmin = props => {
 

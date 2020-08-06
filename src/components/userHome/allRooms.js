@@ -6,7 +6,6 @@ import * as actions from '../../store/userHome';
 import { Link } from 'react-router-dom';
 import Show from '../auth/show';
 import Popup from './popup';
-// import { sign } from 'jsonwebtoken';
 let random = [];
 let randomNumber = null;
 const AllRooms = props => {
@@ -22,7 +21,6 @@ const AllRooms = props => {
         
         props.choosenID(id);
     }
-    var allLength = props.userHome.roomsLength;
     
     let max = props.userHome.allRooms.length - 3;
    

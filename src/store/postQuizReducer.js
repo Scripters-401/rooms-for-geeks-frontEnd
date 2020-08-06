@@ -71,7 +71,7 @@ export const updateSettings = e => {
 
 export const quizPost = (token, quizName, discription, questions, correctAnswer, wrongChoices, courseID) => async dispatch => {
     try {
-        const results = await fetch(`${API}/quiz`, {
+         await fetch(`${API}/quiz`, {
             method: 'POST',
             mode: 'cors',
             // cache: 'no-cache',

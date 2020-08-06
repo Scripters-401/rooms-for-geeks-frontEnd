@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import Show from '../auth/show'
 import cookie from 'react-cookies';

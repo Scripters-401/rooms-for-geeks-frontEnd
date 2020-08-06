@@ -15,8 +15,10 @@ export default (state = initialState, action) => {
         case 'HANDLE_CHANGE_COURSE':
             state[payload.name] = payload.value
             return { ...state };
-        case 'HANDLE_NEW_COURSE_ID' :
+        case 'HANDLE_NEW_COURSE_ID':
             state.NewCourseId = payload._id
+            return { ...state };
+
         default:
             return state;
     }
@@ -29,7 +31,7 @@ export const handleChangeCourse = e => {
 }
 
 export const handleNewCourse = e => {
-    return{
+    return {
         type: 'HANDLE_NEW_COURSE_ID',
         payload: e,
     }
@@ -48,9 +50,9 @@ export const coursePost = (token, courseName, topic, discription, tutorial, user
             }),
             body: JSON.stringify({ courseName, topic, discription, tutorial, userid, roomID })
         });
-       let res = await results.json();
-       dispatch(handleNewCourse(res));
-    
+        let res = await results.json();
+        dispatch(handleNewCourse(res));
+
     } catch (error) {
         console.error(`ERROR: COURSE`);
     }

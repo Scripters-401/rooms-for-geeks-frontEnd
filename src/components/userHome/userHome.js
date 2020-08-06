@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect,useState } from 'react'
+import React, { useEffect } from 'react'
 import cookie from 'react-cookies';
 import MyRooms from './myRooms';
 import AllRooms from './allRooms'
@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import ShowAll from './showAllRooms'
 import Popup from './popup';
 import * as actions from '../../store/userHome';
-// import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { Button } from 'react-bootstrap';
 
@@ -19,10 +18,8 @@ import { Button } from 'react-bootstrap';
 let random = [];
 const UserHome = props => {
 
-    //notification
     let randomArr = [];
     props.room.redirectAfterDelete = false;
-    let times=1;
     
 
     function hi(e) {
@@ -30,7 +27,6 @@ const UserHome = props => {
         props.searchString(e.target.value);
         props.searchOn(true);
         if (e.target.value === '') {
-            // props.searchString('zzzzzzzzzzzzzzzzzzy');
             props.searchOn(false);
 
         }
@@ -53,7 +49,6 @@ const UserHome = props => {
                 icon: 'success',
                 title: 'Signed in successfully'
             })
-            // props.notification();
             cookie.save('notification', 'true');
         }
         setTimeout(() => {
