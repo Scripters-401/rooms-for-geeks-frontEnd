@@ -7,8 +7,9 @@ import * as actions from '../../store/signINUPReducer.js'
 import * as actions2 from '../../store/userReducer.js'
 
 import Show from '../auth/show';
-import logo from '../../assest/webHeaderLogo.png';
+import logo from '../../assest/webHeaderLogoFinal.png';
 //LOGOC.png
+//webHeaderLogo.png
 //webHeaderLogo.png
 import '../../reset.css';
 import './header.scss';
