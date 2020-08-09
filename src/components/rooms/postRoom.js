@@ -53,7 +53,7 @@ const RoomForm = props => {
             props.thePostRoom.newRoomId,
         )
         //    token, quizName, discription, questions, correctAnswer, wrongChoices,courseID
-        props.quizPost(
+        await props.quizPost(
             props.sign.token,
             props.postNewQuiz.quizName,
             props.postNewQuiz.discription,
@@ -62,10 +62,14 @@ const RoomForm = props => {
             props.postNewQuiz.wrongChoices,
             props.postNewCourse.NewCourseId,
         )
-        props.roomID(props.thePostRoom.newRoomId);
+
+        setTimeout(() => {
+            props.roomID(props.thePostRoom.newRoomId);
+            props.updateRedirectCreateQuiz(true);
+            
+        }, 200);
 
         // props.thePostRoom.redirectCreateQuiz = true;
-        props.updateRedirectCreateQuiz(true);
         // e.target.reset()
     }
 
